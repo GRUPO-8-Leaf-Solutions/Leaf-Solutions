@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro - Leaf Project</title>
+
+
+</head>
+
+<body>
+    <h1 style="color: green;">SIMULE AQUI!</h1>
+
+    <h3>Quantos M² a plantação possui?</h3> <input id="ipt_qtdM" type="text">
+    <h3>Insira o total de pés de alface colhidos no último mês por M²:</h3> <input id="ipt_qtdPes"type="text"><br><br>
+    <h3>Insira o total de folhas, por unidade do pé de alface:</h3> <input id="ipt_qtdFolhas" type="text">
+    <h3>Insira o peso de uma unidade de alface (g):</h3> <input id="ipt_pesoUnid" type="text">
+    <h3>Insira o valor de venda da unidade do pé de alface R$: </h3> <input id="ipt_valorUnid" type="text"><br><br>
+
+    <button style="color: green;" onclick="calcular()">Simule aqui</button>
+<p id="p_exibir"></p>
+
+
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var qtdMetros = Number(ipt_qtdM.value);
+        var qtdPes = Number(ipt_qtdPes.value);
+        var valorUnid = Number(ipt_valorUnid.value);
+        var qtdFolhas = Number (ipt_qtdFolhas.value);
+        var pesoUnid = Number (ipt_pesoUnid.value);
+        var totalVenda = (qtdPes * qtdMetros) * valorUnid;
+        var totalSolucao = (totalVenda * 1.50);
+        var aumentoFolha = (qtdFolhas * 1.47);
+        var aumentoPeso = (pesoUnid * 1.57);
+        var aumentoVenda = (valorUnid * 1.40);
+
+        p_exibir.innerHTML = `<h2>Sem a solução da Leaf Project, você teve um faturamento total de <B style= "color: red;">R$ ${totalVenda}</B> 
+        com as vendas dos pés de alface no último mês. <B><h3 style= "color: green;">Com a solução da Leaf Project,</h3>Seu faturamento aumentaria em <B style= "color: green;">50%,</B>
+            totalizando <B style= "color: green;">R$ ${totalSolucao}</B> com as vendas dos pés de alface no ultimo mês!<br><br></B> Além de aumentar 
+            em até <B style= "color: green;"> 47% </B> do número de folhas de cada pé, totalizando <B style= "color: green;"> ${aumentoFolha}</B> folhas e <B style= "color: green;"> 57%</B> do peso de cada pé, totalizando <B style= "color: green;"> ${aumentoPeso}g.</B> <br><br> Com uma melhoria na qualidade da alface, sugerimos um aumento no valor de venda do produto em até <B style= "color: green;">40% </B>, totalizando <B style= "color: green;">R$ ${aumentoVenda}</B> por unidade.</h3>`
+    }
+</script>
