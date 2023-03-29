@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+
+
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    background-color: green;
+    align-items: center;
+    justify-content: space-around;    
+    padding-block: 25px;
+}
+
+.nav_part1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.btn_cadastro{
+    border: 3px solid #ECF39E !important;
+    border-radius: 26px !important;
+    padding-inline: 20px !important;
+    padding-block: 4px !important;
+    all: unset;
+}
+
+.nav_part2{
+    display: flex;
+    gap: 40px;
+}
+
+.btn_login{
+    background: #EAFF00 !important;
+    border-radius: 26px !important;
+    padding-inline: 38px !important;
+    padding-block: 6px !important;
+    all: unset;
+    color: black !important;
+}
+
+.diferenciais {
+    margin-left: 30px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #82B80C;
+}
+
+.conteudo_diferenciais {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 15px;
+}
+
+.garantias {
+    display: flex;
+    justify-content: space-around;
+    justify-content: right;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 20px;
+}
+
+.teste {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
