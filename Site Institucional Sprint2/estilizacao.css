@@ -2,21 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-body{
+body {
     margin: 0;
     padding: 0;
 }
 
-main{
+main {
     background: #EBF0DE;
-    width: 94%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding-inline: 50px;
+
     padding-top: 250px;
 }
 
@@ -24,7 +24,7 @@ main{
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-around;    
+    justify-content: space-around;
     padding-block: 45px;
     padding-inline: 90px;
     gap: 20%;
@@ -34,7 +34,7 @@ nav {
     width: 89.2%;
 }
 
-.nav_part1{
+.nav_part1 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +42,7 @@ nav {
     width: fit-content;
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -50,7 +50,7 @@ nav a{
     font-size: 20px;
 }
 
-.btn_cadastro{
+.btn_cadastro {
     border: 3px solid #ECF39E !important;
     border-radius: 26px !important;
     padding-inline: 20px !important;
@@ -58,12 +58,12 @@ nav a{
     all: unset;
 }
 
-.nav_part2{
+.nav_part2 {
     display: flex;
     gap: 40px;
 }
 
-.btn_login{
+.btn_login {
     background: #EAFF00 !important;
     border-radius: 26px !important;
     padding-inline: 38px !important;
@@ -72,24 +72,24 @@ nav a{
     color: black !important;
 }
 
-.home{
+.home {
     background: linear-gradient(180deg, #193819 0%, rgba(34, 90, 34, 0.96) 74.44%);
     height: fit-content;
     padding-bottom: 220px;
     padding-top: 200px;
 }
 
-.homePart1::after{
+.homePart1::after {
     content: ' ';
     background-image: url("imagem/homeImg1.svg");
     background-size: cover;
-    width: 1550px;
+    width: 90%;
     height: 400px;
     position: absolute;
     top: 470px;
 }
 
-.homePart1 h1{
+.homePart1 h1 {
     font-family: 'Syne', sans-serif;
     font-size: 80px;
     width: 800px;
@@ -104,37 +104,37 @@ nav a{
     width: 100%;
 }
 
-.sobre{
-display: flex;
-flex-direction: column;
-align-items: center;
+.sobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.sobre div{
+.sobre div {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
-.sobre div h3{
+.sobre div h3 {
     font-family: 'Jost', sans-serif;
     font-size: 48px;
     color: #96C344;
 }
 
-.sobre div h3 span{
+.sobre div h3 span {
     color: #31572C;
 }
 
-.sobre div h4{
+.sobre div h4 {
     color: #31572C;
     font-family: 'Jost', sans-serif;
     font-size: 37px;
     font-weight: 100;
 }
 
-.FAQ{
+.FAQ {
     width: 100%;
     height: 520px;
     display: flex;
@@ -142,29 +142,29 @@ align-items: center;
     margin-top: 100px;
 }
 
-.FAQ > :nth-child(1){
+.FAQ> :nth-child(1) {
     background-color: transparent !important;
 }
 
-.FAQ > :nth-child(1) h2{
+.FAQ> :nth-child(1) h2 {
     font-family: 'Jost';
     font-weight: 700;
-    font-size: 48px !important;    
+    font-size: 48px !important;
     color: #31572C;
     margin: 0 !important;
 }
 
-.FAQ > :nth-child(1) span{
+.FAQ> :nth-child(1) span {
     color: #82B80C;
 }
 
-.FAQ > :nth-child(1) h4{
+.FAQ> :nth-child(1) h4 {
     font-family: 'Jost';
     color: #31572C;
     font-size: 20px;
 }
 
-.FAQ .card{
+.FAQ .card {
     width: 300px;
     height: 400px;
     border-radius: 40px;
@@ -177,7 +177,7 @@ align-items: center;
     gap: 20px;
 }
 
-.FAQ .card h2{
+.FAQ .card h2 {
     font-family: 'Jost';
     font-size: 34px;
     color: #31572C;
@@ -185,7 +185,7 @@ align-items: center;
     margin-left: 40px;
 }
 
-.FAQ > :nth-child(3) {
+.FAQ> :nth-child(3) {
     align-self: end;
 }
 
@@ -223,4 +223,177 @@ align-items: center;
     align-items: center;
     justify-content: center;
     gap: 200px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.faq1000 {
+    margin-top: 80px;
+    padding: 40px 50px;
+    height: fit-content;
+    background: linear-gradient(180deg, rgba(49, 87, 44, 0.3), rgba(136, 174, 53, 0.3) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+}
+
+.faq1000 .container1000 {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.titulo1000 {
+    margin: 0;
+    color: #1c341c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.faq1000 .container1000 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.colunaFaq1000 {
+    height: 300px;
+    width: 650px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-weight: bold;
+    color: #84a444;
+    font-size: 13px;
+}
+
+.titulo_faq1000 {
+    color: #33592c;
+    font-weight: bolder;
+}
+
+
+/* ------------------- FOOTER ------------------------ */
+.footer1000 {
+    background: linear-gradient(0deg, #132A13 -44%, #31572C 155.34%);
+    padding: 80px 50px;
+    padding-bottom: 10px;
+    display: flex;
+    font-size: small;
+    flex-direction: column;
+}
+
+.footer1000 .container1000 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 120px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.imgInput1000 {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.imgLogo1000 {
+    width: 70px;
+    height: 50px;
+}
+
+
+.inputBotao1000 {
+    height: 45px;
+    display: flex;
+    gap: 5px;
+}
+
+.inputEmail1000 {
+    height: 41px;
+    padding-left: 20px;
+
+    background: rgba(216, 225, 224, 0.04);
+    border: 0.5px solid rgba(216, 225, 224, 0.4);
+    border-radius: 5px;
+    color: white;
+}
+
+.inputEmail1000:focus {
+    outline: 0;
+}
+
+.inputEmail1000::placeholder {
+    color: rgba(216, 225, 224, 0.4);
+}
+
+.footer1000 .imgInput1000 .inputBotao1000 button {
+    width: 150px;
+    height: 45px;
+    background: #88AE35;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    border: 0;
+}
+
+.sobre1000 {
+    display: flex;
+}
+
+.colunaSobre1000 {
+    width: 225px;
+    color: rgba(217, 217, 217, 0.75);
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.titulo_sobre1000 {
+    color: #FFFFFF;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.rodape1000 {
+    color: rgba(217, 217, 217, 0.75);
+
+    width: 100%;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.rodapeEsquerdo1000 {
+    padding: 20px 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.rodapeDireito1000 {
+    padding: 20px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }

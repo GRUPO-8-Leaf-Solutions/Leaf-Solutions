@@ -5,65 +5,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Leaf Project</title>
     <link rel="stylesheet" href="estilizacao.css">
 </head>
 
 <body>
 
 
-        <!-- Parte do cauã -->
+    <!-- Parte do cauã -->
 
-        <!-- HEADER -->
-        <nav>
-            <div class="nav_part1">
-                <img src="imagem\logo.svg">
-                        
-                <a href="#home">Home</a>
+    <!-- HEADER -->
+    <nav>
+        <div class="nav_part1">
+            <img src="imagem\logo.svg">
 
-                <a href="#sobre">Sobre</a>
+            <a href="#home">Home</a>
 
-                <a href="#">FAQ</a>
+            <a href="#sobre">Sobre</a>
 
-                <a href="#">Contato</a>
+            <a href="#">FAQ</a>
+
+            <a href="#">Contato</a>
+        </div>
+
+        <div class="nav_part2">
+            <a href="">
+                <button class="btn_cadastro">Cadsatro</button>
+            </a>
+
+            <a href="">
+                <button class="btn_login">Login</button>
+            </a>
+
+        </div>
+    </nav>
+    <div id="home" class="home">
+        <div class="homePart1">
+            <div style="width:80% ;">
+                <h1>
+                    Colhendo dados, cultivando o sucesso!
+                </h1>
             </div>
 
-            <div class="nav_part2">
-                <a href="">
-                    <button class="btn_cadastro">Cadsatro</button>
-                </a>
-
-                <a href="">
-                    <button class="btn_login">Login</button>
-                </a>
-
-            </div>
-        </nav>
-            <div id="home" class="home">
-                <div class="homePart1">
-                    <div style="width:80% ;">
-                        <h1>
-                            Colhendo dados, cultivando o sucesso!
-                        </h1>
-                    </div> 
-
-                </div>
-            </div>
-        <!--Fim da header  -->
+        </div>
+    </div>
+    <!--Fim da header  -->
 
     <main>
         <div id="sobre" class="sobre">
             <div>
                 <h3>Sobre <span>a LEAF PROJECT</span></h3>
-                <h4>A Leaf Project fornece dados para agricultores que cultivam a hortaliça folhosa mais consumida do mundo, a alface. Nos coletamos e processamos dados a partir da utilização de sensores, fornecendo informações precisas e personalizadas para os nossos clientes, sobre a quantidade de luz recebida em suas plantações.</h4>
+                <h4>A Leaf Project fornece dados para agricultores que cultivam a hortaliça folhosa mais consumida do
+                    mundo, a alface. Nos coletamos e processamos dados a partir da utilização de sensores, fornecendo
+                    informações precisas e personalizadas para os nossos clientes, sobre a quantidade de luz recebida em
+                    suas plantações.</h4>
             </div>
         </div>
 
-   
+
         <div class="FAQ">
             <div class="card">
                 <h2>Nossos <span>diferenciais</span></h2>
-                <h4>Serviço de alta qualidade e inovador para atender às necessidades dos agricultores de forma eficiente e precisa. Além disso, investimos em segurança, oferecendo monitoramento seguro e atualizações constantes para proteger os dados e sistemas.</h4>
+                <h4>Serviço de alta qualidade e inovador para atender às necessidades dos agricultores de forma
+                    eficiente e precisa. Além disso, investimos em segurança, oferecendo monitoramento seguro e
+                    atualizações constantes para proteger os dados e sistemas.</h4>
             </div>
 
             <div class="card">
@@ -101,34 +106,90 @@
         </div>
     </div> -->
 
-    
+
 
         <!-- Parte do Samuel -->
-        <div id="simuleAqui">
-            <h2>Simule aqui</h2>
-            <span>Quantos m2 a plantação possui?</span>
-            <input id="1">
-            <span>Insira o total de pés de alface colhidos no último mês por m2</span>
-            <input id="2">
-            <span>Insira o total de pés     </span>
-            <input id="3">
-            <span>Quantos m2 a plantação possui?</span>
-            <input id="4">
-            <span>Quantos m2 a plantação possui?</span>
-            <input id="5">
-            <span>Quantos m2 a plantação possui?</span>
-            <input id="6">
-    
-            <button>
-                Simular
-            </button>
+        <div class="faq1000">
+            <span class="titulo1000">FAQ</span>
+            <div class="container1000">
+                <div class="colunaFaq1000">
+                    <span class="titulo_faq1000">Contas</span>
+                    <span>Onde posso encontrar respostas para dúvidas comuns sobre a conta?</span>
+                    <span>Como posso resolver caso um sensor pare de funcionar?</span>
+                    <span>A partir do primeiro contato, possuo algum tipo de vínculo com a empresa?</span>
+                    <span>Onde consigo ver o desempenho da minha plantação?</span>
+                    <span>O sistema anda apresentando problemas?</span>
+                </div>
+
+                <div class="colunaFaq1000">
+                    <span class="titulo_faq1000">Faturamento e assinatura</span>
+                    <span>Onde posso encontrar a resposta para duvidas comuns de fatoramento?</span>
+                    <span>Como posso resolver caso uma fatura atrase?</span>
+                    <span>O sistema anda apresentando problemas?</span>
+                </div>
+
+                <div class="colunaFaq1000">
+                    <span class="titulo_faq1000">Planos e preços</span>
+                    <span>Como são definidos os valores a serem pagos?</span>
+                    <span>Os valores dos planos são fixos ou variáveis?</span>
+                    <span>Como são definidos os valores a serem pagos?</span>
+                    <span>O que acontece se atrasar alguma fatura?</span>
+                </div>
+            </div>
         </div>
-    
-    
-    
 
-</main>
+        <div class="footer1000">
+            <div class="container1000">
+                <div class="imgInput1000">
+                    <img src="imagem/logo.svg" class="imgLogo1000">
+                    <div class="inputBotao1000">
+                        <input type="text" class="inputEmail1000" placeholder="Digite o seu email">
+                        <button>Receber novidades</button>
+                    </div>
+                </div>
 
+
+                <div class="sobre1000">
+                    <div class="colunaSobre1000">
+                        <span class="titulo_sobre1000">Sobre</span>
+                        <span>Nosso time</span>
+                        <span>Como o LeafProject funciona</span>
+                        <span>FAQs</span>
+                        <span>Segurança</span>
+                    </div>
+                    <div class="colunaSobre1000">
+                        <span class="titulo_sobre1000">Comunidade</span>
+                        <span>Twitter</span>
+                        <span>Instagram</span>
+                        <span>Facebook</span>
+                        <span>Linkedin</span>
+                    </div>
+                    <div class="colunaSobre1000">
+                        <span class="titulo_sobre1000">Contato</span>
+                        <span>4002-8922</span>
+                        <span>Rua Haddock Lobo, 595 - <br> Cerqueira César, São Paulo - <br> SP, 01414-001</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rodape1000">
+                <div class="rodapeEsquerdo1000">
+                    <span>© LeafProject 2023. All rights reserved.</span>
+                    <span>Termos de serviço</span>
+                    <span>Política de privacidade</span>
+                    <span>Cookies</span>
+                </div>
+                <div class="rodapeDireito1000">
+                    <img src="imagem/facebook.svg">
+                    <img src="imagem/twitter.svg">
+                    <img src="imagem/instagram.svg">
+                    <img src="imagem/linkedin.svg">
+                    <img src="imagem/github.svg">
+                </div>
+            </div>
+
+        </div>
+    </main>
 </body>
 
 </html>
