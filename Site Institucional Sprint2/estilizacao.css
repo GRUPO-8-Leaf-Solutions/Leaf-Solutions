@@ -18,8 +18,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-block: 45px;
-    padding-inline: 90px;
+    padding: 20px 90px;
     gap: 20%;
     position: fixed;
     backdrop-filter: blur(5px);
@@ -265,6 +264,93 @@ nav .nav_part1 a:hover{
     gap: 102px;
 }
 
+
+.simulador{
+    padding: 80px 50px;
+}
+
+.simuladorContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 100px;
+    background: linear-gradient(180deg, #132A13 0%, rgba(22, 112, 22, 0.96) 74.44%);
+    border-radius: 50px;
+
+    color: white;
+    font-family: 'Jost';
+}
+
+.simuladorContainer h1{
+    font-size: 50px;
+    margin: 0;
+}
+
+.simuladorContainer form{
+    display: flex;
+    width: 80%;
+    gap: 100px;
+}
+
+.formSimulador1, .formSimulador2{
+    width: 50%;
+    display: flex;
+    flex-direction:column;
+    align-items: start;
+    gap: 30px;
+}
+
+.inputSimulador{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+}
+
+.inputSimulador span{
+    font-size: 25px;
+}
+
+.inputSimulador input{
+    height: 60px;
+    border-radius: 5px;
+
+    border: 0.5px solid rgba(216, 225, 224, 0.4);
+    background: rgba(216, 225, 224, 0.04);
+
+    padding: 0 20px;
+    font-family: 'Jost';
+    color: white;
+    font-size: 22px;
+}
+
+.inputSimulador input::placeholder{
+    color: rgba(184, 182, 182, 0.429);
+}
+
+.inputSimulador input:focus{
+    outline: 0;
+}
+
+.simuladorContainer button{
+    width: 190px;
+    height: 71.3px;
+
+    background: #98C438;
+    border-radius: 10px;
+
+    font-family: 'Jost';
+    font-weight: bold;
+    font-size: 20px;
+
+    color: white;
+    border: 1px solid #435f05;
+}
+
+.simuladorContainer button:hover{
+    cursor: pointer;
+    background: #91bb36;
+}
 
 
 
