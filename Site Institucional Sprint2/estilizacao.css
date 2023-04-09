@@ -15,10 +15,11 @@ body {
 
 html, body{
     height: 100%;
+    max-width: 100%;
 }
 
 
-nav {
+.nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,12 +34,11 @@ nav {
 .nav_part1 {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 100px;
-    width: fit-content;
+    justify-content: space-evenly;
+    width: 80%;
 }
 
-nav a {
+.nav a {
     text-decoration: none;
     color: white;
     font-family: 'Jost', sans-serif;
@@ -46,7 +46,7 @@ nav a {
 }
 
 
-nav .nav_part1 a:hover{
+.nav .nav_part1 a:hover{
     color: rgb(154, 212, 149);
 }
 
@@ -61,7 +61,8 @@ nav .nav_part1 a:hover{
 
 .nav_part2 {
     display: flex;
-    gap: 40px;
+    justify-content: space-evenly;
+    width: 20%;
 }
 
 .btn_login {
@@ -78,6 +79,7 @@ nav .nav_part1 a:hover{
     height: 395px;
     padding: 170px 84px;
     position: relative;
+    
 }
 
 
@@ -386,14 +388,13 @@ margin-top: -124px;
 
 
 .faq {
-    padding: 170px 50px;
+    padding: 121px 50px;
     height: fit-content;
     background: linear-gradient(180deg, rgba(49, 87, 44, 0.1) 0%, rgba(136, 174, 53, 0.1) 100%);
     display: flex;
     flex-direction: column;
     gap: 25px;
     font-family: 'Jost';
-    margin-top: -160px;
 }
 
 .faq .container {
@@ -459,7 +460,6 @@ margin-top: -124px;
     display: flex;
     width: 100%;
     justify-content: space-between;
-    gap: 120px;
     padding-bottom: 80px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -517,7 +517,6 @@ margin-top: -124px;
 
 .sobreFooter {
     display: flex;
-    gap: 105px;
 }
 
 .sobreFooter :nth-child(2){
