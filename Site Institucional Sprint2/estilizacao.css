@@ -9,15 +9,8 @@ html {
 body {
     margin: 0;
     padding: 0;
-}
-
-main {
     background: #EBF0DE;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    padding-top: 250px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -30,6 +23,7 @@ nav {
     gap: 20%;
     position: fixed;
     backdrop-filter: blur(5px);
+    background-color: #044f0234;
     z-index: 10;
     width: 89.2%;
 }
@@ -45,10 +39,15 @@ nav {
 nav a {
     text-decoration: none;
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
+    font-family: 'Jost', sans-serif;
+    font-size: 22px;
 }
+
+
+nav .nav_part1 a:hover{
+    color: rgb(154, 212, 149);
+}
+
 
 .btn_cadastro {
     border: 3px solid #ECF39E !important;
@@ -74,110 +73,113 @@ nav a {
 
 .home {
     background: linear-gradient(180deg, #193819 0%, rgba(34, 90, 34, 0.96) 74.44%);
-    height: fit-content;
-    padding-bottom: 220px;
-    padding-top: 200px;
+    height: 395px;
+    padding: 170px 84px;
+    position: relative;
 }
 
-.homePart1::after {
+
+.home::after {
     content: ' ';
     background-image: url("imagem/homeImg1.svg");
     background-size: cover;
     width: 90%;
     height: 400px;
     position: absolute;
-    top: 470px;
+    margin-top: 20px;
 }
 
-.homePart1 h1 {
+.home h1 {
     font-family: 'Syne', sans-serif;
-    font-size: 80px;
+    font-size: 85px;
     width: 800px;
     color: white;
     font-weight: 100;
+    padding: 0 50px;
 }
 
-.homePart1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+
 
 .sobre {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 80px 50px;
+    margin-top: 175px;
+    padding-top: 208px;
 }
 
-.sobre div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
 
-.sobre div h3 {
+.sobre h3 {
     font-family: 'Jost', sans-serif;
     font-size: 48px;
     color: #96C344;
+    margin: 10px 10px;
 }
 
-.sobre div h3 span {
+.sobre h3 span {
     color: #31572C;
 }
 
-.sobre div h4 {
+.sobre  h4 {
     color: #31572C;
     font-family: 'Jost', sans-serif;
     font-size: 37px;
     font-weight: 100;
+    width: 90%;
+    text-align: justify;
+    margin: 30px 10px;
 }
 
-.FAQ {
-    width: 100%;
+.diferenciais {
     height: 520px;
     display: flex;
     justify-content: space-between;
-    margin-top: 100px;
+    padding: 80px 50px;
+    padding-top: 225px;
 }
 
-.FAQ> :nth-child(1) {
+.diferenciais> :nth-child(1) {
     background-color: transparent !important;
+    gap: 0 !important; 
+    box-shadow: none !important;
+
 }
 
-.FAQ> :nth-child(1) h2 {
+.diferenciais> :nth-child(1) h2 {
     font-family: 'Jost';
     font-weight: 700;
-    font-size: 48px !important;
+    font-size: 55px !important;
     color: #31572C;
     margin: 0 !important;
 }
 
-.FAQ> :nth-child(1) span {
+.diferenciais> :nth-child(1) span {
     color: #82B80C;
 }
 
-.FAQ> :nth-child(1) h4 {
+.diferenciais> :nth-child(1) h4 {
     font-family: 'Jost';
     color: #31572C;
-    font-size: 20px;
+    font-size: 18.4px;
+    font-weight: 500;
 }
 
-.FAQ .card {
+.diferenciais .card {
     width: 300px;
     height: 400px;
     border-radius: 40px;
-    background-color: white;
+    background: #FFFFFF;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    box-shadow: 0px 1px 20px 19px rgb(0 0 0 / 15%);
 }
 
-.FAQ .card h2 {
+.diferenciais .card h2 {
     font-family: 'Jost';
     font-size: 34px;
     color: #31572C;
@@ -185,107 +187,149 @@ nav a {
     margin-left: 40px;
 }
 
-.FAQ> :nth-child(3) {
+.diferenciais> :nth-child(3) {
     align-self: end;
 }
 
-.diferenciais {
-    margin-left: 30px;
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    color: #82B80C;
-}
 
-
-
-.conteudo_diferenciais {
+.tipoAlfacesPlantacoes{
     display: flex;
-    width: 200px;
-    height: 200px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin-left: 15px;
+    flex-direction: column;
+    padding: 80px 50px;
+    gap: 100px;
 }
 
-.garantias {
+.tipos_alface{
     display: flex;
-    justify-content: space-around;
-    justify-content: right;
-    width: auto;
-    height: auto;
-    font-size: 20px;
-    border-radius: 20px;
-    border: 20px;
+    justify-content: space-evenly;
 }
 
-.teste {
+.tipos_alface .img{
+    width: 300px;
+    height: 300px;
+    border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 200px;
+    color: #FFFFFF;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'Syne';
+    text-align: center;
+    box-shadow: 0px 1px 16px 7px rgb(0 0 0 / 40%);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+.tipos_alface .americana{
+    background-image: url(imagem/alfaceAmericana.png);
+    background-size: cover;
 }
 
-.faq1000 {
-    margin-top: 80px;
-    padding: 40px 50px;
+.tipos_alface .crespa{
+    background-image: url(imagem/alfaceCrespa.jpeg);
+    background-size: cover;
+}
+
+.tipos_alface .mimosa{
+    background-image: url(imagem/alfaceMimosa.png);
+    background-size: cover;
+}
+
+.tipos_alface .roxa{
+    background-image: url(imagem/alfaceRoxa.png);
+    background-size: cover;
+}
+
+.plantacoes{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.plantacoes .plantDiv{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    text-align: justify;
+    gap: 20px;
+    font-family: 'Jost';
+    font-size: 24px;
+    color: #31572C;
+}
+
+.plantacoes .plantDiv img{
+    filter: drop-shadow(0px 4px 9px #000000);
+}
+
+.plantacoes :nth-child(4){
+    gap: 102px;
+}
+
+
+
+
+.faq {
+    padding: 170px 50px;
     height: fit-content;
-    background: linear-gradient(180deg, rgba(49, 87, 44, 0.3), rgba(136, 174, 53, 0.3) 100%);
+    background: linear-gradient(180deg, rgba(49, 87, 44, 0.1) 0%, rgba(136, 174, 53, 0.1) 100%);
     display: flex;
     flex-direction: column;
     gap: 25px;
-
+    font-family: 'Jost';
+    scroll-padding-top: 200px;
 }
 
-.faq1000 .container1000 {
+.faq .container {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
 
 }
 
-.titulo1000 {
-    margin: 0;
+.faq .titulo {
     color: #1c341c;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 40px;
 }
 
-.faq1000 .container1000 {
+.faq .container {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     gap: 40px;
 }
 
-.colunaFaq1000 {
-    height: 300px;
-    width: 650px;
+.colunaFaq a{
+    text-decoration: none;
+    color: inherit;
+}
 
+.colunaFaq a:hover{
+    color: #718d3b;
+}
+
+.colunaFaq {
+    width: 650px;
     display: flex;
     flex-direction: column;
     gap: 15px;
     font-weight: bold;
     color: #84a444;
-    font-size: 13px;
+    font-size: 25px;
+    font-family: 'Jost';
 }
 
-.titulo_faq1000 {
+.titulo_faq {
     color: #33592c;
     font-weight: bolder;
 }
 
 
 /* ------------------- FOOTER ------------------------ */
-.footer1000 {
+.footer {
     background: linear-gradient(0deg, #132A13 -44%, #31572C 155.34%);
     padding: 80px 50px;
     padding-bottom: 10px;
@@ -294,7 +338,7 @@ body {
     flex-direction: column;
 }
 
-.footer1000 .container1000 {
+.footer .container {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -303,25 +347,25 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.imgInput1000 {
+.imgInput {
     display: flex;
     flex-direction: column;
     gap: 50px;
 }
 
-.imgLogo1000 {
-    width: 70px;
-    height: 50px;
+.imgLogo {
+    width: 85px;
+    height: 85px;
 }
 
 
-.inputBotao1000 {
+.inputBotao {
     height: 45px;
     display: flex;
     gap: 5px;
 }
 
-.inputEmail1000 {
+.inputEmail {
     height: 41px;
     padding-left: 20px;
 
@@ -329,17 +373,22 @@ body {
     border: 0.5px solid rgba(216, 225, 224, 0.4);
     border-radius: 5px;
     color: white;
+
+    width: 300px;
 }
 
-.inputEmail1000:focus {
+.inputEmail:focus {
     outline: 0;
 }
 
-.inputEmail1000::placeholder {
-    color: rgba(216, 225, 224, 0.4);
+.inputEmail::placeholder {
+    color: rgba(216, 225, 224, 0.787);
+  
+    font-family: 'Jost';
+    font-size: 15px;
 }
 
-.footer1000 .imgInput1000 .inputBotao1000 button {
+.footer .imgInput .inputBotao button {
     width: 150px;
     height: 45px;
     background: #88AE35;
@@ -349,11 +398,16 @@ body {
     border: 0;
 }
 
-.sobre1000 {
+.sobreFooter {
     display: flex;
+    gap: 105px;
 }
 
-.colunaSobre1000 {
+.sobreFooter :nth-child(2){
+    width: 150px;
+}
+
+.colunaSobreFooter {
     width: 225px;
     color: rgba(217, 217, 217, 0.75);
 
@@ -364,13 +418,28 @@ body {
 
 }
 
-.titulo_sobre1000 {
+.colunaSobreFooter span{
+    font-size: 17px;
+    font-family: 'Jost';
+    font-weight: bold;
+}
+
+.colunaSobreFooter a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.colunaSobreFooter a:hover{
+    color: rgba(176, 175, 175, 0.75);
+}
+
+.titulo_sobreFooter {
     color: #FFFFFF;
     font-weight: bolder;
     margin-bottom: 20px;
 }
 
-.rodape1000 {
+.rodape {
     color: rgba(217, 217, 217, 0.75);
 
     width: 100%;
@@ -378,9 +447,12 @@ body {
 
     display: flex;
     justify-content: space-between;
+    font-weight: bold;
+    font-family: 'Jost';
+    font-size: 15px;
 }
 
-.rodapeEsquerdo1000 {
+.rodapeEsquerdo {
     padding: 20px 0;
 
     display: flex;
@@ -389,7 +461,7 @@ body {
     gap: 40px;
 }
 
-.rodapeDireito1000 {
+.rodapeDireito {
     padding: 20px 0;
 
     display: flex;
