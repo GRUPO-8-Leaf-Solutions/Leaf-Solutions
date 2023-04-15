@@ -1,0 +1,158 @@
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+*{ margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+.container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.container .lateral{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    background: #D7F1EA;
+    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
+    
+    
+}
+
+.navHeader{
+    display: flex;
+    flex-direction: column;
+    height: 175px;
+    justify-content: space-between;
+    align-content: space-between;
+    padding-left: 25px;
+    
+
+}
+.navHeader span{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18.5px;
+    line-height: 18px;
+    color: #7A7A7A;
+}
+.navHeader img{
+    width: 120px;
+}
+body{
+    min-height: 100vh;
+    background-color: #E7F1EE;
+}
+.navegacão{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 195px;
+    gap: 20px;
+}
+
+.navegacão ul{
+    width: 100%;
+}
+
+.navegacão ul li{    
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 65px;
+    list-style: none;
+    width: 100%;
+    padding-left: 25px;
+   
+}
+
+.navegacão ul li a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #064306;    
+    gap: 15px;
+
+}
+.navegacão ul li a .icone{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.navegacão .destaque{
+    background-color: #F9FBFA;
+    border-radius: 16.55px;
+}
+.nomeNome{
+    display: flex;
+    gap: 15px;
+    
+}
+.nomeNome span{
+    display: flex;
+    flex-direction: column ;
+
+    
+}
+.configNomeimg{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    height: 90px;
+}
+.nomeNome span .config{
+    height: 10px;
+}
+.trindade a{
+    list-style: none;
+}
+.configgg{
+    display: flex;
+    list-style: none;
+    align-items: flex-end;
+    flex-direction: row;
+    height: 40px;
+    gap: 8px;
+}
+.NomeEmpresa{
+    color: #A1A0A0;
+    list-style: none;
+}
+.config{
+    list-style: none;
+}
+.ul2 {
+    list-style: none;
+}
+li a{
+    text-decoration: none;
+}
+.ismalenda li a{
+    color: #7A7A7A;
+}
+.ismalendas li a{
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
