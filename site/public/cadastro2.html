@@ -10,6 +10,13 @@
 </head>
 
 <body class="cadastroBody P2">
+    
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+
     <div class="cadastroContainer">
         <div class="cadastroContainerUpperPart">
             <div>
@@ -31,43 +38,114 @@
         <div class="cadastroContainerBottomPart">
             <div class="inputCadastro">
                 <span>Estado*</span>
-                <input placeholder="Insira o nome do seu estado" maxlength="45">
+                <input id="i_estado" placeholder="Insira o nome do seu estado" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>Cidade*</span>
-                <input placeholder="Insira o nome da sua cidade" maxlength="45">
+                <input id="i_cidade" placeholder="Insira o nome da sua cidade" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>CEP*</span>
-                <input placeholder="Insira o CEP do seu endereço" maxlength="45">
+                <input id="i_cep" placeholder="Insira o CEP do seu endereço" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>Numero do endereço*</span>
-                <input placeholder="Insira o numero do seu endereço" maxlength="45">
+                <input id="i_numeroEndereco" placeholder="Insira o numero do seu endereço" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>Logradouro*</span>
-                <input placeholder="Insira o logradouro da sua empresa" maxlength="45">
+                <input id="i_logradouro" placeholder="Insira o logradouro da sua empresa" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>Complemento*</span>
-                <input placeholder="Insira o complemento do seu endereço" maxlength="45">
+                <input id="i_complemento" placeholder="Insira o complemento do seu endereço" maxlength="45">
             </div>
         </div>
+
+        <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif">
+        </div>
+
+        <div id="div_erros_login"></div>
 
         <img src="assets/icon/logoDark.svg">
     </div>
 
     <div class="bottomCadastroContainer">
         <a href="cadastro1.html"> Voltar para Informações da empresa</a>
-        <a href="cadastro3.html"><button>Próxima etapa</button></a>
+        <button onclick="cadastrar()">Próxima etapa</button>
     </div>
 
 </body>
 
 </html>
+
+<script>
+    var estadoVar = i_estado.value;
+    var cidadeVar = i_cidade.value;
+    var cepVar = i_cep.value;
+    var numEnderecoVar = i_numeroEndereco.value;
+    var logradouroVar = i_logradouro;
+    var complementoVar = i_complemetno;
+
+    if (estadoVar == "" || cidadeVar == "" || cepVar == "" || numEnderecoVar == "" || logradouroVar == "" || complementoVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                estadoServer: estadoVar,
+                cidadeServer: cidadeVar,
+                cepserver: cepVar,
+                numEnderecoServer: numEnderecoVar,
+                logradouroServer: logradouroVar,
+                complementoServer: complementoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+
+
+        function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>

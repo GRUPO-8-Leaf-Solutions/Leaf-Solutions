@@ -116,7 +116,7 @@ body {
     align-items: center;
     gap: 20px;
     height: 250px;
-    width: 70%;
+    width: 100%;
     flex-wrap: wrap;
 }
 
