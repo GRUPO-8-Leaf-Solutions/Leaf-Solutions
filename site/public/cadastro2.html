@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Leaf Project - Cadastro</title>
     <link rel="stylesheet" href="css/estiloCadastro2.css">
+    <script src="js/funcoes.js"></script>
 </head>
 
 <body class="cadastroBody P2">
@@ -67,7 +68,7 @@
             </div>
         </div>
 
-        <div id="div_aguardar" class="loading-div">
+        <div id="div_aguardar" style="width: 50px; display: none;">
             <img src="./assets/circle-loading.gif" id="loading-gif">
         </div>
 
@@ -86,12 +87,13 @@
 </html>
 
 <script>
+function cadastrar() {
     var estadoVar = i_estado.value;
     var cidadeVar = i_cidade.value;
     var cepVar = i_cep.value;
     var numEnderecoVar = i_numeroEndereco.value;
     var logradouroVar = i_logradouro;
-    var complementoVar = i_complemetno;
+    var complementoVar = i_complemento;
 
     if (estadoVar == "" || cidadeVar == "" || cepVar == "" || numEnderecoVar == "" || logradouroVar == "" || complementoVar == "") {
             cardErro.style.display = "block"
@@ -105,7 +107,7 @@
         }
 
 
-        fetch("/usuarios/cadastrar", {
+        fetch("/endereco/listar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -115,7 +117,7 @@
                 // Agora vá para o arquivo routes/usuario.js
                 estadoServer: estadoVar,
                 cidadeServer: cidadeVar,
-                cepserver: cepVar,
+                cepServer: cepVar,
                 numEnderecoServer: numEnderecoVar,
                 logradouroServer: logradouroVar,
                 complementoServer: complementoVar
@@ -130,7 +132,7 @@
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                 setTimeout(() => {
-                    window.location = "login.html";
+                    window.location = "cadastro3.html";
                 }, "2000")
 
                 limparFormulario();
@@ -143,9 +145,10 @@
             finalizarAguardar();
         });
 
+        return false;
+}
 
-
-        function sumirMensagem() {
+    function sumirMensagem() {
         cardErro.style.display = "none"
     }
 </script>

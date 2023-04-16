@@ -114,9 +114,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+
     height: 250px;
-    width: 100%;
+    width: 75%;
     flex-wrap: wrap;
 }
 
