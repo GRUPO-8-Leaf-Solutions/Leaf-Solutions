@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="estilo.css">
+    <title>Histórico</title>
+    <link rel="stylesheet" href="estiloHist.css">
     <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -86,7 +86,7 @@
         <div class="tela">
             <div class="areaDash">
                 <div class="top-left">
-                    <span class="topo">Dashboard</span>
+                    <span class="topo">DashBoard</span>
 
                     <div class="uls">
                         <ul class="ul-semanal">
@@ -97,38 +97,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="input">
-                    <img src="Vector.svg" alt="">
-                    <input class="input-search" type="search" id="search" placeholder="Pesquisar">
-                </div>
             </div>
             <!-- Simulando que a estufa 05 seja a que está emitindo o alert -->
-            <a class="click-alert" href="">
-                <div class="containerAlert">
-                    <div class="alert">
-                        <div class="urgenteEst">
-                            <img class="img-alert" src="alert-icon.svg" alt="">
-
-                            <span class="urgente">URGENTE - ESTUFA 05</span>
-                        </div>
-                        <div class="alerts">
-                            <span class="alert-text">O NÍVEL DE ILUMINÇÃO ESTÁ ABAIXO DO IDEAL</span>
-                            <div class="text-valores">
-                                <div>
-                                    <span class="text-parametro">IDEAL</span> <span class="text-atual">ATUAL</span>
-                                </div>
-                                <div>
-                                    <span class="valor-parametro">500 - 805</span> <span class="valor-atual">400</span>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="alert-litlle">Suas alfaces podem ter um mau-desenvolvimento, perdendo a
-                            qualidade.</span>
-                    </div>
-                </div>
-            </a>
+            
             <div class="containerChart">
-                <div class="chartContainer">
+                <div class="chartContainerH">
                     <div class="grafico1">
                         <canvas id="myChart1"></canvas></canvas>
                     </div>
@@ -139,57 +112,33 @@
         <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
         </div> -->
+        <!-- gráfico -->
 
-</body>
-<script>
-    const labels = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-    ];
+        <script>
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Estufa A',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [687, 700, 760, 850, 840, 930],
-        },
-        {
-            label: 'Estufa B',
-            backgroundColor: 'rgb(148, 0, 211)',
-            borderColor: 'rgb(148, 0, 211)',
-            data: [720, 665, 710, 787, 860, 901],
-        },
-        {
-            label: 'Estufa C',
-            backgroundColor: 'rgb(18, 10, 143)',
-            borderColor: 'rgb(18, 10, 143)',
-            data: [701, 783, 855, 799, 890, 954],
-        }
-        ]
-    };
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+            const ctx = document.getElementById('myChart');
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {}
-    };
-</script>
-
-<script>
-    const myChart1 = new Chart(
-        document.getElementById('myChart1'),
-        config
-    );
-    // const myChart2 = new Chart(
-    //     document.getElementById('myChart2'),
-    //     config
-    // );
-</script>
+            new Chart(ctx, {
+                type: 'pizza',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [12, 19, 3, 5, 2, 3],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
 
 </html>

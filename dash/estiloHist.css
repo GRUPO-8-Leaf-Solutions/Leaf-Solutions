@@ -22,12 +22,12 @@ body {
 }
 
 .container .lateral {
-    width: 225px;
+    width: fit-content;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 40px 40px 22.5px;
+    padding: 40px;
     background: #D7F1EA;
     box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
 
@@ -67,7 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: 170px;
+    width: 195px;
     gap: 20px;
 }
 
@@ -91,7 +91,7 @@ body {
     align-items: center;
     text-decoration: none;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 25px;
     color: #064306;
     gap: 15px;
@@ -190,7 +190,7 @@ li a {
     height: 29px;
     left: 324px;
     top: 79px;
-    font-size: 28px;
+    font-size: 24px;
     font-family: 'Inter';
     font-weight: 600;
     font-style: normal;
@@ -476,3 +476,12 @@ span {
 }
 
 /* PARTE PREVISOES */
+.chartContainerH {
+    height: 225px;
+    width: 528px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
