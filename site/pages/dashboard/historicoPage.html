@@ -99,7 +99,7 @@
                 </div>
             </div>
             <!-- Simulando que a estufa 05 seja a que está emitindo o alert -->
-            
+
             <div class="containerChart">
                 <div class="chartContainerH">
                     <div class="grafico1">
@@ -107,6 +107,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+            <canvas id="myChart"></canvas>
         </div>
 
         <!-- <div>
@@ -116,13 +119,19 @@
 
         <script>
 
-            <div>
-                <canvas id="myChart"></canvas>
-            </div>
+const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+    ];
+
             const ctx = document.getElementById('myChart');
 
             new Chart(ctx, {
-                type: 'pizza',
+                type: 'pie',
                 data: {
                     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                     datasets: [{
@@ -140,5 +149,15 @@
                 }
             });
         </script>
+
+        <script>
+            const myChart1 = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
+
+        </script>
+
 
 </html>
