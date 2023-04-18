@@ -1,0 +1,486 @@
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.container .lateral {
+    width: 225px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    padding: 40px 40px 40px 22.5px;
+    background: #D7F1EA;
+    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
+}
+
+.navHeader {
+    display: flex;
+    flex-direction: column;
+    height: 175px;
+    justify-content: space-between;
+    align-content: space-between;
+    padding-left: 25px;
+
+
+}
+
+.navHeader span {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18.5px;
+    line-height: 18px;
+    color: #7A7A7A;
+}
+
+.navHeader img {
+    width: 120px;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #E7F1EE;
+}
+
+.navegacão {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 170px;
+    gap: 20px;
+}
+
+.navegacão ul {
+    width: 100%;
+}
+
+.navegacão ul li {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 65px;
+    list-style: none;
+    width: 100%;
+    padding-left: 25px;
+
+}
+
+.navegacão ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 25px;
+    color: #064306;
+    gap: 15px;
+
+}
+
+.navegacão ul li a .icone {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.navegacão .destaque {
+    background-color: #F9FBFA;
+    border-radius: 16.55px;
+}
+
+.nomeNome {
+    display: flex;
+    gap: 15px;
+
+}
+
+.nomeNome span {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.configNomeimg {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    height: 90px;
+}
+
+.nomeNome span .config {
+    height: 10px;
+}
+
+.trindade a {
+    list-style: none;
+}
+
+.configgg {
+    display: flex;
+    list-style: none;
+    align-items: flex-end;
+    flex-direction: row;
+    height: 40px;
+    gap: 8px;
+}
+
+.NomeEmpresa {
+    color: #A1A0A0;
+    list-style: none;
+}
+
+.config {
+    list-style: none;
+}
+
+.ul2 {
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.ismalenda li a {
+    color: #7A7A7A;
+}
+
+.ismalendas li a {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FIM DO CSS DO MENU */
+
+/* CSS DA TELA */
+
+
+.tela .topo {
+    color: #717171;
+    width: 127px;
+    height: 29px;
+    left: 324px;
+    top: 79px;
+    font-size: 28px;
+    font-family: 'Nunito';
+    font-weight: 600;
+    font-style: normal;
+    line-height: 29px;
+}
+
+.areaDash .ul-semanal {
+    list-style: none;
+    width: 61px;
+    height: 18px;
+    left: 324px;
+    top: 137px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #7A7A7A;
+}
+
+.areaDash .ul-mensal {
+    list-style: none;
+    width: 51px;
+    height: 18px;
+    left: 460px;
+    top: 136px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    color: #7A7A7A;
+}
+
+li a {
+    text-decoration: none;
+    color: #717171;
+    font-family: 'Nunito';
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18.15px;
+}
+
+.img-alert {
+    width: 20px;
+    height: 35px;
+    top: 19.88%;
+    left: 24.54%;
+    right: 74.03%;
+    bottom: 78.17%;
+}
+
+input {
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 780px;
+    height: 38px;
+    top: 79px;
+    left: 555px;
+    border: 2px solid #D1D2D2;
+}
+
+.areaDash {
+    margin: 70px 70px 30px 50px;
+    display: flex;
+    justify-content: start;
+}
+
+.top-left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 160px;
+}
+
+.urgente {
+    width: 198px;
+    height: 20.91px;
+    top: 202.73px;
+    left: 395px;
+    color: #c63535;
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24.55px;
+}
+
+span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-text {
+    width: 339px;
+    height: 19px;
+    top: 249px;
+    left: 396px;
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19.1px;
+    color: rgba(0, 0, 0, 64);
+}
+
+.alert-litlle {
+    height: 16px;
+    font-family: 'Nunito';
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #A7A7A7;
+    font-style: normal;
+    padding: 0 0 0 40px;
+}
+
+.text-parametro {
+    width: 36px;
+    height: 16px;
+    left: 1056px;
+    top: 223px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 64);
+}
+
+.text-atual {
+    width: 41px;
+    height: 16px;
+    left: 1185px;
+    top: 223px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #E90303;
+}
+
+.valor-parametro {
+    width: 69px;
+    height: 20px;
+    left: 1040px;
+    top: 266px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 64);
+}
+
+.valor-atual {
+    width: 27px;
+    height: 20px;
+    left: 1192px;
+    top: 266px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #E90303;
+}
+
+.tela {
+    height: 100%;
+    width: 100%;
+}
+
+.containerAlert {
+    box-sizing: border-box;
+    width: 1020px;
+    height: 140px;
+    margin: 0 0 0 45px;
+}
+
+.input-search {
+    padding-left: 70px;
+}
+
+.areaDash {
+    display: flex;
+    gap: 70px;
+}
+
+.uls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
+    position: relative;
+}
+
+.input img {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+.alert {
+    padding: 10px 40px 30px 40px;
+    background-color: #FEF5F6;
+    border: 1px solid #EED9DA;
+    border-radius: 10px;
+}
+
+.urgenteEst {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.click-alert {
+    color: inherit;
+    text-decoration: none;
+}
+
+.alerts {
+    display: flex;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+    padding: 0 50px 0 41px;
+    justify-content: space-between;
+}
+
+.text-valores {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: space-between;
+}
+
+.text-valores div {
+    display: flex;
+    gap: 50px;
+}
+
+.text-valores> :nth-child(1) {
+    padding-left: 20px;
+}
+
+.text-valores> :nth-child(1)>:nth-child(2) {
+    padding-left: 7px;
+}
+
+
+/* INICIO DO CSS DOS GRAFICOS CHARTJS  */
+
+
+.grafico1 {
+    height: 310px;
+    width: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chartContainer {
+    height: 328px;
+    width: 528px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.containerChart {
+    height: 370px;
+    padding: 45px 0 0 46px;
+}
+
+/* PARTE PREVISOES */
+.chartContainerH {
+    height: 225px;
+    width: 528px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}

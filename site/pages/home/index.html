@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leaf Project | Home</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="../../assets/icon/logo.svg">
+    <link rel="stylesheet" href="./css/indexCSS.css">
+</head>
+
+<body>
+
+    <!-- header -->
+    <div class="nav">
+        <img src="../../assets/icon/logo.svg">
+        <div class="nav_part1">
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#diferenciais">Diferenciais</a>
+            <a href="#simulador">Simulador</a>
+            <a href="#faq">FAQ</a>
+            <a href="#footer">Contato</a>
+        </div>
+
+        <div class="nav_part2">
+            <a href="cadastro1.html">
+                <button class="btn_cadastro">Cadastro</button>
+            </a>
+
+            <a href="login.html">
+                <button class="btn_login">Login</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- banner -->
+    <div id="home" class="home">
+        <h1>
+            Colhendo dados, cultivando o sucesso!
+        </h1>
+    </div>
+
+    <div id="sobre" class="sobre">
+        <h3>Sobre <span>a LEAF PROJECT</span></h3>
+        <h4>
+            A Leaf Project fornece dados para agricultores que cultivam a hortaliça folhosa mais consumida do
+            mundo, a alface. Nos coletamos e processamos dados a partir da utilização de sensores, fornecendo
+            informações precisas e personalizadas para os nossos clientes, sobre a quantidade de luz recebida em
+            suas plantações.
+        </h4>
+    </div>
+
+    <!-- diferenciais -->
+    <div id="diferenciais" class="diferenciais">
+        <div class="card">
+            <h2>Nossos <span>diferenciais</span></h2>
+            <h4>Serviço de alta qualidade e inovador para atender às necessidades dos agricultores de forma
+                eficiente e precisa. Além disso, investimos em segurança, oferecendo monitoramento seguro e
+                atualizações constantes para proteger os dados e sistemas.</h4>
+        </div>
+
+        <div class="card">
+            <img src="../../assets/imgs/diferenciais1.svg">
+            <h2>Lucratividade garantida</h2>
+        </div>
+        <div class="card">
+            <img src="../../assets/imgs/diferenciais2.svg">
+            <h2>Monitoramento seguro</h2>
+        </div>
+        <div class="card">
+            <img src="../../assets/imgs/diferenciais3.svg">
+            <h2>Informações precisas</h2>
+        </div>
+    </div>
+
+    <!-- alfaces -->
+    <div class="tipoAlfacesPlantacoes">
+        <div class="tipos_alface">
+            <div class="americana img">Alface Americana</div>
+            <div class="crespa img">Alface<br>Crespa</div>
+            <div class="mimosa img">Alface<br>Mimosa</div>
+            <div class="roxa img">Alface<br>Roxa</div>
+        </div>
+
+        <div class="plantacoes">
+            <div class="plantDiv">
+                <img src="../../assets/imgs/plantacao1.svg" width="300px" height="380px">
+                <span>
+                    Existem diversos <u>tipos de alface</u>, com características de textura, sabor e aspectos visuais
+                    completamente diferentes.
+                </span>
+            </div>
+
+            <div class="plantDiv">
+                <span>
+                    A alface é a hortaliça mais consumida em todo o mundo. Com sabor discreto, fácil de combinar com
+                    outros ingredientes e de cultivo relativamente simples, a alface é um <u>item de salada</u> que não
+                    falta na casa de ninguém.
+                </span>
+                <img src="../../assets/imgs/plantacao2.svg" width="300px" height="380px">
+            </div>
+
+            <div class="plantDiv">
+                <img src="../../assets/imgs/plantacao3.svg" width="300px" height="380px">
+                <span>
+                    Tem origem Asiática, e é considerado um alimento muito hidratante e uma excelente opção para manter
+                    o corpo hidratado durante o dia.
+                </span>
+            </div>
+
+            <div class="plantDiv">
+                <span>
+                    A alface contém substâncias (Zeaxantina) que promove a saúde ocular e carotenoides com potencial
+                    ação antidiabética
+                </span>
+                <img src="../../assets/imgs/plantacao4.svg" width="300px" height="380px">
+            </div>
+        </div>
+    </div>
+
+    <!-- simulador -->
+    <div id="simulador" class="simulador">
+        <div class="simuladorContainer">
+            <h1>SIMULE AQUI</h1>
+            <form>
+                <div class="formSimulador1">
+                    <div class="inputSimulador">
+                        <span>Quantos M² a plantação possui?</span>
+                        <input placeholder="Ex: 400" id="ipt_qtdM">
+                    </div>
+
+                    <div class="inputSimulador">
+                        <span>Insira o total de pés de alface colhidos no ultimo mês por M²:</span>
+                        <input placeholder="Ex: 20" id="ipt_qtdPes">
+                    </div>
+
+                    <div class="inputSimulador">
+                        <span>Insira o total de folhas, por unidade do pé de alface:</span>
+                        <input placeholder="Ex: 7" id="ipt_qtdFolhas">
+                    </div>
+                </div>
+
+                <div class="formSimulador2">
+                    <div class="inputSimulador">
+                        <span>Insira o peso de uma unidade de alface (g)</span>
+                        <input placeholder="Ex: 10" id="ipt_pesoUnid">
+                    </div>
+
+                    <div class="inputSimulador">
+                        <span>Insira o valor de venda da unidade do pé de alface R$:</span>
+                        <input placeholder="Ex: 6" id="ipt_valorUnid">
+                    </div>
+                </div>
+            </form>
+            <a href="#resultadoSimulador"><button onclick="simuladorFinanceiro()">Simular</button></a>
+            <div id="resultadoSimulador"></div>
+        </div>
+    </div>
+
+    <!-- faq -->
+    <div id="faq" class="faq">
+        <span class="titulo">FAQ</span>
+        <div class="container">
+            <div class="colunaFaq">
+                <span class="titulo_faq">Contas</span>
+                <a href=""><span>Onde posso encontrar respostas para dúvidas comuns sobre a conta?</span></a>
+                <a href=""><span>Como posso resolver caso um sensor pare de funcionar?</span></a>
+                <a href=""><span>A partir do primeiro contato, possuo algum tipo de vínculo com a empresa?</span></a>
+                <a href=""><span>Onde consigo ver o desempenho da minha plantação?</span></a>
+                <a href=""><span>O sistema anda apresentando problemas?</span></a>
+            </div>
+
+            <div class="colunaFaq">
+                <span class="titulo_faq">Faturamento e assinatura</span>
+                <a href=""><span>Onde posso encontrar a resposta para duvidas comuns de fatoramento?</span></a>
+                <a href=""><span>Como posso resolver caso uma fatura atrase?</span></a>
+                <a href=""><span>O sistema anda apresentando problemas?</span></a>
+            </div>
+
+            <div class="colunaFaq">
+                <span class="titulo_faq">Planos e preços</span>
+                <a href=""><span>Como são definidos os valores a serem pagos?</span></a>
+                <a href=""><span>Os valores dos planos são fixos ou variáveis?</span></a>
+                <a href=""><span>Como são definidos os valores a serem pagos?</span></a>
+                <a href=""><span>O que acontece se atrasar alguma fatura?</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div id="footer" class="footer">
+        <div class="container">
+            <div class="imgInput">
+                <img src="../../assets/icon/logo.svg" class="imgLogo">
+                <div class="inputBotao">
+                    <input type="text" class="inputEmail" placeholder="Digite o seu email">
+                    <button>Receber novidades</button>
+                </div>
+            </div>
+
+
+            <div class="sobreFooter">
+                <div class="colunaSobreFooter">
+                    <span class="titulo_sobreFooter">Sobre</span>
+                    <span><a href="">Nosso time</a></span>
+                    <span><a href="">Como o LeafProject funciona</a></span>
+                    <span><a href="">FAQs</a></span>
+                    <span><a href="">Segurança</a></span>
+                </div>
+                <div class="colunaSobreFooter">
+                    <span class="titulo_sobreFooter">Comunidade</span>
+                    <span><a href="">Twitter</a></span>
+                    <span><a href="">Instagram</a></span>
+                    <span><a href="">Facebook</a></span>
+                    <span><a href="">Linkedin</a></span>
+                </div>
+                <div class="colunaSobreFooter">
+                    <span class="titulo_sobreFooter">Contato</span>
+                    <span>4002-8922</span>
+                    <span>Rua Haddock Lobo, 595 - <br> Cerqueira César, São Paulo - <br> SP, 01414-001</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rodape">
+            <div class="rodapeEsquerdo">
+                <span>© LeafProject 2023. All rights reserved.</span>
+                <span>Termos de serviço</span>
+                <span>Política de privacidade</span>
+                <span>Cookies</span>
+            </div>
+            <div class="rodapeDireito">
+                <img src="../../assets/imgs/facebook.svg">
+                <img src="../../assets/imgs/twitter.svg">
+                <img src="../../assets/imgs/instagram.svg">
+                <img src="../../assets/imgs/linkedin.svg">
+                <img src="../../assets/imgs/github.svg">
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

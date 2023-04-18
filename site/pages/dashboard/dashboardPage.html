@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./css/dashboardPage.css">
+    <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- PAG MENU -->
+    <div class="container">
+
+        <div class="lateral">
+            <!-- parte de cima -->
+            <div class="listaBaixo">
+                <div class="navegacão">
+                    <div class="navHeader">
+                        <img src="../../assets/icon/LogomarcaDashboard.png" alt="">
+                        <span>MENU</span>
+                    </div>
+                    <ul>
+                        <li class="lista destaque">
+
+                            <a href="#">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="#">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Estatística</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="previsaoPage.html">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Previsões</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="historicoPage.html">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Histórico</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- parte de baixo -->
+                <div class="trindade">
+                    <div class="configNomeimg">
+                        <div class="nomeNome">
+                            <img src="../../assets/imgs/Ellipse2325.png" alt="">
+                            <ul class="ul2">
+                                <span class="ismalendas">
+                                    <li>
+                                        <a href="#">NOME
+                                            <span class="NomeEmpresa">NomeEmpresa</span>
+                                        </a>
+                                    </li>
+                                </span>
+                            </ul>
+                        </div>
+                        <div class="configgg">
+                            <img src="../../assets/imgs/ector2.png" alt="">
+                            <ul class="ul2">
+                                <span class="ismalenda">
+                                    <li>
+                                        <a href="#">Configurações</a>
+                                    </li>
+                                </span>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM DO MENU -->
+        <!-- parte do dash -->
+        <div class="tela">
+            <div class="areaDash">
+                <div class="top-left">
+                    <span class="topo">Dashboard</span>
+
+                    <div class="uls">
+                        <ul class="ul-semanal">
+                            <li><a href="">Semanal</a></li>
+                        </ul>
+                        <ul class="ul-mensal">
+                            <li><a href="">Mensal</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input">
+                    <img src="../../assets/imgs/Vector.svg" alt="">
+                    <input class="input-search" type="search" id="search" placeholder="Pesquisar">
+                </div>
+            </div>
+            <!-- Simulando que a estufa 05 seja a que está emitindo o alert -->
+            <a class="click-alert" href="">
+                <div class="containerAlert">
+                    <div class="alert">
+                        <div class="urgenteEst">
+                            <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
+
+                            <span class="urgente">URGENTE - ESTUFA 05</span>
+                        </div>
+                        <div class="alerts">
+                            <span class="alert-text">O NÍVEL DE ILUMINÇÃO ESTÁ ABAIXO DO IDEAL</span>
+                            <div class="text-valores">
+                                <div>
+                                    <span class="text-parametro">IDEAL</span> <span class="text-atual">ATUAL</span>
+                                </div>
+                                <div>
+                                    <span class="valor-parametro">500 - 805</span> <span class="valor-atual">400</span>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="alert-litlle">Suas alfaces podem ter um mau-desenvolvimento, perdendo a
+                            qualidade.</span>
+                    </div>
+                </div>
+            </a>
+            <div class="containerChart">
+                <div class="chartContainer">
+                    <div class="grafico1">
+                        <canvas id="myChart1"></canvas></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div>
+            <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
+        </div> -->
+
+</body>
+<script>
+    const labels = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'Estufa A',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [687, 700, 760, 850, 840, 930],
+        },
+        {
+            label: 'Estufa B',
+            backgroundColor: 'rgb(148, 0, 211)',
+            borderColor: 'rgb(148, 0, 211)',
+            data: [720, 665, 710, 787, 860, 901],
+        },
+        {
+            label: 'Estufa C',
+            backgroundColor: 'rgb(18, 10, 143)',
+            borderColor: 'rgb(18, 10, 143)',
+            data: [701, 783, 855, 799, 890, 954],
+        }
+        ]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+</script>
+
+<script>
+    const myChart1 = new Chart(
+        document.getElementById('myChart1'),
+        config
+    );
+    // const myChart2 = new Chart(
+    //     document.getElementById('myChart2'),
+    //     config
+    // );
+</script>
+
+</html>

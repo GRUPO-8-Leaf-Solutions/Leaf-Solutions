@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+.cadastroContainerBottomPart
+body {
+    margin: 0;
+    padding: 0;
+    background: #EBF0DE;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    max-width: 100%;
+    margin: 0   ;
+}
+
+.cadastroBody {
+    background-image: linear-gradient(180deg, #122B12 7.52%, rgba(34, 90, 34, 0.96) 49.1%, #122B1C 93.36%);
+    background-size: cover;
+    height: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.cadastroContainer {
+    background-color: #FFFFFF;
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Jost';
+    width: 80%;
+
+}
+
+.cadastroContainerUpperPart {
+    display: flex;
+    height: 70px;
+    background: #ECECEC;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.P2 .cadastroContainerUpperPart> :nth-child(1) {
+    width: 50%;
+    background: none;
+    color: #88AE35;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px 0 0 0;
+    font-weight: bold;
+}
+
+.P2 .cadastroContainerUpperPart> :nth-child(1) :nth-child(1) {
+    color: white;
+    background-color: #88AE35;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.P2 .cadastroContainerUpperPart> :nth-child(2) {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #88AE35;
+    border-radius: 80px 20px 0 80px;
+}
+
+.P2 .cadastroContainerUpperPart> :nth-child(2) :nth-child(1) {
+    color: #88AE35;
+    background-color: white;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cadastroContainerMiddlePart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 0;
+    width: 470px;
+    text-align: center;
+    color: rgba(28, 33, 67, 0.86);
+    font-size: 20px;
+}
+
+.cadastroContainerMiddlePart> :nth-child(2) {
+    margin: 5px 0;
+}
+
+.cadastroContainerBottomPart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 283px;
+    gap: 20px;
+    width: 75%;
+    flex-wrap: wrap;
+}
+
+.inputCadastro {
+    display: flex;
+    flex-direction: column;
+    color: #747474;
+    gap: 5px;
+}
+
+.inputCadastro input {
+    width: 370px;
+    background: #FFFFFF;
+    border: 2px solid #88AE35;
+    border-radius: 5px;
+    padding: 13px 10px;
+    font-family: 'Jost';
+    font-size: 16px;
+}
+
+.inputCadastro input::placeholder {
+    font-family: 'Jost';
+    font-size: 16px;
+    font-weight: bold;
+    color: #B9B9B9;
+}
+
+.inputCadastro input:focus {
+    outline: 1px solid #799b2f;
+}
+
+.cadastroContainer img {
+    align-self: flex-end;
+    padding: 15px;
+}
+
+
+.bottomCadastroContainer {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottomCadastroContainer a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Jost';
+    font-size: 22px;
+}
+
+.bottomCadastroContainer a:hover {
+    color: #e7e5e5;
+}
+
+.bottomCadastroContainer button {
+    width: 265px;
+    height: 44px;
+    background: #88AE35;
+    border-radius: 5px;
+    border: 1px solid #799b2f;
+    color: #FFFFFF;
+    font-family: 'Jost';
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.bottomCadastroContainer button:hover {
+    cursor: pointer;
+    background-color: #7da032;
+}
