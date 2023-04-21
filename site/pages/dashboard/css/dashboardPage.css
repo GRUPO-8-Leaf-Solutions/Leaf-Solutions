@@ -600,6 +600,19 @@ span {
     letter-spacing: 0.33em;
     text-transform: uppercase;
 }
+
+.title-Chart {
+    width: 500px;
+    height: 34px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+    text-align: center;
+}
 /* INICIO DO CSS DOS GRAFICOS CHARTJS  */
 
 
@@ -609,6 +622,7 @@ span {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 .chartContainer {
@@ -617,7 +631,6 @@ span {
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
-    align-items: center;
     border-radius: 10px;
 }
 
