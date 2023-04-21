@@ -602,12 +602,10 @@ span {
 }
 
 .title-Chart {
-    width: 500px;
-    height: 34px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 14px;
     line-height: 34px;
     letter-spacing: 0.33em;
     text-transform: uppercase;
@@ -617,8 +615,8 @@ span {
 
 
 .grafico1 {
-    height: 310px;
-    width: 380px;
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -627,7 +625,7 @@ span {
 
 .chartContainer {
     height: 328px;
-    width: 500px;
+    width: 575px;
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
