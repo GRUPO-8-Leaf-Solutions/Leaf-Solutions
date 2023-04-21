@@ -16,8 +16,9 @@ body {
 
 .container {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: inherit;
+    width: inherit;
+    overflow: hidden;
 }
 
 .container .lateral {
@@ -247,7 +248,7 @@ input {
     box-sizing: border-box;
     border-radius: 10px;
     background-color: #FFFFFF;
-    width: 780px;
+    width: 935px;
     height: 38px;
     top: 79px;
     left: 555px;
@@ -275,8 +276,9 @@ input {
     color: #c63535;
     font-family: 'Nunito';
     font-weight: 700;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 24.55px;
+    display: flex;
 }
 
 span {
@@ -365,15 +367,12 @@ span {
 }
 
 .tela {
-    height: 100%;
-    width: 100%;
+    height: inherit;
+    width: inherit;
 }
 
 .containerAlert {
-    box-sizing: border-box;
-    width: 1020px;
-    height: 140px;
-    margin: 0 0 0 45px;
+    display: flex;
 }
 
 .input-search {
@@ -401,9 +400,10 @@ span {
 }
 
 .alert {
-    padding: 10px 40px 30px 40px;
+    width: 253px;
+    height: 103.46px;
     background-color: #FEF5F6;
-    border: 1px solid #EED9DA;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
 }
 
@@ -414,6 +414,16 @@ span {
 }
 
 .click-alert {
+    color: inherit;
+    text-decoration: none;
+}
+
+.click-alert-preocupante {
+    color: inherit;
+    text-decoration: none;
+}
+
+.click-alert-critico {
     color: inherit;
     text-decoration: none;
 }
@@ -447,7 +457,149 @@ span {
     padding-left: 7px;
 }
 
+.critico {
+    color: rgba(198, 88, 53, 1);
+    width: 172. 14px;
+    height: 14.92px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+}
 
+.critico-setor {
+    color: rgba(255, 92, 0, 1);
+    width: 193px;
+    height: 11px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+.critico-valor {
+    color: rgba(233, 86, 3, 1);
+    width: 127.8px;
+    height: 15.7px;
+    font-family: 'Nunito';
+    font-family: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+
+.preocupante {
+    color: rgba(204, 151, 43, 1);
+    width: 172.14px;
+    height: 14.92px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.urgente-setor {
+    color: rgba(255, 0, 0, 1);
+    width: 172.14px;
+    height: 11.42px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.preocupante-setor {
+    color: rgba(211, 142, 0, 1);
+    width: 172.14px;
+    height: 14.92px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.alert-critico {
+    width: 253px;
+    height: 103.46px;
+    background-color: rgba(255, 210, 157, 0.16);
+    box-shadow: 0px 4px 10px -1px rgba(78, 47, 0, 0.25);
+    border-radius: 10px;
+}
+
+.alert-preocupante {
+    width: 253px;
+    height: 103.46px;
+    background-color: #FEFEF5;
+    box-shadow: 0px 4px 10px -1px rgba(78, 70, 0, 0.25);
+    border-radius: 10px;
+}
+
+.preocupante-valor {
+    color: #F8A804;
+    width: 127.8px;
+    height: 15.7px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+
+.status-alert {
+    width: 115px;
+    height: 15.7px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+}
+
+.tela-alertas {
+    width: 300px;
+    height: 500px;
+    background-color: #FFFFFF;
+    box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 35px;
+}
+
+.img-alert {
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 65px 20px 49px; 
+}
+
+.title-alerta {
+    width: 167px;
+    height: 34px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 34px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+}
 /* INICIO DO CSS DOS GRAFICOS CHARTJS  */
 
 
@@ -461,7 +613,7 @@ span {
 
 .chartContainer {
     height: 328px;
-    width: 528px;
+    width: 500px;
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
@@ -471,7 +623,7 @@ span {
 
 .containerChart {
     height: 370px;
-    padding: 45px 0 0 46px;
 }
+
 
 /* PARTE PREVISOES */

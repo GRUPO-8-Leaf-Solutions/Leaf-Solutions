@@ -102,41 +102,104 @@
                     <input class="input-search" type="search" id="search" placeholder="Pesquisar">
                 </div>
             </div>
-            <!-- Simulando que a estufa 05 seja a que está emitindo o alert -->
-            <a class="click-alert" href="">
-                <div class="containerAlert">
-                    <div class="alert">
-                        <div class="urgenteEst">
-                            <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
-
-                            <span class="urgente">URGENTE - ESTUFA 05</span>
+            <div class="main">
+                <div class="containerChart">
+                    <div class="chartContainer">
+                        <div class="grafico1">
+                            <span class="title-Chart">STATUS DA LUMINOSIDADE NAS ULTIMAS 24H</span>
+                            <span class="subTittle-Chart">EM CADA ESTUFA</span>
+                            <canvas id="myChart1"></canvas></canvas>
                         </div>
-                        <div class="alerts">
-                            <span class="alert-text">O NÍVEL DE ILUMINÇÃO ESTÁ ABAIXO DO IDEAL</span>
-                            <div class="text-valores">
-                                <div>
-                                    <span class="text-parametro">IDEAL</span> <span class="text-atual">ATUAL</span>
+                    </div>
+                </div>
+                <!-- ALERTA URGENTE -->
+                <div class="tela-alertas">
+                    <span class="title-alerta">ALERTAS</span>
+                    <a class="click-alert" href="">
+                        <div class="containerAlert">
+                            <div class="alert">
+                                <div class="urgenteEst">
+                                    <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
+
+                                    <span class="urgente">URGENTE ESTUFA 05 - SETOR X</span>
+                                    <span class="urgente-setor">SETOR X</span> <span class="status-alert">-
+                                        URGENTE</span>
                                 </div>
-                                <div>
-                                    <span class="valor-parametro">500 - 805</span> <span class="valor-atual">400</span>
+                                <div class="alerts">
+                                    <div class="text-valores" <div>
+                                        <span class="text-atual">ATUAL:</span> <span class="valor-atual">340</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-parametro">IDEAL:</span> <span class="valor-parametro">500
+                                            -
+                                            600</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <span class="alert-litlle">Suas alfaces podem ter um mau-desenvolvimento, perdendo a
-                            qualidade.</span>
-                    </div>
-                </div>
-            </a>
-            <div class="containerChart">
-                <div class="chartContainer">
-                    <div class="grafico1">
-                        <canvas id="myChart1"></canvas></canvas>
-                    </div>
+                    </a>
+                    <!--ALERTA CRÍTICO -->
+                    <a class="click-alert-critico" href="">
+                        <div class="containerAlert">
+                            <div class="alert-critico">
+                                <div class="urgenteEst">
+                                    <img class="img-alert" src="Vector crítico.svg" alt="">
+
+                                    <span class="critico">URGENTE ESTUFA 05 - SETOR X</span>
+                                    <span class="critico-setor">SETOR X </span> <span class="status-alert">-
+                                        CRÍTICO</span>
+                                </div>
+                                <div class="alerts">
+                                    <div class="text-valores">
+                                        <div>
+                                            <span class="critico-valor">ATUAL:</span> <span
+                                                class="critico-valor">700</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-parametro">IDEAL:</span> <span class="valor-parametro">500
+                                                -
+                                                805</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ALERTA PREOCUPANTE -->
+                    <a class="click-alert-preocupante" href="">
+                        <div class="containerAlert">
+                            <div class="alert-preocupante">
+                                <div class="urgenteEst">
+                                    <img class="img-alert" src="Vector preocupante.svg" alt="">
+
+                                    <span class="preocupante">URGENTE ESTUFA 05 - SETOR X</span>
+                                    <span class="preocupante-setor">SETOR X</span> <span class="status-alert">-
+                                        PREOCUPANTE</span>
+                                </div>
+                                <div class="alerts-preocupante">
+                                    <div class="text-valores">
+                                        <div>
+                                            <span class="preocupante-valor">ATUAL:</span> <span
+                                                class="preocupante-valor">470</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-parametro">IDEAL:</span> <span class="valor-parametro">500
+                                                -
+                                                805</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- <div>
+
+
+    <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
         </div> -->
 
