@@ -100,40 +100,59 @@
             </div>
             <div class="divDiaEipt">
                 <div class="divDias">
-                    <div class="diaSeparado">
-                        <li class="listaDIAS destaqueDia">
-                            <a href="historicoPage.html">
-                                <span class="lista">08/04/2023</span>
-                            </a>
-                        </li>
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="destaqueDia">08/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">07/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">06/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">05/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">04/04/2023</span>
+                        </a>
+                    </li>
+
+                </div>
+                <div class="estufaIpt">
+                    <div class="estufaNome">
+                        <span>Estufa</span>
                     </div>
-                    <div class="diaSeparado">
-                        <li class="listaDIAS">
-                            <a href="historicoPage.html">
-                                <span class="lista">07/04/2023</span>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="diaSeparado">
-                        <li class="listaDIAS">
-                            <a href="historicoPage.html">
-                                <span class="lista">06/04/2023</span>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="diaSeparado">
-                        <li class="listaDIAS">
-                            <a href="historicoPage.html">
-                                <span class="lista">05/04/2023</span>
-                            </a>
-                        </li>
-                    </div>
-                    <div class="diaSeparado">
-                        <li class="listaDIAS">
-                            <a href="historicoPage.html">
-                                <span class="lista">04/04/2023</span>
-                            </a>
-                        </li>
+                    <div class="inputEstufa">
+                        <label for="estufa"></label>
+                        <select class="estufaCinza" id="estufa" name="estufa">
+                            <option value="Estufa 1">Estufa 1</option>
+                            <option value="Estufa 2">Estufa 2</option>
+                            <option value="Estufa 3">Estufa 3</option>
+                            <option value="Estufa 4">Estufa 4</option>
+                            <option value="Estufa 5">Estufa 5</option>
+                            <option value="Estufa 6">Estufa 6</option>
+                            <option value="Estufa 7">Estufa 7</option>
+                            <option value="Estufa 8">Estufa 8</option>
+                            <option value="Estufa 9">Estufa 9</option>
+                            <option value="Estufa 10">Estufa 10</option>
                     </div>
                 </div>
             </div>
@@ -155,12 +174,19 @@
         <!-- gráfico -->
         <!-- grafico 1 -->
         <script>
-
+            const labels = [
+                '12:00',
+                '13:00',
+                '14:00',
+                '15:00',
+                '16:00',
+                '17:00',
+            ];
 
             const ctx = document.getElementById('myChart');
 
             new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: ['Com luz', 'Sem luz'],
                     datasets: [{

@@ -382,7 +382,7 @@ span {
 
 .areaDash {
     display: flex;
-    gap: 70px;
+    gap: 35px;
 }
 
 .uls {
@@ -488,6 +488,8 @@ span {
 .divDiaEipt {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .divDias {
@@ -515,14 +517,42 @@ span {
     width: 225px;
 }
 
-.diaSeparado {
+.divDias {
     display: flex;
     height: 25px;
-    color: #132A13;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.diaSeparado .destaqueDia{
+.divDias .destaqueDia {
     background-color: #132A13;
-    
     border-radius: 16.55px;
+    color: white;
+    height: 40px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.divDias .listaDias {
+    height: 40px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    color: #132A13;
+
+}
+
+.estufaIpt {
+    display: flex;
+    gap: 50px;
+    padding: 40px;
+
+}
+
+.estufaCinza {
+    width: 650px;
+    gap: 0px, 100px, 0px, 0px;
 }
