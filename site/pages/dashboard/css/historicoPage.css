@@ -474,7 +474,7 @@ span {
     padding: 45px 0 0 46px;
 }
 
-/* PARTE PREVISOES */
+/* PARTE HISTÓRICO */
 .chartContainerH {
     height: 225px;
     width: 528px;
@@ -483,4 +483,46 @@ span {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+}
+
+.divDiaEipt {
+    display: flex;
+    flex-direction: column;
+}
+
+.divDias {
+    display: flex;
+    gap: 75px;
+    justify-content: center;
+    list-style: none;
+    margin: 10px;
+}
+
+.divDias ul li {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 65px;
+    list-style: none;
+    width: 100%;
+    padding-left: 25px;
+}
+
+.chartContainerH .myChart element.style {
+    display: block;
+    box-sizing: border-box;
+    height: 225px;
+    width: 225px;
+}
+
+.diaSeparado {
+    display: flex;
+    height: 25px;
+    color: #132A13;
+}
+
+.diaSeparado .destaqueDia{
+    background-color: #132A13;
+    
+    border-radius: 16.55px;
 }

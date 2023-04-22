@@ -20,7 +20,7 @@
             <div class="listaBaixo">
                 <div class="navegacão">
                     <div class="navHeader">
-                        <img src="../assets/Logomarca 1.png" alt="">
+                        <img src="../../assets/icon/LogomarcaDashboard.png" alt="">
                         <span>MENU</span>
                     </div>
                     <ul>
@@ -98,46 +98,75 @@
                     </div>
                 </div>
             </div>
+            <div class="divDiaEipt">
+                <div class="divDias">
+                    <div class="diaSeparado">
+                        <li class="listaDIAS destaqueDia">
+                            <a href="historicoPage.html">
+                                <span class="lista">08/04/2023</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="diaSeparado">
+                        <li class="listaDIAS">
+                            <a href="historicoPage.html">
+                                <span class="lista">07/04/2023</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="diaSeparado">
+                        <li class="listaDIAS">
+                            <a href="historicoPage.html">
+                                <span class="lista">06/04/2023</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="diaSeparado">
+                        <li class="listaDIAS">
+                            <a href="historicoPage.html">
+                                <span class="lista">05/04/2023</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="diaSeparado">
+                        <li class="listaDIAS">
+                            <a href="historicoPage.html">
+                                <span class="lista">04/04/2023</span>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
             <!-- Simulando que a estufa 05 seja a que está emitindo o alert -->
 
             <div class="containerChart">
                 <div class="chartContainerH">
-                    <div class="grafico1">
-                        <canvas id="myChart1"></canvas></canvas>
+                    <div>
+                        <canvas class="myChart" id="myChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        <div>
-            <canvas id="myChart"></canvas>
-        </div>
+
 
         <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
         </div> -->
         <!-- gráfico -->
-
+        <!-- grafico 1 -->
         <script>
 
-const labels = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-    ];
 
             const ctx = document.getElementById('myChart');
 
             new Chart(ctx, {
-                type: 'pie',
+                type: 'line',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['Com luz', 'Sem luz'],
                     datasets: [{
                         label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderWidth: 1
+                        data: [12, 19],
+                        borderWidth: 3
                     }]
                 },
                 options: {
@@ -159,5 +188,6 @@ const labels = [
 
         </script>
 
+        <!-- gráfico 2 -->
 
 </html>
