@@ -162,7 +162,7 @@
             <div class="containerChart">
                 <div class="chartContainerH">
                     <div>
-                        <canvas class="myChart" id="myChart"></canvas>
+                        <canvas class="graficoBarra" id="myChart"></canvas>
                     </div>
                 </div>
                 <div class="graficoCalor">
@@ -192,10 +192,10 @@
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Com luz', 'Sem luz'],
+                    labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
                     datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19],
+                        label: 'Média de luz /hora',
+                        data: [213, 426, 639, 852, 923, 994, 1023, 994, 987, 861, 698, 415, 208, 158],
                         borderWidth: 3
                     }]
                 },
