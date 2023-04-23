@@ -467,7 +467,7 @@ span {
 }
 
 .containerChart {
-    height: 370px;
+    height: 100%;
     padding: 45px 0 0 46px;
     display: flex;
     flex-direction: column;
@@ -477,7 +477,7 @@ span {
 
 /* PARTE HISTÓRICO */
 .chartContainerH {
-    height: 175px;
+    height: 45%;
     width: 528px;
     background-color: white;
     display: flex;
@@ -511,12 +511,7 @@ span {
     padding-left: 25px;
 }
 
-.chartContainerH .myChart element.style {
-    display: block;
-    box-sizing: border-box;
-    height: 225px;
-    width: 225px;
-}
+
 
 .divDias {
     display: flex;
@@ -567,8 +562,14 @@ color: #8794A3;
 
 .graficoCalor{
     display: flex;
-    height: 150px;
+    height: 45%;
     width: 525px;
     background-color: #717171;
     border-radius: 8px;
+}
+
+.chartContainerH div .graficoBarra {
+    display: block;
+    height: 225px;
+    width: 225px; 
 }
