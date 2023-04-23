@@ -102,6 +102,7 @@
                     <input class="input-search" type="search" id="search" placeholder="Pesquisar">
                 </div>
             </div>
+
             <div class="main">
                 <div class="containerChart">
                     <div class="chartContainer">
@@ -112,6 +113,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- ALERTA URGENTE -->
                 <div class="tela-alertas">
                     <span class="title-alerta">ALERTAS</span>
@@ -194,6 +196,55 @@
                     </a>
                 </div>
             </div>
+            <div class="rodape">
+                <div class="ajuste_pie">
+                    <div>
+                        <canvas id="grafico_pizza"></canvas>
+                    </div>
+                </div>
+                <div class="indice_luz_pai">
+                    <div class="alto_indice_luz">
+                        <div class="maior_indice_luz">
+                            Maior índice de luz <br>
+                            <p>850</p>
+                        </div>
+                        <div class="indicacao_estufa">
+                            Estufa 07
+                        </div>
+                        <div class="indicacao_setor">
+                            Setor 05
+                        </div>
+                    </div>
+                    <div class="alerta_estufas">
+                        <div class="indicativo_alerta_estufas">
+                            Estufas com mais alertas
+                        </div>
+                        <div class="mencao_estufas">
+                            <div class="mencionar_estufa1">
+                                Estufa 05
+                            </div>
+                            <div class="mencionar_estufa2">
+                                Estufa 03
+                            </div>
+                            <div class="mencionar_estufa3">
+                                Estufa 07
+                            </div>
+                        </div>
+                    </div>
+                    <div class="baixo_indice_luz">
+                        <div class="menor_indice_luz">
+                            Menor índice de luz <br>
+                            <p>200</p>
+                            <div class="indicacao_estufa">
+                                Estufa 03
+                            </div>
+                            <div class="indicacao_setor">
+                                Setor 01
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -253,6 +304,29 @@
     //     document.getElementById('myChart2'),
     //     config
     // );
+</script>
+
+<script>
+    const grafico_pie = document.getElementById('grafico_pizza');
+
+    new Chart(grafico_pie, {
+        type: 'doughnut',
+        data: {
+            labels: ['Dentro do parâmetro', 'Fora do parâmetro'],
+            datasets: [{
+                label: 'Minutagem dentro e fora do ideal',
+                data: [80, 20],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>
 
 </html>

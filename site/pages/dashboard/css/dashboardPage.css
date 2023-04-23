@@ -183,18 +183,21 @@ li a {
 
 /* CSS DA TELA */
 
-
 .tela .topo {
     color: #717171;
     width: 127px;
     height: 29px;
     left: 324px;
-    top: 79px;
+    top: 200px;
     font-size: 28px;
     font-family: 'Nunito';
     font-weight: 600;
     font-style: normal;
     line-height: 29px;
+}
+
+.areaDash {
+    height: 70px;
 }
 
 .areaDash .ul-semanal {
@@ -600,7 +603,7 @@ span {
 
 .tela-alertas {
     width: 300px;
-    height: 500px;
+    height: 390px;
     background-color: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
@@ -609,7 +612,8 @@ span {
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-    gap: 35px;
+    gap: 8px;
+    margin-top: -40px;
 }
 
 .img-alert {
@@ -625,6 +629,7 @@ span {
     display: flex;
     justify-content: space-between;
     padding: 0 65px 20px 49px;
+    height: 360px;
 }
 
 .title-alerta {
@@ -675,5 +680,99 @@ span {
     height: 370px;
 }
 
+.ajuste_pie {
+    width: 210px;
+    height: 200px;
+    margin-left: 150px;
+}
 
+.rodape {
+    display: flex;
+}
+
+.alto_indice_luz {
+    width: 200px;
+    height: 70px;
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.maior_indice_luz p {
+    color: #C63535;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+}
+
+.indicacao_estufa {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.indicacao_setor {
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.alerta_estufas {
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 8px;
+    height: 70px;
+}
+
+.indicativo_alerta_estufas {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.mencionar_estufa1 {
+    background-color: #FFD0D0;
+    color: #C63535;
+    font-size: 9px;
+}
+
+.mencionar_estufa2 {
+    background-color: #FFD0D0;
+    color: #C63535;
+    font-size: 9px;
+}
+
+.mencionar_estufa3 {
+    background-color: #FFD0D0;
+    color: #C63535;
+    font-size: 9px;
+}
+
+.mencao_estufas {
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.menor_indice_luz {
+    width: 200px;
+    height: 70px;
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.menor_indice_luz p {
+    color: #C63535;
+    font-weight: 700;
+}
+
+.indice_luz_pai {
+    margin-top: -30px;
+}
 /* PARTE PREVISOES */
