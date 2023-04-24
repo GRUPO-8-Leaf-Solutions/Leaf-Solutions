@@ -602,8 +602,8 @@ span {
 }
 
 .tela-alertas {
-    width: 300px;
-    height: 390px;
+    width: 350px;
+    height: 400px;
     background-color: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
@@ -613,7 +613,7 @@ span {
     overflow-y: auto;
     overflow-x: hidden;
     gap: 8px;
-    margin-top: -40px;
+    margin-top: -20px;
 }
 
 .img-alert {
@@ -629,7 +629,7 @@ span {
     display: flex;
     justify-content: space-between;
     padding: 0 65px 20px 49px;
-    height: 360px;
+    height: 300px;
 }
 
 .title-alerta {
@@ -653,13 +653,14 @@ span {
     letter-spacing: 0.33em;
     text-transform: uppercase;
     text-align: center;
+    margin-top: 50px;
 }
 
 /* INICIO DO CSS DOS GRAFICOS CHARTJS  */
 
 
 .grafico1 {
-    height: 100%;
+    height: 80%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -668,44 +669,69 @@ span {
 }
 
 .chartContainer {
-    height: 328px;
-    width: 575px;
+    height: 290px;
+    width: 650px;
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
     border-radius: 10px;
+    margin-left: 60px;
 }
 
 .containerChart {
     height: 370px;
 }
 
+.grafico_pizza {
+    width: 100px;
+    margin-left: 100px;
+}
+
 .ajuste_pie {
-    width: 210px;
-    height: 200px;
-    margin-left: 150px;
+    margin-left: 130px;
+    width: 220px !important;
+    height: 100px;
+    margin-top: -15px;
+}
+
+.ajuste_pie p {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+    text-align: center;
+    width: 400px;
+    margin-left: -65px;
 }
 
 .rodape {
     display: flex;
+    padding: 25px;
+    justify-content: space-between;
 }
 
 .alto_indice_luz {
     width: 200px;
-    height: 70px;
+    height: 80px;
     background-color: #FBFBFB;
     text-align: center;
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     text-transform: uppercase;
     font-size: 12px;
+    margin-top: -12px;
+    line-height: 18px;
 }
 
 .maior_indice_luz p {
-    color: #C63535;
+    color: #CC0000;
     font-weight: 700;
     text-align: center;
     align-items: center;
+    font-size: 22px;
+    line-height: 30px;
 }
 
 .indicacao_estufa {
@@ -724,7 +750,7 @@ span {
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     margin-top: 8px;
-    height: 70px;
+    height: 80px;
 }
 
 .indicativo_alerta_estufas {
@@ -733,21 +759,33 @@ span {
 }
 
 .mencionar_estufa1 {
-    background-color: #FFD0D0;
-    color: #C63535;
-    font-size: 9px;
+    background-color: #CC0000;
+    color: white;
+    font-size: 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    width: 150px;
+    margin-left: 25px;
 }
 
 .mencionar_estufa2 {
-    background-color: #FFD0D0;
-    color: #C63535;
-    font-size: 9px;
+    background-color: #CC0000;
+    color: white;
+    font-size: 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    width: 150px;
+    margin-left: 25px;
 }
 
 .mencionar_estufa3 {
-    background-color: #FFD0D0;
-    color: #C63535;
-    font-size: 9px;
+    background-color: #CC0000;
+    color: white;
+    font-size: 10px;
+    margin-top: 5px;
+    border-radius: 3px;
+    width: 150px;
+    margin-left: 25px;
 }
 
 .mencao_estufas {
@@ -757,7 +795,7 @@ span {
 
 .menor_indice_luz {
     width: 200px;
-    height: 70px;
+    height: 80px;
     background-color: #FBFBFB;
     text-align: center;
     border-radius: 18px;
@@ -765,14 +803,65 @@ span {
     text-transform: uppercase;
     font-size: 12px;
     margin-top: 8px;
+    line-height: 18px;
 }
 
 .menor_indice_luz p {
-    color: #C63535;
+    color: #CC0000;
     font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
 }
 
-.indice_luz_pai {
-    margin-top: -30px;
+.indicador_alertas {
+    width: 200px;
+    height: 100px;
+    margin-top: 80px;
+    margin-right: 130px;
 }
+
+.alerta_urgente img {
+    width: 20px;
+    height: 20px;
+}
+
+.alerta_urgente {
+    width: 250px;
+    height: 45px;
+    background-color: #FF323242;
+    border-radius: 36.5px;
+    text-align: center;
+    color: #C63535;
+}
+
+.alerta_critico img {
+    width: 20px;
+    height: 20px;
+}
+
+.alerta_critico {
+    width: 250px;
+    height: 45px;
+    background-color: #FF7E0091;
+    border-radius: 36.5px;
+    text-align: center;
+    margin-top: 5px;
+    color: #C65835;
+}
+
+.alerta_preocupante img {
+    width: 20px;
+    height: 20px;
+}
+
+.alerta_preocupante {
+    width: 250px;
+    height: 45px;
+    background-color: #FFD23294;
+    border-radius: 36.5px;
+    text-align: center;
+    margin-top: 5px;
+    color: #BC8410;
+}
+
 /* PARTE PREVISOES */

@@ -195,11 +195,15 @@
                         </div>
                     </a>
                 </div>
+
             </div>
             <div class="rodape">
                 <div class="ajuste_pie">
-                    <div>
-                        <canvas id="grafico_pizza"></canvas>
+                    <p>Luminosidade entre o parâmetro</p>
+                    <div class="grafico_pie">
+                        <div class="teste">
+                            <canvas id="grafico_pizza"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="indice_luz_pai">
@@ -209,25 +213,27 @@
                             <p>850</p>
                         </div>
                         <div class="indicacao_estufa">
-                            Estufa 07
+                            Guimarães
                         </div>
                         <div class="indicacao_setor">
                             Setor 05
                         </div>
                     </div>
                     <div class="alerta_estufas">
-                        <div class="indicativo_alerta_estufas">
-                            Estufas com mais alertas
-                        </div>
-                        <div class="mencao_estufas">
-                            <div class="mencionar_estufa1">
-                                Estufa 05
+                        <div class="ajuste">
+                            <div class="indicativo_alerta_estufas">
+                                Estufas com mais alertas
                             </div>
-                            <div class="mencionar_estufa2">
-                                Estufa 03
-                            </div>
-                            <div class="mencionar_estufa3">
-                                Estufa 07
+                            <div class="mencao_estufas">
+                                <div class="mencionar_estufa1">
+                                    Guimarães
+                                </div>
+                                <div class="mencionar_estufa2">
+                                    Paulista
+                                </div>
+                                <div class="mencionar_estufa3">
+                                    Antônio
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -236,12 +242,23 @@
                             Menor índice de luz <br>
                             <p>200</p>
                             <div class="indicacao_estufa">
-                                Estufa 03
+                                Paulista
                             </div>
                             <div class="indicacao_setor">
                                 Setor 01
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="indicador_alertas">
+                    <div class="alerta_urgente">
+                            <img src="alert-icon.svg"> Urgente
+                    </div>
+                    <div class="alerta_critico">
+                        <img src="Vector crítico.svg"> Crítico
+                    </div>
+                    <div class="alerta_preocupante">
+                        <img src="Vector preocupante.svg"> Preocupante  
                     </div>
                 </div>
             </div>
@@ -268,19 +285,19 @@
     const data = {
         labels: labels,
         datasets: [{
-            label: 'Estufa A',
+            label: 'Antônio',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [687, 700, 760, 850, 840, 930],
         },
         {
-            label: 'Estufa B',
+            label: 'Paulista',
             backgroundColor: 'rgb(148, 0, 211)',
             borderColor: 'rgb(148, 0, 211)',
             data: [720, 665, 710, 787, 860, 901],
         },
         {
-            label: 'Estufa C',
+            label: 'Guimarães',
             backgroundColor: 'rgb(18, 10, 143)',
             borderColor: 'rgb(18, 10, 143)',
             data: [701, 783, 855, 799, 890, 954],
@@ -314,7 +331,7 @@
         data: {
             labels: ['Dentro do parâmetro', 'Fora do parâmetro'],
             datasets: [{
-                label: 'Minutagem dentro e fora do ideal',
+                label: 'Horas dentro e fora do ideal',
                 data: [80, 20],
                 borderWidth: 1
             }]
