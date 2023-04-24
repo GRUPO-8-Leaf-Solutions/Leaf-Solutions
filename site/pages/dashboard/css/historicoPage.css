@@ -468,7 +468,7 @@ span {
 
 .containerChart {
     height: 100%;
-    padding: 45px 0 0 46px;
+    padding: 12px 0 0 46px;
     display: flex;
     flex-direction: column;
     gap: 22.5px;
@@ -477,13 +477,14 @@ span {
 
 /* PARTE HISTÓRICO */
 .chartContainerH {
-    height: 45%;
+    height: 100%;
     width: 528px;
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    gap: 190px;
 }
 
 .divDiaEipt {
@@ -557,19 +558,33 @@ span {
 }
 
 .estufinhaa{
-color: #8794A3;
-}
+    color: #8794A3;
+    }
 
-.graficoCalor{
+._2graficos {
     display: flex;
-    height: 45%;
-    width: 525px;
-    background-color: #717171;
+    flex-direction: column;
+}
+canvas {
+    display: flex;
+}
+.graficoBarra{
+    height: 250px !important;
+    width: 500px  !important;
+}
+.graficoPizza{
+    display: flex;
+    height: 250px !important;
+    width: 250px  !important;
+    
     border-radius: 8px;
 }
-
-.chartContainerH div .graficoBarra {
-    display: block;
-    height: 225px;
-    width: 225px; 
+.segurandopizza{
+    height: 500px;
+    background-color: #D9D9D9;
+    border-radius: 7px;
+}
+.graficoCalor{
+    height: 250px !important;
+    width: 500px  !important;
 }
