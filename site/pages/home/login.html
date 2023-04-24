@@ -8,6 +8,8 @@
 
     <title>Leaf Project | Login</title>
 
+    <script src="./js/validacao.js"></script>
+
     <link rel="icon" href="assets/icon/logo.svg">
     <link rel="stylesheet" href="css/estiloLogin.css">
 </head>
@@ -24,12 +26,12 @@
         </div>
 
         <div class="loginContainerMiddlePart">
-            <div class="inputLogin">
+            <div id="inputEmail" class="inputLogin">
                 <span>Email</span>
                 <input placeholder="Insira seu email">
             </div>
 
-            <div class="inputLogin">
+            <div id="inputToken" class="inputLogin">
                 <span>Token</span>
                 <input placeholder="Insira seu token de acesso">
             </div>
@@ -43,7 +45,7 @@
                 <span>Esqueci minha senha</span>
             </div>
 
-            <button>Login</button>
+            <a href="../dashboard/dashboardPage.html"> <button onclick="login()">Login</button> </a>
         </div>
 
         <div class="loginContainerBottomPart">
