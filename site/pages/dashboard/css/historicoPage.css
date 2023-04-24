@@ -488,7 +488,7 @@ span {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    gap: 190px;
+    gap: 230px;
 }
 
 .divDiaEipt {
@@ -518,7 +518,7 @@ span {
     justify-content: center;
     margin: 10px;
     list-style: none;
-    gap: 16.5%;
+    gap: 20%;
 }
 
 .divDias .destaqueDia {
@@ -544,7 +544,7 @@ span {
 .estufaIpt {
     display: flex;
     gap: 6%;
-    padding: 2% 13% 0 0;
+    padding: 2% 19% 0 0;
 
 }
 
@@ -575,11 +575,12 @@ canvas {
     display: flex;
     height: 250px !important;
     width: 250px  !important;
-    
+    margin: 0px 15px 0 15px;
+    justify-content: center;
     border-radius: 8px;
 }
 .segurandopizza{
-    height: 500px;
+    height: 540px;
     background-color: #D9D9D9;
     border-radius: 7px;
 }
@@ -591,7 +592,7 @@ canvas {
 .segurandopizza{
     display: flex;
     flex-direction: column;
-    gap: 27%;
+    gap: 12%;
     align-items: center;
 }
 
@@ -599,4 +600,20 @@ canvas {
     display: flex;
     flex-direction: column;
     margin-top: 15%;
+    gap: 30px;
+}
+.mediaIdeal{
+    background-color: #BCB7B7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 175px;
+    height: 85px;
+    }
+
+.mediaDiaria{
+    display: flex;
+
+    justify-content: center;
 }
