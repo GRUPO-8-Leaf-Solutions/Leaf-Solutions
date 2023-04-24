@@ -272,17 +272,18 @@ input {
 }
 
 .urgente {
-    color: #c63535;
+    color: rgba(149, 0, 0, 1);
     width: 230px;
     height: 20.91px;
     font-family: 'Nunito';
     font-weight: 700;
-    font-size: 12px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 19px;
     display: flex;
     justify-content: center;
     text-align: center;
     margin-top: -95px;
+    margin-left: 21px;
 }
 
 .img {
@@ -308,16 +309,18 @@ span {
 }
 
 .text-parametro-urgente {
+    color: rgba(0, 0, 0,1);
     width: 200px;
     height: 16px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 16px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 64);
-    margin-left: -67px;
+    margin-left: -141px;
+    margin-top: -36px;
 }
 
 .text-parametro-critico {
@@ -326,38 +329,39 @@ span {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 16px;
     text-transform: uppercase;
-    color: rgba(0, 0, 0, 64);
-    margin-left: 13px;
-    margin-bottom: 21px;
+    color: rgba(13, 13, 13, 1);
+    margin-left: 23px;
+    margin-top: -65px;
 }
 
 .text-atual {
-    width: 88px;
+    width: 162px;
     height: 16px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
-    color: #E90303;
-    margin-left: -8px;
+    color: rgba(204, 0, 0, 1);
+    margin-left: 2px;
+    margin-top: -35px;
 }
 
-.valor-parametro {
-    width: 69px;
+.text-parametro-preocupante {
+    width: 121px;
     height: 20px;
-    left: 1040px;
-    top: 266px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 20px;
     text-transform: uppercase;
-    color: rgba(0, 0, 0, 64);
+    color: rgba(13, 13, 13, 1);
+    margin-left: 64px;
+    margin-bottom: 4px;
 }
 
 /* .valor-atual {
@@ -418,7 +422,7 @@ span {
 .alert {
     width: 253px;
     height: 103.46px;
-    background-color: #FEF5F6;
+    background-color: rgba(204, 0, 0,0.40);
     box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
 }
@@ -486,17 +490,18 @@ span {
 }
 
 .critico {
-    color: rgba(198, 88, 53, 1);
+    color: rgba(226, 95, 21, 1);
     width: 230px;
     height: 20.91px;
     font-family: 'Nunito';
     font-weight: 700;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 22px;
     display: flex;
     justify-content: center;
     text-align: center;
     margin-top: -95px;
+    margin-left: 20px;
 }
 
 .critico-setor {
@@ -516,28 +521,30 @@ span {
 .critico-valor {
     color: rgba(233, 86, 3, 1);
     line-height: 19px;
-    width: 88px;
+    width: 132px;
     height: 16px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
-    margin-left: -8px;
+    margin-left: 1px;
+    margin-top: -35px;
 }
 
 .preocupante {
-    color: rgba(204, 151, 43, 1);
-    width: 230px;
+    color: rgba(188, 132, 16, 1);
+    width: 234px;
     height: 20.91px;
     font-family: 'Nunito';
     font-weight: 700;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 22px;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: -95px;
+    margin-top: -58px;
+    margin-left: 18px;
 }
 
 .urgente-setor {
@@ -561,7 +568,7 @@ span {
 
 .preocupante-setor {
     color: rgba(211, 142, 0, 1);
-    width: 220px;
+    width: 256px;
     height: 11.42px;
     font-family: 'Nunito';
     font-style: normal;
@@ -570,13 +577,13 @@ span {
     line-height: 14px;
     display: flex;
     justify-content: center;
-    margin-top: -30px;
+    margin-top: 7px;
 }
 
 .alert-critico {
     width: 253px;
     height: 103.46px;
-    background-color: rgba(255, 210, 157, 0.16);
+    background-color: rgba(242, 140, 40, 0.45);
     box-shadow: 0px 4px 10px -1px rgba(78, 47, 0, 0.25);
     border-radius: 10px;
 }
@@ -584,21 +591,23 @@ span {
 .alert-preocupante {
     width: 253px;
     height: 103.46px;
-    background-color: #FEFEF5;
+    background-color: rgba(255, 210, 50, 0.33);
     box-shadow: 0px 4px 10px -1px rgba(78, 70, 0, 0.25);
     border-radius: 10px;
 }
 
 .preocupante-valor {
-    color: #F8A804;
-    width: 127.8px;
+    color: rgba(223, 152, 0, 1);
+    width: 152px;
     height: 15.7px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 19px;
     text-transform: uppercase;
+    margin-left: 42px;
+    margin-top: 10px;
 }
 
 .tela-alertas {
@@ -612,7 +621,7 @@ span {
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-    gap: 8px;
+    gap: 13px;
     margin-top: -20px;
 }
 
@@ -828,7 +837,7 @@ span {
 .alerta_urgente {
     width: 250px;
     height: 45px;
-    background-color: #FF323242;
+    background-color: rgba(204, 0, 0,0.40);
     border-radius: 36.5px;
     text-align: center;
     color: #C63535;
@@ -842,7 +851,7 @@ span {
 .alerta_critico {
     width: 250px;
     height: 45px;
-    background-color: #FF7E0091;
+    background-color: rgba(242, 140, 40, 0.45);
     border-radius: 36.5px;
     text-align: center;
     margin-top: 5px;
@@ -857,7 +866,7 @@ span {
 .alerta_preocupante {
     width: 250px;
     height: 45px;
-    background-color: #FFD23294;
+    background-color: rgba(255, 210, 50, 0.33);
     border-radius: 36.5px;
     text-align: center;
     margin-top: 5px;
