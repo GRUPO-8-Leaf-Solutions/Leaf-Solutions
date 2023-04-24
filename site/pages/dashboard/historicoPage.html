@@ -31,7 +31,7 @@
                                 <span class="lista">Dashboard</span>
                             </a>
                         </li>
-                        <li class="lista">
+                        <li class="lista destaque">
                             <a href="#">
                                 <img src="../../assets/imgs/Vector.png" alt="">
                                 <span class="lista">Estatística</span>
@@ -43,8 +43,8 @@
                                 <span class="lista">Previsões</span>
                             </a>
                         </li>
-                        <li class="lista destaque">
-                            <a href="#">
+                        <li class="lista">
+                            <a href="historicoPage.html">
                                 <img src="../../assets/imgs/Vector.png" alt="">
                                 <span class="lista">Histórico</span>
                             </a>
@@ -59,23 +59,19 @@
                             <img src="../../assets/imgs/Ellipse2325.png" alt="">
                             <ul class="ul2">
                                 <span class="ismalendas">
-                                    <li>
-                                        <a href="#">NOME
-                                            <span class="NomeEmpresa">NomeEmpresa</span>
-                                        </a>
-                                    </li>
+                                    <span>NomeUsuario</span>
+                                    <span>NomeEmpresa</span>
                                 </span>
                             </ul>
                         </div>
+
                         <div class="configgg">
-                            <img src="../../assets/imgs/ector2.png" alt="">
-                            <ul class="ul2">
-                                <span class="ismalenda">
-                                    <li>
-                                        <a href="#">Configurações</a>
-                                    </li>
-                                </span>
-                            </ul>
+                            <a href="#">
+                                <i class="uil uil-setting"></i>
+                            </a>
+                            <a href="">
+                                <i class="uil uil-signout" style="color: #C63535;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +82,7 @@
         <div class="tela">
             <div class="areaDash">
                 <div class="top-left">
-                    <span class="topo">DashBoard</span>
+                    <span class="topo">Dashboard</span>
 
                     <div class="uls">
                         <ul class="ul-semanal">
@@ -173,7 +169,14 @@
                         </div>
                     </div>
                     <div class="segurandopizza">
-                        <span></span>
+                        <div class="textosPizza">
+                            <div class="mediaDiaria">
+                                <span>MÈDIA DIÁRIA</span>
+                            </div>
+                            <div class="mediaIdeal">
+                                <span>MÉDIA IDEAL</span>
+                            </div>
+                        </div>
                         <div class="graficoPizza">
                             <canvas class="graficoPizza" id="grafico_pie"></canvas>
                         </div>
@@ -189,7 +192,7 @@
         <!-- gráfico -->
         <!-- grafico 1 -->
         <script>
-                        const labels = [
+            const labels = [
                 '12:00',
                 '13:00',
                 '14:00',
@@ -231,23 +234,34 @@
 
         <!-- gráfico 2 -->
         <script>
-            const grafico_radar = document.getElementById('grafico_radar');
+            var xyValues = [
+                { x: 50, y: 7 },
+                { x: 60, y: 8 },
+                { x: 70, y: 8 },
+                { x: 80, y: 9 },
+                { x: 90, y: 9 },
+                { x: 100, y: 9 },
+                { x: 110, y: 10 },
+                { x: 120, y: 11 },
+                { x: 130, y: 14 },
+                { x: 140, y: 14 },
+                { x: 150, y: 15 }
+            ];
 
-            new Chart(grafico_radar, {
-                type: 'radar',
+            new Chart("grafico_radar", {
+                type: "scatter",
                 data: {
-                    labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
                     datasets: [{
-                        label: 'Minutagem dentro e fora do ideal',
-                        data: [213, 426, 639, 852, 923, 994, 1023, 994, 987, 861, 698, 415, 208, 158],
-                        borderWidth: 1
+                        pointRadius: 4,
+                        pointBackgroundColor: "rgb(0,0,255)",
+                        data: xyValues
                     }]
                 },
                 options: {
+                    legend: { display: false },
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                        xAxes: [{ ticks: { min: 40, max: 160 } }],
+                        yAxes: [{ ticks: { min: 6, max: 16 } }],
                     }
                 }
             });
