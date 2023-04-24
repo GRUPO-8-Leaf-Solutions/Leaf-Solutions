@@ -31,8 +31,8 @@
                                 <span class="lista">Dashboard</span>
                             </a>
                         </li>
-                        <li class="lista">
-                            <a href="#">
+                        <li class="lista ">
+                            <a href="estatisticaPage.html">
                                 <img src="../../assets/imgs/Vector.png" alt="">
                                 <span class="lista">Estatística</span>
                             </a>
@@ -44,7 +44,7 @@
                             </a>
                         </li>
                         <li class="lista destaque">
-                            <a href="#">
+                            <a href="historicoPage.html">
                                 <img src="../../assets/imgs/Vector.png" alt="">
                                 <span class="lista">Histórico</span>
                             </a>
@@ -59,23 +59,19 @@
                             <img src="../../assets/imgs/Ellipse2325.png" alt="">
                             <ul class="ul2">
                                 <span class="ismalendas">
-                                    <li>
-                                        <a href="#">NOME
-                                            <span class="NomeEmpresa">NomeEmpresa</span>
-                                        </a>
-                                    </li>
+                                    <span>NomeUsuario</span>
+                                    <span>NomeEmpresa</span>
                                 </span>
                             </ul>
                         </div>
+
                         <div class="configgg">
-                            <img src="../../assets/imgs/ector2.png" alt="">
-                            <ul class="ul2">
-                                <span class="ismalenda">
-                                    <li>
-                                        <a href="#">Configurações</a>
-                                    </li>
-                                </span>
-                            </ul>
+                            <a href="#">
+                                <i class="uil uil-setting"></i>
+                            </a>
+                            <a href="">
+                                <i class="uil uil-signout" style="color: #C63535;"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -86,7 +82,7 @@
         <div class="tela">
             <div class="areaDash">
                 <div class="top-left">
-                    <span class="topo">DashBoard</span>
+                    <span class="topo">Dashboard</span>
 
                     <div class="uls">
                         <ul class="ul-semanal">
@@ -161,12 +157,30 @@
 
             <div class="containerChart">
                 <div class="chartContainerH">
-                    <div>
-                        <canvas class="graficoBarra" id="myChart"></canvas>
+                    <div class="_2graficos">
+                        <div>
+                            <canvas class="graficoBarra" id="myChart"></canvas>
+                        </div>
+
+                        <div class="graficoCalor">
+                            <div>
+                                <canvas id="grafico_radar" class="graficoCalor"></canvas>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="graficoCalor">
-                    GRÁFICO CALOR
+                    <div class="segurandopizza">
+                        <div class="textosPizza">
+                            <div class="mediaDiaria">
+                                <span>MÈDIA DIÁRIA</span>
+                            </div>
+                            <div class="mediaIdeal">
+                                <span>MÉDIA IDEAL</span>
+                            </div>
+                        </div>
+                        <div class="graficoPizza">
+                            <canvas class="graficoPizza" id="grafico_pie"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -210,7 +224,7 @@
         </script>
 
         <script>
-            const myChart1 = new Chart(
+            const myChart = new Chart(
                 document.getElementById('myChart'),
                 config
             );
@@ -219,5 +233,61 @@
         </script>
 
         <!-- gráfico 2 -->
+        <script>
+            var xyValues = [
+                { x: 50, y: 7 },
+                { x: 60, y: 8 },
+                { x: 70, y: 8 },
+                { x: 80, y: 9 },
+                { x: 90, y: 9 },
+                { x: 100, y: 9 },
+                { x: 110, y: 10 },
+                { x: 120, y: 11 },
+                { x: 130, y: 14 },
+                { x: 140, y: 14 },
+                { x: 150, y: 15 }
+            ];
+
+            new Chart("grafico_radar", {
+                type: "scatter",
+                data: {
+                    datasets: [{
+                        pointRadius: 4,
+                        pointBackgroundColor: "rgb(0,0,255)",
+                        data: xyValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    scales: {
+                        xAxes: [{ ticks: { min: 40, max: 160 } }],
+                        yAxes: [{ ticks: { min: 6, max: 16 } }],
+                    }
+                }
+            });
+        </script>
+        <!-- gráfico 3 -->
+        <script>
+            const grafico_pie = document.getElementById('grafico_pie');
+
+            new Chart(grafico_pie, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Dentro do parâmetro', 'Fora do parâmetro'],
+                    datasets: [{
+                        label: 'Minutagem dentro e fora do ideal',
+                        data: [80, 20],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
 
 </html>
