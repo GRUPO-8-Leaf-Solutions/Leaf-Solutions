@@ -20,7 +20,7 @@
             <div class="listaBaixo">
                 <div class="navegacão">
                     <div class="navHeader">
-                        <img src="../assets/Logomarca 1.png" alt="">
+                        <img src="../../assets/icon/LogomarcaDashboard.png" alt="">
                         <span>MENU</span>
                     </div>
                     <ul>
@@ -98,46 +98,105 @@
                     </div>
                 </div>
             </div>
-            <!-- Simulando que a estufa 05 seja a que está emitindo o alert -->
+            <div class="divDiaEipt">
+                <div class="divDias">
 
-            <div class="containerChart">
-                <div class="chartContainerH">
-                    <div class="grafico1">
-                        <canvas id="myChart1"></canvas></canvas>
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="destaqueDia">08/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">07/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">06/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">05/04/2023</span>
+                        </a>
+                    </li>
+
+
+                    <li class="lista">
+                        <a href="historicoPage.html">
+                            <span class="listaDias">04/04/2023</span>
+                        </a>
+                    </li>
+
+                </div>
+                <div class="estufaIpt">
+                    <div class="estufaNome">
+                        <span class="estufinhaa">Estufa</span>
+                    </div>
+                    <div class="inputEstufa">
+                        <label for="estufa"></label>
+                        <select class="estufaCinza" id="estufa" name="estufa">
+                            <option value="Estufa 1">Estufa 1</option>
+                            <option value="Estufa 2">Estufa 2</option>
+                            <option value="Estufa 3">Estufa 3</option>
+                            <option value="Estufa 4">Estufa 4</option>
+                            <option value="Estufa 5">Estufa 5</option>
+                            <option value="Estufa 6">Estufa 6</option>
+                            <option value="Estufa 7">Estufa 7</option>
+                            <option value="Estufa 8">Estufa 8</option>
+                            <option value="Estufa 9">Estufa 9</option>
+                            <option value="Estufa 10">Estufa 10</option>
+                        </select>
                     </div>
                 </div>
             </div>
+
+
+            <div class="containerChart">
+                <div class="chartContainerH">
+                    <div>
+                        <canvas class="graficoBarra" id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="graficoCalor">
+                    GRÁFICO CALOR
+                </div>
+            </div>
         </div>
-        <div>
-            <canvas id="myChart"></canvas>
-        </div>
+
 
         <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
         </div> -->
         <!-- gráfico -->
-
+        <!-- grafico 1 -->
         <script>
-
-const labels = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-    ];
+            const labels = [
+                '12:00',
+                '13:00',
+                '14:00',
+                '15:00',
+                '16:00',
+                '17:00',
+            ];
 
             const ctx = document.getElementById('myChart');
 
             new Chart(ctx, {
-                type: 'pie',
+                type: 'bar',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
                     datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        borderWidth: 1
+                        label: 'Média de luz /hora',
+                        data: [213, 426, 639, 852, 923, 994, 1023, 994, 987, 861, 698, 415, 208, 158],
+                        borderWidth: 3
                     }]
                 },
                 options: {
@@ -159,5 +218,6 @@ const labels = [
 
         </script>
 
+        <!-- gráfico 2 -->
 
 </html>

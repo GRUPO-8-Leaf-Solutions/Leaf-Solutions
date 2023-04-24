@@ -102,38 +102,38 @@
                     <input class="input-search" type="search" id="search" placeholder="Pesquisar">
                 </div>
             </div>
-            
             <div class="main">
                 <div class="containerChart">
                     <div class="chartContainer">
                         <div class="grafico1">
-                                <span class="title-Chart">STATUS DA LUMINOSIDADE NAS ULTIMAS 24H</span>
-                                <!-- <span class="subTittle-Chart">EM CADA ESTUFA</span> -->
+                            <span class="title-Chart">STATUS DA LUMINOSIDADE NAS ULTIMAS 24H</span>
+                            <!-- <span class="subTittle-Chart">EM CADA ESTUFA</span> -->
                             <canvas id="myChart1"></canvas></canvas>
                         </div>
                     </div>
                 </div>
+
                 <!-- ALERTA URGENTE -->
                 <div class="tela-alertas">
                     <span class="title-alerta">ALERTAS</span>
                     <a class="click-alert" href="">
                         <div class="containerAlert">
                             <div class="alert">
-                                <div class="urgenteEst">
+                                <div class="img">
                                     <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
-
-                                    <span class="urgente">URGENTE ESTUFA 05 - SETOR X</span>
-                                    <span class="urgente-setor">SETOR X</span> <span class="status-alert">-
-                                        URGENTE</span>
+                                </div>
+                                <div class="urgenteEst">
+                                    <span class="urgente">ESTUFA 05 - SETOR X</span>
+                                </div>
+                                <div class="div-urgente-span">
+                                    <span class="urgente-setor">SETOR X <span class="span"> - URGENTE</span></span>
                                 </div>
                                 <div class="alerts">
-                                    <div class="text-valores" <div>
-                                        <span class="text-atual">ATUAL:</span> <span class="valor-atual">340</span>
+                                    <div class="text-valores">
+                                        <span class="text-atual">ATUAL: 340</span>
                                     </div>
                                     <div>
-                                        <span class="text-parametro">IDEAL:</span> <span class="valor-parametro">500
-                                            -
-                                            600</span>
+                                        <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
                                     </div>
                                 </div>
                             </div>
@@ -141,26 +141,26 @@
                     </a>
                     <!--ALERTA CRÍTICO -->
                     <a class="click-alert-critico" href="">
-                        <div class="containerAlert">
+                        <div class="containerAlert-critico">
                             <div class="alert-critico">
-                                <div class="urgenteEst">
-                                    <img class="img-alert" src="Vector crítico.svg" alt="">
-
-                                    <span class="critico">URGENTE ESTUFA 05 - SETOR X</span>
-                                    <span class="critico-setor">SETOR X </span> <span class="status-alert">-
-                                        CRÍTICO</span>
+                                <div class="img">
+                                    <img class="img-alert" src="../../assets/imgs/Vector crítico.svg" alt="">
+                                </div>
+                                <div class="urgenteEst-critico">
+                                    <span class="critico">ESTUFA 05 - SETOR X</span>
+                                </div>
+                                <div class="div-critico-span">
+                                    <span class="critico-setor">SETOR X <span class="span">- CRÍTICO</span></span>
                                 </div>
                                 <div class="alerts">
                                     <div class="text-valores">
                                         <div>
-                                            <span class="critico-valor">ATUAL:</span> <span
-                                                class="critico-valor">700</span>
+                                            <span class="critico-valor">ATUAL: 700</span>
                                         </div>
                                         <div>
-                                            <span class="text-parametro">IDEAL:</span> <span class="valor-parametro">500
-                                                -
-                                                805</span>
+                                            <span class="text-parametro-critico">IDEAL: 500 - 805</span>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -168,12 +168,12 @@
                     </a>
                     <!-- ALERTA PREOCUPANTE -->
                     <a class="click-alert-preocupante" href="">
-                        <div class="containerAlert">
+                        <div class="containerAlert-preocupante">
                             <div class="alert-preocupante">
-                                <div class="urgenteEst">
-                                    <img class="img-alert" src="Vector preocupante.svg" alt="">
+                                <div class="urgenteEst-preocupado">
+                                    <img class="img-alert" src="../../assets/imgs/Vector preocupante.svg" alt="">
 
-                                    <span class="preocupante">URGENTE ESTUFA 05 - SETOR X</span>
+                                    <span class="preocupante">ESTUFA 05 - SETOR X</span>
                                     <span class="preocupante-setor">SETOR X</span> <span class="status-alert">-
                                         PREOCUPANTE</span>
                                 </div>
@@ -193,6 +193,55 @@
                             </div>
                         </div>
                     </a>
+                </div>
+            </div>
+            <div class="rodape">
+                <div class="ajuste_pie">
+                    <div>
+                        <canvas id="grafico_pizza"></canvas>
+                    </div>
+                </div>
+                <div class="indice_luz_pai">
+                    <div class="alto_indice_luz">
+                        <div class="maior_indice_luz">
+                            Maior índice de luz <br>
+                            <p>850</p>
+                        </div>
+                        <div class="indicacao_estufa">
+                            Estufa 07
+                        </div>
+                        <div class="indicacao_setor">
+                            Setor 05
+                        </div>
+                    </div>
+                    <div class="alerta_estufas">
+                        <div class="indicativo_alerta_estufas">
+                            Estufas com mais alertas
+                        </div>
+                        <div class="mencao_estufas">
+                            <div class="mencionar_estufa1">
+                                Estufa 05
+                            </div>
+                            <div class="mencionar_estufa2">
+                                Estufa 03
+                            </div>
+                            <div class="mencionar_estufa3">
+                                Estufa 07
+                            </div>
+                        </div>
+                    </div>
+                    <div class="baixo_indice_luz">
+                        <div class="menor_indice_luz">
+                            Menor índice de luz <br>
+                            <p>200</p>
+                            <div class="indicacao_estufa">
+                                Estufa 03
+                            </div>
+                            <div class="indicacao_setor">
+                                Setor 01
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -254,6 +303,29 @@
     //     document.getElementById('myChart2'),
     //     config
     // );
+</script>
+
+<script>
+    const grafico_pie = document.getElementById('grafico_pizza');
+
+    new Chart(grafico_pie, {
+        type: 'doughnut',
+        data: {
+            labels: ['Dentro do parâmetro', 'Fora do parâmetro'],
+            datasets: [{
+                label: 'Minutagem dentro e fora do ideal',
+                data: [80, 20],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 </script>
 
 </html>

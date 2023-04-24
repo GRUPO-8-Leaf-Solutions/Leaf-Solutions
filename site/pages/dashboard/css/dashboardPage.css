@@ -183,18 +183,21 @@ li a {
 
 /* CSS DA TELA */
 
-
 .tela .topo {
     color: #717171;
     width: 127px;
     height: 29px;
     left: 324px;
-    top: 79px;
+    top: 200px;
     font-size: 28px;
     font-family: 'Nunito';
     font-weight: 600;
     font-style: normal;
     line-height: 29px;
+}
+
+.areaDash {
+    height: 70px;
 }
 
 .areaDash .ul-semanal {
@@ -269,16 +272,21 @@ input {
 }
 
 .urgente {
-    width: 198px;
-    height: 20.91px;
-    top: 202.73px;
-    left: 395px;
     color: #c63535;
+    width: 230px;
+    height: 20.91px;
     font-family: 'Nunito';
     font-weight: 700;
-    font-size: 14px;
-    line-height: 24.55px;
+    font-size: 12px;
+    line-height: 22px;
     display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: -95px;
+}
+
+.img {
+    width: 20px;
 }
 
 span {
@@ -294,48 +302,48 @@ span {
     left: 396px;
     font-family: 'Nunito';
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 19.1px;
     color: rgba(0, 0, 0, 64);
 }
 
-.alert-litlle {
+.text-parametro-urgente {
+    width: 200px;
     height: 16px;
-    font-family: 'Nunito';
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
-    color: #A7A7A7;
-    font-style: normal;
-    padding: 0 0 0 40px;
-}
-
-.text-parametro {
-    width: 36px;
-    height: 16px;
-    left: 1056px;
-    top: 223px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 16px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 64);
+    margin-left: -67px;
+}
+
+.text-parametro-critico {
+    width: 200px;
+    height: 16px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 64);
+    margin-left: 13px;
+    margin-bottom: 21px;
 }
 
 .text-atual {
-    width: 41px;
+    width: 88px;
     height: 16px;
-    left: 1185px;
-    top: 223px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
     font-size: 12px;
-    line-height: 16px;
     text-transform: uppercase;
     color: #E90303;
+    margin-left: -8px;
 }
 
 .valor-parametro {
@@ -346,13 +354,13 @@ span {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 10px;
     line-height: 20px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 64);
 }
 
-.valor-atual {
+/* .valor-atual {
     width: 27px;
     height: 20px;
     left: 1192px;
@@ -360,11 +368,11 @@ span {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 10px;
     line-height: 20px;
     text-transform: uppercase;
     color: #E90303;
-}
+} */
 
 .tela {
     height: inherit;
@@ -372,6 +380,14 @@ span {
 }
 
 .containerAlert {
+    display: flex;
+}
+
+.containerAlert-preocupante {
+    display: flex;
+}
+
+.containerAlert-critico {
     display: flex;
 }
 
@@ -408,6 +424,18 @@ span {
 }
 
 .urgenteEst {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.urgenteEst-critico {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.urgenteEst-preocupante {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -459,70 +487,90 @@ span {
 
 .critico {
     color: rgba(198, 88, 53, 1);
-    width: 172. 14px;
-    height: 14.92px;
+    width: 230px;
+    height: 20.91px;
     font-family: 'Nunito';
-    font-style: normal;
     font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 12px;
+    line-height: 22px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: -95px;
 }
 
 .critico-setor {
     color: rgba(255, 92, 0, 1);
-    width: 193px;
-    height: 11px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 10px;
-    line-height: 14px;
-    text-transform: uppercase;
-}
-
-.critico-valor {
-    color: rgba(233, 86, 3, 1);
-    width: 127.8px;
-    height: 15.7px;
-    font-family: 'Nunito';
-    font-family: normal;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-    text-transform: uppercase;
-}
-
-.preocupante {
-    color: rgba(204, 151, 43, 1);
-    width: 172.14px;
-    height: 14.92px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-}
-
-.urgente-setor {
-    color: rgba(255, 0, 0, 1);
-    width: 172.14px;
+    width: 212px;
     height: 11.42px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.critico-valor {
+    color: rgba(233, 86, 3, 1);
+    line-height: 19px;
+    width: 88px;
+    height: 16px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-left: -8px;
+}
+
+.preocupante {
+    color: rgba(204, 151, 43, 1);
+    width: 230px;
+    height: 20.91px;
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 22px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: -95px;
+}
+
+.urgente-setor {
+    color: rgba(255, 0, 0, 1);
+    width: 220px;
+    height: 11.42px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+
+.div-urgente-span .span {
+    color: #000;
 }
 
 .preocupante-setor {
     color: rgba(211, 142, 0, 1);
-    width: 172.14px;
-    height: 14.92px;
+    width: 220px;
+    height: 11.42px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
 }
 
 .alert-critico {
@@ -548,25 +596,14 @@ span {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-    text-transform: uppercase;
-}
-
-.status-alert {
-    width: 115px;
-    height: 15.7px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 19px;
     text-transform: uppercase;
 }
 
 .tela-alertas {
     width: 300px;
-    height: 500px;
+    height: 390px;
     background-color: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
@@ -575,18 +612,24 @@ span {
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-    gap: 35px;
+    gap: 8px;
+    margin-top: -40px;
 }
 
 .img-alert {
+    width: 31.3px;
+    height: 29.67;
     display: flex;
     align-items: center;
+    margin-top: 30px;
+    margin-left: 11px
 }
 
 .main {
     display: flex;
     justify-content: space-between;
-    padding: 0 65px 20px 49px; 
+    padding: 0 65px 20px 49px;
+    height: 360px;
 }
 
 .title-alerta {
@@ -611,6 +654,7 @@ span {
     text-transform: uppercase;
     text-align: center;
 }
+
 /* INICIO DO CSS DOS GRAFICOS CHARTJS  */
 
 
@@ -636,5 +680,99 @@ span {
     height: 370px;
 }
 
+.ajuste_pie {
+    width: 210px;
+    height: 200px;
+    margin-left: 150px;
+}
 
+.rodape {
+    display: flex;
+}
+
+.alto_indice_luz {
+    width: 200px;
+    height: 70px;
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.maior_indice_luz p {
+    color: #C63535;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+}
+
+.indicacao_estufa {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.indicacao_setor {
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.alerta_estufas {
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 8px;
+    height: 70px;
+}
+
+.indicativo_alerta_estufas {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.mencionar_estufa1 {
+    background-color: #FFD0D0;
+    color: #C63535;
+    font-size: 9px;
+}
+
+.mencionar_estufa2 {
+    background-color: #FFD0D0;
+    color: #C63535;
+    font-size: 9px;
+}
+
+.mencionar_estufa3 {
+    background-color: #FFD0D0;
+    color: #C63535;
+    font-size: 9px;
+}
+
+.mencao_estufas {
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.menor_indice_luz {
+    width: 200px;
+    height: 70px;
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.menor_indice_luz p {
+    color: #C63535;
+    font-weight: 700;
+}
+
+.indice_luz_pai {
+    margin-top: -30px;
+}
 /* PARTE PREVISOES */
