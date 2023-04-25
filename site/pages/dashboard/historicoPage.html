@@ -83,15 +83,6 @@
             <div class="areaDash">
                 <div class="top-left">
                     <span class="topo">Dashboard</span>
-
-                    <div class="uls">
-                        <ul class="ul-semanal">
-                            <li><a href="">Semanal</a></li>
-                        </ul>
-                        <ul class="ul-mensal">
-                            <li><a href="">Mensal</a></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="divDiaEipt">
@@ -153,33 +144,12 @@
                     </div>
                 </div>
             </div>
-
+            <!-- parte de cima  -->
 
             <div class="containerChart">
                 <div class="chartContainerH">
-                    <div class="_2graficos">
-                        <div>
-                            <canvas class="graficoBarra" id="myChart"></canvas>
-                        </div>
-
-                        <div class="graficoCalor">
-                            <div>
-                                <canvas id="grafico_radar" class="graficoCalor"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="segurandopizza">
-                        <div class="textosPizza">
-                            <div class="mediaDiaria">
-                                <span>MÉDIA DIÁRIA</span>
-                            </div>
-                            <div class="mediaIdeal">
-                                <span>MÉDIA IDEAL</span>
-                            </div>
-                        </div>
-                        <div class="graficoPizza">
-                            <canvas class="graficoPizza" id="grafico_pie"></canvas>
-                        </div>
+                    <div>
+                        <canvas class="graficoBarra" id="myChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -232,62 +202,5 @@
 
         </script>
 
-        <!-- gráfico 2 -->
-        <script>
-            var xyValues = [
-                { x: 50, y: 7 },
-                { x: 60, y: 8 },
-                { x: 70, y: 8 },
-                { x: 80, y: 9 },
-                { x: 90, y: 9 },
-                { x: 100, y: 9 },
-                { x: 110, y: 10 },
-                { x: 120, y: 11 },
-                { x: 130, y: 14 },
-                { x: 140, y: 14 },
-                { x: 150, y: 15 }
-            ];
-
-            new Chart("grafico_radar", {
-                type: "scatter",
-                data: {
-                    datasets: [{
-                        pointRadius: 4,
-                        pointBackgroundColor: "rgb(0,0,255)",
-                        data: xyValues
-                    }]
-                },
-                options: {
-                    legend: { display: false },
-                    scales: {
-                        xAxes: [{ ticks: { min: 40, max: 160 } }],
-                        yAxes: [{ ticks: { min: 6, max: 16 } }],
-                    }
-                }
-            });
-        </script>
-        <!-- gráfico 3 -->
-        <script>
-            const grafico_pie = document.getElementById('grafico_pie');
-
-            new Chart(grafico_pie, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Tempo exposto a luz', 'Tempo de exposição pendente'],
-                    datasets: [{
-                        label: 'Tempo de luz',
-                        data: [83, 17],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        </script>
 
 </html>
