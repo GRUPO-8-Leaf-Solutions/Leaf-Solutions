@@ -8,6 +8,21 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.urgenteText{
+    color: #C63535;
+}
+.criticoText{
+    color: #C65835;
+}
+.preocupanteText{
+    color: #CCA92B;
+}
+.adequadoText{
+    color: #53AC50;
+}
+.manutencaoText{
+    color: #585858;
+}
 html,
 body {
     height: 100%;
@@ -22,52 +37,46 @@ body {
 }
 
 .container .lateral {
-    width: 225px;
+    height: 100%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    background: #D7F1EA;
+    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
+}
+
+.lateral .listaBaixo{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 40px 40px 22.5px;
-    background: #D7F1EA;
-    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
-
-
 }
 
 .navHeader {
     display: flex;
     flex-direction: column;
     height: 175px;
+    width: 70%;
     justify-content: space-between;
     align-content: space-between;
-    padding-left: 25px;
-
-
+    align-self: center;
 }
 
 .navHeader span {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18.5px;
-    line-height: 18px;
+    font-size: 16px;
     color: #7A7A7A;
 }
 
 .navHeader img {
-    width: 120px;
+    width: 105px;
 }
 
-body {
-    min-height: 100vh;
-    background-color: #E7F1EE;
-}
 
 .navegacão {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 170px;
     gap: 20px;
 }
 
@@ -77,25 +86,25 @@ body {
 
 .navegacão ul li {
     display: flex;
-    justify-content: start;
     align-items: center;
     height: 65px;
     list-style: none;
-    width: 100%;
-    padding-left: 25px;
+
 
 }
 
 .navegacão ul li a {
     display: flex;
     align-items: center;
+    padding-left: 23px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 25px;
     color: #064306;
     gap: 15px;
-
+    /* letter-spacing: 3px; */
+    width: 100%;
 }
 
 .navegacão ul li a .icone {
@@ -115,6 +124,7 @@ body {
 .nomeNome {
     display: flex;
     gap: 15px;
+    justify-content: center;
 
 }
 
@@ -127,10 +137,9 @@ body {
 
 .configNomeimg {
     display: flex;
-
     flex-direction: column;
-    align-items: center;
-    height: 90px;
+
+    gap: 15px;
 }
 
 .nomeNome span .config {
@@ -143,16 +152,22 @@ body {
 
 .configgg {
     display: flex;
+    width: 100%;
     list-style: none;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: end;
     flex-direction: row;
-    height: 40px;
     gap: 8px;
 }
 
-.NomeEmpresa {
-    color: #A1A0A0;
-    list-style: none;
+.configgg a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.configgg a i{
+    font-size: 25px;
+    color: #959595;
 }
 
 .config {
@@ -171,12 +186,15 @@ li a {
     color: #7A7A7A;
 }
 
-.ismalendas li a {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.ismalendas > :nth-child(1) {
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.ismalendas > :nth-child(2) {
+    font-weight: 300;
+    font-size: 14px;
+    color: #A1A0A0;
 }
 
 /* FIM DO CSS DO MENU */

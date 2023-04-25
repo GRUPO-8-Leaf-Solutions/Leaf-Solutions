@@ -366,37 +366,50 @@ body {
 
 
 #resultadoSimulador {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Jost';
-    width: 80%;
+    width: 100%;
     height: fit-content;
+
+    font-size: 28px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     min-height: 1px;
-    gap: 20px;
-    font-size: 35px;
 
     padding-top: 124px;
     margin-top: -124px;
 }
 
-
-
 #resultadoSimulador b {
     font-size: 45px;
 }
 
+/* ver isso aqui */
 
+#divSimulador {
+    height: fit-content;
+    width: 575px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 40px;
+
+    background: rgba(19, 42, 19, 0.84);
+    border-radius: 86px;
+}
 
 
 
 .faq {
-    padding: 121px 50px;
-    height: fit-content;
+    font-family: 'Jost';
     background: linear-gradient(180deg, rgba(49, 87, 44, 0.1) 0%, rgba(136, 174, 53, 0.1) 100%);
+    height: fit-content;
+
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    font-family: 'Jost';
+    padding: 80px 50px;
+    gap: 80px;
 }
 
 .faq .container {
@@ -518,7 +531,9 @@ body {
 }
 
 .sobreFooter {
+    width: 1100px; 
     display: flex;
+    justify-content: space-around;
 }
 
 .sobreFooter :nth-child(2) {

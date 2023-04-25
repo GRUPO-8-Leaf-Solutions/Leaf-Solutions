@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estatística</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/estatisticaPage.js"></script>
     <link rel="stylesheet" href="./css/estatisticaPage.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
@@ -30,7 +31,7 @@
                             </a>
                         </li>
                         <li class="lista destaque">
-                            <a href="#">
+                            <a href="estatisticaPage.html">
                                 <img src="../../assets/imgs/Vector.png" alt="">
                                 <span class="lista">Estatística</span>
                             </a>
@@ -81,8 +82,149 @@
 
             <div class="areaDash">
                 <div class="top-left">
-                    <span class="topo">Estatística</span>
+                    <span class="topo">Estatística - Lista de estufas</span>
                 </div>
+            </div>
+
+            <div class="alertsParametro">
+                <div class="urgente"> 
+                    <img src="../../assets/imgs/vetorUrgente.svg" alt=""> 
+                    <span class="urgenteText">URGENTE</span>
+                </div>
+                <div class="critico"> 
+                    <img src="../../assets/imgs/Vector crítico.svg" alt="">
+                    <span class="criticoText">CRÍTICO</span>
+                </div>
+                <div class="preocupante"> 
+                    <img src="../../assets/imgs/Vector preocupante.svg" alt="">
+                    <span class="preocupanteText">PREOCUPANTE</span>
+                </div>
+                <div class="adequado">
+                    <img src="../../assets/imgs/vetorAdequado.svg" alt="">
+                    <span class="adequadoText">ADEQUADO</span>
+                </div>
+            </div>
+
+            <div class="listaEstufas">
+                <div class="containerColTittle">
+                    <span>Nome das Estufas</span>
+                    <span>Qtd. de setores em Alerta</span>
+                </div>
+
+                <div class="lista">
+                    <details class="listaItem">
+                        <summary>
+                            <div class="upperPart">
+                                <span>Estufa Guimarães</span>
+                                <div class="qtdAlertas">
+                                    <span class="urgenteText">
+                                        <img src="../../assets/imgs/vetorUrgente.svg" alt="">
+                                        3
+                                    </span>
+                                    <span class="criticoText">
+                                        <img src="../../assets/imgs/Vector crítico.svg" alt="">
+                                        0
+                                    </span>
+                                    <span class="preocupanteText">
+                                        <img src="../../assets/imgs/Vector preocupante.svg" alt="">
+                                        0
+                                    </span>
+                                    <span class="adequadoText">
+                                        <img src="../../assets/imgs/vetorAdequado.svg" alt="">
+                                        0
+                                    </span>
+                                </div>
+                            </div>
+                        </summary>
+
+                            <div class="lowerPart">
+                                <div class="containerColsubTittle">
+                                    <span>NOME DO SETOR</span>
+                                    <span>ÍNDICE DE LUMINOSIDADE ATUAL</span>
+                                    <span>STATUS</span>
+                                </div>
+
+                                <div class="listaSetores">
+                                    <div class="listaSetorItem">
+                                        <span class="listaSetorItemElemento">Setor 1</span>
+                                        <span class="urgenteText listaSetorItemElemento">
+                                            <img src="../../assets/imgs/vetorUrgente.svg" alt="">
+                                            300
+                                        </span>
+
+                                        <span class="adequadoText listaSetorItemElemento">Ligado</span>
+
+                                    </div>
+
+                                    <div class="listaSetorItem">
+                                        <span class="listaSetorItemElemento">Setor 2</span>
+                                        <span class="urgenteText listaSetorItemElemento">
+                                            <img src="../../assets/imgs/vetorUrgente.svg" alt="">
+                                            0
+                                        </span>
+                                        <span class="urgenteText listaSetorItemElemento">Desligado</span>
+                                    </div>
+
+                                    <div class="listaSetorItem">
+                                        <span class="listaSetorItemElemento">Setor 3</span>
+                                        <span class="urgenteText listaSetorItemElemento">
+                                            <img src="../../assets/imgs/vetorUrgente.svg" alt="">
+                                            0
+                                        </span>
+                                        <span class="manutencaoText listaSetorItemElemento">Manutenção</span>
+                                    </div>
+                                </div>
+                            </div>
+                    </details>
+                    <div class="listaItem">
+                        <div class="upperPart">
+                            <span>Estufa Paulista</span>
+                            <div class="qtdAlertas">
+                                <span class="urgenteText">
+                                    <img src="../../assets/imgs/vetorUrgente.svg" alt="">
+                                    0
+                                </span>
+                                <span class="criticoText">
+                                    <img src="../../assets/imgs/Vector crítico.svg" alt="">
+                                    0
+                                </span>
+                                <span class="preocupanteText">
+                                    <img src="../../assets/imgs/Vector preocupante.svg" alt="">
+                                    0
+                                </span>
+                                <span class="adequadoText">
+                                    <img src="../../assets/imgs/vetorAdequado.svg" alt="">
+                                    3
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listaItem">
+                        <div class="upperPart">
+                            <span>Estufa Antonio</span>
+                            <div class="qtdAlertas">
+                                <span class="urgenteText">
+                                    <img src="../../assets/imgs/vetorUrgente.svg" alt="">
+                                    1
+                                </span>
+                                <span class="criticoText">
+                                    <img src="../../assets/imgs/Vector crítico.svg" alt="">
+                                    6
+                                </span>
+                                <span class="preocupanteText">
+                                    <img src="../../assets/imgs/Vector preocupante.svg" alt="">
+                                    2
+                                </span>
+                                <span class="adequadoText">
+                                    <img src="../../assets/imgs/vetorAdequado.svg" alt="">
+                                    14
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
