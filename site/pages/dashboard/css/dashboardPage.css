@@ -8,21 +8,26 @@
     font-family: 'Nunito', sans-serif;
 }
 
-.urgenteText{
+.urgenteText {
     color: #C63535;
 }
-.criticoText{
+
+.criticoText {
     color: #C65835;
 }
-.preocupanteText{
+
+.preocupanteText {
     color: #CCA92B;
 }
-.adequadoText{
+
+.adequadoText {
     color: #53AC50;
 }
-.manutencaoText{
+
+.manutencaoText {
     color: #585858;
 }
+
 html,
 body {
     height: 100%;
@@ -47,7 +52,7 @@ body {
     box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
 }
 
-.lateral .listaBaixo{
+.lateral .listaBaixo {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -160,12 +165,12 @@ body {
     gap: 8px;
 }
 
-.configgg a{
+.configgg a {
     text-decoration: none;
     color: inherit;
 }
 
-.configgg a i{
+.configgg a i {
     font-size: 25px;
     color: #959595;
 }
@@ -186,12 +191,12 @@ li a {
     color: #7A7A7A;
 }
 
-.ismalendas > :nth-child(1) {
+.ismalendas> :nth-child(1) {
     font-weight: 300;
     font-size: 17px;
 }
 
-.ismalendas > :nth-child(2) {
+.ismalendas> :nth-child(2) {
     font-weight: 300;
     font-size: 14px;
     color: #A1A0A0;
@@ -215,7 +220,7 @@ li a {
 }
 
 .areaDash {
-    height: 70px;
+    height: 50px;
 }
 
 .areaDash .ul-semanal {
@@ -264,20 +269,7 @@ li a {
     bottom: 78.17%;
 }
 
-input {
-    display: flex;
-    box-sizing: border-box;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    width: 935px;
-    height: 38px;
-    top: 79px;
-    left: 555px;
-    border: 2px solid #D1D2D2;
-}
-
 .areaDash {
-    margin: 70px 70px 30px 50px;
     display: flex;
     justify-content: start;
 }
@@ -327,7 +319,7 @@ span {
 }
 
 .text-parametro-urgente {
-    color: rgba(0, 0, 0,1);
+    color: rgba(0, 0, 0, 1);
     width: 200px;
     height: 16px;
     font-family: 'Nunito';
@@ -397,8 +389,10 @@ span {
 } */
 
 .tela {
-    height: inherit;
-    width: inherit;
+    width: 85%;
+    padding: 40px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .containerAlert {
@@ -413,10 +407,6 @@ span {
     display: flex;
 }
 
-.input-search {
-    padding-left: 70px;
-}
-
 .areaDash {
     display: flex;
     gap: 70px;
@@ -427,20 +417,10 @@ span {
     justify-content: space-between;
 }
 
-.input {
-    position: relative;
-}
-
-.input img {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-}
-
 .alert {
     width: 253px;
     height: 103.46px;
-    background-color: rgba(204, 0, 0,0.40);
+    background-color: rgba(204, 0, 0, 0.40);
     box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
 }
@@ -640,7 +620,6 @@ span {
     overflow-y: auto;
     overflow-x: hidden;
     gap: 13px;
-    margin-top: -20px;
 }
 
 .img-alert {
@@ -654,9 +633,9 @@ span {
 
 .main {
     display: flex;
-    justify-content: space-between;
-    padding: 0 65px 20px 49px;
-    height: 300px;
+    flex-direction: column;
+    width: 70%;
+    gap: 28px;
 }
 
 .title-alerta {
@@ -688,7 +667,7 @@ span {
 
 .grafico1 {
     height: 80%;
-    width: 100%;
+    width: 77%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -697,16 +676,19 @@ span {
 
 .chartContainer {
     height: 290px;
-    width: 650px;
+    width: 100%;
     background-color: #FFFFFF;
     display: flex;
     justify-content: center;
     border-radius: 10px;
-    margin-left: 60px;
 }
 
 .containerChart {
-    height: 370px;
+    height: 346px;
+    background: white;
+    box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
+    border-radius: 15px;
+    width: 92%;
 }
 
 .grafico_pizza {
@@ -715,10 +697,8 @@ span {
 }
 
 .ajuste_pie {
-    margin-left: 130px;
     width: 220px !important;
     height: 100px;
-    margin-top: -15px;
 }
 
 .ajuste_pie p {
@@ -730,13 +710,10 @@ span {
     text-transform: uppercase;
     text-align: center;
     width: 400px;
-    margin-left: -65px;
 }
 
 .rodape {
     display: flex;
-    padding: 25px;
-    justify-content: space-between;
 }
 
 .alto_indice_luz {
@@ -748,7 +725,6 @@ span {
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     text-transform: uppercase;
     font-size: 12px;
-    margin-top: -12px;
     line-height: 18px;
 }
 
@@ -776,7 +752,6 @@ span {
     text-align: center;
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-    margin-top: 8px;
     height: 80px;
 }
 
@@ -789,30 +764,24 @@ span {
     background-color: #CC0000;
     color: white;
     font-size: 10px;
-    margin-top: 5px;
     border-radius: 3px;
     width: 150px;
-    margin-left: 25px;
 }
 
 .mencionar_estufa2 {
     background-color: #CC0000;
     color: white;
     font-size: 10px;
-    margin-top: 5px;
     border-radius: 3px;
     width: 150px;
-    margin-left: 25px;
 }
 
 .mencionar_estufa3 {
     background-color: #CC0000;
     color: white;
     font-size: 10px;
-    margin-top: 5px;
     border-radius: 3px;
     width: 150px;
-    margin-left: 25px;
 }
 
 .mencao_estufas {
@@ -829,7 +798,6 @@ span {
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     text-transform: uppercase;
     font-size: 12px;
-    margin-top: 8px;
     line-height: 18px;
 }
 
@@ -843,8 +811,6 @@ span {
 .indicador_alertas {
     width: 200px;
     height: 100px;
-    margin-top: 80px;
-    margin-right: 130px;
 }
 
 .alerta_urgente img {
@@ -855,7 +821,7 @@ span {
 .alerta_urgente {
     width: 250px;
     height: 45px;
-    background-color: rgba(204, 0, 0,0.40);
+    background-color: rgba(204, 0, 0, 0.40);
     border-radius: 36.5px;
     text-align: center;
     color: #C63535;
@@ -872,7 +838,6 @@ span {
     background-color: rgba(242, 140, 40, 0.45);
     border-radius: 36.5px;
     text-align: center;
-    margin-top: 5px;
     color: #C65835;
 }
 
@@ -887,8 +852,42 @@ span {
     background-color: rgba(255, 210, 50, 0.33);
     border-radius: 36.5px;
     text-align: center;
-    margin-top: 5px;
     color: #BC8410;
 }
 
+.daddy {
+    display: flex;
+    width: 100%;
+}
+
+.lado_direito {
+    width: 30%;
+}
+
+#myChart1 {
+    width: 743px !important;
+    height: 275px !important;
+}
+
+.tittle_chart {
+    border-bottom: 1px solid lightgray;
+    height: 55px;
+    padding-left: 36px;
+    color: #828282;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.indice_luz_pai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.daddy_indice {
+    display: flex;
+    gap: 20px   ;
+}
 /* PARTE PREVISOES */

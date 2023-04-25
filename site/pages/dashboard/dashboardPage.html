@@ -84,173 +84,178 @@
                 <div class="top-left">
                     <span class="topo">Dashboard</span>
 
-                    <div class="uls">
-                        <ul class="ul-semanal">
-                            <li><a href="">Semanal</a></li>
-                        </ul>
-                        <ul class="ul-mensal">
-                            <li><a href="">Mensal</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="input">
-                    <img src="../../assets/imgs/Vector.svg" alt="">
-                    <input class="input-search" type="search" id="search" placeholder="Pesquisar">
+
                 </div>
             </div>
-            <div class="main">
-                <div class="containerChart">
-                    <div class="chartContainer">
-                        <div class="grafico1">
-                            <span class="title-Chart">STATUS DA LUMINOSIDADE NAS ULTIMAS 24H</span>
-                            <!-- <span class="subTittle-Chart">EM CADA ESTUFA</span> -->
-                            <canvas id="myChart1"></canvas></canvas>
+            <div class="daddy">
+                <div class="main">
+
+
+                    <div class="containerChart">
+                        <div class="tittle_chart">
+                            <span>
+                                STATUS DA LUMINOSIDADE NAS ULTIMAS 24H
+                            </span>
+                        </div>
+                        <canvas id="myChart1"></canvas></canvas>
+                    </div>
+                    <!-- <div class="containerChart">
+                        <div class="chartContainer">
+                            <div class="grafico1">
+                                <span class="title-Chart"></span>
+                                <span class="subTittle-Chart">EM CADA ESTUFA</span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="rodape">
+                        <div class="ajuste_pie">
+                            <p>Luminosidade entre o parâmetro</p>
+                            <div class="grafico_pie">
+                                <div class="teste">
+                                    <canvas id="grafico_pizza"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="indice_luz_pai">
+                            <div class="daddy_indice">
+                                <div class="alto_indice_luz">
+                                    <div class="maior_indice_luz">
+                                        Maior índice de luz <br>
+                                        <p>850</p>
+                                    </div>
+                                    <div class="indicacao_estufa">
+                                        Guimarães
+                                    </div>
+                                    <div class="indicacao_setor">
+                                        Setor 05
+                                    </div>
+                                </div>
+                                <div class="baixo_indice_luz">
+                                    <div class="menor_indice_luz">
+                                        Menor índice de luz <br>
+                                        <p>200</p>
+                                        <div class="indicacao_estufa">
+                                            Paulista
+                                        </div>
+                                        <div class="indicacao_setor">
+                                            Setor 01
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alerta_estufas">
+                                <div class="ajuste">
+                                    <div class="indicativo_alerta_estufas">
+                                        Estufas com mais alertas
+                                    </div>
+                                    <div class="mencao_estufas">
+                                        <div class="mencionar_estufa1">
+                                            Guimarães
+                                        </div>
+                                        <div class="mencionar_estufa2">
+                                            Paulista
+                                        </div>
+                                        <div class="mencionar_estufa3">
+                                            Antônio
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ALERTA URGENTE -->
-                <div class="tela-alertas">
-                    <span class="title-alerta">ALERTAS</span>
-                    <a class="click-alert" href="">
-                        <div class="containerAlert">
-                            <div class="alert">
-                                <div class="img">
-                                    <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
-                                </div>
-                                <div class="urgenteEst">
-                                    <span class="urgente">ESTUFA 05 - SETOR X</span>
-                                </div>
-                                <!-- <div class="div-urgente-span">
+                <div class="lado_direito">
+                    <div class="tela-alertas">
+                        <span class="title-alerta">ALERTAS</span>
+                        <a class="click-alert" href="">
+                            <div class="containerAlert">
+                                <div class="alert">
+                                    <div class="img">
+                                        <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
+                                    </div>
+                                    <div class="urgenteEst">
+                                        <span class="urgente">ESTUFA 05 - SETOR X</span>
+                                    </div>
+                                    <!-- <div class="div-urgente-span">
                                     <span class="urgente-setor">SETOR X <span class="span"> - URGENTE</span></span>
                                 </div> -->
-                                <div class="alerts">
-                                    <div class="text-valores">
-                                        <span class="text-atual">ÍNDICE ATUAL: 340</span>
-                                    </div>
-                                    <div>
-                                        <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
+                                    <div class="alerts">
+                                        <div class="text-valores">
+                                            <span class="text-atual">ÍNDICE ATUAL: 340</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <!--ALERTA CRÍTICO -->
-                    <a class="click-alert-critico" href="">
-                        <div class="containerAlert-critico">
-                            <div class="alert-critico">
-                                <div class="img">
-                                    <img class="img-alert" src="../../assets/imgs/Vector crítico.svg" alt="">
-                                </div>
-                                <div class="urgenteEst-critico">
-                                    <span class="critico">ESTUFA 05 - SETOR X</span>
-                                </div>
-                                <!-- <div class="div-critico-span">
+                        </a>
+                        <!--ALERTA CRÍTICO -->
+                        <a class="click-alert-critico" href="">
+                            <div class="containerAlert-critico">
+                                <div class="alert-critico">
+                                    <div class="img">
+                                        <img class="img-alert" src="../../assets/imgs/Vector crítico.svg" alt="">
+                                    </div>
+                                    <div class="urgenteEst-critico">
+                                        <span class="critico">ESTUFA 05 - SETOR X</span>
+                                    </div>
+                                    <!-- <div class="div-critico-span">
                                     <span class="critico-setor">SETOR X <span class="span">- CRÍTICO</span></span>
                                 </div> -->
-                                <div class="alerts">
-                                    <div class="text-valores">
-                                        <div>
-                                            <span class="critico-valor">ÍNDICE ATUAL: 700</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-parametro-critico">IDEAL: 500 - 805</span>
-                                        </div>
+                                    <div class="alerts">
+                                        <div class="text-valores">
+                                            <div>
+                                                <span class="critico-valor">ÍNDICE ATUAL: 700</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-parametro-critico">IDEAL: 500 - 805</span>
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <!-- ALERTA PREOCUPANTE -->
-                    <a class="click-alert-preocupante" href="">
-                        <div class="containerAlert-preocupante">
-                            <div class="alert-preocupante">
-                                <div class="urgenteEst-preocupado">
-                                    <img class="img-alert" src="../../assets/imgs/Vector preocupante.svg" alt="">
+                        </a>
+                        <!-- ALERTA PREOCUPANTE -->
+                        <a class="click-alert-preocupante" href="">
+                            <div class="containerAlert-preocupante">
+                                <div class="alert-preocupante">
+                                    <div class="urgenteEst-preocupado">
+                                        <img class="img-alert" src="../../assets/imgs/Vector preocupante.svg" alt="">
 
-                                    <span class="preocupante">ESTUFA 05 - SETOR X</span>
-                                    <!-- <span class="preocupante-setor">SETOR X <span class="status-alert">-
+                                        <span class="preocupante">ESTUFA 05 - SETOR X</span>
+                                        <!-- <span class="preocupante-setor">SETOR X <span class="status-alert">-
                                             PREOCUPANTE</span></span> -->
-                                </div>
-                                <div class="alerts-preocupante">
-                                    <div class="text-valores">
-                                        <div>
-                                            <span class="preocupante-valor">ÍNDICE ATUAL: 470</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-parametro-preocupante">IDEAL: 500 - 805 </span>
+                                    </div>
+                                    <div class="alerts-preocupante">
+                                        <div class="text-valores">
+                                            <div>
+                                                <span class="preocupante-valor">ÍNDICE ATUAL: 470</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-parametro-preocupante">IDEAL: 500 - 805 </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-            </div>
-            <div class="rodape">
-                <div class="ajuste_pie">
-                    <p>Luminosidade entre o parâmetro</p>
-                    <div class="grafico_pie">
-                        <div class="teste">
-                            <canvas id="grafico_pizza"></canvas>
+                    <div class="indicador_alertas">
+                        <div class="alerta_urgente">
+                            <img src="alert-icon.svg"> Urgente
                         </div>
-                    </div>
-                </div>
-                <div class="indice_luz_pai">
-                    <div class="alto_indice_luz">
-                        <div class="maior_indice_luz">
-                            Maior índice de luz <br>
-                            <p>850</p>
+                        <div class="alerta_critico">
+                            <img src="Vector crítico.svg"> Crítico
                         </div>
-                        <div class="indicacao_estufa">
-                            Guimarães
+                        <div class="alerta_preocupante">
+                            <img src="Vector preocupante.svg"> Preocupante
                         </div>
-                        <div class="indicacao_setor">
-                            Setor 05
-                        </div>
-                    </div>
-                    <div class="alerta_estufas">
-                        <div class="ajuste">
-                            <div class="indicativo_alerta_estufas">
-                                Estufas com mais alertas
-                            </div>
-                            <div class="mencao_estufas">
-                                <div class="mencionar_estufa1">
-                                    Guimarães
-                                </div>
-                                <div class="mencionar_estufa2">
-                                    Paulista
-                                </div>
-                                <div class="mencionar_estufa3">
-                                    Antônio
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="baixo_indice_luz">
-                        <div class="menor_indice_luz">
-                            Menor índice de luz <br>
-                            <p>200</p>
-                            <div class="indicacao_estufa">
-                                Paulista
-                            </div>
-                            <div class="indicacao_setor">
-                                Setor 01
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="indicador_alertas">
-                    <div class="alerta_urgente">
-                        <img src="alert-icon.svg"> Urgente
-                    </div>
-                    <div class="alerta_critico">
-                        <img src="Vector crítico.svg"> Crítico
-                    </div>
-                    <div class="alerta_preocupante">
-                        <img src="Vector preocupante.svg"> Preocupante
                     </div>
                 </div>
             </div>
