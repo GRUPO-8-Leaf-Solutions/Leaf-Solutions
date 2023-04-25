@@ -1,5 +1,5 @@
-create database LeafProject;
-use LeafProject;
+create database leafSolutions;
+use leafSolutions;
 
 create table empresa (
 idEmpresa int primary key auto_increment,
