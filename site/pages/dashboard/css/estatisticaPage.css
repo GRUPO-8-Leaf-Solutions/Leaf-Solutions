@@ -8,6 +8,21 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.urgenteText{
+    color: #C63535;
+}
+.criticoText{
+    color: #C65835;
+}
+.preocupanteText{
+    color: #CCA92B;
+}
+.adequadoText{
+    color: #53AC50;
+}
+.manutencaoText{
+    color: #585858;
+}
 html,
 body {
     height: 100%;
@@ -188,7 +203,9 @@ li a {
 
 .tela {
     width: 85%;
-    padding: 70px 50px;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .areaDash {
@@ -217,89 +234,222 @@ li a {
     align-items: center;
 }
 
-.opcoesEpoca .SemMen{
-    display: flex;
-    width: 13%;
-    justify-content: space-between;
+.alertsParametro{
+     display: flex;
+     justify-content: space-evenly;
+     margin-top: 10px;
 }
 
-.opcoesEpoca a{
-    color: #7A7A7A;
-    text-decoration: none;
-}
-
-
-.periodoSelect{
+.alertsParametro .urgente{
+    width: 188px;
+    height: 57px;
+    box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54);
+    border-radius: 36.5px;
+    border-radius: 36.5px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    width: 30%;
+    justify-content: center;
+    gap: 10px;
 }
 
-.periodoSelect select{
-    width: 80%;
-    height: 30px;
-    border-radius: 12px;
-    color: white;
-    border: 1px solid #F0F0F0;
-    background-color: #9C9C9C;
-    border: 0;
-    padding: 0 20px;
-}
-
-.periodoSelect select:focus{
-    outline: 3px solid #747474;
-}
-
-.periodoSelect span{
-    color: #717171;
-}
-
-.estListaTittles{
-    padding-inline: 36px;
+.alertsParametro .critico{
+    width: 188px;
+    height: 57px;
+    background: rgba(255, 210, 157, 0.29);
+    box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69);
+    border-radius: 36.5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 7%;
-    background: #ECECEC;
-    border-radius: 20px;
+    justify-content: center;
+    gap: 10px;
 }
 
-.estListaTittles span{
-    color: #585859;
-    font-size: 20px;
+.alertsParametro .preocupante{
+    width: 188px;
+    height: 57px;
+    background: rgba(254, 254, 245, 0.21);
+    box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69);
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.EstLista{
-height: 80%;
-padding: 20px;
-display: flex;
-flex-direction: column;
+.alertsParametro .adequado{
+    width: 188px;
+    height: 57px;
+    background: rgba(245, 254, 245, 0.21);
+    box-shadow: 0px 0px 8px 1px rgba(0, 78, 8, 0.69);
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .listaEstufas{
-    padding-inline: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 75%;
+    align-self: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.containerColTittle{
+    display: flex;
+    background: #D9D9D9;
+    border-radius: 15px;
+    padding: 0 70px 0 40px;
+    color: #4E4D4DC4;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.containerColTittle span{
+    font-size: 21px;
+}
+
+.listaEstufas .lista{
+    display: flex;
+    flex-direction: column;
+    height: 84%;
+    overflow-y: scroll;
+    background: #FFFFFF;
+    box-shadow: -5px 6px 11px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    padding: 8px 15px;
+}
+
+.listaEstufas .lista::-webkit-scrollbar{
+    width: 5px;
+    height: 8px;
+
+}
+
+.listaEstufas .lista::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+  }
+
+
+
+.listaEstufas .lista .listaItem{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 440px;
+    border-bottom: 2px solid rgba(157, 157, 157, 0.72);
+    padding: 0 20px 5px 25px;
+}
+
+
+
+.listaEstufas .lista details > summary {
+    list-style: none;
+  }
+
+.listaEstufas .lista .listaItem .upperPart{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 100px;
+    padding: 0 20px;
+    cursor: pointer;
 }
 
-.selectEstSet{
+.listaEstufas .lista .listaItem span{
+    font-size: 20px;
+}
+
+.listaEstufas .lista .listaItem .qtdAlertas{
     display: flex;
-    width: 50%;
+    align-items: center;
+    gap: 15px; 
+}
+
+.listaEstufas .lista .listaItem .qtdAlertas span{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 21px;
+}
+
+
+
+.listaEstufas .lista .listaItem .lowerPart{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    border-top: 2px solid rgba(157, 157, 157, 0.72);
+    padding-top: 25px;
+    gap: 10px;
+}
+
+
+.lowerPart .containerColsubTittle{
+    display: flex;
     justify-content: space-between;
+    padding: 0 55px 0 40px;
 }
 
-.selectEstSet select{
+.lowerPart .containerColsubTittle span{
+    font-size: 15px !important;
+    color: #7A7676;
+    font-weight: bold;
+}
+
+.listaSetores{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 270px;
+    max-height: 270px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.listaSetores::-webkit-scrollbar{
+    width: 5px;
+    height: 8px;
+
+}
+
+.listaSetores::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+  }
+
+.listaSetores .listaSetorItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 45px 0 40px;
+    min-height:75px ;
     background: #FFFFFF;
-    border: 1px solid #9A9999;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    width: 301px;
-    height: 38px;
-    color: #B7B3B3;
+    box-shadow: inset 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
 }
 
-.selectEstSet select option{
-    color: black;
+.listaSetores .listaSetorItem > :nth-child(2){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.listaSetores .listaSetorItem > :nth-child(3){
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+.listaSetores .listaSetorItem .listaSetorItemElemento{
+    width: 33%;
 }
