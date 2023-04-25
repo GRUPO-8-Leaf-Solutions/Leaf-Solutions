@@ -5,27 +5,37 @@
 body {
     margin: 0;
     padding: 0;
-    background: #EBF0DE;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
 }
 
-html,
-body {
-    height: 100%;
-    max-width: 100%;
+html{
+    background: linear-gradient(180deg, #122B12 7.52%, rgba(34, 90, 34, 0.96) 49.1%, #122B1C 93.36%) no-repeat center center fixed;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+
 }
 
-.cadastroBody {
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;  
+}
+
+/* .cadastroBody {
     background-image: linear-gradient(180deg, #122B12 7.52%, rgba(34, 90, 34, 0.96) 49.1%, #122B1C 93.36%);
     background-size: cover;
     height: 100%;
+    max-width: 100%;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 30px;
-}
+} */
 
 .cadastroContainer {
     background-color: #FFFFFF;
@@ -35,13 +45,13 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Jost';
-    width: 80%;
+    width: 75%;
 
 }
 
 .cadastroContainerUpperPart {
     display: flex;
-    height: 80px;
+    height: 60px;
     background: #ECECEC;
     width: 100%;
     border-radius: 20px 20px 0 0;
@@ -97,11 +107,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 45px 0;
+    padding: 30px 0;
     width: 470px;
     text-align: center;
     color: rgba(28, 33, 67, 0.86);
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .cadastroContainerMiddlePart> :nth-child(2) {
@@ -113,8 +123,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    height: 250px;
-    width: 70%;
+    height: 186px;
+    width: 80%;
     flex-wrap: wrap;
 }
 
@@ -126,7 +136,7 @@ body {
 }
 
 .inputCadastro input {
-    width: 370px;
+    width: 350px;
     background: #FFFFFF;
     border: 2px solid #88AE35;
     border-radius: 5px;
