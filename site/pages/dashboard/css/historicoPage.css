@@ -559,10 +559,13 @@ canvas {
 
 .maiorCap{
     display: flex;
+    align-items: center;
 }
 .linha{
     display: flex;
     gap: 140px;
+    width: 500px;
+    justify-content: center;
     
 }
 .indicadores{
@@ -584,6 +587,8 @@ canvas {
 .telaa{
     display: flex;
     gap: 25px;
+    align-items: center;
+    justify-content: center;
 }
 
 .setorEhora{
@@ -617,6 +622,35 @@ justify-content: center;
 .alertasLista{
     display: flex;
     flex-direction: column;
+    gap: 25px;
+    padding: 35px 5% 2% 5%;
+    
+}
+.rolando{
+    display: flex;
+    flex-direction: column;
     gap: 50px;
     padding: 35px 5% 2% 5%;
+    height: 400px;
+    overflow-y: scroll;
+    width: 275px;
+}
+.menorCap{
+    align-items: center;
+}
+.media{
+    align-items: center;
+}
+.Tempo{
+    align-items: center;
+}
+.gapy{
+    gap: 25px;
+}
+.caixaColorida{
+    display: flex;
+    gap: 25px;
+    background-color: #F2BDBD;
+    width: 225px;
+    height: 75px;
 }
