@@ -456,10 +456,10 @@ span {
 
 .containerChart {
     height: 100%;
-    padding: 2% 5% 2% 5%;
+    padding: 46px 5% 2% 5%;
     display: flex;
     flex-direction: column;
-    gap: 22.5px;
+    gap: 130.5px;
     align-items: center;
 }
 
@@ -567,7 +567,9 @@ canvas {
 }
 .indicadores{
     display: flex;
-    gap: 5px;
+    gap: 50px;
+    width: 200px;
+    justify-content: space-around;
 }
 .containerAlerts{
     display: flex;
@@ -583,9 +585,7 @@ canvas {
     display: flex;
     gap: 25px;
 }
-.iconeEhora{
-    display: flex;
-}
+
 .setorEhora{
     display: flex;
     gap: 10px;
@@ -593,4 +593,30 @@ canvas {
 
 .flexJ{
     display: flex;
+}
+
+.urgente{
+    border-radius: 8px;
+    border-color: #FF0000;
+    
+height: 50px;
+justify-content: center;
+
+}
+.critico{
+    
+height: 50px;
+justify-content: center;
+}
+.preocupante{
+    
+height: 50px;
+justify-content: center;
+}
+
+.alertasLista{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 35px 5% 2% 5%;
 }
