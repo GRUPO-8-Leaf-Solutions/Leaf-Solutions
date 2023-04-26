@@ -271,17 +271,7 @@ input {
     width: 160px;
 }
 
-.urgente {
-    width: 198px;
-    height: 20.91px;
-    top: 202.73px;
-    left: 395px;
-    color: #c63535;
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24.55px;
-}
+
 
 span {
     display: flex;
@@ -408,12 +398,6 @@ span {
     border-radius: 10px;
 }
 
-.urgenteEst {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
 .click-alert {
     color: inherit;
     text-decoration: none;
@@ -472,23 +456,24 @@ span {
 
 .containerChart {
     height: 100%;
-    padding: 2% 5% 2% 5%;
+    padding: 46px 5% 2% 5%;
     display: flex;
     flex-direction: column;
-    gap: 22.5px;
+    gap: 130.5px;
     align-items: center;
 }
 
 /* PARTE HISTÓRICO */
 .chartContainerH {
-    height: 95%;
+    /* height: 95%; */
     width: 528px;
     /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    gap: 230px;
+    gap: 55px;
+    flex-direction: column;
 }
 
 .divDiaEipt {
@@ -565,7 +550,107 @@ canvas {
     display: flex;
 }
 .graficoBarra{
-    height: 250px !important;
-    width: 500px  !important;
+    height: 100px !important;
+    width: 200px  !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.maiorCap{
+    display: flex;
+    align-items: center;
+}
+.linha{
+    display: flex;
+    gap: 140px;
+    width: 500px;
+    justify-content: center;
+    
+}
+.indicadores{
+    display: flex;
+    gap: 50px;
+    width: 200px;
+    justify-content: space-around;
+}
+.containerAlerts{
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+
+.tituloGrafico{
+    display: flex;
+    justify-content: center;
+}
+.telaa{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.setorEhora{
+    display: flex;
+    gap: 10px;
+}
+
+.flexJ{
+    display: flex;
+}
+
+.urgente{
+    border-radius: 8px;
+    border-color: #FF0000;
+    
+height: 50px;
+justify-content: center;
+
+}
+.critico{
+    
+height: 50px;
+justify-content: center;
+}
+.preocupante{
+    
+height: 50px;
+justify-content: center;
+}
+
+.alertasLista{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 35px 5% 2% 5%;
+    
+}
+.rolando{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 35px 5% 2% 5%;
+    height: 400px;
+    overflow-y: scroll;
+    width: 275px;
+}
+.menorCap{
+    align-items: center;
+}
+.media{
+    align-items: center;
+}
+.Tempo{
+    align-items: center;
+}
+.gapy{
+    gap: 25px;
+}
+.caixaColorida{
+    display: flex;
+    gap: 25px;
+    background-color: #F2BDBD;
+    width: 225px;
+    height: 75px;
+}

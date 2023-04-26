@@ -809,8 +809,9 @@ span {
 }
 
 .indicador_alertas {
-    width: 200px;
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .alerta_urgente img {
@@ -825,6 +826,7 @@ span {
     border-radius: 36.5px;
     text-align: center;
     color: #C63535;
+    box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54);
 }
 
 .alerta_critico img {
@@ -839,6 +841,7 @@ span {
     border-radius: 36.5px;
     text-align: center;
     color: #C65835;
+    box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
 }
 
 .alerta_preocupante img {
@@ -853,6 +856,7 @@ span {
     border-radius: 36.5px;
     text-align: center;
     color: #BC8410;
+    box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69);
 }
 
 .daddy {
@@ -888,6 +892,28 @@ span {
 
 .daddy_indice {
     display: flex;
-    gap: 20px   ;
+    gap: 20px;
 }
+
+.img_alert_all {
+    display: flex;
+    width: 65px;
+    height: 46px;
+    justify-content: center;
+    align-items: center;
+}
+
+.alerta_critico {
+    display: flex;
+}
+
+.alerta_preocupante  {
+    display: flex;
+}
+
+.alerta_urgente {
+    display: flex;
+}
+
+
 /* PARTE PREVISOES */
