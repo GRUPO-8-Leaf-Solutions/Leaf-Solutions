@@ -24,6 +24,13 @@
     color: #585858;
 }
 
+.parametroCritico{
+    background: #FFFFFF;
+    border: 1px solid #E95603;
+    border-radius: 45.5px;
+    color: #FA8111;
+}
+
 .parametroUrgente{
     background: #FFFFFF;
     border: 1px solid #FF0000;
@@ -38,6 +45,29 @@
     border-radius: 36.5px;
     color: #61F804;
     box-shadow: 0px 0px 10px 1px rgba(38, 248, 4, 0.69);
+}
+
+
+.parametroPreocupante{
+    background: #FFFFFF;
+    border: 1px solid #F8D104;
+    border-radius: 45.5px;
+    color: #F8DF04;
+}
+
+.tempoFuncionamento{
+    background: #FFFFFF;
+    background: #FFFFFF;
+    border: 1px solid #FFE600;
+    border-radius: 45.5px;
+}
+
+.manutencao{
+    background: #FFFFFF;
+    border: 1px solid #585858;
+    box-shadow: 0px 0px 8px 4px rgba(81, 81, 81, 0.25);
+    border-radius: 45.5px;
+    color: #656565;
 }
 
 html,
@@ -278,6 +308,16 @@ li a {
     height: 67px;
 }
 
+.parametroMedium{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 85px;
+    border-radius: 50px !important;
+}
+
 .chartContainer .chartTittle .lumPar .parametroSmall span{
     display: flex;
     align-items: center;
@@ -296,4 +336,81 @@ li a {
     display: flex;
     justify-content: space-between;
     height: 40%;
+    gap: 20px;
+}
+
+
+
+.bottomPart .kpis{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+}
+
+.bottomPart .kpis .kpiParametros{
+    width: 100%;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: space-evenly;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 8px 1px rgba(147, 145, 145, 0.69);
+    border-radius: 36.5px;
+}
+
+.bottomPart .kpis .kpiParametros span{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bottomPart .kpis .kpiItem{
+     display: flex;
+     width: 100%;
+     justify-content: space-between;
+}
+
+
+/* KPIS da tela de setores */
+.bottomPart .kpis > :nth-child(2) > :nth-child(1) :nth-child(1){
+
+    font-size: 16px;
+}
+
+.bottomPart .kpis > :nth-child(2) > :nth-child(1) :nth-child(2){
+    font-size: 28px;
+}
+
+.bottomPart .kpis > :nth-child(2) > :nth-child(2) :nth-child(1){
+    color: #C6B835;
+    font-size: 16px;
+}
+
+.bottomPart .kpis > :nth-child(2) > :nth-child(2) :nth-child(2){
+    color: #C6B835;
+    font-size: 16px;
+    color: #D9DD00;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-size: 28px;
+    width: 70%;
+}
+
+.bottomPart .kpis > :nth-child(3) > :nth-child(1) :nth-child(1){
+    font-size: 16px;
+}
+
+.bottomPart .kpis > :nth-child(3) > :nth-child(1) :nth-child(2){
+    font-size: 28px;
+}
+
+.bottomPart .kpis > :nth-child(3) > :nth-child(2) :nth-child(1){
+    font-size: 16px;
+}
+
+.bottomPart .kpis > :nth-child(3) > :nth-child(2) :nth-child(2){
+    font-size: 28px;
 }
