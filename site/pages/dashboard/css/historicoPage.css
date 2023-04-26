@@ -271,17 +271,7 @@ input {
     width: 160px;
 }
 
-.urgente {
-    width: 198px;
-    height: 20.91px;
-    top: 202.73px;
-    left: 395px;
-    color: #c63535;
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 24.55px;
-}
+
 
 span {
     display: flex;
@@ -408,12 +398,6 @@ span {
     border-radius: 10px;
 }
 
-.urgenteEst {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
 .click-alert {
     color: inherit;
     text-decoration: none;
@@ -481,14 +465,15 @@ span {
 
 /* PARTE HISTÓRICO */
 .chartContainerH {
-    height: 95%;
+    /* height: 95%; */
     width: 528px;
     /* background-color: white; */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    gap: 230px;
+    gap: 55px;
+    flex-direction: column;
 }
 
 .divDiaEipt {
@@ -565,7 +550,47 @@ canvas {
     display: flex;
 }
 .graficoBarra{
-    height: 250px !important;
-    width: 500px  !important;
+    height: 100px !important;
+    width: 200px  !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+.maiorCap{
+    display: flex;
+}
+.linha{
+    display: flex;
+    gap: 140px;
+    
+}
+.indicadores{
+    display: flex;
+    gap: 5px;
+}
+.containerAlerts{
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+}
+
+.tituloGrafico{
+    display: flex;
+    justify-content: center;
+}
+.telaa{
+    display: flex;
+    gap: 25px;
+}
+.iconeEhora{
+    display: flex;
+}
+.setorEhora{
+    display: flex;
+    gap: 10px;
+}
+
+.flexJ{
+    display: flex;
+}
