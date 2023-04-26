@@ -412,6 +412,11 @@ li a {
     padding-right: 5px;
 }
 
+.listaSetores a{
+    color: inherit;
+    text-decoration: none;
+}
+
 .listaSetores::-webkit-scrollbar{
     width: 5px;
     height: 8px;
