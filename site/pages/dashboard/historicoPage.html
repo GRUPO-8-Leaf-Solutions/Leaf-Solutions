@@ -77,6 +77,7 @@
                 </div>
             </div>
         </div>
+        <!-- -------------------------------------------------------------------- -->
         <!-- FIM DO MENU -->
         <!-- parte do dash -->
         <div class="tela">
@@ -144,63 +145,156 @@
                     </div>
                 </div>
             </div>
-            <!-- parte de cima  -->
+          <!-- ------------------------------------------------------------------------- -->
+            <div class="telaa">
+                <div class="containerChart">
+                    <div class="chartContainerH">
+                        <div class="caixaIndicadores">
+                            <div class="indicadores">
+                                <span class="urgente flexJ">URGENTE</span>
+                                <span class="critico flexJ">CRÍTICO</span>
+                                <span class="preocupante flexJ">PREOCUPANTE</span>
+                            </div>
+                        </div>
 
-            <div class="containerChart">
-                <div class="chartContainerH">
-                    <div>
-                        <canvas class="graficoBarra" id="myChart"></canvas>
+                        <div class="graficoBarra">
+                            <span class="tituloGrafico">Titulo gráfico</span>
+                            <div><canvas class="graficoBarra" id="myChart"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="containerAlerts">
+                        <div class="linha">
+                            <div class="maiorCap gapy">
+                                <div class="imgAlert">img</div>
+                                <div class="valores">
+                                    <span class="maiorcaptacacao">Maior Captação</span>
+                                    <span class="_820">820</span>
+                                    <span class="setor1">Setor 1</span>
+                                    <span class="hora">09:35</span>
+                                </div>
+                            </div>
+                            <div class="menorCap flexJ gapy">
+                                <div class="imgAlert">img</div>
+                                <div class="valores">
+                                    <span class="maiorcaptacacao">Menor Captação</span>
+                                    <span class="_820">520</span>
+                                    <span class="setor1">Setor 3</span>
+                                    <span class="hora">08:50</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- linha 2 -->
+                        <div class="linha">
+                            <div class="media flexJ gapy">
+                                <div class="imgAlert">img</div>
+                                <div class="valores">
+                                    <span class="maiorcaptacacao">Média diária de Luminosidade</span>
+                                    <span class="_820">700</span>
+                                </div>
+                            </div>
+                            <div class="Tempo flexJ gapy">
+                                <div class="imgAlert">img</div>
+                                <div class="valores">
+                                    <span class="maiorcaptacacao">Tempo de Captação</span>
+                                    <span class="_820">8,4H</span>6
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="alertasLista">
+                    <span>Histórico de alertas</span>
+                    <div class="rolando">
+                    <div class="caixaColorida">
+                        <span class="img">img</span>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span>SETOR 1</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">img</div><span>09:35</span>
+                                </div>
+                            </div>
+                            <span class="indice">ÍNDICE ATUAL: 820</span>
+                            <span class="indice">IDEAL: 500 - 600</span>
+                        </div>
+                    </div>
+                    <div class="caixaColorida">
+                        <span class="img">img</span>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span>SETOR 1</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">img</div><span>09:35</span>
+                                </div>
+                            </div>
+                            <span class="indice">ÍNDICE ATUAL: 820</span>
+                            <span class="indice">IDEAL: 500 - 600</span>
+                        </div>
+                    </div>
+                    <div class="caixaColorida">
+                        <span class="img">img</span>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span>SETOR 1</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">img</div><span>09:35</span>
+                                </div>
+                            </div>
+                            <span class="indice">ÍNDICE ATUAL: 820</span>
+                            <span class="indice">IDEAL: 500 - 600</span>
+                        </div>
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
 
-
-        <!-- <div>
+            <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
         </div> -->
-        <!-- gráfico -->
-        <!-- grafico 1 -->
-        <script>
-            const labels = [
-                '12:00',
-                '13:00',
-                '14:00',
-                '15:00',
-                '16:00',
-                '17:00',
-            ];
+            <!-- gráfico -->
+            <!-- grafico 1 -->
+            <script>
+                const labels = [
+                    '12:00',
+                    '13:00',
+                    '14:00',
+                    '15:00',
+                    '16:00',
+                    '17:00',
+                ];
 
-            const ctx = document.getElementById('myChart');
+                const ctx = document.getElementById('myChart');
 
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
-                    datasets: [{
-                        label: 'Média de luz /hora',
-                        data: [213, 426, 639, 852, 923, 994, 1023, 994, 987, 861, 698, 415, 208, 158],
-                        borderWidth: 3
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
+                        datasets: [{
+                            label: '',
+                            data: [213, 426, 639, 852, 923, 994, 1023, 994, 987, 861, 698, 415, 208, 158],
+                            borderWidth: 3
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
                         }
                     }
-                }
-            });
-        </script>
+                });
+            </script>
 
-        <script>
-            const myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
+            <script>
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
 
 
-        </script>
+            </script>
 
 
 </html>

@@ -11,9 +11,8 @@ body {
 
 html{
     background: linear-gradient(180deg, #122B12 7.52%, rgba(34, 90, 34, 0.96) 49.1%, #122B1C 93.36%) no-repeat center center fixed;
-    /* background-repeat: no-repeat; */
     background-size: cover;
-
+    height: 100%;
 }
 
 body{
@@ -21,7 +20,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;  
+    gap: 30px; 
+    height: 100%;
 }
 
 /* .cadastroBody {

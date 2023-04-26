@@ -5,17 +5,27 @@
 body {
     margin: 0;
     padding: 0;
-    background: #EBF0DE;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
 }
 
-html,
-body {
+html{
+    background: linear-gradient(180deg, #122B12 7.52%, rgba(34, 90, 34, 0.96) 49.1%, #122B1C 93.36%) no-repeat center center fixed;
+    background-size: cover;
     height: 100%;
-    max-width: 100%;
 }
 
-.cadastroBody {
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; 
+    height: 100%;
+}
+
+
+/* .cadastroBody {
     background-image: linear-gradient(180deg, #122B12 7.52%, rgba(34, 90, 34, 0.96) 49.1%, #122B1C 93.36%);
     background-size: cover;
     height: 100%;
@@ -25,7 +35,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 30px;
-}
+} */
 
 .cadastroContainer {
     background-color: #FFFFFF;

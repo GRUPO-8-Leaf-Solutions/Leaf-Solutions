@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatística</title>
+    <script src="js/estatisticaPage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/setorPage.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+     <!-- PAG MENU -->
+     <div class="container">
+
+        <div class="lateral">
+            <!-- parte de cima -->
+            <div class="listaBaixo">
+                <div class="navegacão">
+                    <div class="navHeader">
+                        <img src="../../assets/icon/LogomarcaDashboard.png" alt="">
+                        <span>MENU</span>
+                    </div>
+                    <ul>
+                        <li class="lista">
+
+                            <a href="dashboardPage.html">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="lista destaque">
+                            <a href="estatisticaPage.html">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Estatística</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="previsaoPage.html">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Previsões</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="historicoPage.html">
+                                <img src="../../assets/imgs/Vector.png" alt="">
+                                <span class="lista">Histórico</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- parte de baixo -->
+                <div class="trindade">
+                    <div class="configNomeimg">
+                        <div class="nomeNome">
+                            <img src="../../assets/imgs/Ellipse2325.png" alt="">
+                            <ul class="ul2">
+                                <span class="ismalendas">
+                                    <span>NomeUsuario</span>
+                                    <span>NomeEmpresa</span>
+                                </span>
+                            </ul>
+                        </div>
+
+                        <div class="configgg">
+                            <a href="#">
+                                <i class="uil uil-setting"></i>
+                            </a>
+                            <a href="">
+                                <i class="uil uil-signout" style="color: #C63535;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM DO MENU -->
+        <!-- parte do dash -->
+        <div class="tela">
+
+            <div class="areaDash">
+                <div class="top-left">
+                    <span class="topo">Estatística - Estufa Guimarães Setor 1</span>
+                </div>
+            </div>
+
+            <div class="chartContainer">
+                <div class="chartTittle">
+                    <span>Luminosidade atual do setor 1</span>
+                    <div class="lumPar">
+                        <div class="parametroSmall parametroUrgente">
+                            <span>
+                                <img src="../../assets/imgs/vetorUrgente.svg">
+                                300
+                            </span>
+                            <span>Valor atual de luminosidade</span>
+                        </div>
+
+                        <div class="parametroSmall parametroAdequado">
+                            <span>500 - 600</span>
+                            <span>Parametro ideal do Setor 1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="width: 50%; height: 100%;">
+                    <canvas id="registroLuminosidade"></canvas>
+                </div>
+            </div>
+
+            <div class="bottomPart">
+
+            <div class="chartContainer">
+                <div class="chartTittle" style="padding-bottom: 15px;">
+                    <span>Quantidade de alertas emitidos</span>
+
+                </div>
+
+                <div style="width: 600px; height: 300px;">
+                    <canvas id="registroAlertas"></canvas>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const ctx1 = document.getElementById('registroLuminosidade');
+  
+    new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+   
+   <script>
+    const ctx2 = document.getElementById('registroAlertas');
+  
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
