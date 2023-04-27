@@ -145,59 +145,75 @@
                     </div>
                 </div>
             </div>
-          <!-- ------------------------------------------------------------------------- -->
+            <!-- ------------------------------------------------------------------------- -->
             <div class="telaa">
                 <div class="containerChart">
                     <div class="chartContainerH">
                         <div class="caixaIndicadores">
                             <div class="indicadores">
-                                <span class="urgente flexJ">URGENTE</span>
-                                <span class="critico flexJ">CRÍTICO</span>
-                                <span class="preocupante flexJ">PREOCUPANTE</span>
+                                <div class="urgente flexJ">
+                                    <div class="flexJ">
+                                        <img src="../../assets/imgs/vetorUrgente.svg">
+                                    </div>
+                                    <span style="color: #C63535;" class="urgenteText">
+                                        • URGENTE
+                                    </span>
+                                </div>
+                                <div class="critico flexJ">
+                                    <div><img src="../../assets/imgs/vectorCritico.svg" alt=""></div><span
+                                        style="color: #C65835;"> • CRÍTICO</span>
+                                </div>
+                                <div class="preocupante flexJ">
+                                    <div><img src="../../assets/imgs/vectorPreocupante.svg" alt=""></div><span
+                                        style="color: #CCA92B;"> • PREOCUPANTE</span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="graficoBarra">
-                            <span class="tituloGrafico">Titulo gráfico</span>
+                            <span class="tituloGrafico">Media de luminosidade Por setor da Estufa Guimarães</span>
                             <div><canvas class="graficoBarra" id="myChart"></canvas></div>
                         </div>
                     </div>
-
+                    <!-- linha 1 -->
                     <div class="containerAlerts">
                         <div class="linha">
                             <div class="maiorCap gapy">
-                                <div class="imgAlert">img</div>
+                                <div class="imgAlert"><img src="../../assets/imgs/vetorUrgente.svg"></div>
                                 <div class="valores">
-                                    <span class="maiorcaptacacao">Maior Captação</span>
-                                    <span class="_820">820</span>
-                                    <span class="setor1">Setor 1</span>
-                                    <span class="hora">09:35</span>
+                                    <span style="color: #C63535;" class="maiorcaptacacao">Maior Captação</span>
+                                    <span style="color: #FA1111;" class="_820 valorzao">820</span>
+                                    <span style="color: #880B0B;" class="setor1">Setor 1</span>
+                                    <span style="color: #6D2D2D;" class="hora"><img
+                                            src="../../assets/imgs/relogio.svg">09:35</span>
                                 </div>
                             </div>
                             <div class="menorCap flexJ gapy">
-                                <div class="imgAlert">img</div>
+                                <div class="imgAlert"><img src="../../assets/imgs/verificado.svg" alt=""></div>
                                 <div class="valores">
-                                    <span class="maiorcaptacacao">Menor Captação</span>
-                                    <span class="_820">520</span>
-                                    <span class="setor1">Setor 3</span>
-                                    <span class="hora">08:50</span>
+                                    <span style="color: #72CC2B;" class="maiorcaptacacao">Menor Captação</span>
+                                    <span style="color: #61F804;" class="_820 valorzao">520</span>
+                                    <span style="color: #0B8818;" class="setor1">Setor 3</span>
+                                    <span style="color: #2D6D37;" class="hora"><img
+                                            src="../../assets/imgs/relogio.svg">08:50</span>
                                 </div>
                             </div>
                         </div>
                         <!-- linha 2 -->
                         <div class="linha">
                             <div class="media flexJ gapy">
-                                <div class="imgAlert">img</div>
+                                <div class="imgAlert"><img src="../../assets/imgs/!.svg" alt=""></div>
                                 <div class="valores">
-                                    <span class="maiorcaptacacao">Média diária de Luminosidade</span>
-                                    <span class="_820">700</span>
+                                    <span style="color: #C65835;" class="maiorcaptacacao">Média diária de
+                                        Luminosidade</span>
+                                    <span style="color: #FA8111;" class="_820 valorzao">700</span>
                                 </div>
                             </div>
                             <div class="Tempo flexJ gapy">
-                                <div class="imgAlert">img</div>
+                                <div class="imgAlert"><img src="../../assets/imgs/lampadaIcone.svg" alt=""></div>
                                 <div class="valores">
-                                    <span class="maiorcaptacacao">Tempo de Captação</span>
-                                    <span class="_820">8,4H</span>6
+                                    <span style="color: #C6B835;" class="maiorcaptacacao">Tempo de Captação</span>
+                                    <span style="color: #D9DD00;" class="_820 valorzao">8,4H</span>
                                 </div>
                             </div>
                         </div>
@@ -205,48 +221,93 @@
 
                 </div>
                 <div class="alertasLista">
-                    <span>Histórico de alertas</span>
+                    <span class="histAlerts valorzaoO">Histórico de alertas</span>
                     <div class="rolando">
-                    <div class="caixaColorida">
-                        <span class="img">img</span>
-                        <div class="conteudo">
-                            <div class="setorEhora">
-                                <span>SETOR 1</span>
-                                <div class="iconeEhora flexJ">
-                                    <div class="imgHora">img</div><span>09:35</span>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR Z</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #950000;">09:35</span>
+                                    </div>
                                 </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 820</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
                             </div>
-                            <span class="indice">ÍNDICE ATUAL: 820</span>
-                            <span class="indice">IDEAL: 500 - 600</span>
+                        </div>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR X</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #950000;">09:20</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
+                            </div>
+                        </div>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR X</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #950000;">09:20</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
+                            </div>
+                        </div>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR X</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #950000;">09:20</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
+                            </div>
+                        </div>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR X</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #950000;">09:20</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
+                            </div>
+                        </div>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR Y</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #950000;">09:05</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 340</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="caixaColorida">
-                        <span class="img">img</span>
-                        <div class="conteudo">
-                            <div class="setorEhora">
-                                <span>SETOR 1</span>
-                                <div class="iconeEhora flexJ">
-                                    <div class="imgHora">img</div><span>09:35</span>
-                                </div>
-                            </div>
-                            <span class="indice">ÍNDICE ATUAL: 820</span>
-                            <span class="indice">IDEAL: 500 - 600</span>
-                        </div>
-                    </div>
-                    <div class="caixaColorida">
-                        <span class="img">img</span>
-                        <div class="conteudo">
-                            <div class="setorEhora">
-                                <span>SETOR 1</span>
-                                <div class="iconeEhora flexJ">
-                                    <div class="imgHora">img</div><span>09:35</span>
-                                </div>
-                            </div>
-                            <span class="indice">ÍNDICE ATUAL: 820</span>
-                            <span class="indice">IDEAL: 500 - 600</span>
-                        </div>
-                    </div>
-                </div>
                 </div>
             </div>
 
@@ -270,12 +331,21 @@
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
+                        labels: ['14:15', '14:30', '14:45', '15:00', '15:15', '15:30'],
                         datasets: [{
-                            label: '',
-                            data: [213, 426, 639, 852, 923, 994, 1023, 994, 987, 861, 698, 415, 208, 158],
+                            label: 'Setor 1',
+                            data: [400, 400, 550, 323, 400, 427, 1023, 994, 987, 861, 698, 415, 208, 158],
                             borderWidth: 3
-                        }]
+                        }, {
+                            label: 'Setor 2',
+                            data: [500, 325, 415, 250, 600, 350],
+                            borderWidth: 1
+                        }, {
+                            label: 'Setor 3',
+                            data: [425, 429, 150, 200, 200, 431],
+                            borderWidth: 1
+                        }
+                        ]
                     },
                     options: {
                         scales: {
