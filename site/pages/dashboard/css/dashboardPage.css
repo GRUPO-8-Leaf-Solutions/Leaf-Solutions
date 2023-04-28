@@ -260,14 +260,6 @@ li a {
     line-height: 18.15px;
 }
 
-.img-alert {
-    width: 20px;
-    height: 35px;
-    top: 19.88%;
-    left: 24.54%;
-    right: 74.03%;
-    bottom: 78.17%;
-}
 
 .areaDash {
     display: flex;
@@ -283,26 +275,16 @@ li a {
 
 .urgente {
     color: rgba(149, 0, 0, 1);
-    width: 230px;
-    height: 20.91px;
     font-family: 'Nunito';
     font-weight: 700;
     font-size: 14px;
     line-height: 19px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: -95px;
-    margin-left: 21px;
 }
 
-.img {
-    width: 20px;
-}
 
 span {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -320,8 +302,6 @@ span {
 
 .text-parametro-urgente {
     color: rgba(0, 0, 0, 1);
-    width: 200px;
-    height: 16px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
@@ -329,8 +309,6 @@ span {
     line-height: 16px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 64);
-    margin-left: -141px;
-    margin-top: -36px;
 }
 
 .text-parametro-critico {
@@ -348,16 +326,12 @@ span {
 }
 
 .text-atual {
-    width: 162px;
-    height: 16px;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
     font-size: 14px;
     text-transform: uppercase;
     color: rgba(204, 0, 0, 1);
-    margin-left: 2px;
-    margin-top: -35px;
 }
 
 .text-parametro-preocupante {
@@ -418,11 +392,15 @@ span {
 }
 
 .alert {
-    width: 253px;
+    width: 280px;
     height: 103.46px;
     background-color: rgba(204, 0, 0, 0.40);
     box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
 }
 
 .urgenteEst {
@@ -460,17 +438,14 @@ span {
 
 .alerts {
     display: flex;
-    height: 80px;
-    align-items: center;
-    width: 100%;
-    padding: 0 50px 0 41px;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
 }
 
 .text-valores {
     display: flex;
     flex-direction: column;
-    height: 60px;
     justify-content: space-between;
 }
 
@@ -479,13 +454,8 @@ span {
     gap: 50px;
 }
 
-.text-valores> :nth-child(1) {
-    padding-left: 20px;
-}
 
-.text-valores> :nth-child(1)>:nth-child(2) {
-    padding-left: 7px;
-}
+
 
 .critico {
     color: rgba(226, 95, 21, 1);
@@ -617,25 +587,39 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto;
-    overflow-x: hidden;
     gap: 13px;
 }
 
+.tela-alertas .listaScroller{
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px 10px 0;
+}
+
+.listaScroller::-webkit-scrollbar{
+    width: 5px;
+    height: 8px;
+}
+
+.listaScroller::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+  }
+
 .img-alert {
     width: 31.3px;
-    height: 29.67;
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-    margin-left: 11px
+    height: 35px;
 }
 
 .main {
     display: flex;
     flex-direction: column;
     width: 70%;
-    gap: 28px;
+    gap: 15px;
 }
 
 .title-alerta {
@@ -697,7 +681,7 @@ span {
 }
 
 .ajuste_pie {
-    width: 220px !important;
+    width: 235px !important;
     height: 100px;
 }
 
@@ -709,7 +693,6 @@ span {
     letter-spacing: 0.33em;
     text-transform: uppercase;
     text-align: center;
-    width: 400px;
 }
 
 .rodape {
@@ -718,13 +701,13 @@ span {
 }
 
 .alto_indice_luz {
-    width: 200px;
-    height: 80px;
+    width: 205px;
+    padding: 5px 5px;
+    height: 95px;
     background-color: #FBFBFB;
     text-align: center;
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-    text-transform: uppercase;
     font-size: 12px;
     line-height: 18px;
 }
@@ -810,8 +793,9 @@ span {
 }
 
 .menor_indice_luz {
-    width: 200px;
-    height: 80px;
+    width: 205px;
+    padding: 5px 5px;
+    height: 95px;
     background-color: #FBFBFB;
     text-align: center;
     border-radius: 18px;

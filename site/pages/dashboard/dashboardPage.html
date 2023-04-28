@@ -94,7 +94,7 @@
                     <div class="containerChart">
                         <div class="tittle_chart">
                             <span>
-                                STATUS DA LUMINOSIDADE NAS ULTIMAS 24H
+                                MEDIA DA LUMINOSIDADE DAS ESTUFAS NAS ULTIMAS 24H
                             </span>
                         </div>
                         <canvas id="myChart1"></canvas>
@@ -110,7 +110,7 @@
 
                     <div class="rodape">
                         <div class="ajuste_pie">
-                            <p>Luminosidade entre o parâmetro</p>
+                            <p>QUANTIDADE DE SETORES DENTRO E FORA DO PARAMETRO</p>
                             <div class="grafico_pie">
                                 <div class="teste">
                                     <canvas id="grafico_pizza"></canvas>
@@ -121,26 +121,27 @@
                             <div class="daddy_indice">
                                 <div class="alto_indice_luz">
                                     <div class="maior_indice_luz">
-                                        Maior índice de luz <br>
-                                        <p>850</p>
+                                        MAIOR ÍNDICE DE LUZ CAPTADO <br>
+                                        <p>820lm</p>
                                     </div>
                                     <div class="indicacao_estufa">
-                                        Guimarães
-                                    </div>
-                                    <div class="indicacao_setor">
-                                        Setor 05
-                                    </div>
+                                        Guimarães - setor 1
+                                    </div>     
+                                    <span style="color: #6D2D2D;" class="hora"><img
+                                        src="../../assets/imgs/relogio.svg">09:35
+                                    </span>
+                               
                                 </div>
                                 <div class="baixo_indice_luz">
                                     <div class="menor_indice_luz">
-                                        Menor índice de luz <br>
-                                        <p>200</p>
+                                        MENOR ÍNDICE DE LUZ<br>
+                                        <p>200lm</p>
                                         <div class="indicacao_estufa">
-                                            Paulista
+                                            Paulista - setor 02
                                         </div>
-                                        <div class="indicacao_setor">
-                                            Setor 01
-                                        </div>
+                                        <span style="color: #6D2D2D;" class="hora"><img
+                                            src="../../assets/imgs/relogio.svg">08:20
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -151,13 +152,13 @@
                                     </div>
                                     <div class="mencao_estufas">
                                         <div class="mencionar_estufa1">
-                                            Guimarães
+                                            Antônio
                                         </div>
                                         <div class="mencionar_estufa2">
-                                            Paulista
+                                            Guimarães
                                         </div>
                                         <div class="mencionar_estufa3">
-                                            Antônio
+                                            Paulista
                                         </div>
                                     </div>
                                 </div>
@@ -170,34 +171,97 @@
                 <div class="lado_direito">
                     <div class="tela-alertas">
                         <span class="title-alerta">ALERTAS</span>
-                        <a class="click-alert" href="">
+
+                    <div class="listaScroller">
+                        <a class="click-alert" href="setor1.html">
                             <div class="containerAlert">
                                 <div class="alert">
                                     <div class="img">
                                         <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
                                     </div>
-                                    <div class="urgenteEst">
-                                        <span class="urgente">ESTUFA 05 - SETOR X</span>
-                                    </div>
-
-                                    <div class="alerts">
-                                        <div class="text-valores">
-                                            <span class="text-atual">ÍNDICE ATUAL: 340</span>
+                                    <div style="display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+                                        <div class="urgenteEst">
+                                            <span class="urgente">ESTUFA GUIMARÃES - SETOR 1</span>
                                         </div>
-                                        <div>
-                                            <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
+
+                                        <div class="alerts">
+                                            <div class="text-valores">
+                                                <span class="text-atual">ÍNDICE ATUAL: 300</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                                <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
+                                                <span style="color: #6D2D2D;" class="hora"><img
+                                                    src="../../assets/imgs/relogio.svg">09:35
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </a>
+
+                        <a class="click-alert" href="setor2.html">
+                            <div class="containerAlert">
+                                <div class="alert">
+                                    <div class="img">
+                                        <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+                                        <div class="urgenteEst">
+                                            <span class="urgente">ESTUFA GUIMARÃES - SETOR 2</span>
+                                        </div>
+
+                                        <div class="alerts">
+                                            <div class="text-valores">
+                                                <span class="text-atual">ÍNDICE ATUAL: 0</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                                <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
+                                                <span style="color: #6D2D2D;" class="hora"><img
+                                                    src="../../assets/imgs/relogio.svg">09:35
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a class="click-alert" href="setor1.html">
+                            <div class="containerAlert">
+                                <div class="alert">
+                                    <div class="img">
+                                        <img class="img-alert" src="../../assets/imgs/alert-icon.svg" alt="">
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+                                        <div class="urgenteEst">
+                                            <span class="urgente">ESTUFA GUIMARÃES - SETOR 3</span>
+                                        </div>
+
+                                        <div class="alerts">
+                                            <div class="text-valores">
+                                                <span class="text-atual">ÍNDICE ATUAL: 0</span>
+                                            </div>
+                                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                                <span class="text-parametro-urgente">IDEAL: 500 - 600</span>
+                                                <span style="color: #6D2D2D;" class="hora"><img
+                                                    src="../../assets/imgs/relogio.svg">09:35
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                        
                         <!--ALERTA CRÍTICO -->
 
 
                         <!-- ALERTA CRÍTICO  -->
 
-                        <a class="click-alert-critico" href="">
-                            <div class="containerAlert-critico">
+                        <!-- <a class="click-alert-critico" href="">
+                            <div class="containerAlert">
                                 <div class="alert-critico">
                                     <div class="img">
                                         <img class="img-alert" src="../../assets/imgs/vectorCritico.svg">
@@ -219,11 +283,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
 
                         <!-- ALERTA PREOCUPANTE -->
-                        <a class="click-alert-preocupante" href="">
-                            <div class="containerAlert-preocupante">
+                        <!-- <a class="click-alert-preocupante" href="">
+                            <div class="containerAlert">
                                 <div class="alert-preocupante">
                                     <div class="urgenteEst-preocupado">
                                         <img class="img-alert" src="../../assets/imgs/vectorPreocupante.svg" alt="">
@@ -242,7 +306,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
 
 
 
@@ -303,13 +367,13 @@
             label: 'Paulista',
             backgroundColor: 'rgb(148, 0, 211)',
             borderColor: 'rgb(148, 0, 211)',
-            data: [720, 665, 710, 787, 860, 901],
+            data: [520, 500, 700, 560, 610, 560],
         },
         {
             label: 'Guimarães',
             backgroundColor: 'rgb(18, 10, 143)',
             borderColor: 'rgb(18, 10, 143)',
-            data: [701, 783, 855, 799, 890, 954],
+            data: [200, 266, 200, 233, 166, 200],
         }
         ]
     };
@@ -340,7 +404,6 @@
         data: {
             labels: ['Dentro do parâmetro', 'Fora do parâmetro'],
             datasets: [{
-                label: 'Horas dentro e fora do ideal',
                 data: [80, 20],
                 borderWidth: 1
             }]
