@@ -2,6 +2,9 @@
 
 PowerPoint ultima atualização feita
 
+https://www.figma.com/file/GpShnvhnR9eKpEiGOoYRPo/Leaf-Solutions?node-id=0%3A1&t=jT0waDzOR2l0DGg8-1
+
+
 Regras de condução da equipe!
 
 1° Ser comprometido e pontual com os combinados da equipe. <br>
