@@ -283,7 +283,7 @@ li a {
     background: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
-    padding: 10px 80px;
+    padding: 0 15px;
 }
 
 .chartContainer .chartTittle{

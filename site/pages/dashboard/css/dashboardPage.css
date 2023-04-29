@@ -330,7 +330,6 @@ span {
     font-style: normal;
     font-weight: 800;
     font-size: 14px;
-    text-transform: uppercase;
     color: rgba(204, 0, 0, 1);
 }
 
@@ -672,7 +671,7 @@ span {
     background: white;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 15px;
-    width: 92%;
+    width: 93%;
 }
 
 .grafico_pizza {
@@ -697,7 +696,7 @@ span {
 
 .rodape {
     display: flex;
-    gap: 136px;    
+    justify-content: space-evenly;
 }
 
 .alto_indice_luz {
@@ -800,7 +799,6 @@ span {
     text-align: center;
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-    text-transform: uppercase;
     font-size: 12px;
     line-height: 18px;
 }
