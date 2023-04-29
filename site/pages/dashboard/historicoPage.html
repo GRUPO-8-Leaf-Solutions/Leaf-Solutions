@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histórico</title>
+    <title>Leaf - Histórico</title>
     <link rel="stylesheet" href="./css/historicoPage.css">
     <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="icon" href="../../assets/icon/logo.svg">
 </head>
 
 <body>
@@ -27,25 +29,25 @@
                         <li class="lista">
 
                             <a href="dashboardPage.html">
-                                <img src="../../assets/imgs/Vector.png">
+                                <i class="uil uil-create-dashboard"></i>
                                 <span class="lista">Dashboard</span>
                             </a>
                         </li>
                         <li class="lista ">
                             <a href="estatisticaPage.html">
-                                <img src="../../assets/imgs/Vector.png">
+                                <i class="uil uil-presentation-line"></i>
                                 <span class="lista">Estatística</span>
                             </a>
                         </li>
                         <li class="lista">
                             <a href="previsaoPage.html">
-                                <img src="../../assets/imgs/Vector.png">
+                                <i class="uil uil-chart-pie"></i>
                                 <span class="lista">Previsões</span>
                             </a>
                         </li>
                         <li class="lista destaque">
                             <a href="historicoPage.html">
-                                <img src="../../assets/imgs/Vector.png">
+                                <i class="uil uil-history"></i>
                                 <span class="lista">Histórico</span>
                             </a>
                         </li>
@@ -131,16 +133,10 @@
                     <div class="inputEstufa">
                         <label for="estufa"></label>
                         <select class="estufaCinza" id="estufa" name="estufa">
-                            <option value="Estufa 1">Estufa 1</option>
-                            <option value="Estufa 2">Estufa 2</option>
-                            <option value="Estufa 3">Estufa 3</option>
-                            <option value="Estufa 4">Estufa 4</option>
-                            <option value="Estufa 5">Estufa 5</option>
-                            <option value="Estufa 6">Estufa 6</option>
-                            <option value="Estufa 7">Estufa 7</option>
-                            <option value="Estufa 8">Estufa 8</option>
-                            <option value="Estufa 9">Estufa 9</option>
-                            <option value="Estufa 10">Estufa 10</option>
+                            <option value="Estufa 1">Estufa Guimarães</option>
+                            <option value="Estufa 2">Estufa Antônio</option>
+                            <option value="Estufa 3">Estufa Paulista</option>
+
                         </select>
                     </div>
                 </div>
@@ -150,6 +146,7 @@
                 <div class="containerChart">
                     <div class="chartContainerH">
                         <div class="caixaIndicadores">
+                            <span>Filtros</span>
                             <div class="indicadores">
                                 <div class="urgente flexJ">
                                     <div class="flexJ">
@@ -160,18 +157,22 @@
                                     </span>
                                 </div>
                                 <div class="critico flexJ">
-                                    <div><img src="../../assets/imgs/vectorCritico.svg"></div><span
-                                        style="color: #C65835;"> • CRÍTICO</span>
+                                    <div>
+                                        <img src="../../assets/imgs/vectorCritico.svg"></div><span
+                                        style="color: #C65835;"> 
+                                        • CRÍTICO</span>
                                 </div>
                                 <div class="preocupante flexJ">
-                                    <div><img src="../../assets/imgs/vectorPreocupante.svg"></div><span
-                                        style="color: #CCA92B;"> • PREOCUPANTE</span>
+                                    <div>
+                                        <img src="../../assets/imgs/vectorPreocupante.svg"></div><span
+                                        style="color: #CCA92B;"> 
+                                        • PREOCUPANTE</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="graficoBarra">
-                            <span class="tituloGrafico">Media de luminosidade Por setor da Estufa Guimarães</span>
+                            <span class="tituloGrafico">Índice de luminosidade Por setor</span>
                             <div><canvas class="graficoBarra" id="myChart"></canvas></div>
                         </div>
                     </div>
@@ -195,27 +196,23 @@
                                     <span style="color: #61F804;" class="_820 valorzao">520</span>
                                     <span style="color: #0B8818;" class="setor1">Setor 3</span>
                                     <span style="color: #2D6D37;" class="hora"><img
-                                            src="../../assets/imgs/relogio.svg">08:50</span>
+                                            src="../../assets/imgs/relogioGreen.svg">08:50</span>
                                 </div>
                             </div>
                         </div>
                         <!-- linha 2 -->
                         <div class="linha">
                             <div class="media flexJ gapy">
-                                <div class="imgAlert"><img src="../../assets/imgs/!.svg"></div>
                                 <div class="valores">
                                     <span style="color: #C65835;" class="maiorcaptacacao">Média diária de
                                         Luminosidade</span>
-                                    <span style="color: #FA8111;" class="_820 valorzao">700</span>
+                                    <span style="color: #FA8111;" class="_820 valorzao">
+                                        <img src="../../assets/imgs/!.svg">
+                                        700
+                                    </span>
                                 </div>
                             </div>
-                            <div class="Tempo flexJ gapy">
-                                <div class="imgAlert"><img src="../../assets/imgs/lampadaIcone.svg"></div>
-                                <div class="valores">
-                                    <span style="color: #C6B835;" class="maiorcaptacacao">Tempo de Captação</span>
-                                    <span style="color: #D9DD00;" class="_820 valorzao">8,4H</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -227,13 +224,13 @@
                             <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
                             <div class="conteudo">
                                 <div class="setorEhora">
-                                    <span style="color: #950000;">SETOR Z</span>
+                                    <span style="color: #950000;">SETOR 1</span>
                                     <div class="iconeEhora flexJ">
                                         <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
-                                            style="color: #950000;">09:35</span>
+                                            style="color: #6D2D2D;">09:35</span>
                                     </div>
                                 </div>
-                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 820</span>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE: 820lm</span>
                                 <span class="indice">IDEAL: 500 - 600</span>
                             </div>
                         </div>
@@ -241,10 +238,41 @@
                             <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
                             <div class="conteudo">
                                 <div class="setorEhora">
-                                    <span style="color: #950000;">SETOR X</span>
+                                    <span style="color: #950000;">SETOR 1</span>
                                     <div class="iconeEhora flexJ">
                                         <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
-                                            style="color: #950000;">09:20</span>
+                                            style="color: #6D2D2D;">14:20</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE: 213lm</span>
+
+                                    <span class="indice">IDEAL: 500 - 600</span>
+
+                            </div>
+                        </div>
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR 1</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #6D2D2D;">15:50</span>
+                                    </div>
+                                </div>
+                                <span style="color: #CC0000;" class="indice">ÍNDICE: 304lm</span>
+                                <span class="indice">IDEAL: 500 - 600</span>
+                            </div>
+                        </div>
+
+                        <div class="caixaColorida">
+                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="conteudo">
+                                <div class="setorEhora">
+                                    <span style="color: #950000;">SETOR 2</span>
+                                    <div class="iconeEhora flexJ">
+                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
+                                            style="color: #6D2D2D;">09:20</span>
                                     </div>
                                 </div>
                                 <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
@@ -255,58 +283,17 @@
                             <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
                             <div class="conteudo">
                                 <div class="setorEhora">
-                                    <span style="color: #950000;">SETOR X</span>
+                                    <span style="color: #950000;">SETOR 3</span>
                                     <div class="iconeEhora flexJ">
                                         <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
-                                            style="color: #950000;">09:20</span>
+                                            style="color: #6D2D2D;">09:20</span>
                                     </div>
                                 </div>
                                 <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
                                 <span class="indice">IDEAL: 500 - 600</span>
                             </div>
                         </div>
-                        <div class="caixaColorida">
-                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
-                            <div class="conteudo">
-                                <div class="setorEhora">
-                                    <span style="color: #950000;">SETOR X</span>
-                                    <div class="iconeEhora flexJ">
-                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
-                                            style="color: #950000;">09:20</span>
-                                    </div>
-                                </div>
-                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
-                                <span class="indice">IDEAL: 500 - 600</span>
-                            </div>
-                        </div>
-                        <div class="caixaColorida">
-                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
-                            <div class="conteudo">
-                                <div class="setorEhora">
-                                    <span style="color: #950000;">SETOR X</span>
-                                    <div class="iconeEhora flexJ">
-                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
-                                            style="color: #950000;">09:20</span>
-                                    </div>
-                                </div>
-                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 290</span>
-                                <span class="indice">IDEAL: 500 - 600</span>
-                            </div>
-                        </div>
-                        <div class="caixaColorida">
-                            <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
-                            <div class="conteudo">
-                                <div class="setorEhora">
-                                    <span style="color: #950000;">SETOR Y</span>
-                                    <div class="iconeEhora flexJ">
-                                        <div class="imgHora"><img src="../../assets/imgs/relogio.svg"></div><span
-                                            style="color: #950000;">09:05</span>
-                                    </div>
-                                </div>
-                                <span style="color: #CC0000;" class="indice">ÍNDICE ATUAL: 340</span>
-                                <span class="indice">IDEAL: 500 - 600</span>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

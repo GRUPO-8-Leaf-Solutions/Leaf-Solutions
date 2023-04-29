@@ -39,6 +39,11 @@ body {
     justify-content: space-between;
 }
 
+.lista a i {
+    font-size: 30px;
+}
+
+
 .navHeader {
     display: flex;
     flex-direction: column;
@@ -185,99 +190,33 @@ li a {
 /* FIM DO CSS DO MENU */
 
 /* CSS DA TELA */
-
-
-.tela .topo {
-    color: #717171;
-    width: 127px;
-    height: 29px;
-    left: 324px;
-    top: 79px;
-    font-size: 28px;
-    font-family: 'Nunito';
-    font-weight: 600;
-    font-style: normal;
-    line-height: 29px;
-}
-
-.areaDash .ul-semanal {
-    list-style: none;
-    width: 61px;
-    height: 18px;
-    left: 324px;
-    top: 137px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: #7A7A7A;
-}
-
-.areaDash .ul-mensal {
-    list-style: none;
-    width: 51px;
-    height: 18px;
-    left: 460px;
-    top: 136px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: #7A7A7A;
-}
-
-li a {
-    text-decoration: none;
-    color: #717171;
-    font-family: 'Nunito';
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 18.15px;
-}
-
-.img-alert {
-    width: 20px;
-    height: 35px;
-    top: 19.88%;
-    left: 24.54%;
-    right: 74.03%;
-    bottom: 78.17%;
-}
-
-input {
+.tela {
+    width: 85%;
+    padding: 40px 50px;
     display: flex;
-    box-sizing: border-box;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    width: 780px;
-    height: 38px;
-    top: 79px;
-    left: 555px;
-    border: 2px solid #D1D2D2;
+    flex-direction: column;
 }
 
 .areaDash {
-    margin: 7.5px 70px 30px 50px;
     display: flex;
-    justify-content: start;
+    gap: 70px;
+    align-items: center;
+    height: 10%;
 }
 
 .top-left {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    width: 160px;
+    width: 100%;
+}
+
+.tela .topo {
+    color: #717171;
+    font-size: 28px;
 }
 
 
-
-span {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 .alert-text {
     width: 339px;
@@ -358,12 +297,7 @@ span {
     color: #E90303;
 }
 
-.tela {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
+
 
 .containerAlert {
     box-sizing: border-box;
@@ -456,12 +390,12 @@ span {
 
 .containerChart {
     height: 100%;
-    padding: 30px 5% 2% 5%;
+    padding: 15px 3% 2% 5%;
     display: flex;
     flex-direction: column;
     gap: 25.5px;
     align-items: center;
-    /* width: 100%; */
+
 }
 
 /* PARTE HISTÓRICO */
@@ -515,7 +449,7 @@ span {
     width: 110px;
     display: flex;
     justify-content: center;
-
+    align-items: center;
 }
 
 .divDias .listaDias {
@@ -563,24 +497,31 @@ canvas {
 .maiorCap {
     display: flex;
     align-items: center;
-    border: 5px;
-    border: 2px solid #FF0000;
     border-radius: 40px;
     width: 300px;
-    filter: drop-shadow(0px 0px 28px rgba(0, 0, 0, 0.25));
     justify-content: center;
     font-weight: 600;
-    /* font-size: 13px; */
     line-height: 16px;
-    /* identical to box height */
     background: #FFFFFF;
     border: 1px solid #FF0000;
     box-shadow: 0px 0px 8px 4px rgba(255, 0, 0, 0.29);
     border-radius: 45.5px;
     height: 110px;
     text-align: center;
+}
 
-
+.menorCap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid #52F804;
+    box-shadow: 0px 0px 8px 4px rgba(38, 248, 4, 0.25);
+    border-radius: 40px;
+    width: 300px;
+    height: 110px;
+    font-weight: 600;
+    line-height: 16px;
 }
 
 
@@ -620,7 +561,7 @@ canvas {
 
 .setorEhora {
     display: flex;
-    gap: 50px;
+    justify-content: space-between;
 }
 
 .flexJ {
@@ -637,32 +578,41 @@ canvas {
     height: 70px;
     border-radius: 50px !important;
     gap: 20px;
-
+    cursor: pointer;
 }
 
 .alertasLista {
     display: flex;
     flex-direction: column;
-    /* gap: 25px; */
-    /* padding: 35px 5% 2% 5%; */
     justify-content: center;
     background: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
-    height: 65%;
+    height: 75%;
     margin-top: 30px;
-
+    padding-right: 20px;
 }
 
 .rolando {
     display: flex;
     flex-direction: column;
     gap: 13px;
-    padding: 5px 5% 2% 5%;
+    padding: 0 0 30px 30px;
     height: 525px;
     overflow-y: scroll;
-    width: 330px;
+    width: 315px;
 }
+
+.rolando::-webkit-scrollbar{
+    width: 5px;
+    height: 8px;
+}
+
+.rolando::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+  }
+
 
 .menorCap {
     align-items: center;
@@ -698,21 +648,16 @@ canvas {
     height: 110px;
 }
 
-.gapy {
-    gap: 25px;
-}
 
 .caixaColorida {
     display: flex;
-    gap: 25px;
-    background-color: #F2BDBD;
+    background-color: rgba(204, 0, 0, 0.40);
     width: 275px;
     min-height: 100px;
     align-items: center;
-    border-radius: 8px;
-    /* background: #F2BDBD; */
     box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
+    font-size: 14px;
 }
 
 .iconeEhora {
@@ -723,10 +668,8 @@ canvas {
 .conteudo {
     display: flex;
     flex-direction: column;
-    height: 75px;
     gap: 7px;
-
-
+    width: 75%;
 }
 
 .imgag {
@@ -752,6 +695,7 @@ canvas {
     height: 70px;
     border-radius: 50px !important;
     gap: 20px;
+    cursor: pointer;
 }
 
 .preocupante {
@@ -765,6 +709,7 @@ canvas {
     height: 70px;
     border-radius: 50px !important;
     gap: 20px;
+    cursor: pointer;
 }
 
 .valores {
@@ -779,6 +724,7 @@ canvas {
     font-weight: 700;
     font-size: 32px;
     line-height: 44px;
+    gap: 10px;
 }
 
 .pequeno {
@@ -792,4 +738,10 @@ canvas {
     font-weight: 700;
     font-size: 23px;
     line-height: 44px;
+}
+
+.caixaIndicadores > :nth-child(1){
+    color: #7A7A7A;
+    font-size: 15px;
+    padding: 0 30px 10px 30px;
 }

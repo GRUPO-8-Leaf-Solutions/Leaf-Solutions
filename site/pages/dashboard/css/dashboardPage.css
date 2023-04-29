@@ -52,11 +52,15 @@ body {
     box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
 }
 
-.lateral .listaBaixo {
+.lateral .listaBaixo{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.lista a i {
+    font-size: 30px;
 }
 
 .navHeader {
@@ -165,12 +169,12 @@ body {
     gap: 8px;
 }
 
-.configgg a {
+.configgg a{
     text-decoration: none;
     color: inherit;
 }
 
-.configgg a i {
+.configgg a i{
     font-size: 25px;
     color: #959595;
 }
@@ -191,12 +195,12 @@ li a {
     color: #7A7A7A;
 }
 
-.ismalendas> :nth-child(1) {
+.ismalendas > :nth-child(1) {
     font-weight: 300;
     font-size: 17px;
 }
 
-.ismalendas> :nth-child(2) {
+.ismalendas > :nth-child(2) {
     font-weight: 300;
     font-size: 14px;
     color: #A1A0A0;
@@ -281,12 +285,22 @@ li a {
     line-height: 19px;
 }
 
-
-span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.critico{
+    color: #E25F15;
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
 }
+
+.preocupante{
+    color: #BC8410;
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+}
+
 
 .alert-text {
     width: 339px;
@@ -331,6 +345,21 @@ span {
     font-weight: 800;
     font-size: 14px;
     color: rgba(204, 0, 0, 1);
+}
+.text-atual-critico{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: #E95603;
+}
+
+.text-atual-preocupante{
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: #E29800;
 }
 
 .text-parametro-preocupante {
@@ -402,6 +431,30 @@ span {
     gap: 10px;
 }
 
+.alertCritico{
+    width: 280px;
+    height: 103.46px;
+    background-color: #f28d289d;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.alertPreocupante{
+    width: 280px;
+    height: 103.46px;
+    background-color: #ffd3325d;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+}
+
 .urgenteEst {
     display: flex;
     align-items: center;
@@ -456,20 +509,7 @@ span {
 
 
 
-.critico {
-    color: rgba(226, 95, 21, 1);
-    width: 230px;
-    height: 20.91px;
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 22px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: -95px;
-    margin-left: 20px;
-}
+
 
 .critico-setor {
     color: rgba(255, 92, 0, 1);
@@ -499,20 +539,6 @@ span {
     margin-top: -35px;
 }
 
-.preocupante {
-    color: rgba(188, 132, 16, 1);
-    width: 234px;
-    height: 20.91px;
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 22px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    margin-top: -58px;
-    margin-left: 18px;
-}
 
 .urgente-setor {
     color: rgba(255, 0, 0, 1);
@@ -579,7 +605,7 @@ span {
 
 .tela-alertas {
     width: 350px;
-    height: 400px;
+    height: 460px;
     background-color: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
@@ -590,7 +616,7 @@ span {
 }
 
 .tela-alertas .listaScroller{
-    height: 400px;
+    height: 415px;
     overflow-y: auto;
     overflow-x: hidden;
     gap: 25px;
@@ -612,6 +638,11 @@ span {
 .img-alert {
     width: 31.3px;
     height: 35px;
+}
+
+.img-alert-critico{
+    width: 30px;
+    height: 34px;
 }
 
 .main {
@@ -792,7 +823,7 @@ span {
 }
 
 .menor_indice_luz {
-    width: 205px;
+    width: 207px;
     padding: 5px 5px;
     height: 95px;
     background-color: #FBFBFB;
@@ -829,6 +860,9 @@ span {
     text-align: center;
     color: #C63535;
     box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
+    display: flex;
+    align-items: center;
+
 }
 
 .alerta_critico img {
@@ -844,6 +878,8 @@ span {
     text-align: center;
     color: #C65835;
     box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
+    display: flex;
+    align-items: center;
 }
 
 .alerta_preocupante img {
@@ -859,6 +895,8 @@ span {
     text-align: center;
     color: #BC8410;
     box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
+    display: flex;
+    align-items: center;
 }
 
 .daddy {
@@ -905,17 +943,8 @@ span {
     align-items: center;
 }
 
-.alerta_critico {
-    display: flex;
-}
 
-.alerta_preocupante  {
-    display: flex;
-}
 
-.alerta_urgente {
-    display: flex;
-}
 
 .ajuste {
     display: flex;

@@ -54,6 +54,11 @@ body {
     justify-content: space-between;
 }
 
+.lista a i {
+    font-size: 30px;
+}
+
+
 .navHeader {
     display: flex;
     flex-direction: column;

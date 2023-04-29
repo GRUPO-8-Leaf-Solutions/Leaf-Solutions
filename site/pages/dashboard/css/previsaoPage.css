@@ -9,6 +9,7 @@
 
 }
 
+
 html,
 body {
     height: 100%;
@@ -17,57 +18,57 @@ body {
 
 .container {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: inherit;
+    width: inherit;
+    overflow: hidden;
 }
 
 .container .lateral {
-    width: 225px;
+    height: 100%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    background: #D7F1EA;
+    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
+}
+
+.lateral .listaBaixo {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 40px 40px 40px 22.5px;
-    background: #D7F1EA;
-    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
-
-
 }
+
+.lista a i {
+    font-size: 30px;
+}
+
 
 .navHeader {
     display: flex;
     flex-direction: column;
     height: 175px;
+    width: 70%;
     justify-content: space-between;
     align-content: space-between;
-    padding-left: 25px;
-
-
+    align-self: center;
 }
 
 .navHeader span {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18.5px;
-    line-height: 18px;
+    font-size: 16px;
     color: #7A7A7A;
 }
 
 .navHeader img {
-    width: 120px;
+    width: 105px;
 }
 
-body {
-    min-height: 100vh;
-    background-color: #E7F1EE;
-}
 
 .navegacão {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 170px;
     gap: 20px;
 }
 
@@ -77,25 +78,25 @@ body {
 
 .navegacão ul li {
     display: flex;
-    justify-content: start;
     align-items: center;
     height: 65px;
     list-style: none;
-    width: 100%;
-    padding-left: 25px;
+
 
 }
 
 .navegacão ul li a {
     display: flex;
     align-items: center;
+    padding-left: 23px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 25px;
     color: #064306;
     gap: 15px;
-
+    /* letter-spacing: 3px; */
+    width: 100%;
 }
 
 .navegacão ul li a .icone {
@@ -115,6 +116,7 @@ body {
 .nomeNome {
     display: flex;
     gap: 15px;
+    justify-content: center;
 
 }
 
@@ -127,10 +129,9 @@ body {
 
 .configNomeimg {
     display: flex;
-
     flex-direction: column;
-    align-items: center;
-    height: 90px;
+
+    gap: 15px;
 }
 
 .nomeNome span .config {
@@ -143,16 +144,22 @@ body {
 
 .configgg {
     display: flex;
+    width: 100%;
     list-style: none;
-    align-items: flex-end;
+    align-items: center;
+    justify-content: end;
     flex-direction: row;
-    height: 40px;
     gap: 8px;
 }
 
-.NomeEmpresa {
-    color: #A1A0A0;
-    list-style: none;
+.configgg a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.configgg a i {
+    font-size: 25px;
+    color: #959595;
 }
 
 .config {
@@ -171,102 +178,55 @@ li a {
     color: #7A7A7A;
 }
 
-.ismalendas li a {
-    color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.ismalendas> :nth-child(1) {
+    font-weight: 300;
+    font-size: 17px;
+}
+
+.ismalendas> :nth-child(2) {
+    font-weight: 300;
+    font-size: 14px;
+    color: #A1A0A0;
 }
 
 /* FIM DO CSS DO MENU */
 
 /* CSS DA TELA */
 
-
-.tela .topo {
-    color: #717171;
-    width: 127px;
-    height: 29px;
-    left: 324px;
-    top: 79px;
-    font-size: 28px;
-    font-family: 'Nunito';
-    font-weight: 600;
-    font-style: normal;
-    line-height: 29px;
-}
-
-.areaDash .ul-semanal {
-    list-style: none;
-    width: 61px;
-    height: 18px;
-    left: 324px;
-    top: 137px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: #7A7A7A;
-}
-
-.areaDash .ul-mensal {
-    list-style: none;
-    width: 51px;
-    height: 18px;
-    left: 460px;
-    top: 136px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: #7A7A7A;
-}
-
-li a {
-    text-decoration: none;
-    color: #717171;
-    font-family: 'Nunito';
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 18.15px;
-}
-
-.img-alert {
-    width: 20px;
-    height: 35px;
-    top: 19.88%;
-    left: 24.54%;
-    right: 74.03%;
-    bottom: 78.17%;
-}
-
-input {
+.tela {
+    width: 85%;
+    padding: 40px 0;
     display: flex;
-    box-sizing: border-box;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    width: 780px;
-    height: 38px;
-    top: 79px;
-    left: 555px;
-    border: 2px solid #D1D2D2;
+    flex-direction: column;
+    position: relative;
 }
 
 .areaDash {
-    margin: 70px 70px 30px 50px;
     display: flex;
-    justify-content: start;
+    align-items: center;
+    height: 10%;
+    padding: 0 50px;
 }
 
 .top-left {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    width: 160px;
+    width: 100%;
 }
+
+.tela .topo {
+    color: #717171;
+    font-size: 28px;
+}
+
+.opcoesEpoca {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 .urgente {
     width: 198px;
@@ -278,12 +238,6 @@ input {
     font-weight: 700;
     font-size: 18px;
     line-height: 24.55px;
-}
-
-span {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .alert-text {
@@ -365,10 +319,6 @@ span {
     color: #E90303;
 }
 
-.tela {
-    height: 100%;
-    width: 100%;
-}
 
 .containerAlert {
     box-sizing: border-box;
@@ -479,12 +429,12 @@ span {
 
 .container-modal {
     position: absolute;
-    width: 188vh;
+    width: 100%;
     height: 100%;
     top: 0;
     display: flex;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.4);
 }
 
