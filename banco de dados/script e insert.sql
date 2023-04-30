@@ -3,175 +3,202 @@ use leafSolutions;
 
 create table empresa (
 idEmpresa int primary key auto_increment,
-razaoSocial varchar(45),
-cnpj char(14),
-emailEmpresa varchar(40), 
-tokenPerm varchar(45)
+CNPJ char(14) not null,
+razaoSocial varchar(45) not null,
+email varchar(50) not null,  
+tokenPerm varchar(8)
 );
 
 create table endereco (
-idEndereco int primary key auto_increment,
-logradouro varchar(45),
-CEP char(8),
-cidade varchar(45),
+idEndereco int auto_increment,
+CEP char(8) not null,
+logradouro varchar(80) not null,
+numero varchar(5) not null,
+complemento varchar(30),
 estado char(2),
-numero varchar(4),
-complemento varchar(45),
+cidade varchar(50),
 fkEmpresa int,
 constraint fkEnderecoEmpresa foreign key (fkEmpresa)
-	references empresa (idEmpresa)
+	references empresa (idEmpresa),
+constraint pkEndereco primary key (idEndereco, fkEmpresa)
 );
 
-create table funcionario (
-idFuncionario int primary key auto_increment,
-nome varchar(45),
-dtNasc date,
-situacao varchar(10),
-constraint chkSituacao 
-	check (situacao in ('ativo', 'afastado', 'desligado')),
-email varchar(40),
-senha varchar(20),
-cpf char(11),
+create table situacao (
+idSituacao int primary key auto_increment,
+descricao varchar(10)
+);
+
+create table usuario (
+idUsuario int auto_increment,
+nome varchar(45) not null,
+sobrenome varchar(20),
+email varchar(40) not null unique,
+senha varchar(20) not null,
 fkEmpresa int,
-constraint fkFuncionarioEmpresa foreign key (fkEmpresa)
+fkSituacao int,
+constraint fkUsuarioEmpresa foreign key (fkEmpresa)
 	references empresa (idEmpresa),
-fkEndereco int,
-constraint fkFuncionarioEndereco foreign key (fkEndereco)
-	references endereco (idEndereco)
+constraint fkUsuarioSituacao foreign key (fkSituacao)
+	references situacao (idSituacao),
+constraint pkUsuario primary key (idUsuario, fkEmpresa, fkSituacao)
+);
+
+create table tipoTelefone(
+idTipoTelefone int primary key auto_increment,
+descricao varchar(20)
 );
 
 create table telefone (
-idTelefone int primary key auto_increment,
-numero varchar(15),
-tipo varchar (15),
+idTelefone int auto_increment,
+numero varchar(20),
 fkEmpresa int,
+fkTipoTelefone int,
 constraint fkTelefoneEmpresa foreign key (fkEmpresa)
 	references empresa (idEmpresa),
-fkFuncionario int,
-constraint fkTelefoneFuncionario foreign key (fkFuncionario)
-	references funcionario (idFuncionario)
+constraint fkTelefoneTipo foreign key (fkTipoTelefone)
+	references tipoTelefone (idTipoTelefone),
+constraint pkTelefone primary key (idTelefone, fkEmpresa, fkTipoTelefone)
 );
 
-create table plantacao (
-idPlantacao int primary key auto_increment,
-espaco float,
-fkEmpresa int,
-constraint fkPlantacaoEmpresa foreign key (fkEmpresa)
-	references empresa (idEmpresa)
-);
-
-create table setorPlantacao (
-idSetorPlantacao int auto_increment,
+create table estufa (
+idEstufa int auto_increment,
 nome varchar(45),
+area int not null,
+fkEmpresa int,
+constraint fkEstufaEmpresa foreign key (fkEmpresa)
+	references empresa (idEmpresa),
+constraint pkEstufa primary key (idEstufa, fkEmpresa)
+);
+
+create table setor (
+idSetor int auto_increment,
+tipo varchar(20) not null,
 valorMin int,
 valorMax int,
-espaco float,
-tipoPlanta varchar(20),
-constraint chkTipoPlanta 
-	check (tipoPlanta in ('americana', 'crespa', 'mimosa', 'roxa')),
-fkPlantacao int,
-constraint pkSetorPlantacao primary key (idSetorPlantacao, fkPlantacao)
+fkEstufa int,
+constraint chkTipo 
+	check (tipo in ('americana', 'crespa', 'mimosa', 'roxa')),
+constraint pkSetorEstufa primary key (idSetor, fkEstufa)
 );
 
 create table sensor (
-idSensor int primary key auto_increment,
-modelo varchar(40),
-situacao varchar(20),
+idSensor int auto_increment,
+modelo varchar(5),
+situacao varchar(10),
+fkSetor int,
 constraint chkSituacaoSensor 
 	check (situacao in ('ativo', 'manutencao', 'inativo')),
-fkSetorPlantacao int,
-constraint fkSensorSetorPlantacao foreign key (fkSetorPlantacao)
-	references setorPlantacao (idSetorPlantacao)
+constraint fkSensorSetor foreign key (fkSetor)
+	references setor (idSetor),
+constraint pkSensor primary key (idSensor, fkSetor)
 );
 
 create table leituraSensor (
-idLeituraSensor int primary key auto_increment,
+idLeituraSensor int auto_increment,
 valor int,
-dtLeitura datetime,
+dtLeitura datetime default current_timestamp,
 fkSensor int,
 constraint fkLeituraSensorSensor foreign key (fkSensor)
-	references sensor (idSensor)
+	references sensor (idSensor),
+constraint pkLeituraSensor primary key (idLeituraSensor, fkSensor)
 );
 
 insert into empresa values 
-	(null, 'AlfaceTech', '48597652145369', 'alfacetech@email.com', null),
-	(null, 'Alfacinho', '54876951234562', 'alfacinho@email.com', null),
-	(null, 'Folhas Verdes', '12345678945612', 'folhasverdes@email.com', null),
-	(null, 'Leaf Green', '21346523198746', 'leafgreen@email.com', null),
-	(null, 'FolhasTech', '12451242369874', 'folhastech@email.com', null);
-
+	(null, '48597652145369', 'AlfaceTech', 'alfacetech@email.com', null),
+	(null, '54876951234562', 'Alfacinho',  'alfacinho@email.com', '84957621'),
+	(null, '12345678945612', 'Folhas Verdes', 'folhasverdes@email.com', '15478923'),
+	(null, '21346523198746', 'Leaf Green', 'leafgreen@email.com', null),
+	(null, '12451242369874', 'FolhasTech', 'folhastech@email.com', null);
 
 insert into endereco values 
-	(null, 'Rua da Uva', '45678912', 'São Paulo', 'SP', '555', null, 2),
-	(null, 'Avenida da Maçã', '36987451', 'Três Corações', 'MG', '1023', '7 andar', 1),
-	(null, 'Rua da Jaca', '15421689', 'Caxias', 'MA', '819', 'A', 3),
-	(null, 'Rua da Melancia', '78459636', 'Carueri', 'PE', '298', null, 4),
-	(null, 'Avenida da Banana', '98656394', 'Fortaleza', 'CE', '5430', null, 5),
-	(null, 'Rua do Mamão', '05213489', 'Santos', 'SP', '239', '2 andar', 3),
-	(null, 'Avenida da Goiaba', '78459697', 'Niterói', 'RJ', '555', 'B', 4),
-	(null, 'Avenida do Melão', '87459630', 'Ouro Preto', 'SP', '8745', null, null),
-	(null, 'Avenida da Jabuticaba', '14523698', 'Florianópolis', 'SC', '325', 'A', null),
+	(null, '45678912', 'Rua da Uva', '555', null,  'SP', 'São Paulo',  1),
+	(null, '36987451', 'Avenida da Maçã', '1023', '7 andar', 'MG', 'Três Corações', 1),
+	(null, '15421689', 'Rua da Jaca', '819', 'A', 'MA', 'Caxias', 2),
+	(null, '78459636', 'Rua da Melancia', '298', null, 'PE', 'Carueri', 3),
+	(null, '98656394', 'Avenida da Banana', '5430', null, 'CE', 'Fortaleza', 3),
+	(null, '05213489', 'Rua do Mamão', '239', '2 andar', 'SP', 'Santos', 3),
+	(null, '78459697', 'Avenida da Goiaba', '555', 'B', 'RJ', 'Niterói', 4),
+	(null, '87459630', 'Avenida do Melão', '8745', null, 'SP', 'Ouro Preto', 4),
+	(null, '14523698', 'Avenida da Jabuticaba', '325', 'A', 'SC', 'Florianópolis', 5);
+    
+    /* + enderecos
 	(null, 'Avenida da Laranja', '78496735', 'Gramado', 'RS', '9765', null, null),
 	(null, 'Avenida da Ameixa', '49312554', 'Salvador', 'BH', '452', 'F', null),
 	(null, 'Avenida do Morango', '99999999', 'Maceió', 'AL', '121', '11 andar', null),
 	(null, 'Avenida do Tomate', '88888888', 'Olinda', 'PE', '59', null, null),
 	(null, 'Avenida da Berinjela', '77777777', 'Natal', 'RN', '963', 'D', null),
 	(null, 'Avenida do Quiabo', '66666666', 'Aracaju', 'SE', '348', null, null);
+    */
 
-insert into funcionario values 
-	(null, 'Kauan', '2000-01-01', 'ativo', 'kauan@email.com', 'goiabinha123', '46597812369', 1, 8),
-	(null, 'Isabel', '1998-02-05', 'ativo', 'isabel@email.com', 'qwerty', '87459621364', 2, 9),
-	(null, 'Ismael', '1978-03-10', 'afastado', 'ismael@email.com', '12345678', '23654789164', 3, 10),
-	(null, 'Israel', '1999-04-15', 'ativo', 'israel@email.com', '1234', '15426789305', 4, 11),
-	(null, 'Cauã', '1989-05-20', 'desligado', 'caua@email.com', 'moranguinho321', '02154863975', 5, 12),
-	(null, 'Matheus', '2002-06-25', 'ativo', 'matheus@email.com', 'senha', '36536321487', 2, 10),
-	(null, 'Samuel', '2004-07-30', 'ativo', 'samuel@email.com', 'password', '89745632363', 3, 13),
-	(null, 'Pedro', '1984-08-07', 'ativo', 'pedro@email.com', 'sorteveS2', '00213546879', 1, 15),
-	(null, 'Lizandra', '1994-09-13', 'ativo', 'lizandra@email.com', 'floquinho', '58565954712', 5, 9),
-	(null, 'Maria', '2001-10-19', 'desligado', 'maria@email.com', 'folhaamarela', '98654872563', 4, 14);
+insert into situacao values
+	(null, 'ativo'),
+	(null, 'afastado'),
+	(null, 'desligado');
+
+insert into usuario values 
+	(null, 'Kauan', 'Fonseca', 'kauan@email.com', 'goiabinha123', 1, 1),
+	(null, 'Isabel', 'Oliveira', 'isabel@email.com', 'qwerty', 2, 1),
+	(null, 'Ismael', 'Vieria', 'ismael@email.com', '12345678', 3, 2),
+	(null, 'Israel', 'Augusto', 'israel@email.com', '1234', 4, 1),
+	(null, 'Cauã', 'Batista', 'caua@email.com', 'moranguinho321', 5, 1),
+	(null, 'Matheus', 'Cavalcante', 'matheus@email.com', 'senha', 1, 1),
+	(null, 'Samuel', 'Gaglieta', 'samuel@email.com', 'password', 1, 3),
+	(null, 'Pedro', 'Pinheiro', 'pedro@email.com', 'sorteveS2', 2, 1),
+	(null, 'Lizandra', 'Militão', 'lizandra@email.com', 'floquinho', 3, 2),
+	(null, 'Maria', 'Sousa', 'maria@email.com', 'folhaamarela', 5, 3);
     
+insert into tipoTelefone values
+	(null, 'Comercial'),
+	(null, 'Residencial'),
+	(null, 'Fixo'),
+	(null, 'Celular');
+
 insert into telefone values 
-	(null, '1185647123', 'Comercial', 1, null),
-	(null, '1365686523', 'Comercial', 2, null),
-	(null, '2096563214', 'Comercial', 3, null),
-	(null, '5512145362', 'Comercial', 4, null),
-	(null, '9975481263', 'Comercial', 5, null),
-	(null, '1284532164', 'Comercial', 3, null),
-    (null, '05998745632', 'Celular', null, 1),
-	(null, '27912546325', 'Celular', null, 4),
-	(null, '8786965742', 'Fixo', null, 5),
+	(null, '1185647123', 1, 2),
+	(null, '1365686523', 2, 1),
+	(null, '2096563214', 3, 3),
+	(null, '5512145362', 4, 4),
+	(null, '9975481263', 5, 1),
+	(null, '1284532164', 6, 3),
+    (null, '05998745632', 7, 3),
+	(null, '27912546325', 8, 1),
+	(null, '8786965742', 3, 1);
+    
+    /* + telefones
 	(null, '4532654874', 'Fixo', null, 3),
 	(null, '53999965325', 'Celular', null, 1),
 	(null, '48978785452', 'Celular', null, 2),
 	(null, '9485647123', 'Fixo', null, 7),
 	(null, '35969636632', 'Celular', null, 10),
 	(null, '12997845411', 'Celular', null, 3);
-	
-insert into plantacao values 
-	(null, 4500.5, 1),
-	(null, 10000.5, 2),
-	(null, 3200.0, 3),
-	(null, 2100.5, 4),
-	(null, 1300.5, 5),
-	(null, 3900.5, 3),
-	(null, 4050.0, 2),
-	(null, 1950.0, 5);
-    
-insert into setorPlantacao values 
-	(null, 'Setor 1', 300, 900, 2500.5, 'Americana', 1),
-	(null, 'Setor 2', 500, 700, 2000, 'Crespa', 1),
-	(null, 'Setor 1', 450, 1000, 6000, 'Mimosa', 2),
-	(null, 'Setor 2', 200, 800, 4000.5, 'Roxa', 2),
-	(null, 'Setor 1', 300, 900, 2200, 'Americana', 3),
-	(null, 'Setor 2', 500, 700, 1000, 'Crespa', 3),
-	(null, 'Setor 1', 200, 800, 1050.25, 'Roxa', 4),
-	(null, 'Setor 2', 450, 1000, 1050.25, 'Mimosa', 4),
-	(null, 'Setor 1', 300, 900, 1300.5, 'Americana', 5),
-	(null, 'Setor 1', 200, 800, 3900.5, 'Roxa', 6),
-	(null, 'Setor 1', 500, 700, 2050, 'Crespa', 7),
-	(null, 'Setor 2', 450, 1000, 2000, 'Mimosa', 7),
-	(null, 'Setor 1', 300, 900, 1450, 'Americana', 8),
-	(null, 'Setor 2', 500, 700, 500, 'Crespa', 8);
+	*/
+
+insert into estufa values 
+	(null, 'Estufa da esquerda', 300, 1),
+	(null, 'Estufa da direita', 300, 1),
+	(null, 'Estufa central', 500, 2),
+	(null, 'Estufa superior', 400, 3),
+	(null, 'Estufa inferior', 400, 3),
+	(null, 'Estufa maior', 300, 4),
+	(null, 'Estufa menor', 200, 4),
+	(null, 'Estufa central', 480, 5);
+
+ /* falta ver isso aqui*/
+insert into setor values 
+	(null, 'Americana', 300, 900, 2500.5, 1),
+	(null, 'Crespa', 700, 2000, 'Crespa', 1),
+	(null, 'Mimosa', 450, 1000, 6000, 'Mimosa', 2),
+	(null, 'Roxa', 200, 800, 4000.5, 'Roxa', 2),
+	(null, 'Americana', 300, 900, 2200, 'Americana', 3),
+	(null, 'Crespa', 500, 700, 1000, 'Crespa', 3),
+	(null, 'Roxa', 200, 800, 1050.25, 'Roxa', 4),
+	(null, 'Mimosa', 450, 1000, 1050.25, 'Mimosa', 4),
+	(null, 'Americana', 300, 900, 1300.5, 'Americana', 5),
+	(null, 'Roxa', 200, 800, 3900.5, 'Roxa', 6),
+	(null, 'Crespa', 500, 700, 2050, 'Crespa', 7),
+	(null, 'Mimosa', 450, 1000, 2000, 'Mimosa', 7),
+	(null, 'Americana', 300, 900, 1450, 'Americana', 8),
+	(null, 'Crespa', 500, 700, 500, 'Crespa', 8);
     
 insert into sensor values 
 	(null, 'ldr', 'ativo', 1),
