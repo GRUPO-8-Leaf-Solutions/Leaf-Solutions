@@ -15,30 +15,30 @@ function simuladorFinanceiro() {
     } else {
         resultadoSimulador.innerHTML = `
         <div id="divSimulador">
-        <h3 style="text-align:center">Sem a nossa solução:</h3>
+        <span style="text-align:center; font-size: 40px;">Sem a nossa solução</span>
         <ul>
             <li>
-                Faturamento total: ${totalVenda}
+                R$${totalVenda}
             </li>
             <li>
-                Número de folhas por unidade: ${qtdFolhas}
+                ${qtdFolhas}
             </li>
             <li>
-                Peso por unidade: ${pesoUnid}
+                ${pesoUnid}g
             </li>
         </div>
 
         <div id="divSimulador">
-        <h3 style="text-align:center">Com a Leaf Solutions:</h3>
+        <span style="text-align:center; font-size: 45px; font-weight: 600;">Com a Nossa solução!</span>
         <ul>
-            <li>
-                Faturamento total: ${totalSolucao} <spam style="color: Lime">(+50%)</spam>
+            <li style="font-weight: 600;">
+                R$${totalSolucao} <span style="color: Lime; font-size: 20px">(+50%)</span>
             </li>
-            <li>
-                Número de folhas por unidade: ${aumentoFolha} <spam style="color: Lime">(+47%)</spam>
+            <li style="font-weight: 600;">
+                 ${aumentoFolha} <span style="color: Lime; font-size: 20px">(+47%)</span>
             </li>
-            <li>
-                Peso por unidade: ${aumentoPeso} <spam style="color: Lime">(+57%)</spam>
+            <li style="font-weight: 600;">
+                ${aumentoPeso}g <span style="color: Lime; font-size: 20px">(+57%)</span>
             </li>
         </div>
 

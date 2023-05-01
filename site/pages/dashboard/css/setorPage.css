@@ -296,6 +296,8 @@ li a {
 .chartContainer .chartTittle .lumPar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
 }
 
 
@@ -324,11 +326,11 @@ li a {
     gap: 10px;
 }
 
-.chartContainer .chartTittle .lumPar .parametroSmall > :nth-child(1){
+.chartContainer .chartTittle .lumPar .parametroSmall > :nth-child(2){
     font-size: 21px;
 }
 
-.chartContainer .chartTittle .lumPar .parametroSmall > :nth-child(2){
+.chartContainer .chartTittle .lumPar .parametroSmall > :nth-child(1){
     font-size: 13px;
 }
 

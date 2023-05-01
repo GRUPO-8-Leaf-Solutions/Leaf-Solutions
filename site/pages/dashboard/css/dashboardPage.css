@@ -28,6 +28,10 @@
     color: #585858;
 }
 
+.hora{
+    color: #6D2D2D; font-size: 14px; display: flex; gap: 5px;
+}
+
 html,
 body {
     height: 100%;
@@ -421,7 +425,7 @@ li a {
 
 .alert {
     width: 280px;
-    height: 103.46px;
+    height: 115px;
     background-color: rgba(204, 0, 0, 0.40);
     box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
@@ -457,8 +461,8 @@ li a {
 
 .urgenteEst {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
+    gap: 3px;
 }
 
 .urgenteEst-critico {
@@ -491,7 +495,7 @@ li a {
 .alerts {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 3px;
     align-items: flex-start;
 }
 
@@ -731,11 +735,13 @@ li a {
 }
 
 .alto_indice_luz {
+    display: flex;
+    flex-direction: column;
     width: 205px;
+    align-items: center;
     padding: 5px 5px;
     height: 95px;
     background-color: #FBFBFB;
-    text-align: center;
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     font-size: 12px;
@@ -823,11 +829,14 @@ li a {
 }
 
 .menor_indice_luz {
-    width: 207px;
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    align-items: center;
     padding: 5px 5px;
     height: 95px;
     background-color: #FBFBFB;
-    text-align: center;
+
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     font-size: 12px;

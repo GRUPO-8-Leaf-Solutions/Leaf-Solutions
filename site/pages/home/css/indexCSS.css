@@ -294,7 +294,7 @@ body {
 
 .simuladorContainer form {
     display: flex;
-    width: 80%;
+    width: 100%;
     gap: 100px;
 }
 
@@ -369,7 +369,7 @@ body {
     width: 100%;
     height: fit-content;
 
-    font-size: 28px;
+    font-size: 32px;
 
     display: flex;
     flex-direction: row;
@@ -387,8 +387,8 @@ body {
 /* ver isso aqui */
 
 #divSimulador {
-    height: fit-content;
-    width: 575px;
+    height: 340px;
+    width: 450px;
 
     display: flex;
     flex-direction: column;
@@ -399,6 +399,37 @@ body {
     border-radius: 86px;
 }
 
+#divSimulador ul li{
+    position: relative;
+}
+
+#divSimulador ul li:not(:first-child){
+    margin-top: 50px;
+}
+
+#divSimulador ul>:nth-child(1)::before{
+    content: "Faturamento total:";
+    font-size: 25px;
+    position: absolute;
+    top: -20px;
+
+}
+
+#divSimulador ul>:nth-child(2)::before{
+    content: "Folhas por unidade de Pé de Alface:";
+    font-size: 25px;
+    position: absolute;
+    top: -20px;
+    
+}
+
+#divSimulador ul>:nth-child(3)::before{
+    content: "Peso da unidade de Pé de Alface:";
+    font-size: 25px;
+    position: absolute;
+    top: -20px;
+    
+}
 
 
 .faq {
