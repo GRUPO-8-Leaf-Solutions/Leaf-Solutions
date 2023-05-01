@@ -120,15 +120,6 @@ insert into endereco values
 	(null, '78459697', 'Avenida da Goiaba', '555', 'B', 'RJ', 'Niterói', 4),
 	(null, '87459630', 'Avenida do Melão', '8745', null, 'SP', 'Ouro Preto', 4),
 	(null, '14523698', 'Avenida da Jabuticaba', '325', 'A', 'SC', 'Florianópolis', 5);
-    
-    /* + enderecos
-	(null, 'Avenida da Laranja', '78496735', 'Gramado', 'RS', '9765', null, null),
-	(null, 'Avenida da Ameixa', '49312554', 'Salvador', 'BH', '452', 'F', null),
-	(null, 'Avenida do Morango', '99999999', 'Maceió', 'AL', '121', '11 andar', null),
-	(null, 'Avenida do Tomate', '88888888', 'Olinda', 'PE', '59', null, null),
-	(null, 'Avenida da Berinjela', '77777777', 'Natal', 'RN', '963', 'D', null),
-	(null, 'Avenida do Quiabo', '66666666', 'Aracaju', 'SE', '348', null, null);
-    */
 
 insert into situacao values
 	(null, 'ativo'),
@@ -183,7 +174,6 @@ insert into estufa values
 	(null, 'Estufa menor', 200, 4),
 	(null, 'Estufa central', 480, 5);
 
- /* falta ver isso aqui*/
 insert into setor values 
 	(null, 'Americana', 300, 900, 1),
 	(null, 'Crespa', 700, 2000, 1),
@@ -215,7 +205,7 @@ insert into sensor values
 	(null, 'ldr', 'inativo', 12),
 	(null, 'ldr', 'manutencao', 13),
 	(null, 'ldr', 'ativo', 14);
-
+ 
 insert into leituraSensor values 
 	(null, 500, '2023-04-01 00:00:00', 1),
 	(null, 600, '2023-04-02 00:00:00', 1),
@@ -237,3 +227,18 @@ insert into leituraSensor values
 	(null, 400, '2023-04-06 19:00:00', 12),
 	(null, 900, '2023-04-07 00:00:00', 13),
 	(null, 750, '2023-04-08 00:00:00', 14);
+    
+    
+    select 
+estufa.idEstufa as estufa,
+setor.idSetor as numero,
+sensor.idSensor as sensor,
+l.valor
+ from setor join sensor
+	on idSetor = idSensor
+    join leituraSensor as l
+    on idSensor = fkSensor
+		where campo = "alerta";
+    
+    
+    
