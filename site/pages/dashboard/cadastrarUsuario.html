@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaf - Previsao</title>
-    <link rel="stylesheet" href="./css/previsaoPage.css">
+    <title>Leaf - Dashboard</title>
+    <link rel="stylesheet" href="./css/cadastrarUsuarioPage.css">
+    <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="icon" href="../../assets/icon/logo.svg">
 </head>
@@ -36,7 +38,7 @@
                                 <span class="lista">Estatística</span>
                             </a>
                         </li>
-                        <li class="lista destaque">
+                        <li class="lista">
                             <a href="previsaoPage.html">
                                 <i class="uil uil-chart-pie"></i>
                                 <span class="lista">Previsões</span>
@@ -51,7 +53,7 @@
                     </ul>
 
                     <ul style="height: fit-content;">
-                        <li class="lista">
+                        <li class="lista destaque">
                             <a href="cadastrarUsuario.html">
                                 <i class="uil uil-plus-circle"></i>
                                 <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
@@ -93,23 +95,46 @@
             </div>
         </div>
         <!-- FIM DO MENU -->
-            <!-- parte do dash -->
-            <div class="tela">
-                <div class="areaDash">
-                    <div class="top-left">
-                        <span class="topo">Dashboard</span>
-                    </div>
-                </div>
+        <!-- parte do dash -->
+        <div class="tela">
+            <div class="areaDash">
+                <div class="top-left">
+                    <span class="topo">Cadastrar usuario</span>
 
-            <!-- PREVISÕES -->
-            <div class="container-modal">
-                <div class="modal">
-                    <span class="aviso">SERVIÇO TEMPORIARIAMENTE DESATIVADO</span>
+
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-</body>
 
+            <div class="formCadastro">
+                <div class="input">
+                    <span>nome*</span>
+                    <input type="text">
+                </div>
+                
+                <div class="input">
+                    <span>Sobrenome*</span>
+                    <input type="text">
+                </div>
+                
+                <div class="input">
+                    <span>Email*</span>
+                    <input type="text">
+                </div>
+                
+                <div class="input">
+                    <span>Senha*</span>
+                    <input type="text">
+                </div>
+
+                <button>Cadastrar usuario</button>
+            </div>
+        </div>
+
+
+
+        <!-- <div>
+            <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
+        </div> -->
+
+</body>
 </html>

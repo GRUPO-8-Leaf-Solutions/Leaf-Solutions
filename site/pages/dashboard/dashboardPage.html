@@ -51,6 +51,22 @@
                             </a>
                         </li>
                     </ul>
+
+                    <ul style="height: fit-content;">
+                        <li class="lista">
+                            <a href="cadastrarUsuario.html">
+                                <i class="uil uil-plus-circle"></i>
+                                <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="cadastrarEstufa.html">
+                                <i class="uil uil-plus-circle"></i>
+                                <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                            </a>
+                        </li>
+                    </ul>         
+
                 </div>
 
                 <!-- parte de baixo -->
@@ -111,7 +127,7 @@
 
                     <div class="rodape">
                         <div class="ajuste_pie">
-                            <p>QUANTIDADE DE SETORES DENTRO E FORA DO PARAMETRO</p>
+                            <p>SITUAÇÃO DOS SETORES</p>
                             <div class="grafico_pie">
                                 <div class="teste">
                                     <canvas id="grafico_pizza"></canvas>
@@ -517,9 +533,9 @@
     new Chart(grafico_pie, {
         type: 'doughnut',
         data: {
-            labels: ['Dentro do parâmetro', 'Fora do parâmetro'],
+            labels: ['Setores urgentes', 'Setores críticos', 'Setores preocupantes', 'Setores adequados'],
             datasets: [{
-                data: [80, 20],
+                data: [4, 6, 2, 17],
                 borderWidth: 1
             }]
         },
