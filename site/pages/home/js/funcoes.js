@@ -29,7 +29,7 @@ function simuladorFinanceiro() {
         </div>
 
         <div id="divSimulador">
-        <span style="text-align:center; font-size: 45px; font-weight: 600;">Com a Nossa solução!</span>
+        <span style="text-align:center; font-size: 45px; font-weight: 600;">Com a nossa solução!</span>
         <ul>
             <li style="font-weight: 600;">
                 R$${totalSolucao} <span style="color: Lime; font-size: 20px">(+50%)</span>
