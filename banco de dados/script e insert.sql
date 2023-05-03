@@ -9,20 +9,6 @@ email varchar(50) not null,
 tokenPerm varchar(8)
 );
 
-create table endereco (
-idEndereco int auto_increment,
-CEP char(8) not null,
-logradouro varchar(80) not null,
-numero varchar(5) not null,
-complemento varchar(30),
-estado char(2),
-cidade varchar(50),
-fkEmpresa int,
-constraint fkEnderecoEmpresa foreign key (fkEmpresa)
-	references empresa (idEmpresa),
-constraint pkEndereco primary key (idEndereco, fkEmpresa)
-);
-
 create table situacao (
 idSituacao int primary key auto_increment,
 descricao varchar(10)
@@ -55,9 +41,19 @@ fkEmpresa int,
 fkTipoTelefone int,
 constraint fkTelefoneEmpresa foreign key (fkEmpresa)
 	references empresa (idEmpresa),
-constraint fkTelefoneTipo foreign key (fkTipoTelefone)
+constraint fkTelefoneTipoTelefone foreign key (fkTipoTelefone)
 	references tipoTelefone (idTipoTelefone),
 constraint pkTelefone primary key (idTelefone, fkEmpresa, fkTipoTelefone)
+);
+
+create table endereco (
+idEndereco int primary key auto_increment,
+CEP char(8) not null,
+logradouro varchar(80) not null,
+numero varchar(5) not null,
+complemento varchar(30),
+estado char(2),
+cidade varchar(50)
 );
 
 create table estufa (
@@ -65,9 +61,12 @@ idEstufa int auto_increment,
 nome varchar(45),
 area int not null,
 fkEmpresa int,
+fkEndereco int,
 constraint fkEstufaEmpresa foreign key (fkEmpresa)
 	references empresa (idEmpresa),
-constraint pkEstufa primary key (idEstufa, fkEmpresa)
+constraint fkEstufaEndereco foreign key (fkEndereco)
+	references endereco (idEndereco),
+constraint pkEstufa primary key (idEstufa, fkEmpresa, fkEndereco)
 );
 
 create table setor (
@@ -78,13 +77,15 @@ valorMax int,
 fkEstufa int,
 constraint chkTipo 
 	check (tipo in ('americana', 'crespa', 'mimosa', 'roxa')),
+constraint fkSetorEstufa foreign key (fkEstufa)
+	references estufa (idEstufa),
 constraint pkSetorEstufa primary key (idSetor, fkEstufa)
 );
 
 create table sensor (
 idSensor int auto_increment,
 modelo varchar(5),
-situacao varchar(10),
+situacao varchar(10) not null,
 fkSetor int,
 constraint chkSituacaoSensor 
 	check (situacao in ('ativo', 'manutencao', 'inativo')),
@@ -95,8 +96,8 @@ constraint pkSensor primary key (idSensor, fkSetor)
 
 create table leituraSensor (
 idLeituraSensor int auto_increment,
-valor int,
-dtLeitura datetime default current_timestamp,
+valor int not null,
+dtLeitura datetime default current_timestamp not null,
 fkSensor int,
 constraint fkLeituraSensorSensor foreign key (fkSensor)
 	references sensor (idSensor),
@@ -109,17 +110,6 @@ insert into empresa values
 	(null, '12345678945612', 'Folhas Verdes', 'folhasverdes@email.com', '15478923'),
 	(null, '21346523198746', 'Leaf Green', 'leafgreen@email.com', null),
 	(null, '12451242369874', 'FolhasTech', 'folhastech@email.com', null);
-
-insert into endereco values 
-	(null, '45678912', 'Rua da Uva', '555', null,  'SP', 'São Paulo',  1),
-	(null, '36987451', 'Avenida da Maçã', '1023', '7 andar', 'MG', 'Três Corações', 1),
-	(null, '15421689', 'Rua da Jaca', '819', 'A', 'MA', 'Caxias', 2),
-	(null, '78459636', 'Rua da Melancia', '298', null, 'PE', 'Carueri', 3),
-	(null, '98656394', 'Avenida da Banana', '5430', null, 'CE', 'Fortaleza', 3),
-	(null, '05213489', 'Rua do Mamão', '239', '2 andar', 'SP', 'Santos', 3),
-	(null, '78459697', 'Avenida da Goiaba', '555', 'B', 'RJ', 'Niterói', 4),
-	(null, '87459630', 'Avenida do Melão', '8745', null, 'SP', 'Ouro Preto', 4),
-	(null, '14523698', 'Avenida da Jabuticaba', '325', 'A', 'SC', 'Florianópolis', 5);
 
 insert into situacao values
 	(null, 'ativo'),
@@ -149,34 +139,35 @@ insert into telefone values
 	(null, '1365686523', 2, 1),
 	(null, '2096563214', 3, 3),
 	(null, '5512145362', 4, 4),
-	(null, '9975481263', 5, 1),
-	(null, '1284532164', 6, 3),
-    (null, '05998745632', 7, 3),
-	(null, '27912546325', 8, 1),
-	(null, '8786965742', 3, 1);
+	(null, '9975481263', 3, 1),
+	(null, '1284532164', 5, 3),
+    (null, '05998745632', 3, 3),
+	(null, '27912546325', 4, 1),
+	(null, '8786965742', 1, 1);
     
-    /* + telefones
-	(null, '4532654874', 'Fixo', null, 3),
-	(null, '53999965325', 'Celular', null, 1),
-	(null, '48978785452', 'Celular', null, 2),
-	(null, '9485647123', 'Fixo', null, 7),
-	(null, '35969636632', 'Celular', null, 10),
-	(null, '12997845411', 'Celular', null, 3);
-	*/
-
+insert into endereco values 
+	(null, '45678912', 'Rua da Uva', '555', null,  'SP', 'São Paulo'),
+	(null, '36987451', 'Avenida da Maçã', '1023', '7 andar', 'MG', 'Três Corações'),
+	(null, '15421689', 'Rua da Jaca', '819', 'A', 'MA', 'Caxias'),
+	(null, '78459636', 'Rua da Melancia', '298', null, 'PE', 'Carueri'),
+	(null, '98656394', 'Avenida da Banana', '5430', null, 'CE', 'Fortaleza'),
+	(null, '05213489', 'Rua do Mamão', '239', '2 andar', 'SP', 'Santos'),
+	(null, '78459697', 'Avenida da Goiaba', '555', 'B', 'RJ', 'Niterói'),
+	(null, '87459630', 'Avenida do Melão', '8745', null, 'SP', 'Ouro Preto');
+    
 insert into estufa values 
-	(null, 'Estufa da esquerda', 300, 1),
-	(null, 'Estufa da direita', 300, 1),
-	(null, 'Estufa central', 500, 2),
-	(null, 'Estufa superior', 400, 3),
-	(null, 'Estufa inferior', 400, 3),
-	(null, 'Estufa maior', 300, 4),
-	(null, 'Estufa menor', 200, 4),
-	(null, 'Estufa central', 480, 5);
+	(null, 'Estufa da esquerda', 300, 1, 1),
+	(null, 'Estufa da direita', 300, 1, 2),
+	(null, 'Estufa central', 500, 2, 3),
+	(null, 'Estufa superior', 400, 3, 4),
+	(null, 'Estufa inferior', 400, 3, 5),
+	(null, 'Estufa maior', 300, 4, 6),
+	(null, 'Estufa menor', 200, 4, 7),
+	(null, 'Estufa central', 480, 5, 8);
 
 insert into setor values 
 	(null, 'Americana', 300, 900, 1),
-	(null, 'Crespa', 700, 2000, 1),
+	(null, 'Crespa', 500, 700, 1),
 	(null, 'Mimosa', 450, 1000, 2),
 	(null, 'Roxa', 200, 800, 2),
 	(null, 'Americana', 300, 900,3),
@@ -213,32 +204,47 @@ insert into leituraSensor values
 	(null, 800, '2023-04-04 00:00:00', 3),
 	(null, 900, '2023-04-05 00:00:00', 4),
 	(null, 500, '2023-04-05 12:00:00', 4),
-	(null, 450, null, 5),
+	(null, 450, default, 5),
 	(null, 700, '2023-04-08 00:00:00', 6),
 	(null, 350, '2023-04-09 00:00:00', 7),
 	(null, 650, '2023-04-10 15:00:00', 8),
-	(null, 250, null, 9),
+	(null, 250, default, 9),
 	(null, 750, '2023-04-11 12:00:00', 9),
 	(null, 900, '2023-04-12 00:00:00', 9),
-	(null, 1000, null, 10),
+	(null, 1000, default, 10),
 	(null, 300, '2023-04-03 00:00:00', 10),
 	(null, 800, '2023-04-04 00:00:00', 11),
-	(null, 800, null, 11),
+	(null, 800, default, 11),
 	(null, 400, '2023-04-06 19:00:00', 12),
 	(null, 900, '2023-04-07 00:00:00', 13),
 	(null, 750, '2023-04-08 00:00:00', 14);
+        
+select 
+setor.idSetor as "N° setor",
+lei.valor as Captação,
+setor.valorMin as "Alerta do mínimo",
+setor.valorMax as "Alerta do máximo",
+lei.dtLeitura as Horário
+	from setor join sensor as sen
+	on idSetor = fkSetor
+    join leituraSensor as lei
+    on idSensor = fkSensor;
     
+select
+setor.idSetor as "N° setor",
+lei.valor as Captação,
+sen.situacao as "Status"
+	from setor join sensor as sen
+	on idSetor = fkSetor
+    join leituraSensor as lei
+    on idSensor = fkSensor;
     
-    select 
-estufa.idEstufa as estufa,
-setor.idSetor as numero,
-sensor.idSensor as sensor,
-l.valor
- from setor join sensor
-	on idSetor = idSensor
-    join leituraSensor as l
-    on idSensor = fkSensor
-		where campo = "alerta";
-    
-    
-    
+select 
+emp.razaoSocial as "Nome empresa",
+est.nome as "Nome estufa",
+endereco.logradouro as "Local",
+endereco.numero as Número
+	from empresa as emp join estufa as est  
+	on idEmpresa = fkEmpresa
+    join endereco 
+    on idEndereco = fkEndereco;
