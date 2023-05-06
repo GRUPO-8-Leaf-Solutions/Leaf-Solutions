@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trem!</title>
+</head>
+
+<body id="corpo" style="position: relative; height: 99%;">
+    <img src="tremDesligado.png" style="position: absolute; left: 0; top: 120px;" alt="">
+</body>
+
+</html>
+
+
+<script>
+
+    var distanciaImagem = 0
+
+    var trem = {
+        cor: "Ferrugem",
+        tipoTrem: "Ferroviário",
+        linha: "Coral",
+        movimentando: false,
+        ligado: false,
+        checar_ligado: function (){
+             return this.ligado == true
+        },
+        capacidadeTanque: 250,
+        qtdCombustivel: 100,
+        tipoCombustivel: "Carvão",
+        kmAndado: 0,
+        qtdVagao: 12,
+        vagao: {
+            portaAberta: true,
+            qtdPorta: 8,
+            qtdCadeira: 30,
+            largura: 2.5,
+            altura: 2.5,
+            profundidade: 20,
+            capacidade: 120,
+            fecharPorta() {
+                if (this.portaAberta == true) {
+                    console.log(`Portas abertas, fechando...`)
+                    this.portaAberta = false
+                    console.log(`Portas fechadas com sucesso!`)
+                }else{
+                    console.log(`Portas ja estão fechadas!`)
+                }
+            },
+            abrirPorta() {
+                if (this.portaAberta == false) {
+                    console.log(`Portas fechadas, abrindo...`)
+                    this.portaAberta = true
+                    console.log(`Portas abertas com sucesso!`)
+                }else{
+                    console.log(`Portas ja estão abertas!`)
+                }
+            }
+        },
+        ligar: function () {
+            if (this.ligado == false) {
+                console.log(`Trem desligado, ligando...`)
+                console.log(`Trem ligado com sucesso!`)
+                corpo.innerHTML = `<img  style="position: absolute; left: ${distanciaImagem}px; top: 120px;" src="https://cdn.dribbble.com/users/3063719/screenshots/13998565/media/5eec45cb73a41b3631a935f083df5a75.gif" alt="">`
+                this.ligado = true
+            } else {
+                console.log(`Trem ja ligado!`)
+            }
+        },
+
+        desligar: function () {
+            if (this.ligado == true) {
+                console.log(`Trem ligado, desligando...`)
+                console.log(`Trem Desligado com sucesso!`)
+                this.ligado = false
+                corpo.innerHTML = `<img src="tremDesligado.png" style="position: absolute; left: ${distanciaImagem}px; top: 120px;" alt="">`
+            } else {
+                console.log(`Trem ja desligado!`)
+            }
+        },
+
+
+
+        movimentar: function () {
+            
+            if (this.ligado == false) {
+                console.log("Trem desligado. Ligue o trem!!");
+            } else if (this.vagao.portaAberta == true) {
+                console.log("Porta aberta! impossivel começar movimento.");
+            } else if (maquinista.validar_licença()) {
+                console.log("Sem maquinista para manusear o trem!")
+            } else if (this.qtdCombustivel - 25 <= 0) {
+                console.log(`Combustivel insuficiente para uma viagem!!! É necessário mais que 25 de combustivel para efetuar uma viagem!!`)
+                console.log(`Quantidade atual: ${this.qtdCombustivel}`)
+            }
+            else {
+                console.log(`Andando...`)
+                this.kmAndado += 100
+                this.qtdCombustivel = this.qtdCombustivel - 25
+                console.log(`Andei no total ${this.kmAndado}KM`)
+                console.log(`Quantidade atual de combustivel: ${this.qtdCombustivel}`)
+
+                distanciaImagem += 100
+                corpo.innerHTML = `<img  style="position: absolute; left: ${distanciaImagem}px; top: 120px;" src="https://cdn.dribbble.com/users/3063719/screenshots/13998565/media/5eec45cb73a41b3631a935f083df5a75.gif" alt="">`
+               
+            }
+        },
+
+        abastecer: function (combustivel) {
+            var totalCombustivel = this.qtdCombustivel + combustivel
+            if (totalCombustivel > this.capacidadeTanque) {
+                console.log(`Excedeu a capacidade do tanque de ${this.capacidadeTanque}`)
+                console.log(`Total excedente ${this.totalCombustivel - this.capacidadeTanque}`)
+            } else {
+                console.log("Tanque reabastecido com sucesso");
+                console.log(`Quantidade reabastecida: ${combustivel}`)
+                this.qtdCombustivel += combustivel
+                console.log(`Total de combustivel atual: ${this.qtdCombustivel}`)
+            }
+        }
+
+
+    }
+
+    var maquinista = {
+        nome: "César",
+        sobrenome: "Augusto",
+        licença: false, // Documento para permitir se o maquinista tem condições acessíveis para pilotar o trem
+        validar_licença: function () {
+            return this.licença != true
+        },
+        cpf: "35355499801",
+        cnh: "Categoria C",
+    }
+
+</script>
