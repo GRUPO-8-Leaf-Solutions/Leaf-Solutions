@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Leaf - Dashboard</title>
+
+    <link rel="icon" href="../../assets/icon/logo.svg">
     <link rel="stylesheet" href="./css/dashboardPage.css">
+
     <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="icon" href="../../assets/icon/logo.svg">
 </head>
 
 <body>
@@ -38,12 +41,12 @@
                                 <span class="lista">Estatística</span>
                             </a>
                         </li>
-                        <li class="lista">
+                        <!-- <li class="lista">
                             <a href="previsaoPage.html">
                                 <i class="uil uil-chart-pie"></i>
                                 <span class="lista">Previsões</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="lista">
                             <a href="historicoPage.html">
                                 <i class="uil uil-history"></i>
@@ -66,7 +69,6 @@
                             </a>
                         </li>
                     </ul>
-
                 </div>
 
                 <!-- parte de baixo -->
@@ -95,15 +97,39 @@
             </div>
         </div>
         <!-- FIM DO MENU -->
+
         <!-- parte do dash -->
         <div class="tela">
             <div class="areaDash">
                 <div class="top-left">
                     <span class="topo">Dashboard</span>
-
-
+                </div>
+                <div>
+                    <div class="alertsParametro">
+                        <div class="urgente">
+                            <img src="../../assets/imgs/vetorUrgente.svg">
+                            <span class="urgenteText">URGENTE</span>
+                        </div>
+                        <div class="critico">
+                            <img src="../../assets/imgs/vectorCritico.svg">
+                            <span class="criticoText">CRÍTICO</span>
+                        </div>
+                        <div class="preocupante">
+                            <img src="../../assets/imgs/vectorPreocupante.svg">
+                            <span class="preocupanteText">PREOCUPANTE</span>
+                        </div>
+                        <div class="adequado">
+                            <img src="../../assets/imgs/vetorAdequado.svg">
+                            <span class="adequadoText">ADEQUADO</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
             <div class="daddy">
                 <div class="main">
 
@@ -452,7 +478,7 @@
 
 
                     </div>
-                    <div class="alertas_rodape">
+                    <!-- <div class="alertas_rodape">
                         <div class="indicador_alertas">
                             <div class="alerta_urgente">
                                 <div class="img_alert_all">
@@ -473,7 +499,7 @@
                                 <span>Preocupante</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>

@@ -24,12 +24,11 @@
     color: #53AC50;
 }
 
-.manutencaoText {
-    color: #585858;
-}
-
-.hora{
-    color: #6D2D2D; font-size: 14px; display: flex; gap: 5px;
+.hora {
+    color: #6D2D2D;
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
 }
 
 html,
@@ -56,7 +55,7 @@ body {
     box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
 }
 
-.lateral .listaBaixo{
+.lateral .listaBaixo {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -176,12 +175,12 @@ body {
     gap: 8px;
 }
 
-.configgg a{
+.configgg a {
     text-decoration: none;
     color: inherit;
 }
 
-.configgg a i{
+.configgg a i {
     font-size: 25px;
     color: #959595;
 }
@@ -202,12 +201,12 @@ li a {
     color: #7A7A7A;
 }
 
-.ismalendas > :nth-child(1) {
+.ismalendas> :nth-child(1) {
     font-weight: 300;
     font-size: 17px;
 }
 
-.ismalendas > :nth-child(2) {
+.ismalendas> :nth-child(2) {
     font-weight: 300;
     font-size: 14px;
     color: #A1A0A0;
@@ -217,49 +216,89 @@ li a {
 
 /* CSS DA TELA */
 
-.tela .topo {
-    color: #717171;
-    width: 127px;
-    height: 29px;
-    left: 324px;
-    top: 200px;
-    font-size: 28px;
-    font-family: 'Nunito';
-    font-weight: 600;
-    font-style: normal;
-    line-height: 29px;
+.tela {
+    width: 85%;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
 }
 
 .areaDash {
-    height: 50px;
+    /* height: 10%; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
 }
 
-.areaDash .ul-semanal {
-    list-style: none;
-    width: 61px;
-    height: 18px;
-    left: 324px;
-    top: 137px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: #7A7A7A;
+.top-left {
+    display: flex;
+/*     flex-direction: column;
+    gap: 25px; */
+    width: 100%;
 }
 
-.areaDash .ul-mensal {
-    list-style: none;
-    width: 51px;
-    height: 18px;
-    left: 460px;
-    top: 136px;
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    color: #7A7A7A;
+.tela .topo {
+    color: #717171;
+    font-size: 28px;
+}
+
+.alertsParametro{
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.alertsParametro .urgente {
+    /*     width: 188px; */
+    height: 57px;
+    /* 
+        box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54); */
+    /*     border-radius: 36.5px;
+        border-radius: 36.5px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .critico {
+    /*     width: 188px; */
+    height: 57px;
+    background: rgba(255, 209, 157, 0.014);
+    /* 
+        box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69); */
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .preocupante {
+    /*     width: 188px; */
+    /* height: 57px; */
+    background: rgba(254, 254, 245, 0.21);
+    /* 
+        box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69); */
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .adequado {
+    /* width: 188px; */
+    /* height: 57px; */
+    background: rgba(245, 254, 245, 0.21);
+    /* 
+        box-shadow: 0px 0px 8px 1px rgba(0, 78, 8, 0.69); */
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 li a {
@@ -271,42 +310,6 @@ li a {
     line-height: 18.15px;
 }
 
-
-.areaDash {
-    display: flex;
-    justify-content: start;
-}
-
-.top-left {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    width: 160px;
-}
-
-.urgente {
-    color: rgba(149, 0, 0, 1);
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-}
-
-.critico{
-    color: #E25F15;
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-}
-
-.preocupante{
-    color: #BC8410;
-    font-family: 'Nunito';
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-}
 
 
 .alert-text {
@@ -353,7 +356,8 @@ li a {
     font-size: 14px;
     color: rgba(204, 0, 0, 1);
 }
-.text-atual-critico{
+
+.text-atual-critico {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
@@ -361,7 +365,7 @@ li a {
     color: #E95603;
 }
 
-.text-atual-preocupante{
+.text-atual-preocupante {
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 800;
@@ -397,13 +401,6 @@ li a {
     color: #E90303;
 } */
 
-.tela {
-    width: 85%;
-    padding: 40px 50px 0px 50px;
-    display: flex;
-    flex-direction: column;
-}
-
 .containerAlert {
     display: flex;
 }
@@ -414,11 +411,6 @@ li a {
 
 .containerAlert-critico {
     display: flex;
-}
-
-.areaDash {
-    display: flex;
-    gap: 70px;
 }
 
 .uls {
@@ -438,7 +430,7 @@ li a {
     gap: 10px;
 }
 
-.alertCritico{
+.alertCritico {
     width: 280px;
     height: 103.46px;
     background-color: #f28d289d;
@@ -450,7 +442,7 @@ li a {
     gap: 10px;
 }
 
-.alertPreocupante{
+.alertPreocupante {
     width: 280px;
     height: 103.46px;
     background-color: #ffd3325d;
@@ -622,7 +614,7 @@ li a {
     gap: 13px;
 }
 
-.tela-alertas .listaScroller{
+.tela-alertas .listaScroller {
     height: 415px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -632,7 +624,7 @@ li a {
     padding: 0 5px 10px 0;
 }
 
-.listaScroller::-webkit-scrollbar{
+.listaScroller::-webkit-scrollbar {
     width: 5px;
     height: 8px;
 }
@@ -640,14 +632,14 @@ li a {
 .listaScroller::-webkit-scrollbar-thumb {
     background: #D9D9D9;
     border-radius: 10px;
-  }
+}
 
 .img-alert {
     width: 31.3px;
     height: 35px;
 }
 
-.img-alert-critico{
+.img-alert-critico {
     width: 30px;
     height: 34px;
 }
@@ -914,6 +906,7 @@ li a {
 .daddy {
     display: flex;
     width: 100%;
+    margin-top: 20px
 }
 
 .lado_direito {
