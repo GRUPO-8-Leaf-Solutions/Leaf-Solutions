@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="./css/setorPage.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
+
 <body>
     <!-- PAG MENU -->
     <div class="container">
@@ -62,7 +64,7 @@
                                 <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
                             </a>
                         </li>
-                    </ul>        
+                    </ul>
 
                 </div>
 
@@ -116,12 +118,12 @@
 
                         <div class="parametroSmall parametroAdequado">
                             <span>Parametro ideal do Setor 1</span>
-                            <span>500lm - 600lm</span>     
+                            <span>500lm - 600lm</span>
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
                 <div style="width: 50%; height: 100%;">
                     <canvas id="registroLuminosidade"></canvas>
                 </div>
@@ -129,92 +131,94 @@
 
             <div class="bottomPart">
 
-            <div class="chartContainer">
-                <div class="chartTittle" >
-                    <span>Quantidade de alertas emitidos</span>
+                <div class="chartContainer">
+                    <div class="chartTittle">
+                        <span>Quantidade de alertas emitidos</span>
 
+                    </div>
+
+                    <div style="width: 600px; height: 290px;">
+                        <canvas id="registroAlertas"></canvas>
+                    </div>
+                </div>
+                <div class="kpis">
+                    <div class="kpiParametros">
+                        <span class="urgenteText"><img src="../../assets/imgs/vetorUrgente.svg">• URGENTE</span>
+                        <span class="criticoText"><img src="../../assets/imgs/vectorCritico.svg">• CRÍTICO</span>
+                        <span class="preocupanteText"><img src="../../assets/imgs/vectorPreocupante.svg">•
+                            PREOCUPANTE</span>
+                    </div>
+                    <div class="kpiItem">
+                        <div class="parametroMedium parametroAdequado">
+                            <span style="color: #69885F;">status</span>
+                            <span>Ligado</span>
+                        </div>
+                        <div class="parametroMedium tempoFuncionamento">
+                            <span>Tempo de funcionamento</span>
+                            <span><img src="../../assets/imgs/lampadaIcone.svg">14:40H</span>
+                        </div>
+                    </div>
+                    <div class="kpiItem">
+                        <div class="parametroMedium parametroUrgente">
+                            <span style="color: #C63535;">Maior luminosidade captada</span>
+                            <span style="color: #FB4F4F;">820lm</span>
+                        </div>
+                        <div class="parametroMedium parametroUrgente">
+                            <span style="color: #C63535;">Menor luminosidade captada</span>
+                            <span style="color: #FB4F4F;">300lm</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div style="width: 600px; height: 290px;">
-                    <canvas id="registroAlertas"></canvas>
-                </div>
             </div>
-            <div class="kpis">
-                <div class="kpiParametros">
-                    <span class="urgenteText"><img src="../../assets/imgs/vetorUrgente.svg">• URGENTE</span>
-                    <span class="criticoText"><img src="../../assets/imgs/vectorCritico.svg">• CRÍTICO</span>
-                    <span class="preocupanteText"><img src="../../assets/imgs/vectorPreocupante.svg">• PREOCUPANTE</span>
-                </div>
-            <div class="kpiItem">
-                <div class="parametroMedium parametroAdequado">
-                    <span style="color: #69885F;">status</span>
-                    <span>Ligado</span>
-                </div>
-                <div class="parametroMedium tempoFuncionamento">
-                    <span>Tempo de funcionamento</span>
-                    <span><img src="../../assets/imgs/lampadaIcone.svg">14:40H</span>
-                </div>
-            </div>
-            <div class="kpiItem">
-                <div class="parametroMedium parametroUrgente">
-                    <span style="color: #C63535;">Maior luminosidade captada</span>
-                    <span style="color: #FB4F4F;">820lm</span>
-                </div>
-                <div class="parametroMedium parametroUrgente">
-                    <span style="color: #C63535;">Menor luminosidade captada</span>
-                    <span style="color: #FB4F4F;">300lm</span>
-                </div>
-            </div>
-            </div>
-
         </div>
-    </div>
 </body>
+
 </html>
 
 <script>
     const ctx1 = document.getElementById('registroLuminosidade');
-  
+
     new Chart(ctx1, {
-      type: 'line',
-      data: {
-        labels: ['14:10', '14:25', '14:40', '14:55', '15:10', '15:25'],
-        datasets: [{
-          label: 'Sensor',
-          data: [300, 400, 300, 700, 500, 600],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        type: 'line',
+        data: {
+            labels: ['14:10', '14:25', '14:40', '14:55', '15:10', '15:25'],
+            datasets: [{
+                label: 'Sensor',
+                data: [300, 400, 300, 700, 500, 600],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
     });
-  </script>
-   
-   <script>
+</script>
+
+<script>
     const ctx2 = document.getElementById('registroAlertas');
-  
+
     new Chart(ctx2, {
-      type: 'bar',
-      data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro' ],
-        datasets: [{
-          label: 'Setor 1',
-          data: [20, 30, 40, 22],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            datasets: [{
+                label: 'Setor 1',
+                data: [20, 30, 40, 22],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
     });
-  </script>
+</script>

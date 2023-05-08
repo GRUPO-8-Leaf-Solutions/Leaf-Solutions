@@ -219,16 +219,16 @@ li a {
 }
 
 .areaDash {
+    /* height: 10%; */
     display: flex;
-    gap: 70px;
+    /* flex-direction: column; */
     align-items: center;
-    height: 10%;
 }
 
 .top-left {
     display: flex;
-    flex-direction: column;
-    gap: 25px;
+    /* flex-direction: column; */
+    /* gap: 25px; */
     width: 100%;
 }
 
@@ -246,16 +246,17 @@ li a {
 
 .alertsParametro{
      display: flex;
-     justify-content: space-evenly;
+     gap: 40px;
+     justify-content: space-between;
      margin-top: 10px;
 }
 
 .alertsParametro .urgente{
-    width: 188px;
-    height: 57px;
-    box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54);
-    border-radius: 36.5px;
-    border-radius: 36.5px;
+/*     width: 188px; */
+    height: 57px;/* 
+    box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54); */
+/*     border-radius: 36.5px;
+    border-radius: 36.5px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,10 +264,10 @@ li a {
 }
 
 .alertsParametro .critico{
-    width: 188px;
+/*     width: 188px; */
     height: 57px;
-    background: rgba(255, 209, 157, 0.014);
-    box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69);
+    background: rgba(255, 209, 157, 0.014);/* 
+    box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69); */
     border-radius: 36.5px;
     display: flex;
     align-items: center;
@@ -275,10 +276,10 @@ li a {
 }
 
 .alertsParametro .preocupante{
-    width: 188px;
-    height: 57px;
-    background: rgba(254, 254, 245, 0.21);
-    box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69);
+/*     width: 188px; */
+    /* height: 57px; */
+    background: rgba(254, 254, 245, 0.21);/* 
+    box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69); */
     border-radius: 36.5px;
     display: flex;
     align-items: center;
@@ -287,10 +288,10 @@ li a {
 }
 
 .alertsParametro .adequado{
-    width: 188px;
-    height: 57px;
-    background: rgba(245, 254, 245, 0.21);
-    box-shadow: 0px 0px 8px 1px rgba(0, 78, 8, 0.69);
+    /* width: 188px; */
+    /* height: 57px; */
+    background: rgba(245, 254, 245, 0.21);/* 
+    box-shadow: 0px 0px 8px 1px rgba(0, 78, 8, 0.69); */
     border-radius: 36.5px;
     display: flex;
     align-items: center;
