@@ -1,0 +1,996 @@
+@import url(https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+.urgenteText {
+    color: #C63535;
+}
+
+.criticoText {
+    color: #C65835;
+}
+
+.preocupanteText {
+    color: #CCA92B;
+}
+
+.adequadoText {
+    color: #53AC50;
+}
+
+.hora {
+    color: #6D2D2D;
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    height: inherit;
+    width: inherit;
+    overflow: hidden;
+}
+
+.container .lateral {
+    height: 100%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* padding: 25px; */
+    background: linear-gradient(180deg, #0F310E 0%, #20571E 100%);
+    box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
+}
+
+.lateral .listaBaixo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lista a i {
+    font-size: 30px;
+    color: #FFF;
+}
+
+.lista span {
+    color: #FFF;
+    font-size: 18px;
+}
+
+.lista.destaque .lista {
+    color: rgba(6, 67, 6, 1);
+}
+
+.uil-create-dashboard:before {
+    color: rgba(6, 67, 6, 1);
+}
+
+.navHeader {
+    display: flex;
+    flex-direction: column;
+    height: 175px;
+    width: 70%;
+    justify-content: space-between;
+    align-content: space-between;
+    align-self: center;
+    gap: 50px;
+    padding: 25px;
+}
+
+.navHeader span {
+    font-size: 16px;
+    color: #FFF;
+    padding: 0 0 20px 0;
+}
+
+.navHeader img {
+    width: 105px;
+}
+
+
+.navegacão {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.navegacão ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.navegacão ul li {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    list-style: none;
+
+
+}
+
+.navegacão ul li a {
+    display: flex;
+    align-items: center;
+    padding-left: 23px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #064306;
+    gap: 15px;
+    /* letter-spacing: 3px; */
+    width: 100%;
+}
+
+.navegacão ul li a .icone {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 70px;
+}
+
+.navegacão .destaque {
+    background-color: #FFF;
+    border-radius: 16.55px;
+}
+
+.nomeNome {
+    display: flex;
+    gap: 15px;
+    /* justify-content: end; */
+}
+
+.nomeNome span {
+    display: flex;
+    flex-direction: column;
+}
+
+.configNomeimg {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nomeNome span .config {
+    height: 10px;
+}
+
+.trindade a {
+    list-style: none;
+}
+
+.configgg {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap: 8px;
+}
+
+/* .configgg a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.configgg a i {
+    font-size: 25px;
+    color: #FFF;
+} */
+
+.config {
+    list-style: none;
+}
+
+.ul2 {
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+}
+
+.ismalenda li a {
+    color: #FFF;
+}
+
+.ismalendas> :nth-child(1) {
+    font-weight: 300;
+    font-size: 17px;
+    color: #FFF;
+}
+
+.ismalendas> :nth-child(2) {
+    font-weight: 300;
+    font-size: 14px;
+    color: #FFF;
+}
+
+.inferior-menu {
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FIM DO CSS DO MENU */
+
+/* CSS DA TELA */
+
+.top {
+    height: 60px;
+    background: linear-gradient(90deg, #0F310E 0%, #20571E 100%);
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.top-left {
+    display: flex;
+    gap: 25px;
+}
+
+.tela .topo {
+    color: #FFF;
+    font-size: 28px;
+}
+
+/* Fim do css do ultimo protótipo das dashbboard */
+
+.tela {
+    width: 85%;
+    /* padding: 40px 50px; */
+    /* display: flex; */
+    flex-direction: column;
+}
+
+.areaDash {
+    /* height: 10%; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+
+.alertsParametro {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.alertsParametro .urgente {
+    /*     width: 188px; */
+    height: 57px;
+    /* 
+        box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54); */
+    /*     border-radius: 36.5px;
+        border-radius: 36.5px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .critico {
+    /*     width: 188px; */
+    height: 57px;
+    background: rgba(255, 209, 157, 0.014);
+    /* 
+        box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69); */
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .preocupante {
+    /*     width: 188px; */
+    /* height: 57px; */
+    background: rgba(254, 254, 245, 0.21);
+    /* 
+        box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69); */
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .adequado {
+    /* width: 188px; */
+    /* height: 57px; */
+    background: rgba(245, 254, 245, 0.21);
+    /* 
+        box-shadow: 0px 0px 8px 1px rgba(0, 78, 8, 0.69); */
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+li a {
+    text-decoration: none;
+    color: #717171;
+    font-family: 'Nunito';
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18.15px;
+}
+
+
+
+.alert-text {
+    width: 339px;
+    height: 19px;
+    top: 249px;
+    left: 396px;
+    font-family: 'Nunito';
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 19.1px;
+    color: rgba(0, 0, 0, 64);
+}
+
+.text-parametro-urgente {
+    color: rgba(0, 0, 0, 1);
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 64);
+}
+
+.text-parametro-critico {
+    width: 200px;
+    height: 16px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 1);
+    margin-left: 23px;
+    margin-top: -65px;
+}
+
+.text-atual {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: rgba(204, 0, 0, 1);
+}
+
+.text-atual-critico {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: #E95603;
+}
+
+.text-atual-preocupante {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: #E29800;
+}
+
+.text-parametro-preocupante {
+    width: 121px;
+    height: 20px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 1);
+    margin-left: 64px;
+    margin-bottom: 4px;
+}
+
+/* .valor-atual {
+    width: 27px;
+    height: 20px;
+    left: 1192px;
+    top: 266px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #E90303;
+} */
+
+.containerAlert {
+    display: flex;
+}
+
+.containerAlert-preocupante {
+    display: flex;
+}
+
+.containerAlert-critico {
+    display: flex;
+}
+
+.uls {
+    display: flex;
+    justify-content: space-between;
+}
+
+.alert {
+    width: 280px;
+    height: 115px;
+    background-color: rgba(204, 0, 0, 0.40);
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.alertCritico {
+    width: 280px;
+    height: 103.46px;
+    background-color: #f28d289d;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.alertPreocupante {
+    width: 280px;
+    height: 103.46px;
+    background-color: #ffd3325d;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+}
+
+.urgenteEst {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.urgenteEst-critico {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.urgenteEst-preocupante {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.click-alert {
+    color: inherit;
+    text-decoration: none;
+}
+
+.click-alert-preocupante {
+    color: inherit;
+    text-decoration: none;
+}
+
+.click-alert-critico {
+    color: inherit;
+    text-decoration: none;
+}
+
+.alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.text-valores {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.text-valores div {
+    display: flex;
+    gap: 50px;
+}
+
+.critico-setor {
+    color: rgba(255, 92, 0, 1);
+    width: 212px;
+    height: 11.42px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.critico-valor {
+    color: rgba(233, 86, 3, 1);
+    line-height: 19px;
+    width: 132px;
+    height: 16px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-left: 1px;
+    margin-top: -35px;
+}
+
+
+.urgente-setor {
+    color: rgba(255, 0, 0, 1);
+    width: 220px;
+    height: 11.42px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+
+.div-urgente-span .span {
+    color: #000;
+}
+
+.preocupante-setor {
+    color: rgba(211, 142, 0, 1);
+    width: 256px;
+    height: 11.42px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    justify-content: center;
+    margin-top: 7px;
+}
+
+.alert-critico {
+    width: 253px;
+    height: 103.46px;
+    background-color: rgba(242, 140, 40, 0.45);
+    box-shadow: 0px 4px 10px -1px rgba(78, 47, 0, 0.25);
+    border-radius: 10px;
+}
+
+.alert-preocupante {
+    width: 253px;
+    height: 103.46px;
+    background-color: rgba(255, 210, 50, 0.33);
+    box-shadow: 0px 4px 10px -1px rgba(78, 70, 0, 0.25);
+    border-radius: 10px;
+}
+
+.preocupante-valor {
+    color: rgba(223, 152, 0, 1);
+    width: 152px;
+    height: 15.7px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 19px;
+    text-transform: uppercase;
+    margin-left: 42px;
+    margin-top: 10px;
+}
+
+.tela-alertas {
+    width: 350px;
+    height: 460px;
+    background-color: #FFFFFF;
+    box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.tela-alertas .listaScroller {
+    height: 415px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px 10px 0;
+}
+
+.listaScroller::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+}
+
+.listaScroller::-webkit-scrollbar-thumb {
+    background: #D9D9D9;
+    border-radius: 10px;
+}
+
+.img-alert {
+    width: 31.3px;
+    height: 35px;
+}
+
+.img-alert-critico {
+    width: 30px;
+    height: 34px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    gap: 15px;
+}
+
+.title-alerta {
+    width: 167px;
+    height: 34px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 34px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+}
+
+.title-Chart {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 34px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* INICIO DO CSS DOS GRAFICOS CHARTJS  */
+
+
+.grafico1 {
+    height: 80%;
+    width: 77%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.chartContainer {
+    height: 290px;
+    width: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.containerChart {
+    height: 346px;
+    background: white;
+    box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
+    border-radius: 15px;
+    width: 93%;
+}
+
+.grafico_pizza {
+    width: 100px;
+    margin-left: 100px;
+}
+
+.ajuste_pie {
+    width: 235px !important;
+    height: 100px;
+}
+
+.ajuste_pie p {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.33em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.rodape {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.alto_indice_luz {
+    display: flex;
+    flex-direction: column;
+    width: 205px;
+    align-items: center;
+    padding: 5px 5px;
+    height: 95px;
+    background-color: #FBFBFB;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.maior_indice_luz p {
+    color: #CC0000;
+    font-weight: 700;
+    text-align: center;
+    align-items: center;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.indicacao_estufa {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.indicacao_setor {
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.alerta_estufas {
+    background-color: #FBFBFB;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    height: 110px;
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.indicativo_alerta_estufas {
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.mencionar_estufa1 {
+    background-color: #CC0000;
+    color: white;
+    font-size: 10px;
+    border-radius: 3px;
+    width: 150px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mencionar_estufa2 {
+    background-color: #CC0000;
+    color: white;
+    font-size: 10px;
+    border-radius: 3px;
+    width: 150px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mencionar_estufa3 {
+    background-color: #CC0000;
+    color: white;
+    font-size: 10px;
+    border-radius: 3px;
+    width: 150px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mencao_estufas {
+    text-transform: uppercase;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menor_indice_luz {
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    align-items: center;
+    padding: 5px 5px;
+    height: 95px;
+    background-color: #FBFBFB;
+
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.menor_indice_luz p {
+    color: #CC0000;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.indicador_alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.alerta_urgente img {
+    width: 20px;
+    height: 20px;
+}
+
+.alerta_urgente {
+    width: 250px;
+    height: 45px;
+    background-color: rgba(204, 0, 0, 0.40);
+    border-radius: 36.5px;
+    text-align: center;
+    color: #C63535;
+    box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
+    display: flex;
+    align-items: center;
+
+}
+
+.alerta_critico img {
+    width: 20px;
+    height: 20px;
+}
+
+.alerta_critico {
+    width: 250px;
+    height: 45px;
+    background-color: rgba(242, 140, 40, 0.45);
+    border-radius: 36.5px;
+    text-align: center;
+    color: #C65835;
+    box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
+    display: flex;
+    align-items: center;
+}
+
+.alerta_preocupante img {
+    width: 20px;
+    height: 20px;
+}
+
+.alerta_preocupante {
+    width: 250px;
+    height: 45px;
+    background-color: rgba(255, 210, 50, 0.33);
+    border-radius: 36.5px;
+    text-align: center;
+    color: #BC8410;
+    box-shadow: 0px 0px 8px rgba(78, 47, 0, 0.69);
+    display: flex;
+    align-items: center;
+}
+
+.daddy {
+    display: flex;
+    width: 100%;
+    margin-top: 20px
+}
+
+.lado_direito {
+    width: 30%;
+}
+
+#myChart1 {
+    width: 743px !important;
+    height: 275px !important;
+}
+
+.tittle_chart {
+    border-bottom: 1px solid lightgray;
+    height: 55px;
+    padding-left: 36px;
+    color: #828282;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.indice_luz_pai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.daddy_indice {
+    display: flex;
+    gap: 20px;
+}
+
+.img_alert_all {
+    display: flex;
+    width: 65px;
+    height: 46px;
+    justify-content: center;
+    align-items: center;
+}
+
+.ajuste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.alertas_rodape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+}
+
+/* PARTE PREVISOES */

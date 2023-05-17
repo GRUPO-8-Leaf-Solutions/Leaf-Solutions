@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leaf - Estatística</title>
+
+    <script src="js/estatisticaPage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="icon" href="../../assets/icon/logo.svg">
+    <link rel="stylesheet" href="./css/estatisticaPage.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+
+<body>
+    <!-- PAG MENU -->
+    <div class="container">
+
+        <div class="lateral">
+            <!-- parte de cima -->
+            <div class="listaBaixo">
+                <div class="navegacão">
+                    <div class="navHeader">
+                        <img src="../../assets/icon/logoDark.svg">
+                        <span>MENU</span>
+                    </div>
+                    <ul>
+                        <li class="lista">
+                            <a href="dashboardPage.html">
+                                <i class="uil uil-create-dashboard"></i>
+                                <span class="lista">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="lista destaque">
+                            <a href="estatisticaPage.html">
+                                <i class="uil uil-presentation-line"></i>
+                                <span class="lista">Estatística</span>
+                            </a>
+                        </li>
+                        <!-- <li class="lista">
+                            <a href="previsaoPage.html">
+                                <i class="uil uil-chart-pie"></i>
+                                <span class="lista">Previsões</span>
+                            </a>
+                        </li> -->
+                        <li class="lista">
+                            <a href="historicoPage.html">
+                                <i class="uil uil-history"></i>
+                                <span class="lista">Histórico</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul style="height: fit-content;">
+                        <li class="lista">
+                            <a href="cadastrarUsuario.html">
+                                <i class="uil uil-plus-circle"></i>
+                                <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="cadastrarEstufa.html">
+                                <i class="uil uil-plus-circle"></i>
+                                <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!-- parte de baixo -->
+                <div class="trindade">
+                    <div class="configNomeimg">
+                        <div class="nomeNome">
+                            <img src="../../assets/imgs/Ellipse2325.png">
+                            <ul class="ul2">
+                                <span class="ismalendas">
+                                    <span>NomeUsuario</span>
+                                    <span>NomeEmpresa</span>
+                                </span>
+                            </ul>
+                        </div>
+
+                        <div class="configgg">
+                            <a href="#">
+                                <i class="uil uil-setting"></i>
+                            </a>
+                            <a href="../home/login.html">
+                                <i class="uil uil-signout" style="color: #C63535;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM DO MENU -->
+        <!-- parte do dash -->
+        <div class="tela">
+            <div class="areaDash">
+                <div class="top-left">
+                    <span class="topo">Estatística - Lista de estufas</span>
+                </div>
+                <div>
+                    <div class="alertsParametro">
+                        <div class="urgente">
+                            <img src="../../assets/imgs/vetorUrgente.svg">
+                            <span class="urgenteText">URGENTE</span>
+                        </div>
+                        <div class="critico">
+                            <img src="../../assets/imgs/vectorCritico.svg">
+                            <span class="criticoText">CRÍTICO</span>
+                        </div>
+                        <div class="preocupante">
+                            <img src="../../assets/imgs/vectorPreocupante.svg">
+                            <span class="preocupanteText">PREOCUPANTE</span>
+                        </div>
+                        <div class="adequado">
+                            <img src="../../assets/imgs/vetorAdequado.svg">
+                            <span class="adequadoText">ADEQUADO</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="listaEstufas">
+                <div class="containerColTittle">
+                    <span>Nome das Estufas</span>
+                    <span>Qtd. de setores em Alerta</span>
+                </div>
+
+                <div class="lista">
+                    <details class="listaItem">
+                        <summary>
+                            <div class="upperPart">
+                                <span>Estufa Guimarães</span>
+                                <div class="qtdAlertas">
+                                    <span class="urgenteText">
+                                        <img src="../../assets/imgs/vetorUrgente.svg">
+                                        3
+                                    </span>
+                                    <span class="criticoText">
+                                        <img src="../../assets/imgs/vectorCritico.svg">
+                                        0
+                                    </span>
+                                    <span class="preocupanteText">
+                                        <img src="../../assets/imgs/vectorPreocupante.svg">
+                                        0
+                                    </span>
+                                    <span class="adequadoText">
+                                        <img src="../../assets/imgs/vetorAdequado.svg">
+                                        0
+                                    </span>
+                                </div>
+                            </div>
+                        </summary>
+
+                        <div class="lowerPart">
+                            <div class="containerColsubTittle">
+                                <span>NOME DO SETOR</span>
+                                <span>ÍNDICE DE LUMINOSIDADE ATUAL</span>
+                                <span>STATUS</span>
+                            </div>
+
+                            <div class="listaSetores">
+                                <a href="setor1.html">
+                                    <div class="listaSetorItem">
+                                        <span class="listaSetorItemElemento">Setor 1</span>
+                                        <span class="urgenteText listaSetorItemElemento">
+                                            <img src="../../assets/imgs/vetorUrgente.svg">
+                                            300lm
+                                        </span>
+
+                                        <span class="adequadoText listaSetorItemElemento">Ligado</span>
+
+                                    </div>
+                                </a>
+                                <a href="setor2.html">
+                                    <div class="listaSetorItem">
+                                        <span class="listaSetorItemElemento">Setor 2</span>
+                                        <span class="urgenteText listaSetorItemElemento">
+                                            <img src="../../assets/imgs/vetorUrgente.svg">
+                                            0lm
+                                        </span>
+                                        <span class="urgenteText listaSetorItemElemento">Desligado</span>
+                                    </div>
+                                </a>
+                                <a href="setor3.html">
+                                    <div class="listaSetorItem">
+                                        <span class="listaSetorItemElemento">Setor 3</span>
+                                        <span class="urgenteText listaSetorItemElemento">
+                                            <img src="../../assets/imgs/vetorUrgente.svg">
+                                            0lm
+                                        </span>
+                                        <span class="manutencaoText listaSetorItemElemento">Manutenção</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <div class="listaItem">
+                        <div class="upperPart">
+                            <span>Estufa Paulista</span>
+                            <div class="qtdAlertas">
+                                <span class="urgenteText">
+                                    <img src="../../assets/imgs/vetorUrgente.svg">
+                                    0
+                                </span>
+                                <span class="criticoText">
+                                    <img src="../../assets/imgs/vectorCritico.svg">
+                                    0
+                                </span>
+                                <span class="preocupanteText">
+                                    <img src="../../assets/imgs/vectorPreocupante.svg">
+                                    0
+                                </span>
+                                <span class="adequadoText">
+                                    <img src="../../assets/imgs/vetorAdequado.svg">
+                                    3
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="listaItem">
+                        <div class="upperPart">
+                            <span>Estufa Antonio</span>
+                            <div class="qtdAlertas">
+                                <span class="urgenteText">
+                                    <img src="../../assets/imgs/vetorUrgente.svg">
+                                    1
+                                </span>
+                                <span class="criticoText">
+                                    <img src="../../assets/imgs/vectorCritico.svg">
+                                    6
+                                </span>
+                                <span class="preocupanteText">
+                                    <img src="../../assets/imgs/vectorPreocupante.svg">
+                                    2
+                                </span>
+                                <span class="adequadoText">
+                                    <img src="../../assets/imgs/vetorAdequado.svg">
+                                    14
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

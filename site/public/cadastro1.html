@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leaf Solutions | Cadastro</title>
+
+    <link rel="icon" href="../../assets/icon/logo.svg">
+    <link rel="stylesheet" href="./css/estiloCadastro1.css">
+    <script src="./js/funcoes.js"></script>
+</head>
+
+<body class="cadastroBody">
+
+    <div class="cadastroContainer">
+        <div class="cadastroContainerUpperPart">
+            <div>
+                <span>1</span> <span>Informações da empresa</span>
+            </div>
+
+            <div>
+                <span>2</span> <span>Informações de estufa</span>
+            </div>
+        </div>
+
+        <div class="cadastroContainerMiddlePart">
+            <span>Primeiro passo</span>
+            <h2>Informações da empresa</h2>
+            <span>Coloque suas informações para fazer o cadastro. Você poderá usar nossas ferramentas após se
+                registrar.</span>
+        </div>
+
+        <div class="cadastroContainerBottomPart">
+            <div class="inputCadastro">
+                <span>Razão social*</span>
+                <input id="i_razaoSocial" placeholder="Insira o nome da sua empresa" maxlength="45">
+            </div>
+
+            <div class="inputCadastro">
+                <span>Email*</span>
+                <input id="i_email" placeholder="Insira seu email" max="40">
+            </div>
+
+            <div class="inputCadastro">
+                <span>CNPJ*</span>
+                <input id="i_cnpj" placeholder="Insira o CNPJ da sua empresa" maxlength="14">
+            </div>
+
+            <div class="inputCadastro">
+                <span>Telefone*</span>
+                <input id="i_telefone" placeholder="Insira o telefone de contato da sua empresa" maxlength="15">
+            </div>
+        </div>
+
+        <img src="../../assets/icon/logoDark.svg">
+    </div>
+
+    <div class="bottomCadastroContainer">
+        <a href="index.html"> Voltar para home</a>
+        <a href="cadastro2.html"><button onclick="cadastrar()">Próxima etapa</button></a>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+ function cadastrar() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = i_razaoSocial.value;
+        var emailVar = i_email.value;
+        var telefoneVar = i_telefone.value;
+        var cnpjVar = i_cnpj.value;
+
+        if (nomeVar == "" || emailVar == "" || cnpjVar == "" || telefoneVar == "") {
+            // cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Os campos não podem estar em branco)";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                telefoneServer: telefoneVar,
+                cnpjServer: cnpjVar
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
+
+                setTimeout(() => {
+                    window.location = "cadastro2.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
+

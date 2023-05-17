@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf - Histórico</title>
+    <link rel="stylesheet" href="./css/historicoPage.css">
+    <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="icon" href="../../assets/icon/logo.svg">
+</head>
+
+<!-- PAG MENU -->
+<div class="container">
+
+    <div class="lateral">
+        <!-- parte de cima -->
+        <div class="listaBaixo">
+            <div class="navegacão">
+                <div class="navHeader">
+                    <img src="../../assets/icon/logoDark.svg">
+                    <span>MENU</span>
+                </div>
+                <ul>
+                    <li class="lista ">
+                        <a href="dashboardPage.html">
+                            <i class="uil uil-create-dashboard"></i>
+                            <span class="lista">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="lista">
+                        <a href="estatisticaPage.html">
+                            <i class="uil uil-presentation-line"></i>
+                            <span class="lista">Estatística</span>
+                        </a>
+                    </li>
+                    <!-- <li class="lista">
+                        <a href="previsaoPage.html">
+                            <i class="uil uil-chart-pie"></i>
+                            <span class="lista">Previsões</span>
+                        </a>
+                    </li> -->
+                    <li class="lista destaque">
+                        <a href="historicoPage.html">
+                            <i class="uil uil-history"></i>
+                            <span class="lista">Histórico</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <ul style="height: fit-content;">
+                    <li class="lista">
+                        <a href="cadastrarUsuario.html">
+                            <i class="uil uil-plus-circle"></i>
+                            <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                        </a>
+                    </li>
+                    <li class="lista">
+                        <a href="cadastrarEstufa.html">
+                            <i class="uil uil-plus-circle"></i>
+                            <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- parte de baixo -->
+            <div class="trindade">
+                <div class="configNomeimg">
+                    <div class="nomeNome">
+                        <img src="../../assets/imgs/Ellipse2325.png">
+                        <ul class="ul2">
+                            <span class="ismalendas">
+                                <span>NomeUsuario</span>
+                                <span>NomeEmpresa</span>
+                            </span>
+                        </ul>
+                    </div>
+
+                    <div class="configgg">
+                        <a href="#">
+                            <i class="uil uil-setting"></i>
+                        </a>
+                        <a href="../home/login.html">
+                            <i class="uil uil-signout" style="color: #C63535;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIM DO MENU -->
+    <!-- parte do dash -->
+    <div class="tela">
+        <div class="areaDash">
+            <div class="top-left">
+                <span class="topo">Dashboard</span>
+            </div>
+            <div>
+                <div class="alertsParametro">
+                    <div class="urgente">
+                        <img src="../../assets/imgs/vetorUrgente.svg">
+                        <span class="urgenteText">URGENTE</span>
+                    </div>
+                    <div class="critico">
+                        <img src="../../assets/imgs/vectorCritico.svg">
+                        <span class="criticoText">CRÍTICO</span>
+                    </div>
+                    <div class="preocupante">
+                        <img src="../../assets/imgs/vectorPreocupante.svg">
+                        <span class="preocupanteText">PREOCUPANTE</span>
+                    </div>
+                    <div class="adequado">
+                        <img src="../../assets/imgs/vetorAdequado.svg">
+                        <span class="adequadoText">ADEQUADO</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divDiaEipt">
+            <div class="divDias">
+
+                <li class="lista">
+                    <a href="historicoPage.html">
+                        <span class="destaqueDia">08/04/2023</span>
+                    </a>
+                </li>
+
+
+                <li class="lista">
+                    <a href="historicoPage.html">
+                        <span class="listaDias">07/04/2023</span>
+                    </a>
+                </li>
+
+
+                <li class="lista">
+                    <a href="historicoPage.html">
+                        <span class="listaDias">06/04/2023</span>
+                    </a>
+                </li>
+
+
+                <li class="lista">
+                    <a href="historicoPage.html">
+                        <span class="listaDias">05/04/2023</span>
+                    </a>
+                </li>
+
+
+                <li class="lista">
+                    <a href="historicoPage.html">
+                        <span class="listaDias">04/04/2023</span>
+                    </a>
+                </li>
+
+            </div>
+            <div class="estufaIpt">
+                <div class="estufaNome">
+                    <span class="estufinhaa">Estufa</span>
+                </div>
+                <div class="inputEstufa">
+                    <label for="estufa"></label>
+                    <select class="estufaCinza" id="estufa" name="estufa">
+                        <option value="Estufa 1">Estufa Guimarães</option>
+                        <option value="Estufa 2">Estufa Antônio</option>
+                        <option value="Estufa 3">Estufa Paulista</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------- -->
+        <div class="telaa">
+            <div class="containerChart">
+                <div class="chartContainerH">
+                    <!-- <div class="caixaIndicadores">
+                        <span>Filtros</span>
+                        <div class="indicadores">
+                            <div class="urgente flexJ">
+                                <div class="flexJ">
+                                    <img src="../../assets/imgs/vetorUrgente.svg">
+                                </div>
+                                <span style="color: #C63535;" class="urgenteText">
+                                    • URGENTE
+                                </span>
+                            </div>
+                            <div class="critico flexJ">
+                                <div>
+                                    <img src="../../assets/imgs/vectorCritico.svg">
+                                </div><span style="color: #C65835;">
+                                    • CRÍTICO</span>
+                            </div>
+                            <div class="preocupante flexJ">
+                                <div>
+                                    <img src="../../assets/imgs/vectorPreocupante.svg">
+                                </div><span style="color: #CCA92B;">
+                                    • PREOCUPANTE</span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="graficoBarra">
+                        <span class="tituloGrafico">Índice de luminosidade Por setor</span>
+                        <div><canvas class="graficoBarra" id="myChart"></canvas></div>
+                    </div>
+                </div>
+                <!-- linha 1 -->
+                <div class="containerAlerts">
+                    <div class="linha">
+                        <div class="maiorCap gapy">
+                            <div class="imgAlert"><img src="../../assets/imgs/vetorUrgente.svg"></div>
+                            <div class="valores">
+                                <span style="color: #C63535;" class="maiorcaptacacao">Maior Captação</span>
+                                <span style="color: #FA1111;" class="_820 valorzao">820</span>
+                                <span style="color: #880B0B;" class="setor1">Setor 1</span>
+                                <span style="color: #6D2D2D;" class="hora"><img
+                                        src="../../assets/imgs/relogio.svg">09:35</span>
+                            </div>
+                        </div>
+                        <div class="menorCap flexJ gapy">
+                            <div class="imgAlert"><img src="../../assets/imgs/verificado.svg"></div>
+                            <div class="valores">
+                                <span style="color: #72CC2B;" class="maiorcaptacacao">Menor Captação</span>
+                                <span style="color: #61F804;" class="_820 valorzao">520</span>
+                                <span style="color: #0B8818;" class="setor1">Setor 3</span>
+                                <span style="color: #2D6D37;" class="hora"><img
+                                        src="../../assets/imgs/relogioGreen.svg">08:50</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- linha 2 -->
+                    <div class="linha">
+                        <div class="media flexJ gapy">
+                            <div class="valores">
+                                <span style="color: #C65835;" class="maiorcaptacacao">Média diária de
+                                    Luminosidade</span>
+                                <span style="color: #FA8111;" class="_820 valorzao">
+                                    <img src="../../assets/imgs/!.svg">
+                                    700
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="alertasLista">
+                <span class="histAlerts valorzaoO">Histórico de alertas</span>
+                <div class="rolando">
+                    <div class="caixaColorida">
+                        <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span style="color: #950000;">SETOR 1</span>
+                            </div>
+
+                            <span style="color: #CC0000;" class="indice">ÍNDICE: 820lm</span>
+
+                            <div style="display: flex; justify-content: space-between;">
+                                <span class="indice">IDEAL: 500 - 600</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">
+                                        <img src="../../assets/imgs/relogio.svg">
+                                    </div>
+                                    <span style="color: #6D2D2D;">09:35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caixaColorida">
+                        <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span style="color: #950000;">SETOR 1</span>
+                            </div>
+
+                            <span style="color: #CC0000;" class="indice">ÍNDICE: 213lm</span>
+
+                            <div style="display: flex; justify-content: space-between;">
+                                <span class="indice">IDEAL: 500 - 600</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">
+                                        <img src="../../assets/imgs/relogio.svg">
+                                    </div>
+                                    <span style="color: #6D2D2D;">09:35</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="caixaColorida">
+                        <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span style="color: #950000;">SETOR 1</span>
+                            </div>
+
+                            <span style="color: #CC0000;" class="indice">ÍNDICE: 304lm</span>
+
+                            <div style="display: flex; justify-content: space-between;">
+                                <span class="indice">IDEAL: 500 - 600</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">
+                                        <img src="../../assets/imgs/relogio.svg">
+                                    </div>
+                                    <span style="color: #6D2D2D;">09:35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="caixaColorida">
+                        <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span style="color: #950000;">SETOR 2</span>
+                            </div>
+
+                            <span style="color: #CC0000;" class="indice">ÍNDICE: 290lm</span>
+
+                            <div style="display: flex; justify-content: space-between;">
+                                <span class="indice">IDEAL: 500 - 600</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">
+                                        <img src="../../assets/imgs/relogio.svg">
+                                    </div>
+                                    <span style="color: #6D2D2D;">09:35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="caixaColorida">
+                        <div class="imgag"> <img src="../../assets/imgs/vetorUrgente.svg"></div>
+                        <div class="conteudo">
+                            <div class="setorEhora">
+                                <span style="color: #950000;">SETOR 3</span>
+                            </div>
+
+                            <span style="color: #CC0000;" class="indice">ÍNDICE: 290lm</span>
+
+                            <div style="display: flex; justify-content: space-between;">
+                                <span class="indice">IDEAL: 500 - 600</span>
+                                <div class="iconeEhora flexJ">
+                                    <div class="imgHora">
+                                        <img src="../../assets/imgs/relogio.svg">
+                                    </div>
+                                    <span style="color: #6D2D2D;">09:35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- <div>
+            <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
+        </div> -->
+        <!-- gráfico -->
+        <!-- grafico 1 -->
+        <script>
+            const labels = [
+                '12:00',
+                '13:00',
+                '14:00',
+                '15:00',
+                '16:00',
+                '17:00',
+            ];
+
+            const ctx = document.getElementById('myChart');
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['14:15', '14:30', '14:45', '15:00', '15:15', '15:30'],
+                    datasets: [{
+                        label: 'Setor 1',
+                        data: [400, 400, 550, 323, 400, 427, 1023, 994, 987, 861, 698, 415, 208, 158],
+                        borderWidth: 3
+                    }, {
+                        label: 'Setor 2',
+                        data: [500, 325, 415, 250, 600, 350],
+                        borderWidth: 1
+                    }, {
+                        label: 'Setor 3',
+                        data: [425, 429, 150, 200, 200, 431],
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <script>
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
+
+        </script>
+
+
+</html>

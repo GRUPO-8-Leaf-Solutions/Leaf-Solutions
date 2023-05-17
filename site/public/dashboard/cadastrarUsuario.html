@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf - Dashboard</title>
+    <link rel="stylesheet" href="./css/cadastrarUsuarioPage.css">
+    <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="icon" href="../../assets/icon/logo.svg">
+</head>
+
+<body>
+    <!-- PAG MENU -->
+    <div class="container">
+
+        <div class="lateral">
+            <!-- parte de cima -->
+            <div class="listaBaixo">
+                <div class="navegacão">
+                    <div class="navHeader">
+                        <img src="../../assets/icon/logoDark.svg">
+                        <span>MENU</span>
+                    </div>
+                    <ul>
+                        <li class="lista">
+                            <a href="dashboardPage.html">
+                                <i class="uil uil-create-dashboard"></i>
+                                <span class="lista">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="estatisticaPage.html">
+                                <i class="uil uil-presentation-line"></i>
+                                <span class="lista">Estatística</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="previsaoPage.html">
+                                <i class="uil uil-chart-pie"></i>
+                                <span class="lista">Previsões</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="historicoPage.html">
+                                <i class="uil uil-history"></i>
+                                <span class="lista">Histórico</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul style="height: fit-content;">
+                        <li class="lista destaque">
+                            <a href="cadastrarUsuario.html">
+                                <i class="uil uil-plus-circle"></i>
+                                <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                            </a>
+                        </li>
+                        <li class="lista">
+                            <a href="cadastrarEstufa.html">
+                                <i class="uil uil-plus-circle"></i>
+                                <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!-- parte de baixo -->
+                <div class="trindade">
+                    <div class="configNomeimg">
+                        <div class="nomeNome">
+                            <img src="../../assets/imgs/Ellipse2325.png">
+                            <ul class="ul2">
+                                <span class="ismalendas">
+                                    <span>NomeUsuario</span>
+                                    <span>NomeEmpresa</span>
+                                </span>
+                            </ul>
+                        </div>
+
+                        <div class="configgg">
+                            <a href="#">
+                                <i class="uil uil-setting"></i>
+                            </a>
+                            <a href="../home/login.html">
+                                <i class="uil uil-signout" style="color: #C63535;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM DO MENU -->
+        <!-- parte do dash -->
+        <div class="tela">
+            <div class="areaDash">
+                <div class="top-left">
+                    <span class="topo">Cadastrar usuario</span>
+
+
+                </div>
+            </div>
+
+            <div class="formCadastro">
+                <div class="input">
+                    <span>nome*</span>
+                    <input type="text">
+                </div>
+
+                <div class="input">
+                    <span>Sobrenome*</span>
+                    <input type="text">
+                </div>
+
+                <div class="input">
+                    <span>Email*</span>
+                    <input type="text">
+                </div>
+
+                <div class="input">
+                    <span>Senha*</span>
+                    <input type="text">
+                </div>
+
+                <button>Cadastrar usuario</button>
+            </div>
+        </div>
+
+
+
+        <!-- <div>
+            <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
+        </div> -->
+
+</body>
+
+</html>
