@@ -8,7 +8,7 @@
 
     <title>Leaf Solutions | Cadastro</title>
 
-    <link rel="icon" href="../../assets/icon/logo.svg">
+    <link rel="icon" href="assets/icon/logo.svg">
     <link rel="stylesheet" href="./css/estiloCadastro1.css">
     <script src="./js/funcoes.js"></script>
 </head>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <img src="../../assets/icon/logoDark.svg">
+        <img src="assets/icon/logoDark.svg">
     </div>
 
     <div class="bottomCadastroContainer">
@@ -67,7 +67,7 @@
 
 </html>
 
-<script>
+ <script>
  function cadastrar() {
         // aguardar();
 
@@ -78,16 +78,16 @@
         var telefoneVar = i_telefone.value;
         var cnpjVar = i_cnpj.value;
 
-        if (nomeVar == "" || emailVar == "" || cnpjVar == "" || telefoneVar == "") {
-            // cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Os campos não podem estar em branco)";
+        // if (nomeVar == "" || emailVar == "" || cnpjVar == "" || telefoneVar == "") {
+        //     // cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco)";
 
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -135,4 +135,3 @@
     }
 
 </script>
-
