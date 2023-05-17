@@ -1,30 +1,11 @@
-var usuarioModel = require("../models/usuarioModel");
+var usuarioEndModel = require("../models/usuarioEndModel");
 
 var sessoes = [];
 
 function testar(req, res) {
-    console.log("ENTRAMOS NA usuarioController");
+    console.log("ENTRAMOS NA usuarioControllerEND");
     res.json("ESTAMOS FUNCIONANDO!");
 }
-
-function listar(req, res) {
-    usuarioModel.listar()
-        .then(function (resultado) {
-            if (resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else {
-                res.status(204).send("Nenhum resultado encontrado!")
-            }
-        }).catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-
 
 function cadastrarEnd(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -51,7 +32,7 @@ function cadastrarEnd(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarEnd(estado, logradouro, complemento, numEndereco, cidade, cep)
+        usuarioEndModel.cadastrarEnd(cep, logradouro, numEndereco, complemento, estado, cidade)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -71,6 +52,5 @@ function cadastrarEnd(req, res) {
 
 module.exports = {
     cadastrarEnd,
-    listar,
     testar
 }

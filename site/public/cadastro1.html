@@ -60,7 +60,7 @@
 
     <div class="bottomCadastroContainer">
         <a href="index.html"> Voltar para home</a>
-        <a href="cadastro2.html"><button onclick="cadastrar()">Próxima etapa</button></a>
+        <button onclick="cadastrar()">Próxima etapa</button>
     </div>
 
 </body>
@@ -109,29 +109,29 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                cardErro.style.display = "block";
+                // cardErro.style.display = "block";
 
-                mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
+                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
 
-                setTimeout(() => {
+                // setTimeout(() => {
                     window.location = "cadastro2.html";
-                }, "2000")
+                // }, "2000")
 
-                limparFormulario();
-                finalizarAguardar();
+                // limparFormulario();
+                // finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            // finalizarAguardar();
         });
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>

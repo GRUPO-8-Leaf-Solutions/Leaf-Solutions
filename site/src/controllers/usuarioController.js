@@ -145,6 +145,6 @@ module.exports = {
     login,
     cadastrar,
     listar,
-    testar,
-    cadastrarEnd
+    testar
+    // cadastrarEnd
 }
