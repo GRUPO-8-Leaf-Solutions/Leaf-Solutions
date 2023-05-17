@@ -8,8 +8,8 @@
     
     <title>Leaf Solutions - Cadastro</title>
 
-    <link rel="icon" href="icon/logo.svg">
-    <link rel="stylesheet" href="css/estiloCadastro2.css">
+    <link rel="icon" href="../../assets/icon/logo.svg">
+    <link rel="stylesheet" href="./css/estiloCadastro2.css">
     <script src="./js/funcoes.js"></script>
 </head>
 
@@ -69,19 +69,14 @@
                 <span>Estado</span>
                 <input id="i_cep" placeholder="Insira a UF do seu estado" maxlength="45">
             </div>
-            <div id="div_aguardar" class="loading-div">
-                <img src="" id="loading-gif">
-            </div>
-
-            <div id="div_erros_login"></div>
         </div>
 
-        <img src="icon/logoDark.svg">
+        <img src="../../assets/icon/logoDark.svg">
     </div>
 
     <div class="bottomCadastroContainer">
         <a href="cadastro1.html"> Voltar para Informações da empresa</a>
-        <a href=""><button onclick="cadastrarEnd()">Próxima etapa</button></a>
+        <a href="cadastro3.html"><button onclick="cadastrarEnd()">Próxima etapa</button></a>
     </div>
 
 </body>
@@ -97,26 +92,26 @@
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var estadoVar = i_estado.value;
-        var logradouroVar = i_logradouro.value;
+        var logradourolVar = i_logradouro.value;
         var complementoVar = i_complemento.value;
         var numEnderecoVar = i_numeroEndereco.value;
         var cidadeVar = i_cidade.value;
         var cepVar = i_cep.value;
 
 
-        // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
-        //     cardErro.style.display = "block"
-        //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco !)";
+        if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Os campos não podem estar em branco !)";
 
-        //     finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
 
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrarEnd", {
+        fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -137,22 +132,22 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                // cardErro.style.display = "block";
+                cardErro.style.display = "block";
 
-                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
+                mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
 
-                // setTimeout(() => {
+                setTimeout(() => {
                     window.location = "cadastro3.html";
-                // }, "2000")
+                }, "2000")
 
-                // limparFormulario();
-                // finalizarAguardar();
+                limparFormulario();
+                finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
+            finalizarAguardar();
         });
 
         return false;

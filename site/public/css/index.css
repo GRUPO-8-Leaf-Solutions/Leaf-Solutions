@@ -87,7 +87,7 @@ body {
 .home::after {
     content: ' ';
     /* background-image: url("../../../assets/imgs/banner.svg"); */
-    background-image: url(../imgs/banner.svg);
+    background-image: url(../assets/imgs/banner.svg);
     background-size: cover;
     width: 90%;
     height: 400px;
@@ -229,25 +229,25 @@ body {
 
 .tipos_alface .americana {
     /* background-image: url(../../../assets/imgs/alface1.png); */
-    background-image: url(../imgs/alface1.png);
+    background-image: url(../assets/imgs/alface1.png);
     background-size: cover;
 }
 
 .tipos_alface .crespa {
     /* background-image: url(../../../assets/imgs/alface2.jpeg); */
-    background-image: url(../imgs/alface2.jpeg);
+    background-image: url(../assets/imgs/alface2.jpeg);
     background-size: cover;
 }
 
 .tipos_alface .mimosa {
     /* background-image: url(../../../assets/imgs/alface3.png); */
-    background-image: url(../imgs/alface3.png);
+    background-image: url(../assets/imgs/alface3.png);
     background-size: cover;
 }
 
 .tipos_alface .roxa {
     /* background-image: url(../../../assets/imgs/alface4.png); */
-    background-image: url(../imgs/alface4.png);
+    background-image: url(../assets/imgs/alface4.png);
     background-size: cover;
 }
 

@@ -13,7 +13,7 @@ router.get("/listar", function (req, res) {
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrarEnd", function (req, res) {
-    usuarioControllerEnd.cadastrar(req, res);
+    usuarioControllerEnd.cadastrarEnd(req, res);
 });
 
 // router.post("/cadastrarEnd", function (req, res) {

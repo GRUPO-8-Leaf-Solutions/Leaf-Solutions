@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 
 var usuarioController = require("../controllers/usuarioController");
-var usuarioControllerEnd = require("../controllers/usuarioControllerEnd");
 
 router.get("/", function (req, res) {
     usuarioController.testar(req, res);
@@ -17,12 +16,9 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 });
 
-router.post("/cadastrarEnd", function (req, res) {
-    usuarioControllerEnd.cadastrarEnd(req, res);
-});
 
 router.post("/autenticar", function (req, res) {
-    usuarioController.entrar(req, res);
+    usuarioController.login(req, res);
 });
 
 module.exports = router;

@@ -110,7 +110,8 @@
                     <img src="../../assets/imgs/Ellipse2325.png">
                     <ul class="ul2">
                         <span class="ismalendas">
-                            <span>NomeUsuario</span>
+                            <span id="b_usuario">NomeUsuario</span>
+                           
                             <span>NomeEmpresa</span>
                         </span>
                     </ul>
@@ -601,6 +602,46 @@
             }
         }
     });
+</script>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.EMAIL_USUARIO;
+
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGraficos();
+
+    function obterDadosGraficos() {
+        obterDadosGrafico(1)
+        obterDadosGrafico(2)
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
+    }
+
+
+    function obterDadosGrafico(idAquario) {
+
+
+    if (proximaAtualizacao != undefined) {
+        clearTimeout(proximaAtualizacao);
+    }
+
+fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGrafico(resposta, idAquario);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
 </script>
 
 </html>
