@@ -228,6 +228,7 @@ li a {
 }
 
 .inferior-menu {
+    background-image: url(imgs/VectorPéMenu.svg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
@@ -270,18 +271,24 @@ li a {
     flex-direction: column;
 }
 
+.tela-dashboard {
+    padding: 10px 30px;
+}
+
 .areaDash {
     /* height: 10%; */
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
+    justify-content: center;
+    height: 12%;
+    background: #FEFFFB;
+    box-shadow: 0px -9px 30px rgba(0, 0, 0, 0.3);
 }
 
 .alertsParametro {
     display: flex;
     gap: 40px;
     justify-content: space-between;
-    margin-top: 10px;
 }
 
 .alertsParametro .urgente {
@@ -295,6 +302,27 @@ li a {
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.alertsParametro .urgente .span-urgente {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    color: #871616;
+}
+
+.alertsParametro .preocupante .span-preocupante {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #704B01;
+}
+
+.alertsParametro .adequado .span-adequado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #287E25;
 }
 
 .alertsParametro .critico {
@@ -455,10 +483,10 @@ li a {
 
 .alert {
     width: 280px;
-    height: 115px;
+    height: 125px;
     background-color: rgba(204, 0, 0, 0.40);
-    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
-    border-radius: 10px;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.50);
+    border-radius: 15px;
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -467,10 +495,10 @@ li a {
 
 .alertCritico {
     width: 280px;
-    height: 103.46px;
+    height: 125px;
     background-color: #f28d289d;
-    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
-    border-radius: 10px;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.50);
+    border-radius: 15px;
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -479,10 +507,10 @@ li a {
 
 .alertPreocupante {
     width: 280px;
-    height: 103.46px;
+    height: 125px;
     background-color: #ffd3325d;
-    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
-    border-radius: 10px;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.50);
+    border-radius: 15px;
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -539,6 +567,11 @@ li a {
     display: flex;
     gap: 50px;
 }
+
+
+
+
+
 
 .critico-setor {
     color: rgba(255, 92, 0, 1);
@@ -977,6 +1010,9 @@ li a {
     justify-content: center;
     align-items: center;
 }
+
+
+
 
 .ajuste {
     display: flex;
