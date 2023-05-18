@@ -111,7 +111,7 @@
                     <img src="../../assets/imgs/Ellipse2325.png">
                     <ul class="ul2">
                         <span class="ismalendas">
-                            <span>NomeUsuario</span>
+                            <span id="loginUsuario"></span>
                             <span>NomeEmpresa</span>
                         </span>
                     </ul>
@@ -623,4 +623,21 @@
     });
 </script>
 
+
+<script>
+    loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
+
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGraficos();
+
+    function obterDadosGraficos() {
+        obterDadosGrafico(1)
+        obterDadosGrafico(2)
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
+    }
+
+    
+</script>
 </html>

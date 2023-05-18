@@ -13,5 +13,9 @@ router.get("/", function (req, res) {
     usuarioControllerEnd.testar(req, res);
 });
 
+router.get("/listar", function (req, res) {
+    usuarioControllerEnd.listar(req, res);
+});
+
 
 module.exports = router;
