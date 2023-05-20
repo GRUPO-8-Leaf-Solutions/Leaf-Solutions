@@ -12,6 +12,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 
 var usuarioEndRouter = require("./src/routes/usuariosEndereco")
+var usuarioEstufaRouter = require("./src/routes/usuariosEstufa")
 var leituraRouter = require("./src/routes/leitura");
 
 app.use(express.json());
@@ -22,8 +23,9 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-app.use("/usuariosEnd", usuarioEndRouter)
-app.use("/leitura", leituraRouter)
+app.use("/usuariosEnd", usuarioEndRouter);
+app.use("/usuariosEstufa", usuarioEstufaRouter);
+app.use("/leitura", leituraRouter);
 
 // app.use("/empresa", empresaRouter);
 

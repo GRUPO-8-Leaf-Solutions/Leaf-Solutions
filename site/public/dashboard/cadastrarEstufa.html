@@ -107,35 +107,15 @@
 
             <div class="formCadastro">
                 <div class="input">
-                    <span>CEP*</span>
-                    <input type="text">
+                    <span>Nome*</span>
+                    <input id="i_nome" type="text">
                 </div>
 
                 <div class="input">
-                    <span>Logradouro*</span>
-                    <input type="text">
+                    <span>Área*</span>
+                    <input id="i_area" type="text">
                 </div>
-
-                <div class="input">
-                    <span>Numero*</span>
-                    <input type="text">
-                </div>
-
-                <div class="input">
-                    <span>Complemento</span>
-                    <input type="text">
-                </div>
-
-                <div class="input">
-                    <span>Estado</span>
-                    <input type="text">
-                </div>
-
-                <div class="input">
-                    <span>Cidade</span>
-                    <input type="text">
-                </div>
-                <button>Cadastrar estufa</button>
+                <button onclick="cadastrarEstufa()">Cadastrar estufa</button>
             </div>
         </div>
 
@@ -148,3 +128,76 @@
 </body>
 
 </html>
+
+<script>
+      function cadastrarEstufa() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = i_nome.value;
+        var areaVar = i_area.value;
+        // var complementoVar = i_complemento.value;
+        // var numEnderecoVar = i_numeroEndereco.value;
+        // var cidadeVar = i_cidade.value;
+        // var cepVar = i_cep.value;
+
+
+        // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco !)";
+
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/usuariosEnd/cadastrarEnd", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                areaServer: areaVar,
+                // complementoServer: complementoVar,
+                // numEnderecoServer: numEnderecoVar,
+                // cidadeServer: cidadeVar,
+                // cepServer: cepVar
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
+
+                // setTimeout(() => {
+                    window.location = "dashboardPage.html";
+                // }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro da estufa!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+</script>
