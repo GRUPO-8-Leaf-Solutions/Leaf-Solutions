@@ -41,14 +41,19 @@ constraint pkTelefone primary key (idTelefone, fkEmpresa, fkTipoTelefone)
 
 create table endereco (
 idEndereco int primary key auto_increment,
-cep char(8) not null,
+cep char(9) not null,
 logradouro varchar(80) not null,
-bairro varchar(45) not null,
-numero varchar(5) not null,
+bairro varchar(25),
+numero varchar(10) not null,
 complemento varchar(30),
-uf char(2),
+uf char(3),
 cidade varchar(50)
 );
+desc endereco;
+-- alter table endereco modify cep char(9);desc endereco;
+-- alter table endereco modify bairro varchar(25);
+
+
 
 create table estufa (
 idEstufa int auto_increment,

@@ -22,7 +22,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "leafSolutions",
     user: "ismael",
-    password: " ",
+    password: "",
 };
 
 function executar(instrucao) {

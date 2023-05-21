@@ -1,4 +1,4 @@
-var usuarioEndModel = require("../models/usuarioEstufaModel");
+var usuarioEstufaModel = require("../models/usuarioEstufaModel");
 
 var sessoes = [];
 
@@ -52,7 +52,7 @@ function cadastrarEstufa(req, res) {
 }
 
 function listar(req, res) {
-    usuarioEndModel.listar()
+    usuarioEstufaModel.listar()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
