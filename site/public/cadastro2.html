@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Leaf Solutions - Cadastro</title>
 
     <link rel="icon" href="../../assets/icon/logo.svg">
@@ -14,7 +14,7 @@
 </head>
 
 <body class="cadastroBody P2">
-    
+
     <div class="alerta_erro">
         <div class="card_erro" id="cardErro">
             <span id="mensagem_erro"></span>
@@ -42,32 +42,32 @@
         <div class="cadastroContainerBottomPart">
             <div class="inputCadastro">
                 <span>CEP*</span>
-                <input id="i_cep" placeholder="Insira o CEP do seu endereço" minlength="8" maxlength="8">
+                <input id="cep" placeholder="Insira o CEP do seu endereço" minlength="8" maxlength="8">
             </div>
 
             <div class="inputCadastro">
                 <span>Logradouro*</span>
-                <input id="i_logradouro" placeholder="Insira o logradouro da sua estufa" maxlength="80">
+                <input id="logradouro" placeholder="Insira o logradouro da sua estufa" maxlength="80">
             </div>
 
             <div class="inputCadastro">
                 <span>Complemento*</span>
-                <input id="i_complemento" placeholder="Insira o complemento do seu endereço" maxlength="30">
+                <input id="complemento" placeholder="Insira o complemento do seu endereço" maxlength="30">
             </div>
 
             <div class="inputCadastro">
                 <span>Numero do endereço</span>
-                <input id="i_numeroEndereco" placeholder="Insira o numero do seu endereço" maxlength="45">
+                <input id="numero" placeholder="Insira o numero do seu endereço" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>Cidade</span>
-                <input id="i_cidade" placeholder="Insira o nome da sua cidade" maxlength="45">
+                <input id="localidade" placeholder="Insira o nome da sua cidade" maxlength="45">
             </div>
 
             <div class="inputCadastro">
                 <span>Estado</span>
-                <input id="i_estado" placeholder="Insira a UF do seu estado" maxlength="2" minlength="2">
+                <input id="uf" placeholder="Insira a UF do seu estado" maxlength="2" minlength="2">
             </div>
         </div>
 
@@ -86,17 +86,46 @@
 <script>
     // fazer funcao pra avançar para proxima pagina 
 
+    var cep = document.getElementById("cep")
+
+    var mostrarDados = (resultado) => {
+        for (const campo in resultado) {
+            if (document.getElementById(campo)) {
+                document.querySelector("#" + campo).value = resultado[campo]
+                // const element = object[campo];
+
+            }
+        }
+    }
+
+    cep.addEventListener("blur", (e) => {
+        var pesquisa = cep.value.replace("-", "")
+        var options = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        }
+
+        fetch(`https://viacep.com.br/ws/${pesquisa}/json/`, options)
+            .then(resposta => {
+                resposta.json()
+                    .then(dados => mostrarDados(dados))
+            })
+            .catch(e => console.log("Erro." + e, message))
+    })
+
+
     function cadastrarEnd() {
         // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var estadoVar = i_estado.value;
-        var logradouroVar = i_logradouro.value;
-        var complementoVar = i_complemento.value;
-        var numEnderecoVar = i_numeroEndereco.value;
-        var cidadeVar = i_cidade.value;
-        var cepVar = i_cep.value;
+        var estadoVar = uf.value;
+        var logradouroVar = logradouro.value;
+        var complementoVar = complemento.value;
+        var numEnderecoVar = numero.value;
+        var cidadeVar = localidade.value;
+        var cepVar = cep.value;
 
 
         // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
@@ -137,7 +166,7 @@
                 // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
 
                 // setTimeout(() => {
-                    window.location = "cadastro3.html";
+                window.location = "cadastro3.html";
                 // }, "2000")
 
                 // limparFormulario();
