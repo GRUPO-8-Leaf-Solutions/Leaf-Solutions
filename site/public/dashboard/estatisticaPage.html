@@ -128,11 +128,47 @@
                     <span>Qtd. de setores</span>
                 </div>
 
-                <div class="lista">
-                    <details class="listaItem">
+                <!-- PRÓXIMA DIV ESTÁ SENDO PREENCHIDA PELO BANCO -->
+                <div id="lista" class="lista">
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+var idUsuario = sessionStorage.idUsuario;
+
+
+
+    window.onload = exibirEstufas();
+
+    function exibirEstufas(){
+
+        fetch("/usuariosEstufa/exibirEstufas", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            })
+            
+        }).then(function(resposta){
+          resposta.json().then((json)=>{
+            console.log(json)
+            for(i = 0; i < json.length; i++){
+                lista.innerHTML += `                    
+                <details class="listaItem">
                         <summary>
                             <div class="upperPart">
-                                <span>Estufa Guimarães</span>
+                                <span id="estufaTitulo" >Estufa ${json[i].nome}</span>
                                 <div class="qtdAlertas" id="quantidade_setor_estufa">
                                     <span class="urgenteText">
                                         <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
@@ -196,86 +232,9 @@
                                 </a>
                             </div>
                         </div>
-                    </details>
-
-                    <!-- <div class="listaItem">
-                        <div class="upperPart">
-                            <span>Estufa Paulista</span>
-                            <div class="qtdAlertas">
-                                <span class="urgenteText">
-                                    <img src="../assets/imgs/vetorUrgente.svg">
-                                    0
-                                </span>
-                                <span class="criticoText">
-                                    <img src="../assets/imgs/vectorCritico.svg">
-                                    0
-                                </span>
-                                <span class="preocupanteText">
-                                    <img src="../assets/imgs/vectorPreocupante.svg">
-                                    0
-                                </span>
-                                <span class="adequadoText">
-                                    <img src="../assets/imgs/vetorAdequado.svg">
-                                    3
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="listaItem">
-                        <div class="upperPart">
-                            <span>Estufa Antonio</span>
-                            <div class="qtdAlertas">
-                                <span class="urgenteText">
-                                    <img src="../assets/imgs/vetorUrgente.svg">
-                                    1
-                                </span>
-                                <span class="criticoText">
-                                    <img src="../assets/imgs/vectorCritico.svg">
-                                    6
-                                </span>
-                                <span class="preocupanteText">
-                                    <img src="../assets/imgs/vectorPreocupante.svg">
-                                    2
-                                </span>
-                                <span class="adequadoText">
-                                    <img src="../assets/imgs/vetorAdequado.svg">
-                                    14
-                                </span>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</body>
-
-</html>
-
-<script>
-
-
-
-
-    window.onload = exibirEstufas();
-
-    function exibirEstufas(){
-        var idUsuario = sessionStorage.idUsuario;
-
-
-        fetch("/usuariosEstufa/exibirEstufas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idUsuarioServer: idUsuario
-            })
-        }).then(function(resposta){
-            
+                    </details>`
+            }
+          })
         })
     }
 </script>

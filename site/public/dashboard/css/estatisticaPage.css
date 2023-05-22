@@ -10,7 +10,7 @@
 }
 
 .urgenteText {
-    color: #C63535;
+    color: #C63535 !important;
 }
 
 .criticoText {
@@ -70,6 +70,10 @@ body {
 .lista span {
     color: #FFF;
     font-size: 18px;
+}
+
+#estufaTitulo{
+    color: black;
 }
 
 .lista.destaque .lista {

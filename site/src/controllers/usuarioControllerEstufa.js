@@ -69,9 +69,7 @@ function listar(req, res) {
 }
 
 function exibirEstufas(req, res) {
-    var idUsuario = req.params.idUsuario;
-
-    usuarioEstufaModel.exibirEstufa(idUsuario)
+    usuarioEstufaModel.exibirEstufas(req.body.idUsuarioServer)
     .then(function (resultado) {
         if(resultado.length > 0) {
             res.status(200).json(resultado);
@@ -80,7 +78,7 @@ function exibirEstufas(req, res) {
         }
 }).catch(function (erro) {
     console.log(erro);
-    console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+    console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
     res.status(500).json(erro.sqlMessage);
 });
 }

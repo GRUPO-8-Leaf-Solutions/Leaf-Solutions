@@ -23,8 +23,8 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function exibirEstufas(idUsuario) {
-    var instrucao = `SELECT * FROM estufa join empresa on fkEmpresa = idEmpresa where idEmpresa = ${idUsuario};`;
+function exibirEstufas(idUsuarioServer) {
+    var instrucao = `SELECT * FROM estufa join empresa on fkEmpresa = idEmpresa where idEmpresa = ${idUsuarioServer};`;
     return database.executar(instrucao);
 }
 

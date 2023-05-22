@@ -18,7 +18,7 @@ router.get("/listar", function (req, res) {
     usuarioControllerEstufa.listar(req, res);
 });
 
-router.get("/exibirEstufas", function (req, res) {
+router.post("/exibirEstufas", function (req, res) {
     usuarioControllerEstufa.exibirEstufas(req, res);
 });
 
