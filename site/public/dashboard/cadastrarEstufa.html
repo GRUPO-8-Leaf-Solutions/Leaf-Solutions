@@ -10,7 +10,7 @@
     <!-- SCRIPT PARA PUXAR A BIBLIOTECA DO CHARTJS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link rel="icon" href="../../assets/icon/logo.svg">
+    <link rel="icon" href="../../public/assets/icon/logo.svg">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
             <div class="listaBaixo">
                 <div class="navegacão">
                     <div class="navHeader">
-                        <img src="../../assets/icon/logoDark.svg">
+                        <img src="../../public/assets/icon/logo.svg">
                         <span>MENU</span>
                     </div>
                     <ul>
@@ -39,89 +39,149 @@
                             </a>
                         </li>
                         <li class="lista">
-                            <a href="previsaoPage.html">
-                                <i class="uil uil-chart-pie"></i>
-                                <span class="lista">Previsões</span>
-                            </a>
-                        </li>
-                        <li class="lista">
                             <a href="historicoPage.html">
                                 <i class="uil uil-history"></i>
                                 <span class="lista">Histórico</span>
                             </a>
                         </li>
                     </ul>
-
-                    <ul style="height: fit-content;">
-                        <li class="lista">
-                            <a href="cadastrarUsuario.html">
-                                <i class="uil uil-plus-circle"></i>
-                                <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
-                            </a>
-                        </li>
-                        <li class="lista destaque">
-                            <a href="cadastrarEstufa.html">
-                                <i class="uil uil-plus-circle"></i>
-                                <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
+                        <ul style="height: fit-content;">
+                            <li class="lista">
+                                <a href="cadastrarUsuario.html">
+                                    <i class="uil uil-plus-circle"></i>
+                                    <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                                </a>
+                            </li>
+                            <li class="lista destaque">
+                                <a href="cadastrarEstufa.html">
+                                    <i class="uil uil-plus-circle est"></i>
+                                    <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                                </a>
+                            </li>
+                            <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
+                        </ul>
+                    </div>
 
                 </div>
 
-                <!-- parte de baixo -->
-                <div class="trindade">
-                    <div class="configNomeimg">
-                        <div class="nomeNome">
-                            <img src="../../assets/imgs/Ellipse2325.png">
-                            <ul class="ul2">
-                                <span class="ismalendas">
-                                    <span>NomeUsuario</span>
-                                    <span>NomeEmpresa</span>
-                                </span>
-                            </ul>
-                        </div>
+            </div>
+        </div>
+        <!-- FIM DO MENU -->
 
-                        <div class="configgg">
-                            <a href="#">
-                                <i class="uil uil-setting"></i>
-                            </a>
-                            <a href="../home/login.html">
-                                <i class="uil uil-signout" style="color: #C63535;"></i>
-                            </a>
+        <!-- parte do tela -->
+        <div class="tela">
+            <div class="top">
+                <div class="top-left">
+                    <span class="topo">Cadastro de Estufa</span>
+                </div>
+                <div class="nomeNome">
+                    <img src="../../public/assets/imgs/Ellipse2325.png">
+                    <ul class="ul2">
+                        <span class="ismalendas">
+                            <span id="loginUsuario"></span>
+                            <span>NomeUsuário</span>
+                        </span>
+                    </ul>
+                </div>
+            </div>
+            <div class="areaDash">
+                <div>
+                    <div class="alertsParametro">
+                        <div class="urgente">
+                            <img src="../../public/assets/imgs/vetorUrgente.svg">
+                            <div class="span-urgente">
+                                <span class="urgenteText">CRÍTICO</span>
+                                <span>350lm - 450lm</span>
+                                <span>650lm - 800lm</span>
+                            </div>
+                        </div>
+                        <div class="preocupante">
+                            <img src="../../public/assets/imgs/VectorNewProcupante.svg" width="30px">
+                            <div class="span-preocupante">
+                                <span class="criticoText">PREOCUPANTE</span>
+                                <span>450lm - 500lm</span>
+                                <span>600lm - 650lm</span>
+                            </div>
+                        </div>
+                
+                        <div class="adequado">
+                            <img src="../../public/assets/imgs/vetorAdequado.svg">
+                            <div class="span-adequado">
+                                <span class="adequadoText">ADEQUADO</span>
+                                <span>500lm - 600lm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- FIM DO MENU -->
-        <!-- parte do dash -->
-        <div class="tela">
-            <div class="areaDash">
-                <div class="top-left">
-                    <span class="topo">Cadastrar estufa</span>
+
+            <!-- FIM DA NAV BAR -->
+
+            <div class="telaConteudo">
+                <div class="teste">
+                    <div class="textCadastro">
+                        <h2>Informações da estufa</h2>
+                        <span>Coloque as informações da estufa para realizar o cadastro. Ela poderá ser monitorada na
+                            dashboard.</span>
+                    </div>
+
+                    <div class="formCadastro">
+                        <div class="inputCadastro">
+                            <span>Nome da estufa*</span>
+                            <input id="nomeEstufa" type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Área*</span>
+                            <input id="area" type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>CEP*</span>
+                            <input id="cep" type="text">
+                        </div>
+
+                        <div class="inputCadastro ">
+                            <span>Logradouro*</span>
+                            <input id="logradouro" type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Número*</span>
+                            <input id="num" type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Bairro*</span>
+                            <input id="bairro" type="text">
+                        </div>
+
+                        <div class="side">
+                        <div class="inputCadastro ">
+                            <span>UF*</span>
+                            <input id="uf" type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Cidade*</span>
+                            <input id="localidade" type="text">
+                        </div></div>
 
 
+                        <div class="inputCadastro">
+                            <span>Complemento</span>
+                            <input id="complemento" type="text">
+                        </div>
+
+                        <button onclick="cadastrarEstufa()">Cadastrar estufa</button>
+                    </div>
                 </div>
             </div>
-
-            <div class="formCadastro">
-                <div class="input">
-                    <span>Nome*</span>
-                    <input id="i_nome" type="text">
-                </div>
-
-                <div class="input">
-                    <span>Área*</span>
-                    <input id="i_area" type="text">
-                </div>
-                <button onclick="cadastrarEstufa()">Cadastrar estufa</button>
-            </div>
-        </div>
+        </div> 
 
 
-
-        <!-- <div>
+            <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
         </div> -->
 
@@ -130,17 +190,50 @@
 </html>
 
 <script>
-      function cadastrarEstufa() {
+
+    var cep = document.getElementById("cep")
+
+    var mostrarDados = (resultado) => {
+        for (const campo in resultado) {
+            if (document.getElementById(campo)) {
+                document.querySelector("#" + campo).value = resultado[campo]
+                // const element = object[campo];
+
+            }
+        }
+    }
+
+    cep.addEventListener("blur", (e) => {
+        var pesquisa = cep.value.replace("-", "")
+        var options = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        }
+
+        fetch(`https://viacep.com.br/ws/${pesquisa}/json/`, options)
+            .then(resposta => {
+                resposta.json()
+                    .then(dados => mostrarDados(dados))
+            })
+            .catch(e => console.log("Erro." + e, message))
+    })
+
+
+    function cadastrarEstufa() {
         // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = i_nome.value;
-        var areaVar = i_area.value;
-        // var complementoVar = i_complemento.value;
-        // var numEnderecoVar = i_numeroEndereco.value;
-        // var cidadeVar = i_cidade.value;
-        // var cepVar = i_cep.value;
+        var nomeVar = nomeEstufa.value;
+        var areaVar = area.value;
+        var cepVar = cep.value;
+        var logradouroVar = logradouro.value;
+        var numEnderecoVar = num.value;
+        var bairroVar = bairro.value;
+        var cidadeVar = localidade.value;
+        var estadoVar = uf.value;
+        var complementoVar = complemento.value;
 
 
         // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
@@ -165,6 +258,14 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 areaServer: areaVar,
+                cepServer: cepVar,
+                logradouroServer: logradouroVar,
+                numEnderecoServer: numEnderecoVar,
+                bairroServer: bairroVar,
+                cidadeServer: cidadeVar,
+                estadoServer: estadoVar,
+                complementoServer: estadoVar,
+                fkUsuarioServer: ID_USUARIO
                 // complementoServer: complementoVar,
                 // numEnderecoServer: numEnderecoVar,
                 // cidadeServer: cidadeVar,
@@ -181,7 +282,7 @@
                 // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
 
                 // setTimeout(() => {
-                    window.location = "dashboardPage.html";
+                window.location = "dashboardPage.html";
                 // }, "2000")
 
                 // limparFormulario();

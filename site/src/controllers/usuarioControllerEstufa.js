@@ -68,8 +68,26 @@ function listar(req, res) {
         );
 }
 
+function exibirEstufa(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    primeiraTelaEstatisticaModel.exibirEstufa(idusuario)
+    .then(function (resultado) {
+        if(resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else { 
+            res.status(204).send("nenhum resultado encontrado!")
+        }
+}).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+});
+}
+
 module.exports = {
     cadastrarEstufa,
     testar,
-    listar
+    listar,
+    exibirEstufa
 }

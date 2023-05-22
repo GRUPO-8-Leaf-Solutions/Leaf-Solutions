@@ -167,7 +167,7 @@
                             </div>
 
                             <div class="listaSetores" id="lista_setores_estufa">
-                                <a href="setor1.html">
+                                <a href="subSetoresPage.html">
                                     <div class="listaSetorItem">
                                         <span class="listaSetorItemElemento">Setor 1</span>
                                         <span class="urgenteText listaSetorItemElemento">
@@ -259,3 +259,12 @@
 </body>
 
 </html>
+
+<script>
+
+    window.onload = exibirEstufas();
+    function exibirEstufas() {
+        fetch(`/usuariosEstufa/exibirEstufas${idUsuario}`), {
+        }
+    }
+</script>

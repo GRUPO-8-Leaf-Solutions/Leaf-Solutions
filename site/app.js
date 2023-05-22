@@ -26,6 +26,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/usuariosEnd", usuarioEndRouter);
 app.use("/usuariosEstufa", usuarioEstufaRouter);
 app.use("/leitura", leituraRouter);
+app.use("/estufa", usuarioEstufaRouter);
 
 // app.use("/empresa", empresaRouter);
 

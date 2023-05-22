@@ -204,7 +204,7 @@
                                     <div class="baixo_indice_luz">
                                         <div class="menor_indice_luz">
                                             MENOR ÍNDICE DE LUZ CAPTADO<br>
-                                            <p>200lm</p>
+                                            <p id="menorIndiceluz"></p>
                                             <div class="indicacao_estufa">
                                                 Paulista - setor 02
                                             </div>
@@ -397,8 +397,8 @@
                                     <div class="containerAlert">
                                         <div class="alertPreocupante">
                                             <div class="img">
-                                                <img class="img-alert-critico" src="../assets/imgs/vectorPreocupante.svg"
-                                                    width="30px">
+                                                <img class="img-alert-critico"
+                                                    src="../assets/imgs/vectorPreocupante.svg" width="30px">
                                             </div>
                                             <div
                                                 style="display: flex; flex-direction: column; justify-content: center; gap: 10px; width: 205px;">
@@ -428,8 +428,8 @@
                                     <div class="containerAlert">
                                         <div class="alertPreocupante">
                                             <div class="img">
-                                                <img class="img-alert-critico" src="../assets/imgs/vectorPreocupante.svg"
-                                                    width="30px">
+                                                <img class="img-alert-critico"
+                                                    src="../assets/imgs/vectorPreocupante.svg" width="30px">
                                             </div>
                                             <div
                                                 style="display: flex; flex-direction: column; justify-content: center; gap: 10px; width: 205px;">
@@ -562,7 +562,7 @@
 
     const data = {
         labels: labels,
-        datasets: [{
+        datasets: [{{ cache: 'no-store' }).then(function (response) {
             label: 'Antônio',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
@@ -638,6 +638,71 @@
         obterDadosGrafico(4)
     }
 
-    
+
 </script>
+
+<script>
+    loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
+
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGraficos();
+
+    function obterDadosGrafico() {
+        obterDadosGrafico(1)
+        obterDadosGrafico(2)
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
+    }
+    var idEmpresa = sessionStorage.idUsuario
+
+
+    window.onload = coletarMenorIndice();
+    function coletarMenorIndice(){
+        fetch(`/leitura/coletarMenorIndice/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok){
+                    response.json().then(function (resposta){
+                        menorIndiceLuz.innerHTML = `${json.valor}lm`
+                    })
+                }
+        } )
+
+        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idAquario);
+                    
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    window.onload = coletarMaiorIndice();
+    function coletarMaiorIndice() {
+        fetch(`/leitura/coletarMaiorIndice${idUsuario}`, {
+            method: "GET",
+            headers: {
+            "Content-Type": "aplication/json"
+        },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            })
+        }).then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    return false;
+    }
+</script>
+
 </html>

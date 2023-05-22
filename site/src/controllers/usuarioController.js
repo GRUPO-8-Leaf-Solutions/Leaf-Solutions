@@ -74,9 +74,9 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (cnpj == undefined) {
         res.status(400).send("Seu cnpj está undefined!");
-    // } else if (telefone == undefined) {
-    //     res.status(400).send("Seu telefone está undefined!");
-    // 
+        // } else if (telefone == undefined) {
+        //     res.status(400).send("Seu telefone está undefined!");
+        // 
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js

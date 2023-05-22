@@ -11,11 +11,15 @@ router.post("/cadastrarEnd", function (req, res) {
 
 router.get("/", function (req, res) {
     usuarioControllerEstufa.testar(req, res);
+    console.log(`Está funcionando`)
 });
 
 router.get("/listar", function (req, res) {
     usuarioControllerEstufa.listar(req, res);
 });
 
+router.get("/exibirEstufas", function (req, res) { // por que colocar um ID depois qtd_subsetores
+    usuarioControllerEstufa.exibirEstufas(req, res);
+});
 
 module.exports = router;

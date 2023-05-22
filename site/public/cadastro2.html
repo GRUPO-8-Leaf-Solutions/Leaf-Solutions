@@ -131,14 +131,12 @@
         // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
         //     cardErro.style.display = "block"
         //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco !)";
-
         //     finalizarAguardar();
         //     return false;
         // }
         // else {
         //     setInterval(sumirMensagem, 5000)
         // }
-
         // Enviando o valor da nova input
         fetch("/usuariosEnd/cadastrarEnd", {
             method: "POST",
@@ -154,21 +152,16 @@
                 numEnderecoServer: numEnderecoVar,
                 cidadeServer: cidadeVar,
                 cepServer: cepVar
-
             })
         }).then(function (resposta) {
-
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
                 // cardErro.style.display = "block";
-
                 // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
-
                 // setTimeout(() => {
                 window.location = "cadastro3.html";
                 // }, "2000")
-
                 // limparFormulario();
                 // finalizarAguardar();
             } else {
@@ -178,10 +171,8 @@
             console.log(`#ERRO: ${resposta}`);
             // finalizarAguardar();
         });
-
         return false;
     }
-
     // function sumirMensagem() {
     //     cardErro.style.display = "none"
     // }
