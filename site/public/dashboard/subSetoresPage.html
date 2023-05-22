@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/subSetores.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 
 <body>
@@ -146,10 +147,10 @@
                             <div class="titulo_subsetor">
                                 Subsetores
                             </div>
-                            <div class="subsetor_critico">
+                            <div class="subsetor_critico" id="lista_subsetores">
                                 Subsetor 1
                             </div>
-                            <div class="subsetor_critico">
+                            <!-- <div class="subsetor_critico">
                                 Subsetor 2
                             </div>
                             <div class="subsetor_critico">
@@ -172,25 +173,25 @@
                             </div>
                             <div class="subsetor_adequado">
                                 Subsetor 9
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="pai_de_todo_sensor">
                             <div class="titulo_sensor">
                                 Sensores
                             </div>
-                            <div class="lista_sensor">
+                            <div class="lista_sensor" id="lista_sensor">
                                 <div>
                                     <img src="../assets/imgs/alert-icon.svg">
                                 </div>
-                                <div>
+                                <div id="lista_sensores">
                                     Sensor 1
                                 </div>
                                 <div class="">
                                     <img src="../assets/imgs/iconSensorLigado.svg">
                                 </div>
                             </div>
-                            <div class="lista_sensor">
+                            <!-- <div class="lista_sensor">
                                 <div>
                                     <img src="../assets/imgs/vetorAdequado.svg" style="height: 21px;">
                                 </div>
@@ -237,7 +238,7 @@
                                 <div>
                                     <img src="../assets/imgs/iconSensorDesligado.svg">
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -247,8 +248,8 @@
                                 <div class="titulo_primeiro_alerta">
                                     Status do sensor
                                 </div>
-                                <div class="ligado">
-                                    LIGADO
+                                <div class="ligado" id="status_sensor">
+                                    <!-- LIGADO -->
                                 </div>
                             </div>
                             <div class="segundo_alerta">
@@ -259,8 +260,8 @@
                                     <div>
                                         <img src="../assets/imgs/vetorAdequado.svg" style="height: 25px">
                                     </div>
-                                    <div>
-                                        520
+                                    <div id="intesidade_atual_sensor">
+                                        <!-- 520 -->
                                     </div>
                                 </div>
                             </div>
@@ -280,16 +281,16 @@
                                         <div>
                                             <img src="../assets/imgs/alert-icon.svg">
                                         </div>
-                                        <div>
-                                            820lm
+                                        <div id="maior_intensidade_captada">
+                                            <!-- 820lm -->
                                         </div>
                                     </div>
                                     <div class="ajuste_KPI">
                                         <div>
                                             <img src="../assets/imgs/relogio.svg">
                                         </div>
-                                        <div>
-                                            09:35
+                                        <div id="horario_captacao_maior_captura">
+                                            <!-- 09:35 -->
                                         </div>
                                     </div>
                                 </div>
@@ -301,16 +302,16 @@
                                         <div>
                                             <img src="../assets/imgs/alert-icon.svg">
                                         </div>
-                                        <div>
-                                            220lm
+                                        <div id="menor_intensidade_captada">
+                                            <!-- 220lm -->
                                         </div>
                                     </div>
                                     <div class="ajuste_KPI">
                                         <div>
                                             <img src="../assets/imgs/relogio.svg">
                                         </div>
-                                        <div>
-                                            06:20
+                                        <div id="horario_captacao_menor_captura">
+                                            <!-- 06:20 -->
                                         </div>
                                     </div>
                                 </div>
@@ -320,8 +321,8 @@
                                     <div>
                                         Tempo de funcionamento
                                     </div>
-                                    <div>
-                                        10h 30m
+                                    <div id="tempo_funcionamento_subsetor">
+                                        <!-- 10h 30m -->
                                     </div>
                                 </div>
                                 <div class="KPI2_direita">
@@ -329,7 +330,7 @@
                                         Tempo ideal de exposição ao sol
                                     </div>
                                     <div>
-                                        15 a 17h
+                                        16h
                                     </div>
                                 </div>
                                 <div class="KPI3_direita">
@@ -340,8 +341,8 @@
                                         <div>
                                             <img src="../assets/imgs/vectorPreocupante.svg" style="height: 20px">
                                         </div>
-                                        <div>
-                                            6h 30m
+                                        <div id="tempo_faltante_para_ideal">
+                                            <!-- 6h 30m -->
                                         </div>
                                     </div>
                                 </div>
