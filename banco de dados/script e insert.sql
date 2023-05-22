@@ -71,6 +71,9 @@ constraint fkEstufaEndereco foreign key (fkEndereco)
 constraint pkEstufa primary key (idEstufa, fkEmpresa, fkEndereco)
 );
 
+select * from estufa;
+select * from empresa;
+
 create table setor (
 idSetor int auto_increment,
 valorMin int default 350,
@@ -144,7 +147,8 @@ insert into usuario values
     
 insert into tipoTelefone values
 	(null, 'Comercial'),
-	(null, 'Residencial'),
+	(null
+    , 'Residencial'),
 	(null, 'Fixo'),
 	(null, 'Celular');
 
@@ -161,10 +165,13 @@ insert into endereco values
 	(null, '15421-689', 'Rua da Jaca', 'Frutas', '819', 'A', 'MA', 'Caxias'),
 	(null, '78459-636', 'Rua da Melancia', 'Verduras', '298', null, 'PE', 'Carueri');
 
+insert into estufa values
+(null, 'Leaf estufa', 500, 1, 1);
+
 insert into estufa values 
 	(null, 'Guimarães', 300, 1, 1),
 	(null, 'Paulista', 400, 1, 4),
-	(null, 'Antonio', 300, 1, 3),
+    (null, 'Antonio', 300, 1, 3),
 	(null, 'Leaf Life', 480, 2, 2);
    
 insert into setor values 

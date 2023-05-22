@@ -13,4 +13,3 @@ Regras de condução da equipe!
 4° Todos devem estar dispostos a ouvir as ideias dos outros integrantes.<br>
 5° Sempre se comunicar com a equipe.<br>
 
-https://prod.liveshare.vsengsaas.visualstudio.com/join?FF8DF7E9EFC95EEB4DE8EA3F7B17A4B950F6
