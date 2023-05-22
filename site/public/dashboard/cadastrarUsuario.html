@@ -22,7 +22,7 @@
             <div class="listaBaixo">
                 <div class="navegacão">
                     <div class="navHeader">
-                        <img src="../../assets/icon/logoDark.svg">
+                        <img src="../../public/assets/icon/logo.svg">
                         <span>MENU</span>
                     </div>
                     <ul>
@@ -39,98 +39,118 @@
                             </a>
                         </li>
                         <li class="lista">
-                            <a href="previsaoPage.html">
-                                <i class="uil uil-chart-pie"></i>
-                                <span class="lista">Previsões</span>
-                            </a>
-                        </li>
-                        <li class="lista">
                             <a href="historicoPage.html">
                                 <i class="uil uil-history"></i>
                                 <span class="lista">Histórico</span>
                             </a>
                         </li>
                     </ul>
-
-                    <ul style="height: fit-content;">
-                        <li class="lista destaque">
-                            <a href="cadastrarUsuario.html">
-                                <i class="uil uil-plus-circle"></i>
-                                <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
-                            </a>
-                        </li>
-                        <li class="lista">
-                            <a href="cadastrarEstufa.html">
-                                <i class="uil uil-plus-circle"></i>
-                                <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
+                        <ul style="height: fit-content;">
+                            <li class="lista destaque">
+                                <a href="cadastrarUsuario.html">
+                                    <i class="uil uil-plus-circle est"></i>
+                                    <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                                </a>
+                            </li>
+                            <li class="lista">
+                                <a href="cadastrarEstufa.html">
+                                    <i class="uil uil-plus-circle "></i>
+                                    <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                                </a>
+                            </li>
+                            <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
+                        </ul>
+                    </div>
 
                 </div>
 
-                <!-- parte de baixo -->
-                <div class="trindade">
-                    <div class="configNomeimg">
-                        <div class="nomeNome">
-                            <img src="../../assets/imgs/Ellipse2325.png">
-                            <ul class="ul2">
-                                <span class="ismalendas">
-                                    <span>NomeUsuario</span>
-                                    <span>NomeEmpresa</span>
-                                </span>
-                            </ul>
+            </div>
+        </div>
+        <!-- FIM DO MENU -->
+
+        <!-- parte do tela -->
+        <div class="tela">
+            <div class="top">
+                <div class="top-left">
+                    <span class="topo">Cadastro de Funcionários</span>
+                </div>
+                <div class="nomeNome">
+                    <img src="../../public/assets/imgs/Ellipse2325.png">
+                    <ul class="ul2">
+                        <span class="ismalendas">
+                            <span id="loginUsuario"></span>
+                            <span>NomeUsuário</span>
+                        </span>
+                    </ul>
+                </div>
+            </div>
+            <div class="areaDash">
+                <div>
+                    <div class="alertsParametro">
+                        <div class="urgente">
+                            <img src="../../public/assets/imgs/vetorUrgente.svg">
+                            <div class="span-urgente">
+                                <span class="urgenteText">CRÍTICO</span>
+                                <span>350lm - 450lm</span>
+                                <span>650lm - 800lm</span>
+                            </div>
+                        </div>
+                        <div class="preocupante">
+                            <img src="../../public/assets/imgs/VectorNewProcupante.svg" width="30px">
+                            <div class="span-preocupante">
+                                <span class="criticoText">PREOCUPANTE</span>
+                                <span>450lm - 500lm</span>
+                                <span>600lm - 650lm</span>
+                            </div>
                         </div>
 
-                        <div class="configgg">
-                            <a href="#">
-                                <i class="uil uil-setting"></i>
-                            </a>
-                            <a href="../home/login.html">
-                                <i class="uil uil-signout" style="color: #C63535;"></i>
-                            </a>
+                        <div class="adequado">
+                            <img src="../../public/assets/imgs/vetorAdequado.svg">
+                            <div class="span-adequado">
+                                <span class="adequadoText">ADEQUADO</span>
+                                <span>500lm - 600lm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- FIM DO MENU -->
-        <!-- parte do dash -->
-        <div class="tela">
-            <div class="areaDash">
-                <div class="top-left">
-                    <span class="topo">Cadastrar usuario</span>
 
 
+            <div class="telaConteudo">
+                <div class="teste">
+                    <div class="textCadastro">
+                        <h2>Informações do funcionário</h2>
+                        <span>Coloque as informações do seu funcionário para fazer o cadastro. Ele poderá usar nossas ferramentas.</span>
+                    </div>
+                    <div class="formCadastro">
+                        <div class="inputCadastro">
+                            <span>Nome*</span>
+                            <input type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Sobrenome*</span>
+                            <input type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Email*</span>
+                            <input type="text">
+                        </div>
+
+                        <div class="inputCadastro">
+                            <span>Senha*</span>
+                            <input type="text">
+                        </div>
+                    
+                    </div>
                 </div>
-            </div>
-
-            <div class="formCadastro">
-                <div class="input">
-                    <span>nome*</span>
-                    <input type="text">
-                </div>
-
-                <div class="input">
-                    <span>Sobrenome*</span>
-                    <input type="text">
-                </div>
-
-                <div class="input">
-                    <span>Email*</span>
-                    <input type="text">
-                </div>
-
-                <div class="input">
-                    <span>Senha*</span>
-                    <input type="text">
-                </div>
-
-                <button>Cadastrar usuario</button>
             </div>
         </div>
 
 
+        <button onclick="cadUsuario()">Cadastrar usuario</button>
 
         <!-- <div>
             <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>

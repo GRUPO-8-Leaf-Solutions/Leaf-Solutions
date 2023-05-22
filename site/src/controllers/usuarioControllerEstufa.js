@@ -68,10 +68,10 @@ function listar(req, res) {
         );
 }
 
-function exibirEstufa(req, res) {
+function exibirEstufas(req, res) {
     var idUsuario = req.params.idUsuario;
 
-    primeiraTelaEstatisticaModel.exibirEstufa(idusuario)
+    usuarioEstufaModel.exibirEstufa(idUsuario)
     .then(function (resultado) {
         if(resultado.length > 0) {
             res.status(200).json(resultado);
@@ -89,5 +89,5 @@ module.exports = {
     cadastrarEstufa,
     testar,
     listar,
-    exibirEstufa
+    exibirEstufas
 }

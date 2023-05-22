@@ -25,7 +25,7 @@
             <div class="listaBaixo">
                 <div class="navegacão">
                     <div class="navHeader">
-                        <img src="../assets/icon/logoDark.svg">
+                        <img src="../../public/assets/icon/logo.svg">
                         <span>MENU</span>
                     </div>
                     <ul>
@@ -37,16 +37,10 @@
                         </li>
                         <li class="lista destaque">
                             <a href="estatisticaPage.html">
-                                <i class="uil uil-presentation-line"></i>
+                                <i class="uil uil-presentation-line est"></i>
                                 <span class="lista">Estatística</span>
                             </a>
                         </li>
-                        <!-- <li class="lista">
-                            <a href="previsaoPage.html">
-                                <i class="uil uil-chart-pie"></i>
-                                <span class="lista">Previsões</span>
-                            </a>
-                        </li> -->
                         <li class="lista">
                             <a href="historicoPage.html">
                                 <i class="uil uil-history"></i>
@@ -54,77 +48,78 @@
                             </a>
                         </li>
                     </ul>
-
-                    <ul style="height: fit-content;">
-                        <li class="lista">
-                            <a href="cadastrarUsuario.html">
-                                <i class="uil uil-plus-circle"></i>
-                                <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
-                            </a>
-                        </li>
-                        <li class="lista">
-                            <a href="cadastrarEstufa.html">
-                                <i class="uil uil-plus-circle"></i>
-                                <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                </div>
-
-                <!-- parte de baixo -->
-                <div class="trindade">
-                    <div class="configNomeimg">
-                        <div class="nomeNome">
-                            <img src="../assets/imgs/Ellipse2325.png">
-                            <ul class="ul2">
-                                <span class="ismalendas">
-                                    <span>NomeUsuario</span>
-                                    <span>NomeEmpresa</span>
-                                </span>
-                            </ul>
-                        </div>
-
-                        <div class="configgg">
-                            <a href="#">
-                                <i class="uil uil-setting"></i>
-                            </a>
-                            <a href="../home/login.html">
-                                <i class="uil uil-signout" style="color: #C63535;"></i>
-                            </a>
-                        </div>
+                    <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
+                        <ul style="height: fit-content;">
+                            <li class="lista">
+                                <a href="cadastrarUsuario.html">
+                                    <i class="uil uil-plus-circle"></i>
+                                    <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
+                                </a>
+                            </li>
+                            <li class="lista">
+                                <a href="cadastrarEstufa.html">
+                                    <i class="uil uil-plus-circle"></i>
+                                    <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
+                                </a>
+                            </li>
+                            <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
+                        </ul>
                     </div>
+    
                 </div>
+    
             </div>
         </div>
         <!-- FIM DO MENU -->
-        <!-- parte do dash -->
+    
+        <!-- parte do tela -->
         <div class="tela">
-            <div class="areaDash">
+            <div class="top">
                 <div class="top-left">
-                    <span class="topo">Estatística - Lista de estufas</span>
+                    <span class="topo">Cadastro de Estufa</span>
                 </div>
+                <div class="nomeNome">
+                    <img src="../../public/assets/imgs/Ellipse2325.png">
+                    <ul class="ul2">
+                        <span class="ismalendas">
+                            <span id="loginUsuario"></span>
+                            <span>NomeUsuário</span>
+                        </span>
+                    </ul>
+                </div>
+            </div>
+            <div class="areaDash">
                 <div>
                     <div class="alertsParametro">
                         <div class="urgente">
-                            <img src="../assets/imgs/vetorUrgente.svg">
-                            <span class="urgenteText">URGENTE</span>
-                        </div>
-                        <div class="critico">
-                            <img src="../assets/imgs/vectorCritico.svg">
-                            <span class="criticoText">CRÍTICO</span>
+                            <img src="../../public/assets/imgs/vetorUrgente.svg">
+                            <div class="span-urgente">
+                                <span class="urgenteText">CRÍTICO</span>
+                                <span>350lm - 450lm</span>
+                                <span>650lm - 800lm</span>
+                            </div>
                         </div>
                         <div class="preocupante">
-                            <img src="../assets/imgs/vectorPreocupante.svg">
-                            <span class="preocupanteText">PREOCUPANTE</span>
+                            <img src="../../public/assets/imgs/VectorNewProcupante.svg" width="30px">
+                            <div class="span-preocupante">
+                                <span class="criticoText">PREOCUPANTE</span>
+                                <span>450lm - 500lm</span>
+                                <span>600lm - 650lm</span>
+                            </div>
                         </div>
+                
                         <div class="adequado">
-                            <img src="../assets/imgs/vetorAdequado.svg">
-                            <span class="adequadoText">ADEQUADO</span>
+                            <img src="../../public/assets/imgs/vetorAdequado.svg">
+                            <div class="span-adequado">
+                                <span class="adequadoText">ADEQUADO</span>
+                                <span>500lm - 600lm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- FIM DA NAV BAR -->
 
 
             <div class="listaEstufas">
@@ -167,7 +162,7 @@
                             </div>
 
                             <div class="listaSetores" id="lista_setores_estufa">
-                                <a href="subSetoresPage.html">
+                                <a href="setor1.html">
                                     <div class="listaSetorItem">
                                         <span class="listaSetorItemElemento">Setor 1</span>
                                         <span class="urgenteText listaSetorItemElemento">
@@ -262,9 +257,25 @@
 
 <script>
 
+
+
+
     window.onload = exibirEstufas();
-    function exibirEstufas() {
-        fetch(`/usuariosEstufa/exibirEstufas${idUsuario}`), {
-        }
+
+    function exibirEstufas(){
+        var idUsuario = sessionStorage.idUsuario;
+
+
+        fetch("/usuariosEstufa/exibirEstufas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            })
+        }).then(function(resposta){
+            
+        })
     }
 </script>

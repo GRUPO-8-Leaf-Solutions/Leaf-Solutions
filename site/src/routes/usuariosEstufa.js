@@ -18,7 +18,7 @@ router.get("/listar", function (req, res) {
     usuarioControllerEstufa.listar(req, res);
 });
 
-router.get("/exibirEstufas", function (req, res) { // por que colocar um ID depois qtd_subsetores
+router.get("/exibirEstufas", function (req, res) {
     usuarioControllerEstufa.exibirEstufas(req, res);
 });
 
