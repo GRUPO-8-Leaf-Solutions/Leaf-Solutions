@@ -21,4 +21,11 @@ router.post("/autenticar", function (req, res) {
     usuarioController.login(req, res);
 });
 
+
+router.get("/ultimaEmp", function (req, res) {
+    usuarioController.ultimaEmp(req, res);
+});
+
+
+
 module.exports = router;

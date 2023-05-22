@@ -67,8 +67,8 @@
 
 </html>
 
- <script>
- function cadastrar() {
+<script>
+    function cadastrar() {
         // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
@@ -102,19 +102,36 @@
                 emailServer: emailVar,
                 telefoneServer: telefoneVar,
                 cnpjServer: cnpjVar
-                
+
             })
         }).then(function (resposta) {
-
             console.log("resposta: ", resposta);
-
             if (resposta.ok) {
+                fetch("/usuarios/ultimaEmp/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        email: emailVar
+
+                    })
+                })
+                    .then((res) => {
+                        console.log(res);
+                        res.json().then(json => {
+                            sessionStorage.ULTIMA_ID = json.idEmpresa;
+                        })
+                    })
+
                 // cardErro.style.display = "block";
 
                 // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
 
                 // setTimeout(() => {
-                    window.location = "cadastro2.html";
+                window.location = "cadastro2.html";
                 // }, "2000")
 
                 // limparFormulario();

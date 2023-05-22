@@ -15,6 +15,7 @@ function cadastrarEnd(req, res) {
     var numEndereco = req.body.numEnderecoServer;
     var cidade = req.body.cidadeServer;
     var cep = req.body.cepServer;
+    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (estado == undefined) {
@@ -32,7 +33,7 @@ function cadastrarEnd(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioEndModel.cadastrarEnd(cep, logradouro, numEndereco, complemento, estado, cidade)
+        usuarioEndModel.cadastrarEnd(cep, logradouro, numEndereco, complemento, estado, cidade, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);

@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 
+
 * {
     margin: 0;
     padding: 0;
@@ -24,12 +25,11 @@
     color: #53AC50;
 }
 
-.manutencaoText {
-    color: #585858;
-}
-
-.hora{
-    color: #6D2D2D; font-size: 14px; display: flex; gap: 5px;
+.hora {
+    color: #6D2D2D;
+    font-size: 14px;
+    display: flex;
+    gap: 5px;
 }
 
 html,
@@ -51,12 +51,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 25px;
-    background: #D7F1EA;
+    background: linear-gradient(180deg, #0F310E 0%, #20571E 100%);
     box-shadow: -1px 4px 11px rgba(0, 0, 0, 0.13);
 }
 
-.lateral .listaBaixo{
+.lateral .listaBaixo {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -65,6 +64,20 @@ body {
 
 .lista a i {
     font-size: 30px;
+    color: #FFF;
+}
+
+.lista span {
+    color: #FFF;
+    font-size: 18px;
+}
+
+.lista.destaque .lista {
+    color: rgba(6, 67, 6, 1);
+}
+
+.est.uil-plus-circle:before {
+    color: rgba(6, 67, 6, 1);
 }
 
 .navHeader {
@@ -75,22 +88,24 @@ body {
     justify-content: space-between;
     align-content: space-between;
     align-self: center;
+    gap: 50px;
+    padding: 25px;
 }
 
 .navHeader span {
     font-size: 16px;
-    color: #7A7A7A;
+    color: #FFF;
+    padding: 0 0 20px 0;
 }
 
 .navHeader img {
     width: 105px;
 }
 
-
 .navegacão {
     display: flex;
     flex-direction: column;
-    height: 85%;
+    height: 100%;
 }
 
 .navegacão ul {
@@ -98,6 +113,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    padding: 25px;
 }
 
 .navegacão ul li {
@@ -119,7 +135,6 @@ body {
     line-height: 25px;
     color: #064306;
     gap: 15px;
-    /* letter-spacing: 3px; */
     width: 100%;
 }
 
@@ -133,28 +148,23 @@ body {
 }
 
 .navegacão .destaque {
-    background-color: #F9FBFA;
+    background-color: #FFF;
     border-radius: 16.55px;
 }
 
 .nomeNome {
     display: flex;
     gap: 15px;
-    justify-content: center;
-
 }
 
 .nomeNome span {
     display: flex;
     flex-direction: column;
-
-
 }
 
 .configNomeimg {
     display: flex;
     flex-direction: column;
-
     gap: 15px;
 }
 
@@ -176,16 +186,6 @@ body {
     gap: 8px;
 }
 
-.configgg a{
-    text-decoration: none;
-    color: inherit;
-}
-
-.configgg a i{
-    font-size: 25px;
-    color: #959595;
-}
-
 .config {
     list-style: none;
 }
@@ -199,78 +199,225 @@ li a {
 }
 
 .ismalenda li a {
-    color: #7A7A7A;
+    color: #FFF;
 }
 
-.ismalendas > :nth-child(1) {
+.ismalendas> :nth-child(1) {
     font-weight: 300;
     font-size: 17px;
+    color: #FFF;
 }
 
-.ismalendas > :nth-child(2) {
+.ismalendas> :nth-child(2) {
     font-weight: 300;
     font-size: 14px;
-    color: #A1A0A0;
+    color: #FFF;
 }
 
-/* FIM DO CSS DO MENU */
+.inferior-menu {
+    background-image: url(imgs/VectorPéMenu.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* CSS DA TELA */
+.top {
+    height: 60px;
+    background: linear-gradient(90deg, #0F310E 0%, #20571E 100%);
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+}
 
+.top-left {
+    display: flex;
+    gap: 25px;
+}
 
 .tela {
     width: 85%;
-    padding: 40px 0;
-    display: flex;
     flex-direction: column;
-    position: relative;
+    justify-content: center;
+}
+
+.tela .topo {
+    color: #FFF;
+    font-size: 28px;
+}
+
+.tela-dashboard {
+    padding: 10px 30px;
 }
 
 .areaDash {
     display: flex;
     align-items: center;
-    height: 10%;
-    padding: 0 50px;
+    justify-content: center;
+    height: 12%;
+    background: #FEFFFB;
+    box-shadow: 0px -9px 30px rgba(0, 0, 0, 0.3);
 }
 
-.top-left {
+.alertsParametro {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.alertsParametro .urgente {
+    height: 57px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .urgente .span-urgente {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    color: #871616;
+}
+
+.alertsParametro .preocupante .span-preocupante {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    width: 100%;
+    align-items: center;
+    color: #704B01;
 }
 
-.tela .topo {
-    color: #717171;
-    font-size: 28px;
-}
-
-.formCadastro{
-    align-self: center;
+.alertsParametro .adequado .span-adequado {
     display: flex;
     flex-direction: column;
-    width: 600px;
-    gap: 30px;
+    align-items: center;
+    color: #287E25;
 }
 
-.formCadastro .input{
+.alertsParametro .critico {
+    height: 57px;
+    background: rgba(255, 209, 157, 0.014);
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .preocupante {
+    background: rgba(254, 254, 245, 0.21);
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alertsParametro .adequado {
+    background: rgba(245, 254, 245, 0.21);
+    border-radius: 36.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* FIM DA NAV BAR */
+
+.teste{
+    display: block;
+    width: 800px;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.telaConteudo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.textCadastro {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    text-align: center;
+    color: rgba(28, 33, 67, 0.86);
+    font-size: 18px;
+}
+
+.textCadastro span {
+    width: 470px;
+    padding: 6px;
+}
+
+.formCadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.inputCadastro {
+    display: flex;
+    flex-direction: column;
+    color: #747474;
     gap: 5px;
 }
 
-.formCadastro .input input{
+.inputCadastro input {
+    width: 370px;
     background: #FFFFFF;
     border: 2px solid #88AE35;
     border-radius: 5px;
     padding: 13px 10px;
     font-family: 'Jost';
-    font-size: 16px; 
+    font-size: 16px;
 }
 
+.inputCadastro input::placeholder {
+    font-family: 'Jost';
+    font-size: 16px;
+    font-weight: bold;
+    color: #B9B9B9;
+}
 
-.formCadastro button{
-    width: 265px;
+.inputCadastro input:focus {
+    outline: 1px solid #799b2f;
+}
+
+.cadastroContainer img {
+    align-self: flex-end;
+    padding: 15px;
+}
+
+#uf{
+    width: 60px;
+}
+
+#localidade{
+    width: 300px;
+}
+
+.side{
+    width: 370px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.formCadastro button {
+    width: 626px;
     height: 44px;
     background: #88AE35;
     border-radius: 5px;
@@ -280,4 +427,11 @@ li a {
     font-size: 15px;
     font-weight: bold;
     align-self: center;
+    margin: 10px;
 }
+
+.formCadastro button:hover {
+    cursor: pointer;
+    background-color: #7da032;
+} 
+

@@ -126,6 +126,7 @@
         var numEnderecoVar = numero.value;
         var cidadeVar = localidade.value;
         var cepVar = cep.value;
+        var fkEmpresaVar = sessionStorage.ULTIMA_ID; 
 
 
         // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
@@ -151,7 +152,9 @@
                 complementoServer: complementoVar,
                 numEnderecoServer: numEnderecoVar,
                 cidadeServer: cidadeVar,
-                cepServer: cepVar
+                cepServer: cepVar,
+                fkEmpresaServer: fkEmpresaVar 
+
             })
         }).then(function (resposta) {
             console.log("resposta: ", resposta);
