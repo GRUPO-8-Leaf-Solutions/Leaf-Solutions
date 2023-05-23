@@ -10,10 +10,10 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-
 var usuarioEndRouter = require("./src/routes/usuariosEndereco")
 var usuarioEstufaRouter = require("./src/routes/usuariosEstufa")
 var leituraRouter = require("./src/routes/leitura");
+var setoresRouter = require("./src/routes/setores")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +27,7 @@ app.use("/usuariosEnd", usuarioEndRouter);
 app.use("/usuariosEstufa", usuarioEstufaRouter);
 app.use("/leitura", leituraRouter);
 app.use("/estufa", usuarioEstufaRouter);
+app.use("/setores", setoresRouter);
 
 // app.use("/empresa", empresaRouter);
 

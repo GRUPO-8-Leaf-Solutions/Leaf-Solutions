@@ -638,23 +638,20 @@
         obterDadosGrafico(4)
     }
 
-    verificar_autenticacao();
 
     function obterDadosGrafico(idEstufa) {
-
-        alterarTitulo(idEstufa)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/leitura/ultimas/${idEstufa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/leitura/ultimas/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idEstufa);
+                    plotarGrafico(resposta, idEmpresa);
 
                 });
             } else {

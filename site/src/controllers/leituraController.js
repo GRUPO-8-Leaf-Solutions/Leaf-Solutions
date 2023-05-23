@@ -20,10 +20,10 @@ function coletarMenorIndice (req, res) {
 
 function buscarUltimasMedidas(req, res) {
     const limite_linhas = 7;
-    var idEmpresa = req.params.idAquario;
+    var idEstufa = req.params.idEstufa;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-    medidaModel.buscarUltimasMedidas(idEmpresa, limite_linhas).then(function (resultado) {
+    leituraModel.buscarUltimasMedidas(idEmpresa, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

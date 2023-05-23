@@ -45,7 +45,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
             on idSubSetor = fkSubSetor
             join leituraSensor
             on idSensor = fkSensor
-                where ${idEmpresa} = 1
+                where idEmpresa = ${idEmpresa}
                     order by id desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");

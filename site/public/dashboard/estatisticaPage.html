@@ -65,13 +65,13 @@
                             <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
                         </ul>
                     </div>
-    
+
                 </div>
-    
+
             </div>
         </div>
         <!-- FIM DO MENU -->
-    
+
         <!-- parte do tela -->
         <div class="tela">
             <div class="top">
@@ -107,7 +107,7 @@
                                 <span>600lm - 650lm</span>
                             </div>
                         </div>
-                
+
                         <div class="adequado">
                             <img src="../../public/assets/imgs/vetorAdequado.svg">
                             <div class="span-adequado">
@@ -143,14 +143,15 @@
 
 <script>
 
-var idUsuario = sessionStorage.idUsuario;
+    const idUsuario = sessionStorage.idUsuario;
+
 
 
 
     window.onload = exibirEstufas();
 
-    function exibirEstufas(){
 
+    function exibirEstufas() {
         fetch("/usuariosEstufa/exibirEstufas", {
             method: "post",
             headers: {
@@ -159,82 +160,104 @@ var idUsuario = sessionStorage.idUsuario;
             body: JSON.stringify({
                 idUsuarioServer: idUsuario
             })
-            
+
+        })
+        asd()
+    }
+
+    function asd() {
+        fetch("/setores/qtdSetores", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            })
         }).then(function(resposta){
-          resposta.json().then((json)=>{
-            console.log(json)
-            for(i = 0; i < json.length; i++){
-                lista.innerHTML += `                    
-                <details class="listaItem">
-                        <summary>
-                            <div class="upperPart">
-                                <span id="estufaTitulo" >Estufa ${json[i].nome}</span>
-                                <div class="qtdAlertas" id="quantidade_setor_estufa">
-                                    <span class="urgenteText">
-                                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                                        3
-                                    </span>
-                                    <span class="criticoText">
-                                        <!-- <img src="../assets/imgs/vectorCritico.svg"> -->
-                                        <!-- 0 -->
-                                    </span>
-                                    <span class="preocupanteText">
-                                        <!-- <img src="../assets/imgs/vectorPreocupante.svg"> -->
-                                        <!-- 0 -->
-                                    </span>
-                                    <span class="adequadoText">
-                                        <!-- <img src="../assets/imgs/vetorAdequado.svg"> -->
-                                        <!-- 0 -->
-                                    </span>
-                                </div>
-                            </div>
-                        </summary>
-
-                        <div class="lowerPart">
-                            <div class="containerColsubTittle">
-                                <span>NOME DO SETOR</span>
-                                <span></span>
-                                <span>Qtd. subsetores</span>
-                            </div>
-
-                            <div class="listaSetores" id="lista_setores_estufa">
-                                <a href="setor1.html">
-                                    <div class="listaSetorItem">
-                                        <span class="listaSetorItemElemento">Setor 1</span>
-                                        <span class="urgenteText listaSetorItemElemento">
-                                            <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                                            9
-                                        </span>
-
-                                        <!-- <span class="adequadoText listaSetorItemElemento">Ligado</span> -->
-
-                                    </div>
-                                </a>
-                                <a href="setor2.html">
-                                    <div class="listaSetorItem">
-                                        <span class="listaSetorItemElemento">Setor 2</span>
-                                        <span class="urgenteText listaSetorItemElemento">
-                                            <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                                            <!-- 2 -->
-                                        </span>
-                                        <span class="urgenteText listaSetorItemElemento"></span> 
-                                    </div>
-                                </a>
-                                <a href="setor3.html">
-                                    <div class="listaSetorItem">
-                                        <span class="listaSetorItemElemento">Setor 3</span>
-                                        <span class="urgenteText listaSetorItemElemento">
-                                            <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                                            <!-- 0lm -->
-                                        </span>
-                                        <span class="manutencaoText listaSetorItemElemento"></span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </details>`
-            }
-          })
+            resposta.json().then((json)=>{
+                console.log(socorro)
+            })
         })
     }
 </script>
+
+
+
+
+function(resposta){
+resposta.json().then((json)=>{
+console.log(json)
+
+for(i = 0; i < json.length; i++){ lista.innerHTML +=` <details class="listaItem">
+    <summary>
+        <div class="upperPart">
+            <span id="estufaTitulo">Estufa ${json[i].nome}</span>
+            <div class="qtdAlertas" id="quantidade_setor_estufa">
+                <span class="urgenteText">
+                    <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
+                    3
+                </span>
+                <span class="criticoText">
+                    <!-- <img src="../assets/imgs/vectorCritico.svg"> -->
+                    <!-- 0 -->
+
+                </span>
+                <span class="preocupanteText">
+                    <!-- <img src="../assets/imgs/vectorPreocupante.svg"> -->
+                    <!-- 0 -->
+                </span>
+                <span class="adequadoText">
+                    <!-- <img src="../assets/imgs/vetorAdequado.svg"> -->
+                    <!-- 0 -->
+                </span>
+            </div>
+        </div>
+    </summary>
+
+    <div class="lowerPart">
+        <div class="containerColsubTittle">
+            <span>NOME DO SETOR</span>
+            <span></span>
+            <span>Qtd. subsetores</span>
+        </div>
+
+        <div class="listaSetores" id="lista_setores_estufa">
+            <a href="setor1.html">
+                <div class="listaSetorItem">
+                    <span class="listaSetorItemElemento">Setor 1</span>
+                    <span class="urgenteText listaSetorItemElemento">
+                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
+                        9
+                    </span>
+
+                    <!-- <span class="adequadoText listaSetorItemElemento">Ligado</span> -->
+
+                </div>
+            </a>
+            <a href="setor2.html">
+                <div class="listaSetorItem">
+                    <span class="listaSetorItemElemento">Setor 2</span>
+                    <span class="urgenteText listaSetorItemElemento">
+                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
+                        <!-- 2 -->
+                    </span>
+                    <span class="urgenteText listaSetorItemElemento"></span>
+                </div>
+            </a>
+            <a href="setor3.html">
+                <div class="listaSetorItem">
+                    <span class="listaSetorItemElemento">Setor 3</span>
+                    <span class="urgenteText listaSetorItemElemento">
+                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
+                        <!-- 0lm -->
+                    </span>
+                    <span class="manutencaoText listaSetorItemElemento"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    </details>`
+    }
+    })
+    })

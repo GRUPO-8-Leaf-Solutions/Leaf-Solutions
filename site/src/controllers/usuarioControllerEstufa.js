@@ -1,4 +1,4 @@
-var usuarioEstufaModel = require("../models/usuarioEstufaModel");
+var usuarioEstufaModel = require("../models/usuarioEstufaModel");   
 
 var sessoes = [];
 
@@ -69,6 +69,7 @@ function listar(req, res) {
 }
 
 function exibirEstufas(req, res) {
+    console.log("function da controller", idUsuarioServer)
     usuarioEstufaModel.exibirEstufas(req.body.idUsuarioServer)
     .then(function (resultado) {
         if(resultado.length > 0) {

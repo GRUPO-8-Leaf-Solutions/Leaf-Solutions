@@ -24,6 +24,7 @@ function listar() {
 }
 
 function exibirEstufas(idUsuarioServer) {
+    console.log("function da model", idUsuarioServer)
     var instrucao = `SELECT * FROM estufa join empresa on fkEmpresa = idEmpresa where idEmpresa = ${idUsuarioServer};`;
     return database.executar(instrucao);
 }
