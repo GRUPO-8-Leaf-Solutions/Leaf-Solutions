@@ -143,12 +143,12 @@
 
 <script>
 
-    const idUsuario = sessionStorage.idUsuario;
+    var idUsuario = sessionStorage.idUsuario;
+    var listaEstufas = []
+    var listaQtdSetores = []
 
 
-
-
-    window.onload = exibirEstufas();
+    window.onload = pegarDados();
 
 
     function exibirEstufas() {
@@ -161,12 +161,17 @@
                 idUsuarioServer: idUsuario
             })
 
+        }).then(function(resposta) {
+            resposta.json().then((json) =>{
+                for(i = 0; i < json.length; i++){
+                    listaEstufas.push(json[i])
+                }
+            })
         })
-        asd()
     }
 
-    function asd() {
-        fetch("/setores/qtdSetores", {
+    function obterQTDSetores() {
+        fetch("/setores/exibirQtdSetores", {
             method: "post",
             headers: {
                 "Content-Type": "application/json"
@@ -175,42 +180,33 @@
                 idUsuarioServer: idUsuario
             })
         }).then(function(resposta){
-            resposta.json().then((json)=>{
-                console.log(socorro)
+            resposta.json().then((json) =>{
+                for(i = 0; i < json.length; i++){
+                    listaQtdSetores.push(json[i].totalSetores)
+                }
             })
         })
     }
-</script>
 
+    function pegarDados(){
+        exibirEstufas();
+        obterQTDSetores();
+    }
 
+setTimeout(plotarElementoEstufa, 100)
 
+    function plotarElementoEstufa(){
 
-function(resposta){
-resposta.json().then((json)=>{
-console.log(json)
-
-for(i = 0; i < json.length; i++){ lista.innerHTML +=` <details class="listaItem">
+        for(i = 0; i < listaEstufas.length; i++){
+            lista.innerHTML += `
+    
+    
+<details class="listaItem">
     <summary>
         <div class="upperPart">
-            <span id="estufaTitulo">Estufa ${json[i].nome}</span>
+            <span id="estufaTitulo">Estufa ${listaEstufas[i].nome}</span>
             <div class="qtdAlertas" id="quantidade_setor_estufa">
-                <span class="urgenteText">
-                    <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                    3
-                </span>
-                <span class="criticoText">
-                    <!-- <img src="../assets/imgs/vectorCritico.svg"> -->
-                    <!-- 0 -->
-
-                </span>
-                <span class="preocupanteText">
-                    <!-- <img src="../assets/imgs/vectorPreocupante.svg"> -->
-                    <!-- 0 -->
-                </span>
-                <span class="adequadoText">
-                    <!-- <img src="../assets/imgs/vetorAdequado.svg"> -->
-                    <!-- 0 -->
-                </span>
+               <span>${listaQtdSetores[i]}</span>
             </div>
         </div>
     </summary>
@@ -257,7 +253,11 @@ for(i = 0; i < json.length; i++){ lista.innerHTML +=` <details class="listaItem"
             </a>
         </div>
     </div>
-    </details>`
+    </details>
+            `
+        }
     }
-    })
-    })
+</script>
+
+
+

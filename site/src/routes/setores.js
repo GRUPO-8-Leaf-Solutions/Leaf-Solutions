@@ -7,4 +7,8 @@ router.post("/qtdSetores", function (req, res) {
     setoresController.qtdSetores(req, res);
 });
 
+router.post("/exibirQtdSetores", function (req, res) {
+    setoresController.exibirQtdSetores(req, res);
+});
+
 module.exports = router;

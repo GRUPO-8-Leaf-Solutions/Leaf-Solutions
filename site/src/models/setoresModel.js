@@ -20,7 +20,19 @@ group by idEstufa;`;
     return database.executar(instrucao);
 }
 
+function exibirQtdSetores(idUsuarioServer) {
+    var instrucao = `SELECT count(idSetor) as totalSetores 
+    from empresa
+    join estufa on empresa.idEmpresa = estufa.fkEmpresa
+    join setor on estufa.idEstufa = setor.fkEstufa
+    where idEmpresa = ${idUsuarioServer}
+    group by idEstufa;
+    `;
+    return database.executar(instrucao);
+}
+
 module.exports = {
 listar,
-qtdSetores
+qtdSetores,
+exibirQtdSetores
 }

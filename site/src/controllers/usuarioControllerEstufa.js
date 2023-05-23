@@ -69,8 +69,8 @@ function listar(req, res) {
 }
 
 function exibirEstufas(req, res) {
-    console.log("function da controller", idUsuarioServer)
-    usuarioEstufaModel.exibirEstufas(req.body.idUsuarioServer)
+    idUsuarioServer = req.body.idUsuarioServer
+    usuarioEstufaModel.exibirEstufas(idUsuarioServer)
     .then(function (resultado) {
         if(resultado.length > 0) {
             res.status(200).json(resultado);
