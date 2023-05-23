@@ -33,12 +33,19 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                     order by id desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
+        estufa.nome Estufa,
+        avg(valor) 'Média da estufa'
+            from empresa join estufa
+            on idEmpresa = fkEmpresa
+            join setor 
+            on idEstufa = fkEstufa 
+            join subSetor 
+            on idSetor = fkSetor 
+            join sensor 
+            on idSubSetor = fkSubSetor
+            join leituraSensor
+            on idSensor = fkSensor
+                where ${idEmpresa} = 1
                     order by id desc limit ${limite_linhas}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -64,12 +71,20 @@ function buscarMedidasEmTempoReal(idAquario) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+        estufa.nome Estufa,
+        avg(valor) 'Média da estufa'
+            from empresa join estufa
+            on idEmpresa = fkEmpresa
+            join setor 
+            on idEstufa = fkEstufa 
+            join subSetor 
+            on idSetor = fkSetor 
+            join sensor 
+            on idSubSetor = fkSubSetor
+            join leituraSensor
+            on idSensor = fkSensor
+                where ${idEmpresa} = 1
+                    group by estufa;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
