@@ -74,6 +74,8 @@ constraint pkEstufa primary key (idEstufa, fkEmpresa, fkEndereco)
 select * from estufa;
 select * from empresa;
 
+update empresa set tokenPerm = "123" where idEmpresa = 1;
+
 create table setor (
 idSetor int auto_increment,
 valorMin int default 350,
@@ -167,6 +169,18 @@ insert into endereco values
 
 insert into estufa values
 (null, 'Leaf estufa', 500, 1, 1);
+
+insert into estufa values
+(null, 'socoro jesus', 500, 1, 1);
+
+
+SELECT count(idSetor) as totalSetores, 
+		estufa.idEstufa 
+    from empresa
+    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
+    left join setor on estufa.idEstufa = setor.fkEstufa
+    where idEmpresa = 1
+    group by idEstufa;
 
 insert into estufa values 
 	(null, 'Guimarães', 300, 1, 1),

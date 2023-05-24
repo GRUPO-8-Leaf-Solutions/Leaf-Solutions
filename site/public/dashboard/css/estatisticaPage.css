@@ -451,7 +451,7 @@ li a {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: 270px;
+    min-height: fit-content;
     max-height: 270px;
     overflow-y: auto;
     padding-right: 5px;

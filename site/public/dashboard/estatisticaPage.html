@@ -146,7 +146,7 @@
     var idUsuario = sessionStorage.idUsuario;
     var listaEstufas = []
     var listaQtdSetores = []
-
+    var listaSetores = []
 
     window.onload = pegarDados();
 
@@ -188,18 +188,37 @@
         })
     }
 
+    function obterSetores(){
+        fetch("/setores/obterSetores", {
+            method: "post",
+            headers: { 
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario
+            })
+        }).then(function(resposta){
+            resposta.json().then((json) => {
+                for(i=0; i < json.length; i++){
+                    listaSetores.push(json[i])
+                }
+            })
+        })
+    }
+
     function pegarDados(){
         exibirEstufas();
         obterQTDSetores();
+        obterSetores();
     }
 
 setTimeout(plotarElementoEstufa, 100)
+setTimeout(plotarSetor, 100)
 
     function plotarElementoEstufa(){
-
         for(i = 0; i < listaEstufas.length; i++){
+            console.log(i)
             lista.innerHTML += `
-    
     
 <details class="listaItem">
     <summary>
@@ -218,45 +237,34 @@ setTimeout(plotarElementoEstufa, 100)
             <span>Qtd. subsetores</span>
         </div>
 
-        <div class="listaSetores" id="lista_setores_estufa">
-            <a href="setor1.html">
-                <div class="listaSetorItem">
-                    <span class="listaSetorItemElemento">Setor 1</span>
-                    <span class="urgenteText listaSetorItemElemento">
-                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                        9
-                    </span>
+        <div class="listaSetores" id="lista_setores_estufa${i}">
 
-                    <!-- <span class="adequadoText listaSetorItemElemento">Ligado</span> -->
-
-                </div>
-            </a>
-            <a href="setor2.html">
-                <div class="listaSetorItem">
-                    <span class="listaSetorItemElemento">Setor 2</span>
-                    <span class="urgenteText listaSetorItemElemento">
-                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                        <!-- 2 -->
-                    </span>
-                    <span class="urgenteText listaSetorItemElemento"></span>
-                </div>
-            </a>
-            <a href="setor3.html">
-                <div class="listaSetorItem">
-                    <span class="listaSetorItemElemento">Setor 3</span>
-                    <span class="urgenteText listaSetorItemElemento">
-                        <!-- <img src="../assets/imgs/vetorUrgente.svg"> -->
-                        <!-- 0lm -->
-                    </span>
-                    <span class="manutencaoText listaSetorItemElemento"></span>
-                </div>
-            </a>
         </div>
     </div>
     </details>
             `
         }
     }
+
+
+    function plotarSetor(){
+        for(i = 0; i < listaSetores.length; i++){
+                for(f = 0; f < listaEstufas.length; f++){
+                    if(listaSetores[i].fkEstufa == listaEstufas[f].idEstufa){
+                        document.getElementById(`lista_setores_estufa${f}`).innerHTML += `                            
+                        <a href="setor1.html">
+                                <div class="listaSetorItem">
+                                    <span class="listaSetorItemElemento">Setor ${listaSetores[i].idSetor}</span>
+                                </div>
+                        </a>`
+                    }
+                }
+            } 
+    
+        }
+    
+    
+
 </script>
 
 

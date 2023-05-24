@@ -20,11 +20,20 @@ group by idEstufa;`;
     return database.executar(instrucao);
 }
 
+function obterSetores(idUsuarioServer){
+    var instrucao = `
+    SELECT * FROM setor join estufa on fkEstufa = idEstufa
+					join empresa on fkEmpresa = idEmpresa
+						where idEmpresa = ${idUsuarioServer};
+    `
+    return database.executar(instrucao);
+}
+
 function exibirQtdSetores(idUsuarioServer) {
     var instrucao = `SELECT count(idSetor) as totalSetores 
     from empresa
-    join estufa on empresa.idEmpresa = estufa.fkEmpresa
-    join setor on estufa.idEstufa = setor.fkEstufa
+    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
+    left join setor on estufa.idEstufa = setor.fkEstufa
     where idEmpresa = ${idUsuarioServer}
     group by idEstufa;
     `;
@@ -33,6 +42,6 @@ function exibirQtdSetores(idUsuarioServer) {
 
 module.exports = {
 listar,
-qtdSetores,
-exibirQtdSetores
+exibirQtdSetores,
+obterSetores
 }
