@@ -252,18 +252,26 @@ setTimeout(plotarSetor, 100)
                 for(f = 0; f < listaEstufas.length; f++){
                     if(listaSetores[i].fkEstufa == listaEstufas[f].idEstufa){
                         document.getElementById(`lista_setores_estufa${f}`).innerHTML += `                            
-                        <a href="setor1.html">
-                                <div class="listaSetorItem">
+                        
+                                <div class="listaSetorItem" idSetor = "${f+1}" >
                                     <span class="listaSetorItemElemento">Setor ${listaSetores[i].idSetor}</span>
                                 </div>
-                        </a>`
+                        `
                     }
                 }
             } 
     
         }
     
-    
+        var listaIdSetores = document.querySelectorAll(".listaSetorItem")
+      
+        Array.from(listaIdSetores).forEach(listaSetorItem => {
+            addEventListener("click", function(){
+                var idSetorClicado = target.getAttribute("idSetor")
+                 sessionStorage.setorClicado = idSetorClicado
+            })
+        })
+
 
 </script>
 

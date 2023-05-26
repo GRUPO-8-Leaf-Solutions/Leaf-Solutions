@@ -12,4 +12,8 @@ router.post("/obterSetores", function (req, res) {
     setoresController.obterSetores(req, res);
 });
 
+router.get("/obterSetoresInner/:idEstufa", function (req, res) {
+    setoresController.obterSetoresInner(req, res);
+});
+
 module.exports = router;

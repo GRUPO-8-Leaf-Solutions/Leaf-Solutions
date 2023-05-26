@@ -9,16 +9,7 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function qtdSetores(idUsuario) {
-var instrucao = `
-select count(IdSetor) as totalSetores
-from empresa 
-join estufa on empresa.idEmpresa = estufa.fkEmpresa
-join setor on estufa.idEstufa = setor.fkEstufa
-where idEmpresa = ${idUsuario}
-group by idEstufa;`;
-    return database.executar(instrucao);
-}
+
 
 function obterSetores(idUsuarioServer){
     var instrucao = `
@@ -39,6 +30,9 @@ function exibirQtdSetores(idUsuarioServer) {
     `;
     return database.executar(instrucao);
 }
+
+
+
 
 module.exports = {
 listar,
