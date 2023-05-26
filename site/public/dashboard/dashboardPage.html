@@ -15,8 +15,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
+<!-- onload="coletarMaiorIndice, coletarMaiorIndice" -->
 
-<body onload="coletarMaiorIndice, coletarMaiorIndice">
+<body>
     <!-- PAG MENU -->
     <div class="container">
 
@@ -780,9 +781,9 @@
 
 <script>
     loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
-    var idEmpresa = sessionStorage.idEmpresa;
+    var idEmpresa = sessionStorage.idUsuario;
 
-    window.onload = obterDadosGraficos();
+
 
     function obterDadosGrafico() {
         // obterDadosGrafico(1)
@@ -826,26 +827,37 @@
 
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-        }).then(function(reposta)) {
-            resposta.json().then((json) =>{
+        }).then(function (resposta) {
+            resposta.json().then((json) => {
                 for (i = 0; i < json.length; i++) {
-                    maiorIndice.push(jason[i])
+                    maiorIndice.push(json[i])
                 }
             })
-        }
+        })
 
         return false;
     }
 
-     function exibirAlertas(){
-         fetch(`/leitura/exibirAlertas` ,{
+
+    window.onload = obterCaptacoes();
+
+    function obterCaptacoes() {
+        fetch(`/leitura/obterCaptacoes`, {
             method: "POST",
             headers: {
-
+                "Content-Type": "aplication/json"
             },
-            body: JSON.
-         })
-     } 
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresa
+            })
+        }).then(function (resposta) {
+            resposta.json().then(function (json) {
+                console.log(json)
+            })
+        })
+    }
+
+
 
 
 </script>

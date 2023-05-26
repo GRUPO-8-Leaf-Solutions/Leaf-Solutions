@@ -94,50 +94,30 @@ function buscarMedidasEmTempoReal(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
+function obterCaptacoes(idEmpresa) {
+    var instrucao = `SELECT
+        emp.razaoSocial,
+        estufa.nome AS nomeEstufa,
+        setor.idSetor,
+        subSetor.idSubSetor,
+        leituraSensor.valor AS indiceAtual
+        FROM
+        empresa AS emp
+        JOIN estufa ON emp.idEmpresa = estufa.fkEmpresa
+        JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
+        WHERE
+        emp.idEmpresa = ${idEmpresa};`
 
-function exibirAlertas(idEmpresa) {
-
-    instrucaoSql = ''
-
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idEmpresa} 
-                    order by id desc`;
-
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        estufa.nome Estufa,
-        avg(valor) 'Média da estufa'
-            from empresa join estufa
-            on idEmpresa = fkEmpresa
-            join setor 
-            on idEstufa = fkEstufa 
-            join subSetor 
-            on idSetor = fkSetor 
-            join sensor 
-            on idSubSetor = fkSubSetor
-            join leituraSensor
-            on idSensor = fkSensor
-                where ${idEmpresa} = 1
-                    group by estufa;`;
-    } else {
-        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-        return
-    }
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+        return database.executar(instrucao);
 }
-
 
 module.exports = {
     coletarMaiorIndice,
     coletarMenorIndice,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    exibirAlertas
+    obterCaptacoes
 };

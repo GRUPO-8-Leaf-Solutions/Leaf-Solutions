@@ -20,8 +20,8 @@ router.post("/coletarMenorIndice", function (req, res) {
     leituraController.coletarMenorIndice(req, res);
 })
 
-router.post("/exibirAlertas"), function (req, res){
-    leituraController.exibirAlertas(req, res);
-}
+router.post("/obterCaptacoes", function (req, res){
+    leituraController.obterCaptacoes(req, res);
+})
 
 module.exports = router;

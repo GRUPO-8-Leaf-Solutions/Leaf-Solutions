@@ -71,11 +71,15 @@ function coletarMaiorIndice(req, res) {
 
 }
 
-function exibirAlertas(req, res){
-    var idEmpresa = req.body.idEmpresa;
+function obterCaptacoes(req, res){
+    var idEmpresa = req.body.idEmpresaServer;
 
-    console.log(`Procurando ultimos alertas`);
-    leituraModel.exibirAlertas(idEmpresa).then(function (resultado) {
+    console.log(`Obtendo Captações`);
+    leituraModel.obterCaptacoes(idEmpresa)
+
+    // vai pro model e depois volta pro .then
+    
+    .then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -93,5 +97,5 @@ module.exports = {
     buscarMedidasEmTempoReal,
     coletarMaiorIndice,
     coletarMenorIndice,
-    exibirAlertas
+    obterCaptacoes
 }
