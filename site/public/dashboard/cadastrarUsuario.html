@@ -126,22 +126,22 @@
                     <div class="formCadastro">
                         <div class="inputCadastro">
                             <span>Nome*</span>
-                            <input type="text">
+                            <input type="text" id="input_nome">
                         </div>
 
                         <div class="inputCadastro">
                             <span>Sobrenome*</span>
-                            <input type="text">
+                            <input type="text" id="input_sobrenome">
                         </div>
 
                         <div class="inputCadastro">
                             <span>Email*</span>
-                            <input type="text">
+                            <input type="text" id="input_email">
                         </div>
 
                         <div class="inputCadastro">
                             <span>Senha*</span>
-                            <input type="text">
+                            <input type="text" id="input_senha">
                         </div>
                     
                     </div>
@@ -159,3 +159,72 @@
 </body>
 
 </html>
+
+<script>
+    function cadusuario() {
+        // aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeUsuarioVar = input_nome.value;
+        var sobrenomeVar = input_sobrenome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+
+    fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                sobrenomeServer: sobrenomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+
+            })
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                fetch("/usuarios/ultimaEmp/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        // crie um atributo que recebe o valor recuperado aqui
+                        // Agora vá para o arquivo routes/usuario.js
+                        email: emailVar
+
+                    })
+                })
+                    .then((res) => {
+                        console.log(res);
+                        res.json().then(json => {
+                            sessionStorage.ULTIMA_ID = json.idEmpresa;
+                        })
+                    })
+
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
+
+                // setTimeout(() => {
+                window.location = "cadastro2.html";
+                // }, "2000")
+
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+</script>

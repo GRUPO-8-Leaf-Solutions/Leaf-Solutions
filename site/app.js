@@ -10,10 +10,10 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-var usuarioEndRouter = require("./src/routes/usuariosEndereco")
-var usuarioEstufaRouter = require("./src/routes/usuariosEstufa")
+var usuarioEndRouter = require("./src/routes/usuariosEndereco");
+var usuarioEstufaRouter = require("./src/routes/usuariosEstufa");
 var leituraRouter = require("./src/routes/leitura");
-var setoresRouter = require("./src/routes/setores")
+var setoresRouter = require("./src/routes/setores");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

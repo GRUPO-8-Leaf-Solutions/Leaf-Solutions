@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 
-<body>
+<body onload="coletarMaiorIndice, coletarMaiorIndice">
     <!-- PAG MENU -->
     <div class="container">
 
@@ -192,7 +192,7 @@
                                     <div class="alto_indice_luz">
                                         <div class="maior_indice_luz">
                                             MAIOR ÍNDICE DE LUZ CAPTADO <br>
-                                            <p>820lm</p>
+                                            <p></p>
                                         </div>
                                         <div class="indicacao_estufa">
                                             Guimarães - setor 1
@@ -540,8 +540,8 @@
 
                 </div>
             </div>
-
         </div>
+
 
 
 
@@ -551,50 +551,46 @@
 
 </body>
 <script>
-    const labels = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-    ];
+    // const labels = [
+    //     '12:00',
+    //     '13:00',
+    //     '14:00',
+    //     '15:00',
+    //     '16:00',
+    //     '17:00',
+    // ];
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'Antônio',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [687, 700, 760, 850, 840, 930],
-        },
-        {
-            label: 'Paulista',
-            backgroundColor: 'rgb(148, 0, 211)',
-            borderColor: 'rgb(148, 0, 211)',
-            data: [520, 500, 700, 560, 610, 560],
-        },
-        {
-            label: 'Guimarães',
-            backgroundColor: 'rgb(18, 10, 143)',
-            borderColor: 'rgb(18, 10, 143)',
-            data: [200, 266, 200, 233, 166, 200],
-        }
-        ]
-    };
+    // const data = {
+    //     labels: labels,
+    //     datasets: [{
+    //         label: 'Antônio',
+    //         backgroundColor: 'rgb(255, 99, 132)',
+    //         borderColor: 'rgb(255, 99, 132)',
+    //         data: [],
+    //     },
+    //     {
+    //         label: 'Paulista',
+    //         backgroundColor: 'rgb(148, 0, 211)',
+    //         borderColor: 'rgb(148, 0, 211)',
+    //         data: [],
+    //     },
+    //     {
+    //         label: 'Guimarães',
+    //         backgroundColor: 'rgb(18, 10, 143)',
+    //         borderColor: 'rgb(18, 10, 143)',
+    //         data: [],
+    //     }
+    //     ]
+    // };
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {}
-    };
+
 </script>
 
 <script>
-    const myChart1 = new Chart(
-        document.getElementById('myChart1'),
-        config
-    );
+    // const myChart1 = new Chart(
+    //     document.getElementById('myChart1'),
+    //     config
+    // );
     // const myChart2 = new Chart(
     //     document.getElementById('myChart2'),
     //     config
@@ -607,9 +603,11 @@
     new Chart(grafico_pie, {
         type: 'doughnut',
         data: {
-            labels: ['Setores urgentes', 'Setores críticos', 'Setores preocupantes', 'Setores adequados'],
+            labels: ['Setores críticos', 'Setores preocupantes', 'Setores adequados'],
             datasets: [{
-                data: [4, 6, 2, 17],
+                label: 'Situação dos setores',
+                data: [6, 2, 17],
+                backgroundColor: ['Red', 'Yellow', 'Green'],
                 borderWidth: 1
             }]
         },
@@ -625,17 +623,19 @@
 
 
 <script>
+    var idEmpresa = sessionStorage.idUsuario;
     loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
+    var maiorIndice = []
 
     let proximaAtualizacao;
 
     window.onload = obterDadosGraficos();
 
     function obterDadosGraficos() {
-        obterDadosGrafico(1)
-        obterDadosGrafico(2)
-        obterDadosGrafico(3)
-        obterDadosGrafico(4)
+        // obterDadosGrafico(1)
+        // obterDadosGrafico(2)
+        // obterDadosGrafico(3)
+        // obterDadosGrafico(4)
     }
 
 
@@ -671,6 +671,7 @@
         let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
+
         let dados = {
             labels: labels,
             datasets: [{
@@ -681,6 +682,7 @@
                 tension: 0.1
             }]
         };
+
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -706,11 +708,13 @@
         const config = {
             type: 'line',
             data: dados,
+            options: {}
         };
+
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChart1${idAquario}`),
+            document.getElementById(`myChart1${idEmpresa}`),
             config
         );
 
@@ -718,8 +722,6 @@
     }
 
     function atualizarGrafico(idEmpresa, dados, myChart) {
-
-
 
         fetch(`/leitura/tempo-real/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
@@ -750,10 +752,10 @@
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
                         dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].luminosidade); // incluir uma nova medida de umidade
 
-                        dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
                         myChart.update();
                     }
@@ -778,55 +780,27 @@
 
 <script>
     loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
+    var idEmpresa = sessionStorage.idEmpresa;
 
     window.onload = obterDadosGraficos();
 
     function obterDadosGrafico() {
-        obterDadosGrafico(1)
-        obterDadosGrafico(2)
-        obterDadosGrafico(3)
-        obterDadosGrafico(4)
+        // obterDadosGrafico(1)
+        // obterDadosGrafico(2)
+        // obterDadosGrafico(3)
+        // obterDadosGrafico(4)
     }
-    var idEmpresa = sessionStorage.idUsuario
 
 
-    window.onload = coletarMenorIndice();
+
     function coletarMenorIndice() {
-        fetch(`/leitura/coletarMenorIndice/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    menorIndiceLuz.innerHTML = `${json.valor}lm`
-                })
-            }
-        })
-
-        fetch(`/leitura/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-
-                    plotarGrafico(resposta, idAquario);
-
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-    }
-
-    window.onload = coletarMaiorIndice();
-    function coletarMaiorIndice() {
-        fetch(`/leitura/coletarMaiorIndice${idUsuario}`, {
-            method: "GET",
+        fetch(`/leitura/coletarMenorIndice`, {
+            method: "POST",
             headers: {
                 "Content-Type": "aplication/json"
             },
             body: JSON.stringify({
-                idUsuarioServer: idUsuario
+                idEmpresaServer: idEmpresa
             })
         }).then(function (resposta) {
             console.log("resposta: ", resposta);
@@ -836,6 +810,44 @@
         });
         return false;
     }
+
+
+    function coletarMaiorIndice() {
+        fetch(`/leitura/coletarMaiorIndice`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "aplication/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresa
+            })
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        }).then(function(reposta)) {
+            resposta.json().then((json) =>{
+                for (i = 0; i < json.length; i++) {
+                    maiorIndice.push(jason[i])
+                }
+            })
+        }
+
+        return false;
+    }
+
+     function exibirAlertas(){
+         fetch(`/leitura/exibirAlertas` ,{
+            method: "POST",
+            headers: {
+
+            },
+            body: JSON.
+         })
+     } 
+
+
 </script>
 
 </html>

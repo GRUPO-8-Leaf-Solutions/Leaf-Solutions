@@ -1,9 +1,9 @@
-var medidaModel = require("../models/leituraModel");
+var leituraModel = require("../models/leituraModel");
 
 function coletarMenorIndice (req, res) {
-    var idEmpresa = req.params.idEmpresa;
+    var idEmpresa = req.body.idEmpresa;
 
-    leituraModel.menorIndiceLuz(idEmpresa)
+    leituraModel.coletarMenorIndice(idEmpresa)
         .then(function (resultado) {
             if(resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -20,7 +20,7 @@ function coletarMenorIndice (req, res) {
 
 function buscarUltimasMedidas(req, res) {
     const limite_linhas = 7;
-    var idEstufa = req.params.idEstufa;
+    var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
     leituraModel.buscarUltimasMedidas(idEmpresa, limite_linhas).then(function (resultado) {
@@ -37,10 +37,10 @@ function buscarUltimasMedidas(req, res) {
 }
 
 function buscarMedidasEmTempoReal(req, res) {
-    var idEmpresa = req.params.idAquario;
+    var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando medidas em tempo real`);
-    medidaModel.buscarMedidasEmTempoReal(idEmpresa).then(function (resultado) {
+    leituraModel.buscarMedidasEmTempoReal(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -54,10 +54,10 @@ function buscarMedidasEmTempoReal(req, res) {
 }
 
 function coletarMaiorIndice(req, res) {
-    var idEmpresa = req.prams.idLeitura;
+    var idEmpresa = req.body.idEmpresa;
 
     console.log(`Buscando medidas de maior indice`);
-    medidaModel.coletarMaiorIndice(idEmpresa).then(function (resultado) {
+    leituraModel.coletarMaiorIndice(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -71,9 +71,27 @@ function coletarMaiorIndice(req, res) {
 
 }
 
+function exibirAlertas(req, res){
+    var idEmpresa = req.body.idEmpresa;
+
+    console.log(`Procurando ultimos alertas`);
+    leituraModel.exibirAlertas(idEmpresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).json("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as medidas com o maior indice.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    }); 
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
     coletarMaiorIndice,
-    coletarMenorIndice
+    coletarMenorIndice,
+    exibirAlertas
 }

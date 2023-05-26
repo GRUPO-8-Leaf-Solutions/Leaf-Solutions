@@ -3,21 +3,25 @@
 
 var leituraController = require("../controllers/leituraController");
 
-router.get("/ultimas/:idEstufa", function (req, res) {
+router.get("/ultimas/:idEmpresa", function (req, res) {
     leituraController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idEstufa", function (req, res) {
+router.get("/tempo-real/:idEmpresa", function (req, res) {
     leituraController.buscarMedidasEmTempoReal(req, res);
 })
 
-router.get("/maiorIndice/:idEstufa", function (req, res) {
+router.post("/coletarMaiorIndice", function (req, res) {
     leituraController.coletarMaiorIndice(req, res);
 })
 
 
-router.get("/menorIndice/:idEstufa", function (req, res) {
+router.post("/coletarMenorIndice", function (req, res) {
     leituraController.coletarMenorIndice(req, res);
 })
+
+router.post("/exibirAlertas"), function (req, res){
+    leituraController.exibirAlertas(req, res);
+}
 
 module.exports = router;
