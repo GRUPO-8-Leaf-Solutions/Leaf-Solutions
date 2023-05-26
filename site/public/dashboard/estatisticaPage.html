@@ -214,6 +214,7 @@
 
 setTimeout(plotarElementoEstufa, 100)
 setTimeout(plotarSetor, 100)
+setTimeout(plotarSetor, 100)
 
     function plotarElementoEstufa(){
         for(i = 0; i < listaEstufas.length; i++){
@@ -263,12 +264,11 @@ setTimeout(plotarSetor, 100)
     
         }
     
-        var listaIdSetores = document.querySelectorAll(".listaSetorItem")
+        var listaIdSetores = document.querySelectorAll("idSetor")
       
-        Array.from(listaIdSetores).forEach(listaSetorItem => {
+        Array.from(listaIdSetores).forEach(itemDaVez => {
             addEventListener("click", function(){
-                var idSetorClicado = target.getAttribute("idSetor")
-                 sessionStorage.setorClicado = idSetorClicado
+                 sessionStorage.setorClicado = itemDaVez.idSetor
             })
         })
 
