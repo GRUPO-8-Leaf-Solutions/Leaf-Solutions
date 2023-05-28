@@ -1,279 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Leaf - Estatística</title>
 
     <script src="js/estatisticaPage.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="icon" href="../../assets/icon/logo.svg">
-    <link rel="stylesheet" href="./css/estatisticaPage.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-</head>
+    <link rel="icon" href="../../assets/icon/logo.svg" />
+    <link rel="stylesheet" href="./css/estatisticaPage.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+  </head>
 
-<body>
+  <body>
     <!-- PAG MENU -->
     <div class="container">
-
-        <div class="lateral">
-            <!-- parte de cima -->
-            <div class="listaBaixo">
-                <div class="navegacão">
-                    <div class="navHeader">
-                        <img src="../../public/assets/icon/logo.svg">
-                        <span>MENU</span>
-                    </div>
-                    <ul>
-                        <li class="lista">
-                            <a href="dashboardPage.html">
-                                <i class="uil uil-create-dashboard"></i>
-                                <span class="lista">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="lista destaque">
-                            <a href="estatisticaPage.html">
-                                <i class="uil uil-presentation-line est"></i>
-                                <span class="lista">Estatística</span>
-                            </a>
-                        </li>
-                        <li class="lista">
-                            <a href="historicoPage.html">
-                                <i class="uil uil-history"></i>
-                                <span class="lista">Histórico</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
-                        <ul style="height: fit-content;">
-                            <li class="lista">
-                                <a href="cadastrarUsuario.html">
-                                    <i class="uil uil-plus-circle"></i>
-                                    <span class="lista" style="font-size: 15px;">Cadastrar usuario</span>
-                                </a>
-                            </li>
-                            <li class="lista">
-                                <a href="cadastrarEstufa.html">
-                                    <i class="uil uil-plus-circle"></i>
-                                    <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
-                                </a>
-                            </li>
-                            <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
-                        </ul>
-                    </div>
-
-                </div>
-
+      <div class="lateral">
+        <!-- parte de cima -->
+        <div class="listaBaixo">
+          <div class="navegacão">
+            <div class="navHeader">
+              <img src="../../assets/icon/logo.svg" />
+              <span>MENU</span>
             </div>
+            <ul>
+              <li class="lista">
+                <a href="dashboardPage.html">
+                  <i class="uil uil-create-dashboard"></i>
+                  <span class="lista">Dashboard</span>
+                </a>
+              </li>
+              <li class="lista destaque">
+                <a href="estatisticaPage.html">
+                  <i class="uil uil-presentation-line est"></i>
+                  <span class="lista">Estatística</span>
+                </a>
+              </li>
+              <li class="lista">
+                <a href="historicoPage.html">
+                  <i class="uil uil-history"></i>
+                  <span class="lista">Histórico</span>
+                </a>
+              </li>
+            </ul>
+            <div
+              class="inferior-menu"
+              style="background-image: url(../assets/imgs/VectorPéMenu.svg)"
+            >
+              <ul style="height: fit-content">
+                <li class="lista">
+                  <a href="cadastrarUsuario.html">
+                    <i class="uil uil-plus-circle"></i>
+                    <span class="lista" style="font-size: 15px"
+                      >Cadastrar usuario</span
+                    >
+                  </a>
+                </li>
+                <li class="lista">
+                  <a href="cadastrarEstufa.html">
+                    <i class="uil uil-plus-circle"></i>
+                    <span class="lista" style="font-size: 15px"
+                      >Cadastrar estufa</span
+                    >
+                  </a>
+                </li>
+                <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
+              </ul>
+            </div>
+          </div>
         </div>
-        <!-- FIM DO MENU -->
+      </div>
+      <!-- FIM DO MENU -->
 
-        <!-- parte do tela -->
-        <div class="tela">
-            <div class="top">
-                <div class="top-left">
-                    <span class="topo">Cadastro de Estufa</span>
-                </div>
-                <div class="nomeNome">
-                    <img src="../../public/assets/imgs/Ellipse2325.png">
-                    <ul class="ul2">
-                        <span class="ismalendas">
-                            <span id="loginUsuario"></span>
-                            <span>NomeUsuário</span>
-                        </span>
-                    </ul>
-                </div>
-            </div>
-            <div class="areaDash">
-                <div>
-                    <div class="alertsParametro">
-                        <div class="urgente">
-                            <img src="../../public/assets/imgs/vetorUrgente.svg">
-                            <div class="span-urgente">
-                                <span class="urgenteText">CRÍTICO</span>
-                                <span>350lm - 450lm</span>
-                                <span>650lm - 800lm</span>
-                            </div>
-                        </div>
-                        <div class="preocupante">
-                            <img src="../../public/assets/imgs/VectorNewProcupante.svg" width="30px">
-                            <div class="span-preocupante">
-                                <span class="criticoText">PREOCUPANTE</span>
-                                <span>450lm - 500lm</span>
-                                <span>600lm - 650lm</span>
-                            </div>
-                        </div>
-
-                        <div class="adequado">
-                            <img src="../../public/assets/imgs/vetorAdequado.svg">
-                            <div class="span-adequado">
-                                <span class="adequadoText">ADEQUADO</span>
-                                <span>500lm - 600lm</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FIM DA NAV BAR -->
-
-
-            <div class="listaEstufas">
-                <div class="containerColTittle">
-                    <span>Nome das Estufas</span>
-                    <span>Qtd. de setores</span>
-                </div>
-
-                <!-- PRÓXIMA DIV ESTÁ SENDO PREENCHIDA PELO BANCO -->
-                <div id="lista" class="lista">
-
-                </div>
-
-            </div>
-
+      <!-- parte do tela -->
+      <div class="tela">
+        <div class="top">
+          <div class="top-left">
+            <span class="topo">Cadastro de Estufa</span>
+          </div>
+          <div class="nomeNome">
+            <img src="../../assets/imgs/Ellipse2325.png" />
+            <ul class="ul2">
+              <span class="ismalendas">
+                <span id="loginUsuario"></span>
+                <span>NomeUsuário</span>
+              </span>
+            </ul>
+          </div>
         </div>
+        <div class="areaDash">
+          <div>
+            <div class="alertsParametro">
+              <div class="urgente">
+                <img src="../../assets/imgs/vetorUrgente.svg" />
+                <div class="span-urgente">
+                  <span class="urgenteText">CRÍTICO</span>
+                  <span>350lm - 450lm</span>
+                  <span>650lm - 800lm</span>
+                </div>
+              </div>
+              <div class="preocupante">
+                <img
+                  src="../../assets/imgs/VectorNewProcupante.svg"
+                  width="30px"
+                />
+                <div class="span-preocupante">
+                  <span class="criticoText">PREOCUPANTE</span>
+                  <span>450lm - 500lm</span>
+                  <span>600lm - 650lm</span>
+                </div>
+              </div>
+
+              <div class="adequado">
+                <img src="../../assets/imgs/vetorAdequado.svg" />
+                <div class="span-adequado">
+                  <span class="adequadoText">ADEQUADO</span>
+                  <span>500lm - 600lm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIM DA NAV BAR -->
+
+        <div class="listaEstufas">
+          <div class="containerColTittle">
+            <span>Nome das Estufas</span>
+            <span>Qtd. de setores</span>
+          </div>
+
+          <!-- PRÓXIMA DIV ESTÁ SENDO PREENCHIDA PELO BANCO -->
+          <div id="lista" class="lista"></div>
+        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
 
 <script>
+  var idUsuario = sessionStorage.idUsuario;
 
-    var idUsuario = sessionStorage.idUsuario;
-    var listaEstufas = []
-    var listaQtdSetores = []
-    var listaSetores = []
-
-    window.onload = pegarDados();
-
-
-    function exibirEstufas() {
-        fetch("/usuariosEstufa/exibirEstufas", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idUsuarioServer: idUsuario
-            })
-
-        }).then(function(resposta) {
-            resposta.json().then((json) =>{
-                for(i = 0; i < json.length; i++){
-                    listaEstufas.push(json[i])
-                }
-            })
-        })
-    }
-
-    function obterQTDSetores() {
+  function plotarElementoLista() {
+    fetch("/usuariosEstufa/exibirEstufas", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idUsuarioServer: idUsuario,
+      }),
+    }).then((listaEstufas) => {
+      if (listaEstufas.ok) {
         fetch("/setores/exibirQtdSetores", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idUsuarioServer: idUsuario
-            })
-        }).then(function(resposta){
-            resposta.json().then((json) =>{
-                for(i = 0; i < json.length; i++){
-                    listaQtdSetores.push(json[i].totalSetores)
-                }
-            })
-        })
-    }
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            idUsuarioServer: idUsuario,
+          }),
+        }).then((listaQTDsetores) => {
+          if (listaQTDsetores.ok) {
+            fetch("/setores/obterSetores", {
+              method: "post",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                idUsuarioServer: idUsuario,
+              }),
+            }).then((listaSetores) => {
+                console.log(listaSetores)
+              listaEstufas.json().then((listaEstufas) => {
+                listaQTDsetores.json().then((listaQTDsetores) => {
+                    for (i = 0; i < listaEstufas.length; i++) {
+                      lista.innerHTML += `
+                                            <details class="listaItem">
+                                                <summary>
+                                                    <div class="upperPart">
+                                                        <span id="estufaTitulo">Estufa ${listaEstufas[i].nome}</span>
+                                                        <div class="qtdAlertas" id="quantidade_setor_estufa">
+                                                        <span>${listaQTDsetores[i].totalSetores}</span>
+                                                        </div>
+                                                    </div>
+                                                </summary>
 
-    function obterSetores(){
-        fetch("/setores/obterSetores", {
-            method: "post",
-            headers: { 
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idUsuarioServer: idUsuario
-            })
-        }).then(function(resposta){
-            resposta.json().then((json) => {
-                for(i=0; i < json.length; i++){
-                    listaSetores.push(json[i])
-                }
-            })
-        })
-    }
+                                                <div class="lowerPart">
+                                                    <div class="containerColsubTittle">
+                                                        <span>NOME DO SETOR</span>
+                                                        <span></span>
+                                                        <span>Qtd. subsetores</span>
+                                                    </div>
 
-    function pegarDados(){
-        exibirEstufas();
-        obterQTDSetores();
-        obterSetores();
-    }
+                                                    <div class="listaSetores" id="lista_setores_estufa${i}">
 
-setTimeout(plotarElementoEstufa, 100)
-setTimeout(plotarSetor, 100)
-setTimeout(plotarSetor, 100)
-
-    function plotarElementoEstufa(){
-        for(i = 0; i < listaEstufas.length; i++){
-            console.log(i)
-            lista.innerHTML += `
-    
-<details class="listaItem">
-    <summary>
-        <div class="upperPart">
-            <span id="estufaTitulo">Estufa ${listaEstufas[i].nome}</span>
-            <div class="qtdAlertas" id="quantidade_setor_estufa">
-               <span>${listaQtdSetores[i]}</span>
-            </div>
-        </div>
-    </summary>
-
-    <div class="lowerPart">
-        <div class="containerColsubTittle">
-            <span>NOME DO SETOR</span>
-            <span></span>
-            <span>Qtd. subsetores</span>
-        </div>
-
-        <div class="listaSetores" id="lista_setores_estufa${i}">
-
-        </div>
-    </div>
-    </details>
-            `
-        }
-    }
-
-
-    function plotarSetor(){
-        for(i = 0; i < listaSetores.length; i++){
-                for(f = 0; f < listaEstufas.length; f++){
-                    if(listaSetores[i].fkEstufa == listaEstufas[f].idEstufa){
-                        document.getElementById(`lista_setores_estufa${f}`).innerHTML += `                            
-                        
-                                <div class="listaSetorItem" idSetor = "${f+1}" >
-                                    <span class="listaSetorItemElemento">Setor ${listaSetores[i].idSetor}</span>
-                                </div>
-                        `
+                                                    </div>
+                                                </div>
+                                                </details>
+                                                `;
                     }
-                }
-            } 
-    
-        }
-    
-        var listaIdSetores = document.querySelectorAll("idSetor")
-      
-        Array.from(listaIdSetores).forEach(itemDaVez => {
-            addEventListener("click", function(){
-                 sessionStorage.setorClicado = itemDaVez.idSetor
-            })
-        })
 
+                  listaSetores.json().then((listaSetores) => {
+                    console.log(listaSetores)
+                    for (i = 0; i < listaSetores.length; i++) {
+                      for (f = 0; f < listaEstufas.length; f++) {
+                        if (listaSetores[i].fkEstufa == listaEstufas[f].idEstufa) {
+                          document.getElementById(
+                            `lista_setores_estufa${f}`
+                          ).innerHTML += `
+                                                    <div class="listaSetorItem" onclick="registrarSessionSetor(this.id)" id = ${listaSetores[i].idSetor}>
+                                                        <span class="listaSetorItemElemento">Setor ${
+                                                          listaSetores[i].idSetor
+                                                        }</span>
+                                                    </div>
+                                                `;
+                        }
+                      }
+                    }
+                  });
+                });
+              });
+            });
+          }
+        });
+      }
+    });
+  }
 
+  window.addEventListener("load", () => {
+    plotarElementoLista();
+  });
+
+    function registrarSessionSetor(id){
+            sessionStorage.setorClicado = id;
+    }
 </script>
-
-
-
