@@ -408,6 +408,7 @@ li a {
     justify-content: center;
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
+    box-shadow: inset 4px 0px 12px 0px#FF0000;
 }
 
 .subsetor_preocupante {
@@ -419,6 +420,8 @@ li a {
     justify-content: center;
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
+    box-shadow: inset 4px 0px 12px 0px#A8A103;
+
 }
 
 .subsetor_adequado {
@@ -430,6 +433,8 @@ li a {
     justify-content: center;
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
+    box-shadow: inset 4px 0px 12px 0px#4CA803;
+    
 }
 
 .buscas {
@@ -598,6 +603,7 @@ li a {
     gap: 5px;
     border: #FF0000 2px solid;
     border-radius: 10px;
+    color: #C63535;
 }
 
 .ajuste_KPI {
@@ -613,12 +619,13 @@ li a {
     gap: 5px;
     border: #FF0000 2px solid;
     border-radius: 10px;
+    color: #C63535;
 }
 
 .KPI_direita {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     width: 35%;
 }
 
@@ -640,6 +647,7 @@ li a {
     gap: 5px;
     border: #53AC50 solid 2px;
     border-radius: 10px;
+    color: #409F40;
 }
 
 .KPI3_direita {
@@ -650,4 +658,30 @@ li a {
     gap: 5px;
     border: #CCA92B solid 2px;
     border-radius: 10px;   
+    color: #CCA92B;
+}
+
+.conjunto_KPI {
+    display: flex;
+    gap: 10px;
+}
+
+.KPI_1_1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #C63535;
+    border: 1px solid #C63535;
+    border-radius: 18px;
+}
+
+.KPI_1_2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #4285F4;
+    border: 1px solid #4285F4;
+    border-radius: 18px;
 }
