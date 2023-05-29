@@ -68,6 +68,24 @@ function listar(req, res) {
         );
 }
 
+function rankMaisAlertas(req, res){
+    var idUsuarioServer = req.body.idUsuarioServer
+    usuarioEstufaModel.rankMaisAlertas(idUsuarioServer)
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
 function exibirEstufas(req, res) {
     idUsuarioServer = req.body.idUsuarioServer
     usuarioEstufaModel.exibirEstufas(idUsuarioServer)
@@ -88,5 +106,6 @@ module.exports = {
     cadastrarEstufa,
     testar,
     listar,
-    exibirEstufas
+    exibirEstufas,
+    rankMaisAlertas
 }

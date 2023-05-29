@@ -11,14 +11,17 @@ router.get("/tempo-real/:idEmpresa", function (req, res) {
     leituraController.buscarMedidasEmTempoReal(req, res);
 })
 
-router.post("/coletarMaiorIndice", function (req, res) {
-    leituraController.coletarMaiorIndice(req, res);
-})
+
+router.post("/obterMenorIndice", function (req, res){
+    leituraController.obterMenorIndice(req, res);
+} )
 
 
-router.post("/coletarMenorIndice", function (req, res) {
-    leituraController.coletarMenorIndice(req, res);
-})
+
+router.post("/obterMaiorIndice", function (req, res){
+    leituraController.obterMaiorIndice(req, res);
+} )
+
 
 router.post("/obterCaptacoes", function (req, res){
     leituraController.obterCaptacoes(req, res);

@@ -9,8 +9,6 @@ function listar() {
     return database.executar(instrucao);
 }
 
-
-
 function obterSetores(idUsuarioServer){
     var instrucao = `
     SELECT * FROM setor join estufa on fkEstufa = idEstufa
