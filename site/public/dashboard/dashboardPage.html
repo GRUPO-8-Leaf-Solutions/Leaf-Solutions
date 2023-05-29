@@ -382,17 +382,44 @@
 
 <script>
     var idEmpresa = sessionStorage.idUsuario;
+
+    console.log("console log da idEmpresa0", idEmpresa)
+
     loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
 
     let proximaAtualizacao;
 
 
+    var listaDeEstufas = []
 
-    function obterDadosGraficos(idEmpresa) {
+    function obterEstufas(){
+        fetch("/estufa/exibirEstufas", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idEmpresa
+            })
+        }).then((listaEstufas) =>{
+            listaEstufas.json().then((listaEstufas)=>{
+                for(i = 0; i<listaEstufas.length; i++){
+                    listaDeEstufas.push(listaEstufas[i])
+                }
+            })
+        })
+    }
+
+
+    function obterDadosGraficos() {
+
+        
+        var idEmpresa = sessionStorage.idUsuario;
+        
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
-
+        console.log("console log do html1", idEmpresa)
         fetch(`/leitura/ultimas/${idEmpresa}`, 
         { cache: 'no-store' })
             .then(function (response) {
@@ -411,6 +438,8 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
+            
+        console.log("console log do html2", idEmpresa)
     }
 
     function plotarGrafico(resposta, idEmpresa) {
@@ -418,19 +447,28 @@
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+        let labels = [resposta[0].leituraTime]; //data hora
+        let estufas = []
 
+
+        for (let index = 0; index < resposta.length; index++) {
+            estufas.push({
+                label: resposta[index].nome_estufa,//nomw estufa
+                data: [], //media
+                fill: false,
+                borderColor: 'rgb(255, 255, 000)',
+                tension: 0.8
+            });
+        }
+
+        for(i = 0; i < resposta.length; i++){
+        estufas[i].data.push(resposta[i].media_Valor)
+    }
         // Criando estrutura para plotar gráfico - dados
 
         let dados = {
             labels: labels,
-            datasets: [{
-                label: 'Luminosidade',
-                data: [],
-                fill: false,
-                borderColor: 'rgb(255, 99, 132)',
-                tension: 0.1
-            }]
+            datasets: estufas
         };
 
 
@@ -439,12 +477,13 @@
         console.log(resposta)
 
 
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.Luminosidade);
-            // dados.datasets[1].data.push(registro.temperatura);
-        }
+        // for (i = 0; i < resposta.length; i++) {
+        //     var registro = resposta[i];
+        //     labels.push(registro.leituraDate);
+        //     dados.datasets[0].data.push(registro.media_Valor);
+            
+        //     // dados.datasets[1].data.push(registro.temperatura);
+        // }
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -468,12 +507,14 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 1000);
     }
 
     function atualizarGrafico(idEmpresa, dados, myChart) {
 
-        fetch(`/leitura/tempo-real/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/leitura/tempoReal/${idEmpresa}`, 
+        { cache: 'no-store' }).
+        then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
@@ -533,10 +574,10 @@
 
 
     function obterDadosGrafico() {
-        // obterDadosGrafico(1)
-        // obterDadosGrafico(2)
-        // obterDadosGrafico(3)
-        // obterDadosGrafico(4)
+         obterDadosGrafico(1)
+         obterDadosGrafico(2)
+         obterDadosGrafico(3)
+         obterDadosGrafico(4)
     }
 
 
@@ -546,6 +587,7 @@
         obterDadosGraficos();
         obterCaptacoes()
         rankMaisAlertas()
+        obterEstufas()
     });
 
 

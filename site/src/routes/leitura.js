@@ -7,8 +7,8 @@ router.get("/ultimas/:idEmpresa", function (req, res) {
     leituraController.buscarUltimasMedidas(req, res);
 });
 
-router.get("/tempo-real/:idEmpresa", function (req, res) {
-    leituraController.buscarMedidasEmTempoReal(req, res);
+router.get("/tempoReal/:idEmpresa", function (req, res) {
+    leituraController.tempoReal(req, res);
 })
 
 

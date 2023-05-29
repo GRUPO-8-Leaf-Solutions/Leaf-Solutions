@@ -48,14 +48,14 @@ function buscarUltimasMedidas(idEmpresa) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-          var instrucaoSql = `SELECT estufa.nome AS 'nome estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media Valor'
-        FROM empresa
-        LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
-        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1
-        GROUP BY empresa.idEmpresa, estufa.nome;`;
+          var instrucaoSql = `SELECT estufa.nome AS 'nome_estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media_Valor', leituraSensor.leituraTime
+          FROM empresa
+          LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
+          LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+          LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+          LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+          LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = ${idEmpresa} && leituraDate = curDate()
+          GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraTime;`
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -65,7 +65,7 @@ function buscarUltimasMedidas(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idEmpresa) {
+function tempoReal(idEmpresa) {
 
     instrucaoSql = ''
 
@@ -113,7 +113,7 @@ function obterCaptacoes(idEmpresa) {
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
+    tempoReal,
     obterCaptacoes,
     obterMenorIndice,
     obterMaiorIndice

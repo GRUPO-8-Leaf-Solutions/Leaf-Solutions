@@ -289,7 +289,23 @@ GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
 ORDER BY valor_maximo DESC
 LIMIT 1;
 
+SELECT estufa.nome AS 'nome_estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media_Valor', leituraSensor.leituraTime
+        FROM empresa
+        LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
+        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1 && leituraDate = curDate()
+        GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraTime
+        order by leituraSensor.idLeituraSensor desc limit 5;
 
+
+desc leituraSensor;
+insert into leituraSensor values (null, 500, 1, 1, curdate(), curtime());
+
+use leafSolutions;
+
+select * from estufa;
 
 SELECT COUNT(leituraSensor.idLeituraSensor) AS total_leituras, estufa.nome AS nome_estufa
 FROM leituraSensor

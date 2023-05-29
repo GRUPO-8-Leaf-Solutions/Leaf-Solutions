@@ -53,11 +53,11 @@ function buscarUltimasMedidas(req, res) {
     });
 }
 
-function buscarMedidasEmTempoReal(req, res) {
-    var idEmpresa = req.params.idUsuarioServer;
+function tempoReal(req, res) {
+    var idEmpresa = req.params.idEmpresa;
 
     console.log(`Recuperando medidas em tempo real`);
-    leituraModel.buscarMedidasEmTempoReal(idEmpresa)
+    leituraModel.tempoReal(idEmpresa)
     .then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
@@ -95,7 +95,7 @@ function obterCaptacoes(req, res){
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
+    tempoReal,
     obterCaptacoes,
     obterMenorIndice,
     obterMaiorIndice
