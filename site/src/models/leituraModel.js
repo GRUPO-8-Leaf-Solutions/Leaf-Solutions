@@ -1,52 +1,61 @@
 var database = require("../database/config")
 
 
-function coletarMaiorIndice() {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+function obterMenorIndice(idEmpresa) {
     var instrucao = `
-        SELECT * FROM estufa;
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    SELECT MIN(leituraSensor.valor) AS valor_minimo,
+    estufa.nome AS nome_estufa,
+    setor.idSetor,
+    sensor.idSensor,
+    leituraSensor.leituraTime AS horaLeitura
+    FROM leituraSensor
+    JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+    JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
+    JOIN setor ON subsetor.fkSetor = setor.idSetor
+    JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+    JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+    WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE()
+    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
+    ORDER BY valor_minimo 
+    LIMIT 1;
+    `
+    return database.executar(instrucao)
 }
 
-function coletarMenorIndice(idEmpresa) {
+function obterMaiorIndice(idEmpresa) {
     var instrucao = `
-    SELECT * FROM estufa JOIN empresa ON fkEmpresa = idEmpresa WHERE idEmrpesa = ${idEmpresa}
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+    SELECT MAX(leituraSensor.valor) AS valor_maximo,
+    estufa.nome AS nome_estufa,
+    setor.idSetor,
+    sensor.idSensor,
+    leituraSensor.leituraTime AS horaLeitura
+    FROM leituraSensor
+    JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+    JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
+    JOIN setor ON subsetor.fkSetor = setor.idSetor
+    JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+    JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+    WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE()
+    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
+    ORDER BY valor_maximo DESC
+    LIMIT 1;
+    `
+    return database.executar(instrucao)
 }
 
-function buscarUltimasMedidas(idEmpresa, limite_linhas) {
-
-    instrucaoSql = ''
+function buscarUltimasMedidas(idEmpresa) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idEmpresa}
-                    order by id desc`;
+        instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        estufa.nome Estufa,
-        avg(valor) 'Média da estufa'
-            from empresa join estufa
-            on idEmpresa = fkEmpresa
-            join setor 
-            on idEstufa = fkEstufa 
-            join subSetor 
-            on idSetor = fkSetor 
-            join sensor 
-            on idSubSetor = fkSubSetor
-            join leituraSensor
-            on idSensor = fkSensor
-                where idEmpresa = ${idEmpresa}
-                    order by id desc limit ${limite_linhas}`;
+          var instrucaoSql = `SELECT estufa.nome AS 'nome estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media Valor'
+        FROM empresa
+        LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
+        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1
+        GROUP BY empresa.idEmpresa, estufa.nome;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -61,30 +70,17 @@ function buscarMedidasEmTempoReal(idEmpresa) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idEmpresa} 
-                    order by id desc`;
+        instrucaoSql = ``;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        estufa.nome Estufa,
-        avg(valor) 'Média da estufa'
-            from empresa join estufa
-            on idEmpresa = fkEmpresa
-            join setor 
-            on idEstufa = fkEstufa 
-            join subSetor 
-            on idSetor = fkSetor 
-            join sensor 
-            on idSubSetor = fkSubSetor
-            join leituraSensor
-            on idSensor = fkSensor
-                where ${idEmpresa} = 1
-                    group by estufa;`;
+        instrucaoSql = `SELECT estufa.nome AS 'nome estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media Valor'
+        FROM empresa
+        LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
+        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = ${idEmpresa}
+        GROUP BY empresa.idEmpresa, estufa.nome;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -96,28 +92,29 @@ function buscarMedidasEmTempoReal(idEmpresa) {
 
 function obterCaptacoes(idEmpresa) {
     var instrucao = `SELECT
-        emp.razaoSocial,
-        estufa.nome AS nomeEstufa,
-        setor.idSetor,
-        subSetor.idSubSetor,
-        leituraSensor.valor AS indiceAtual
-        FROM
-        empresa AS emp
-        JOIN estufa ON emp.idEmpresa = estufa.fkEmpresa
-        JOIN setor ON estufa.idEstufa = setor.fkEstufa
-        JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-        JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-        JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
-        WHERE
-        emp.idEmpresa = ${idEmpresa};`
+    estufa.nome AS nomeEstufa,
+    setor.idSetor,
+    subSetor.idSubSetor,
+    leituraSensor.valor AS indiceAtual,
+    leituraTime as horarioLeitura
+        FROM estufa JOIN setor 
+        ON estufa.idEstufa = setor.fkEstufa
+        JOIN subSetor 
+        ON setor.idSetor = subSetor.fkSetor
+        JOIN sensor 
+        ON subSetor.idSubSetor = sensor.fkSubSetor
+        JOIN leituraSensor 
+        ON sensor.idSensor = leituraSensor.fkSensor
+           WHERE fkEmpresa = ${idEmpresa}`
 
-        return database.executar(instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
 }
 
 module.exports = {
-    coletarMaiorIndice,
-    coletarMenorIndice,
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    obterCaptacoes
+    obterCaptacoes,
+    obterMenorIndice,
+    obterMaiorIndice
 };

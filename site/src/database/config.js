@@ -21,8 +21,8 @@ var sql = require('mssql');
 var mySqlConfig = {
     host: "localhost",
     database: "leafSolutions",
-    user: "root",
-    password: "012345678",
+    user: "familia_leaf",
+    password: "PKLMTS",
 };
 
 function executar(instrucao) {
@@ -48,7 +48,7 @@ function executar(instrucao) {
             conexao.connect();
             conexao.query(instrucao, function (erro, resultados) {
                 conexao.end();
-                if (erro) {
+                if (erro) { 
                     reject(erro);
                 }
                 console.log(resultados);

@@ -29,8 +29,26 @@ function exibirEstufas(idUsuarioServer) {
     return database.executar(instrucao);
 }
 
+function rankMaisAlertas(idUsuarioServer){
+    var instrucao = `
+    SELECT COUNT(leituraSensor.idLeituraSensor) AS total_leituras, estufa.nome AS nome_estufa
+FROM leituraSensor
+LEFT JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+LEFT JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
+LEFT JOIN setor ON subsetor.fkSetor = setor.idSetor
+LEFT JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+LEFT JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+WHERE leituraSensor.leituraDate = CURDATE() AND empresa.idEmpresa = ${idUsuarioServer} AND (leituraSensor.valor < 500 OR leituraSensor.valor > 600)
+GROUP BY estufa.nome
+ORDER BY COUNT(leituraSensor.idLeituraSensor) DESC
+limit 3 ;
+    `
+    return database.executar(instrucao)
+}
+
 module.exports = {
     cadastrarEstufa,
     listar,
-    exibirEstufas
+    exibirEstufas,
+    rankMaisAlertas
 };

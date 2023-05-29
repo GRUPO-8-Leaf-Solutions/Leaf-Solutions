@@ -1,20 +1,37 @@
 var leituraModel = require("../models/leituraModel");
 
-function coletarMenorIndice (req, res) {
-    var idEmpresa = req.body.idEmpresa;
+function obterMenorIndice (req, res){
+    var idEmpresa = req.body.idUsuarioServer
 
-    leituraModel.coletarMenorIndice(idEmpresa)
-        .then(function (resultado) {
-            if(resultado.length > 0) {
-                res.status(200).json(resultado);
-            } else { 
-                res.status(204).send("nenhum resultado encontrado!")
-            }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+    leituraModel.obterMenorIndice(idEmpresa)
+    .then(function (resultado) {
+        if(resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else { 
+            res.status(204).send("nenhum resultado encontrado!")
+        }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function obterMaiorIndice (req, res){
+    var idEmpresa = req.body.idUsuarioServer
+
+    leituraModel.obterMaiorIndice(idEmpresa)
+    .then(function (resultado) {
+        if(resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else { 
+            res.status(204).send("nenhum resultado encontrado!")
+        }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 
@@ -37,10 +54,11 @@ function buscarUltimasMedidas(req, res) {
 }
 
 function buscarMedidasEmTempoReal(req, res) {
-    var idEmpresa = req.params.idEmpresa;
+    var idEmpresa = req.params.idUsuarioServer;
 
     console.log(`Recuperando medidas em tempo real`);
-    leituraModel.buscarMedidasEmTempoReal(idEmpresa).then(function (resultado) {
+    leituraModel.buscarMedidasEmTempoReal(idEmpresa)
+    .then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -53,23 +71,6 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
-function coletarMaiorIndice(req, res) {
-    var idEmpresa = req.body.idEmpresa;
-
-    console.log(`Buscando medidas de maior indice`);
-    leituraModel.coletarMaiorIndice(idEmpresa).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).json("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as medidas com o maior indice.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    }); 
-
-}
 
 function obterCaptacoes(req, res){
     var idEmpresa = req.body.idEmpresaServer;
@@ -87,7 +88,7 @@ function obterCaptacoes(req, res){
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as medidas com o maior indice.", erro.sqlMessage);
+        console.log("Houve um erro ao obter as captações para os alertas.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     }); 
 }
@@ -95,7 +96,7 @@ function obterCaptacoes(req, res){
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal,
-    coletarMaiorIndice,
-    coletarMenorIndice,
-    obterCaptacoes
+    obterCaptacoes,
+    obterMenorIndice,
+    obterMaiorIndice
 }
