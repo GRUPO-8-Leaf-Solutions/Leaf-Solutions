@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 
-
 * {
     margin: 0;
     padding: 0;
@@ -244,6 +243,7 @@ li a {
     width: 85%;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .tela .topo {
@@ -347,7 +347,6 @@ li a {
     box-sizing: border-box;
     width: 1020px;
     height: 140px;
-    margin: 0 0 0 45px;
 }
 
 .input-search {
@@ -455,63 +454,13 @@ li a {
     flex-direction: column;
 }
 
-.divDiaEipt {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-
-
-
-.divDias {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 10px 0 0 0;
-    list-style: none;
-    width: 100%;
-}
-
-.divDias .destaqueDia {
-    background-color: #1C501CE0;
-    border-radius: 16.55px;
-    color: white;
-    height: 40px;
-    width: 110px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.divDias .listaDias {
-    color: #132A13;
-}
-
-.estufaIpt {
-    display: flex;
-    gap: 6%;
-    padding: 2% 19% 0 0;
-
-}
-
-.estufaCinza {
-    width: 650px;
-    gap: 0px, 100px, 0px, 0px;
-    background-color: #9C9C9C;
-    color: white;
-    border-radius: 8px;
-}
-
-.estufinhaa {
-    color: #8794A3;
-}
-
-
 canvas {
     display: flex;
+}
+
+.tituloGrafico {
+    display: flex;
+    justify-content: center;
 }
 
 .graficoBarra {
@@ -520,77 +469,29 @@ canvas {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-}
-
-.maiorCap {
-    display: flex;
-    align-items: center;
-    border-radius: 40px;
-    width: 300px;
-    justify-content: center;
-    font-weight: 600;
-    line-height: 16px;
-    background: #FFFFFF;
-    border: 1px solid #FF0000;
-    box-shadow: 0px 0px 8px 4px rgba(255, 0, 0, 0.29);
-    border-radius: 45.5px;
-    height: 110px;
-    text-align: center;
-}
-
-.menorCap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FFFFFF;
-    border: 1px solid #52F804;
-    box-shadow: 0px 0px 8px 4px rgba(38, 248, 4, 0.25);
-    border-radius: 40px;
-    width: 300px;
-    height: 110px;
-    font-weight: 600;
-    line-height: 16px;
-}
-
-
-.linha {
-    display: flex;
-    gap: 50px;
-
-    justify-content: center;
 
 }
 
-.indicadores {
+/*CONTEUDO THE FATO*/
+.quadro {
+    width: 100%;
+    height: 100%;
+    padding: 10px 50px;
+    background-color: #EED9DA;
     display: flex;
-    gap: 50px;
-
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
-.containerAlerts {
+.bloco {
     display: flex;
-    gap: 10px;
     flex-direction: column;
+    justify-content: space-evenly;
+    padding: 20px;
 }
 
-.tituloGrafico {
-    display: flex;
-    justify-content: center;
-}
-
-.telaa {
-    display: flex;
-    /* gap: 150px; */
-    /* align-items: center; */
-    justify-content: center;
-
-}
-
-.setorEhora {
-    display: flex;
-    justify-content: space-between;
+.calendario {
+    height: 100%;
+    background-color: #52F804;
 }
 
 .flexJ {
@@ -601,25 +502,28 @@ canvas {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     background: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
     height: 75%;
     margin-top: 30px;
+    padding-left: 20px;
     padding-right: 20px;
+    gap: 15px;
 }
 
 .rolando {
+    width: 315px;
+    height: 525px;
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
     gap: 25px;
-    padding: 0 0 30px 30px;
-    height: 525px;
     overflow-y: scroll;
-    width: 315px;
 }
 
-.rolando::-webkit-scrollbar{
+.rolando::-webkit-scrollbar {
     width: 5px;
     height: 8px;
 }
@@ -627,7 +531,7 @@ canvas {
 .rolando::-webkit-scrollbar-thumb {
     background: #D9D9D9;
     border-radius: 10px;
-  }
+}
 
 
 .menorCap {
@@ -653,80 +557,60 @@ canvas {
     height: 110px;
 }
 
-.Tempo {
-    align-items: center;
-    background: #FFFFFF;
-    border: 1px solid #FFE600;
-    box-shadow: 0px 0px 8px 4px rgba(250, 255, 0, 0.29);
-    border-radius: 45.5px;
-    width: 300px;
-    justify-content: center;
-    height: 110px;
-}
-
-
 .caixaColorida {
-    display: flex;
-    background-color: rgba(204, 0, 0, 0.40);
     width: 275px;
+    padding: 10px;
+    gap: 10px;
+    font-size: 14px;
+    background-color: rgba(204, 0, 0, 0.40);
+
+    display: flex;
     min-height: 100px;
     align-items: center;
-    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
     border-radius: 10px;
-    font-size: 14px;
+    box-shadow: 0px 4px 10px -1px rgba(78, 0, 0, 0.25);
 }
 
-.iconeEhora {
-    justify-content: space-between;
-    gap: 7.5px;
+.iconeAlerta {
+    width: 50px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .conteudo {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.setorEhora {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    width: 75%;
+    justify-content: space-evenly;
 }
 
-.imgag {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25px;
-    width: 50px;
+.iconeEhora {
+    height: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    gap: 7.5px;
 }
+
+
+
+
 
 .histAlerts {
+    width: 90%;
     display: flex;
     justify-content: center;
-}
-/* 
-.critico {
-    background: rgba(255, 210, 157, 0.29);
-    box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69);
-    border-radius: 36.5px;
     align-items: center;
-    justify-content: center;
-    width: 250px !important;
-    height: 70px;
-    border-radius: 50px !important;
-    gap: 20px;
-    cursor: pointer;
 }
-
-.preocupante {
-    background: rgba(255, 210, 50, 0.21);
-    box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69);
-    border-radius: 36.5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 250px !important;
-    height: 70px;
-    border-radius: 50px !important;
-    gap: 20px;
-    cursor: pointer;
-} */
 
 .valores {
     display: flex;
@@ -749,15 +633,20 @@ canvas {
     font-size: 32px;
     line-height: 44px;
 }
-.valorzaoO{
+
+.valorzaoO {
+    font-family: 'Nunito';
     font-style: normal;
     font-weight: 700;
-    font-size: 23px;
-    line-height: 44px;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.33em;
     text-transform: uppercase;
+    word-wrap: break-word;
 }
 
-.caixaIndicadores > :nth-child(1){
+.caixaIndicadores> :nth-child(1) {
     color: #7A7A7A;
     font-size: 15px;
     padding: 0 30px 10px 30px;
