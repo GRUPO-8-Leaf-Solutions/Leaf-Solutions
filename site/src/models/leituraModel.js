@@ -111,10 +111,32 @@ function obterCaptacoes(idEmpresa) {
     return database.executar(instrucao);
 }
 
+function obterSituacao(idEmpresa){
+    var instrucao = `
+    select 
+	count(a.Alerta)
+    from(
+			select
+			estufa.nome Estufa,
+			fkAlerta Alerta,
+			count(fkAlerta) qtde
+			from estufa 
+			join setor on idEstufa = fkEstufa 
+			join subSetor on idSetor = fkSetor 
+			join sensor on idSubSetor = fkSubSetor
+			join leituraSensor on idSensor = fkSensor
+			group by estufa.nome, fkAlerta) as a 
+            group by Alerta;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     buscarUltimasMedidas,
     tempoReal,
     obterCaptacoes,
     obterMenorIndice,
-    obterMaiorIndice
+    obterMaiorIndice,
+    obterSituacao
 };

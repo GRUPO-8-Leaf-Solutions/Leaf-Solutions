@@ -181,7 +181,7 @@
 
                         <div class="rodape">
                             <div class="ajuste_pie">
-                                <p>SITUAÇÃO DOS SETORES</p>
+                                <p>SITUAÇÃO DAS ESTUFAS</p>
                                 <div class="grafico_pie">
                                     <div class="teste">
                                         <canvas id="grafico_pizza"></canvas>
@@ -361,9 +361,9 @@
     new Chart(grafico_pie, {
         type: 'doughnut',
         data: {
-            labels: ['Setores críticos', 'Setores preocupantes', 'Setores adequados'],
+            labels: ['Estufas críticas', 'Estufas preocupantes', 'Estufas adequadas'],
             datasets: [{
-                label: 'Situação dos setores',
+                label: 'Situação das estufas',
                 data: [6, 2, 17],
                 backgroundColor: ['Red', 'Yellow', 'Green'],
                 borderWidth: 1
@@ -413,7 +413,6 @@
 
     function obterDadosGraficos() {
 
-
         var idEmpresa = sessionStorage.idUsuario;
 
         if (proximaAtualizacao != undefined) {
@@ -449,77 +448,83 @@
         // Criando estrutura para plotar gráfico - labels
         let labels = [resposta[0].leituraTime]; //data hora
         let estufas = []
-
+        let vetorComparativo = []
 
         for (let index = 0; index < resposta.length; index++) {
-            let estufa = resposta[index].nome_estufa;
+            let estufa = resposta[index];
 
-            if (estufas.indexOf(estufa) == ) {
-                // do something
-                
-                // for (i = 0; i < resposta.length; i++) {
-                //         estufas[i].data.push(resposta[i].media_Valor)
-                //     }
+            let test = estufas.findIndex(estufaChart => {
+                return estufaChart.label == estufa.nome_estufa;
+            });
+
+            if (test == -1) {
+                vetorComparativo.push(estufa);
                 estufas.push({
-                    label: estufa, //nomw estufa
+                    label: estufa.nome_estufa, //nomw estufa
                     data: [], //media
                     fill: false,
                     borderColor: 'rgb(255, 255, 000)',
                     tension: 0.8
                 });
-                    
-
-                } else {
-                    
+            } else {
+                estufas[test].data.push(resposta.media_Valor)
+                console.log(resposta.media_Valor)
             }
-
         }
 
-        // Criando estrutura para plotar gráfico - dados
-
-        let dados = {
-            labels: labels,
-            datasets: estufas
-        };
+        // ok, doce
+        //com toda certeza a gente vai!
+        // if (estufas.length == 0 || estufa.nome_estufa != estufas.indexOf().label) {
 
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
 
-
-        // for (i = 0; i < resposta.length; i++) {
-        //     var registro = resposta[i];
-        //     labels.push(registro.leituraDate);
-        //     dados.datasets[0].data.push(registro.media_Valor);
-
-        //     // dados.datasets[1].data.push(registro.temperatura);
-        // }
-
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-            options: {}
-        };
-
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChart1`),
-            config
-        );
-
-        setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 1000);
     }
+
+    // Criando estrutura para plotar gráfico - dados
+
+    let dados = {
+        labels: labels,
+        datasets: estufas
+    };
+
+
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+
+
+    // for (i = 0; i < resposta.length; i++) {
+    //     var registro = resposta[i];
+    //     labels.push(registro.leituraDate);
+    //     dados.datasets[0].data.push(registro.media_Valor);
+
+    //     // dados.datasets[1].data.push(registro.temperatura);
+    // }
+
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+        type: 'line',
+        data: dados,
+        options: {}
+    };
+
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+        document.getElementById(`myChart1`),
+        config
+    );
+
+    setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 1000);
+
 
     function atualizarGrafico(idEmpresa, dados, myChart) {
 

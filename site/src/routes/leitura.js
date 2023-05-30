@@ -27,4 +27,8 @@ router.post("/obterCaptacoes", function (req, res){
     leituraController.obterCaptacoes(req, res);
 })
 
+router.post("/obterCaptacoes", function (req, res){
+    leituraController.obterCaptacoes(req, res);
+})
+
 module.exports = router;
