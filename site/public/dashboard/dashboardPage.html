@@ -209,10 +209,10 @@
                     <!-- ALERTA URGENTE -->
                     <div class="lado_direito">
                         <div class="tela-alertas">
-                            <span class="title-alerta" >ALERTAS</span>
+                            <span class="title-alerta">ALERTAS</span>
 
                             <div class="listaScroller" id="listaAlert">
-   
+
 
                             </div>
 
@@ -392,7 +392,7 @@
 
     var listaDeEstufas = []
 
-    function obterEstufas(){
+    function obterEstufas() {
         fetch("/estufa/exibirEstufas", {
             method: "post",
             headers: {
@@ -401,9 +401,9 @@
             body: JSON.stringify({
                 idUsuarioServer: idEmpresa
             })
-        }).then((listaEstufas) =>{
-            listaEstufas.json().then((listaEstufas)=>{
-                for(i = 0; i<listaEstufas.length; i++){
+        }).then((listaEstufas) => {
+            listaEstufas.json().then((listaEstufas) => {
+                for (i = 0; i < listaEstufas.length; i++) {
                     listaDeEstufas.push(listaEstufas[i])
                 }
             })
@@ -413,15 +413,15 @@
 
     function obterDadosGraficos() {
 
-        
+
         var idEmpresa = sessionStorage.idUsuario;
-        
+
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
         console.log("console log do html1", idEmpresa)
-        fetch(`/leitura/ultimas/${idEmpresa}`, 
-        { cache: 'no-store' })
+        fetch(`/leitura/ultimas/${idEmpresa}`,
+            { cache: 'no-store' })
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
@@ -438,7 +438,7 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
-            
+
         console.log("console log do html2", idEmpresa)
     }
 
@@ -454,20 +454,27 @@
         for (let index = 0; index < resposta.length; index++) {
             let estufa = resposta[index].nome_estufa;
 
-            if ()
+            if (estufas.indexOf(estufa) == ) {
+                // do something
+                
+                // for (i = 0; i < resposta.length; i++) {
+                //         estufas[i].data.push(resposta[i].media_Valor)
+                //     }
+                estufas.push({
+                    label: estufa, //nomw estufa
+                    data: [], //media
+                    fill: false,
+                    borderColor: 'rgb(255, 255, 000)',
+                    tension: 0.8
+                });
+                    
 
-            estufas.push({
-                label: , //nomw estufa
-                data: [], //media
-                fill: false,
-                borderColor: 'rgb(255, 255, 000)',
-                tension: 0.8
-            });
+                } else {
+                    
+            }
+
         }
 
-        for(i = 0; i < resposta.length; i++){
-        estufas[i].data.push(resposta[i].media_Valor)
-    }
         // Criando estrutura para plotar gráfico - dados
 
         let dados = {
@@ -485,7 +492,7 @@
         //     var registro = resposta[i];
         //     labels.push(registro.leituraDate);
         //     dados.datasets[0].data.push(registro.media_Valor);
-            
+
         //     // dados.datasets[1].data.push(registro.temperatura);
         // }
 
@@ -501,7 +508,7 @@
         const config = {
             type: 'line',
             data: dados,
-            options:{}
+            options: {}
         };
 
 
@@ -516,54 +523,54 @@
 
     function atualizarGrafico(idEmpresa, dados, myChart) {
 
-        fetch(`/leitura/tempoReal/${idEmpresa}`, 
-        { cache: 'no-store' }).
-        then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
+        fetch(`/leitura/tempoReal/${idEmpresa}`,
+            { cache: 'no-store' }).
+            then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
 
-                    // obterDadosGraficos(idEmpresa);
-                    // alertar(novoRegistro, idAquario);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
+                        // obterDadosGraficos(idEmpresa);
+                        // alertar(novoRegistro, idAquario);
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico:`);
+                        console.log(dados);
 
-                    // let avisoCaptura = document.getElementById(`avisoCaptura${idEmpresa}`)
-                    // avisoCaptura.innerHTML = ""
+                        // let avisoCaptura = document.getElementById(`avisoCaptura${idEmpresa}`)
+                        // avisoCaptura.innerHTML = ""
 
 
-                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-                        console.log("---------------------------------------------------------------")
-                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                        // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                        console.log("Horário do novo dado capturado:")
-                        console.log(novoRegistro[0].momento_grafico)
-                        console.log("Horário do último dado capturado:")
-                        console.log(dados.labels[dados.labels.length - 1])
-                        console.log("---------------------------------------------------------------")
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                            console.log("---------------------------------------------------------------")
+                            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                            // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                            console.log("Horário do novo dado capturado:")
+                            console.log(novoRegistro[0].momento_grafico)
+                            console.log("Horário do último dado capturado:")
+                            console.log(dados.labels[dados.labels.length - 1])
+                            console.log("---------------------------------------------------------------")
+                        } else {
+                            // tirando e colocando valores no gráfico
+                            dados.labels.shift(); // apagar o primeiro
+                            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
 
-                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].luminosidade); // incluir uma nova medida de umidade
+                            dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                            dados.datasets[0].data.push(novoRegistro[0].luminosidade); // incluir uma nova medida de umidade
 
-                        // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                        // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                            // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                            // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
-                        myChart.update();
-                    }
+                            myChart.update();
+                        }
 
+                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 2000);
-            }
-        })
+                }
+            })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
@@ -576,10 +583,10 @@
 
 
     function obterDadosGrafico() {
-         obterDadosGrafico(1)
-         obterDadosGrafico(2)
-         obterDadosGrafico(3)
-         obterDadosGrafico(4)
+        obterDadosGrafico(1)
+        obterDadosGrafico(2)
+        obterDadosGrafico(3)
+        obterDadosGrafico(4)
     }
 
 
@@ -593,7 +600,7 @@
     });
 
 
-    function rankMaisAlertas(){
+    function rankMaisAlertas() {
         fetch("/estufa/rankMaisAlertas", {
             method: "post",
             headers: {
@@ -602,16 +609,16 @@
             body: JSON.stringify({
                 idUsuarioServer: idEmpresa,
             }),
-        }).then((listaRankMaisAlertas)=>{
-            listaRankMaisAlertas.json().then((listaRankMaisAlertas)=>{
+        }).then((listaRankMaisAlertas) => {
+            listaRankMaisAlertas.json().then((listaRankMaisAlertas) => {
                 console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", listaRankMaisAlertas)
-                    for(i = 0; i < listaRankMaisAlertas.length; i++){
-                        rankEstufas.innerHTML += `
+                for (i = 0; i < listaRankMaisAlertas.length; i++) {
+                    rankEstufas.innerHTML += `
                             <div class="mencionar_estufa1">
                                 ${listaRankMaisAlertas[i].nome_estufa}
                             </div>
                         `
-                    }
+                }
             })
         })
     }
@@ -679,13 +686,13 @@
     //  ALERTAS
 
 
-setInterval(obterCaptacoes, 150000)
-    
-    
+    setInterval(obterCaptacoes, 150000)
+
+
     function obterCaptacoes() {
         console.log("entrando na function obeter captacoes")
         listaAlert.innerHTML = ""
-        
+
         fetch(`/leitura/obterCaptacoes`, {
             method: "POST",
             headers: {
@@ -697,14 +704,14 @@ setInterval(obterCaptacoes, 150000)
         }).then(function (listaCaptacoes) {
             listaCaptacoes.json().then(function (listaCaptacoes) {
                 console.log(listaCaptacoes)
-                for(i = 0; i<listaCaptacoes.length; i++){
+                for (i = 0; i < listaCaptacoes.length; i++) {
                     console.log(listaCaptacoes[i].indiceAtual)
                     console.log(listaCaptacoes[i].nomeEstufa)
                     console.log(listaCaptacoes[i].idSetor)
                     console.log(listaCaptacoes[i].idSubSetor)
 
-                    if(listaCaptacoes[i].indiceAtual < 450 || listaCaptacoes[i].indiceAtual > 650){
-                          listaAlert.innerHTML += `                        
+                    if (listaCaptacoes[i].indiceAtual < 450 || listaCaptacoes[i].indiceAtual > 650) {
+                        listaAlert.innerHTML += `                        
                             <a class="click-alert" href="setor1.html">
                                 <div class="containerAlert">
                                     <div class="alert">
@@ -733,8 +740,8 @@ setInterval(obterCaptacoes, 150000)
                     }
                 }
 
-                for(i = 0; i < listaCaptacoes.length; i++){
-                    if(listaCaptacoes[i].indiceAtual >= 450 && listaCaptacoes[i].indiceAtual < 500 || listaCaptacoes[i].indiceAtual > 600 && listaCaptacoes[i].indiceAtual <= 650){
+                for (i = 0; i < listaCaptacoes.length; i++) {
+                    if (listaCaptacoes[i].indiceAtual >= 450 && listaCaptacoes[i].indiceAtual < 500 || listaCaptacoes[i].indiceAtual > 600 && listaCaptacoes[i].indiceAtual <= 650) {
                         listaAlert.innerHTML += `
                         <a class="click-alert-preocupante" href="setor1.html">
                             <div class="containerAlert">
@@ -764,10 +771,10 @@ setInterval(obterCaptacoes, 150000)
                             </div>
                         </a>
                             `
-                    }      
-                }           
-            })            
-                          
+                    }
+                }
+            })
+
         })
     }
 

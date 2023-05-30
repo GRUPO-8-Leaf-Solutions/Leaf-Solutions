@@ -150,6 +150,9 @@ constraint fkAlerta foreign key (fkAlerta)
 constraint pkSensor primary key (idLeituraSensor, fkSensor, fkAlerta)
 );
 select * from leituraSensor;
+desc leituraSensor;
+
+
 
 insert into empresa values 
 	(null, '21346523198746', 'Leaf Green', 'leafgreen@email.com', '1234567'),
@@ -289,15 +292,18 @@ GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
 ORDER BY valor_maximo DESC
 LIMIT 1;
 
-SELECT estufa.nome AS 'nome_estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media_Valor', leituraSensor.leituraTime
+SELECT estufa.idEstufa, estufa.nome AS 'nome_estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media_Valor', leituraSensor.leituraTime
         FROM empresa
         LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
         LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
         LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
         LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1 && leituraDate = curDate()
-        GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraTime
-        order by leituraSensor.idLeituraSensor desc limit 5;
+        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1 && leituraDate = curDate() 
+        GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraTime, leituraSensor.idLeituraSensor, estufa.idEstufa
+        order by leituraSensor.idLeituraSensor ;
+        
+        select * from estufa;
+        
 
 
 desc leituraSensor;
@@ -359,11 +365,13 @@ insert into leituraSensor values
     SELECT * FROM leituraSensor;
     desc leituraSensor;
     insert into leituraSensor values 
-    (NULL, 450, 1, 1, CURDATE(), CURTIME())
+    (NULL, 289, 3, 2, CURDATE(), CURTIME())
     ;
     insert into leituraSensor values 
     (NULL, 909, 1, 1, CURDATE(), CURTIME())
     ;
+    
+    truncate table leiturasensor;
     
     select * from empresa;
 	select * from leituraSensor;
@@ -398,3 +406,19 @@ WHERE empresa.idEmpresa = 1
 GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraDate
 ORDER BY leituraSensor.idLeituraSensor
 LIMIT 7;
+
+sELECT
+    estufa.nome AS nomeEstufa,
+    setor.idSetor,
+    subSetor.idSubSetor,
+    leituraSensor.valor AS indiceAtual,
+    leituraTime as horarioLeitura
+        FROM estufa JOIN setor 
+        ON estufa.idEstufa = setor.fkEstufa
+        JOIN subSetor 
+        ON setor.idSetor = subSetor.fkSetor
+        JOIN sensor 
+        ON subSetor.idSubSetor = sensor.fkSubSetor
+        JOIN leituraSensor 
+        ON sensor.idSensor = leituraSensor.fkSensor
+           WHERE fkEmpresa = 1 && leituraDate = curDate();
