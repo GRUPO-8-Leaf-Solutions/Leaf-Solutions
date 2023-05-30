@@ -105,7 +105,7 @@ function obterCaptacoes(idEmpresa) {
         ON subSetor.idSubSetor = sensor.fkSubSetor
         JOIN leituraSensor 
         ON sensor.idSensor = leituraSensor.fkSensor
-           WHERE fkEmpresa = ${idEmpresa}`
+           WHERE fkEmpresa = ${idEmpresa} && leituraDate = curDate()`
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
