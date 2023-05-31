@@ -216,84 +216,9 @@
 
                             </div>
 
-                            <!--ALERTA CRÍTICO -->
-
-
-                            <!-- ALERTA CRÍTICO  -->
-
-                            <!-- <a class="click-alert-critico" href="">
-                            <div class="containerAlert">
-                                <div class="alert-critico">
-                                    <div class="img">
-                                        <img class="img-alert" src="../../assets/imgs/vectorCritico.svg">
-                                    </div>
-                                    <div class="urgenteEst-critico">
-                                        <span class="critico">ESTUFA 05 - SETOR X</span>
-                                    </div>
-
-                                    <div class="alerts">
-                                        <div class="text-valores">
-                                            <div>
-                                                <span class="critico-valor">ÍNDICE ATUAL: 700</span>
-                                            </div>
-                                            <div>
-                                                <span class="text-parametro-critico">IDEAL: 500 - 805</span>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a> -->
-
-                            <!-- ALERTA PREOCUPANTE -->
-                            <!-- <a class="click-alert-preocupante" href="">
-                            <div class="containerAlert">
-                                <div class="alert-preocupante">
-                                    <div class="urgenteEst-preocupado">
-                                        <img class="img-alert" src="../../assets/imgs/vectorPreocupante.svg" alt="">
-                                        <span class="preocupante">ESTUFA 05 - SETOR X</span>
-                                    </div>
-                                    <div class="alerts-preocupante">
-                                        <div class="text-valores">
-                                            <div>
-                                                <span class="preocupante-valor">ÍNDICE ATUAL: 470</span>
-                                            </div>
-                                            <div>
-                                                <span class="text-parametro-preocupante">IDEAL: 500 - 805
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a> -->
-
 
 
                         </div>
-                        <!-- <div class="alertas_rodape">
-                        <div class="indicador_alertas">
-                            <div class="alerta_urgente">
-                                <div class="img_alert_all">
-                                    <img src="alert-icon.svg">
-                                </div>
-                                <span> Urgente </span>
-                            </div>
-                            <div class="alerta_critico">
-                                <div class="img_alert_all">
-                                    <img src="../../assets/imgs/vectorCritico.svg">
-                                </div>
-                                <span> Crítico </span>
-                            </div>
-                            <div class="alerta_preocupante">
-                                <div class="img_alert_all">
-                                    <img src="../../assets/imgs/vectorPreocupante.svg">
-                                </div>
-                                <span>Preocupante</span>
-                            </div>
-                        </div>
-                    </div> -->
                     </div>
 
                 </div>
@@ -303,9 +228,6 @@
 
 
 
-        <!-- <div>
-            <canvas id="myChart2" style="position: relative; height:40vh; width:40vw"></canvas></canvas>
-        </div> -->
 
 </body>
 <script>
@@ -381,16 +303,25 @@
 
 
 <script>
-    var idEmpresa = sessionStorage.idUsuario;
 
-    console.log("console log da idEmpresa0", idEmpresa)
+    window.addEventListener("load", () => {
+            obterEstufas();
+            maiorMenorIndice();
+            obterCaptacoes();
+            rankMaisAlertas();
+        });
+
+        
+
+    var idEmpresa = sessionStorage.idUsuario;
 
     loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
 
+
     let proximaAtualizacao;
 
-
     var listaDeEstufas = []
+
 
     function obterEstufas() {
         fetch("/estufa/exibirEstufas", {
@@ -406,48 +337,50 @@
                 for (i = 0; i < listaEstufas.length; i++) {
                     listaDeEstufas.push(listaEstufas[i])
                 }
+
+                obterDadosGraficos()
             })
         })
     }
 
+    
+function obterDadosGraficos() {
 
-    function obterDadosGraficos() {
+var limiteLinhasEstufa = listaDeEstufas.length
 
-        var idEmpresa = sessionStorage.idUsuario;
+if (proximaAtualizacao != undefined) {
+    clearTimeout(proximaAtualizacao);
+}
 
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
-        console.log("console log do html1", idEmpresa)
-        fetch(`/leitura/ultimas/${idEmpresa}`,
-            { cache: 'no-store' })
-            .then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
+fetch ("/leitura/buscarUltimasMedidas", {
+    method: "post",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+        idUsuarioServer: idEmpresa
+    }),
+}).then((listaCaptacoes) =>{
+    if(listaCaptacoes.ok){
+        listaCaptacoes.json().then((listaCaptacoes)=>{
 
-                        plotarGrafico(resposta, idEmpresa);
-
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-        console.log("console log do html2", idEmpresa)
+            plotarGrafico(listaCaptacoes, idEmpresa)
+        });
+    } else {
+        console.error("nenhum dado encontrado ou erro na API")
     }
+})
+}
+    let estufas = []
 
     function plotarGrafico(resposta, idEmpresa) {
 
         console.log('iniciando plotagem do gráfico...');
 
+        let labels = [resposta[0].leituraTime, resposta[0].leituraTime, resposta[0].leituraTime, resposta[0].leituraTime, resposta[0].leituraTime]; //data hora
+        
         // Criando estrutura para plotar gráfico - labels
-        let labels = [resposta[0].leituraTime]; //data hora
-        let estufas = []
+        
         let vetorComparativo = []
 
         for (let index = 0; index < resposta.length; index++) {
@@ -461,45 +394,39 @@
                 vetorComparativo.push(estufa);
                 estufas.push({
                     label: estufa.nome_estufa, //nomw estufa
-                    data: [], //media
+                    data: [0, 0, 0, 0], //media
                     fill: false,
                     borderColor: 'rgb(255, 255, 000)',
-                    tension: 0.8
+                    tension: 0.
                 });
-            } else {
-                estufas[test].data.push(resposta.media_Valor)
-                console.log(resposta.media_Valor)
             }
         }
 
-        // ok, doce
-        //com toda certeza a gente vai!
-        // if (estufas.length == 0 || estufa.nome_estufa != estufas.indexOf().label) {
+        for (let index = 0; index < resposta.length; index++) {
+            let estufa = resposta[index];
 
+            let test = estufas.findIndex(estufaChart => {
+                return estufaChart.label == estufa.nome_estufa;
+            });
 
+            if (test > -1) {
+                estufas[test].data.push(resposta[index].media_Valor)
 
-    }
+                console.log("valor media da ", resposta[index].nome_estufa, ": ", resposta[index].media_Valor)
+            }
+        }
 
-    // Criando estrutura para plotar gráfico - dados
 
     let dados = {
         labels: labels,
         datasets: estufas
     };
 
-
+    
+    // Criando estrutura para plotar gráfico - dados
     console.log('----------------------------------------------')
     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
     console.log(resposta)
-
-
-    // for (i = 0; i < resposta.length; i++) {
-    //     var registro = resposta[i];
-    //     labels.push(registro.leituraDate);
-    //     dados.datasets[0].data.push(registro.media_Valor);
-
-    //     // dados.datasets[1].data.push(registro.temperatura);
-    // }
 
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
@@ -509,7 +436,6 @@
     console.log(dados.datasets)
     console.log('----------------------------------------------')
 
-    // Criando estrutura para plotar gráfico - config
     const config = {
         type: 'line',
         data: dados,
@@ -523,7 +449,12 @@
         config
     );
 
+
+                   
     setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 1000);
+
+}
+
 
 
     function atualizarGrafico(idEmpresa, dados, myChart) {
@@ -532,11 +463,11 @@
             { cache: 'no-store' }).
             then(function (response) {
                 if (response.ok) {
-                    response.json().then(function (novoRegistro) {
-
+                    response.json().then(function (novosRegistros) {
+                            console.log("uqueeeeeeeeeeee",novosRegistros)
                         // obterDadosGraficos(idEmpresa);
                         // alertar(novoRegistro, idAquario);
-                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados recebidos: ${JSON.stringify(novosRegistros)}`);
                         console.log(`Dados atuais do gráfico:`);
                         console.log(dados);
 
@@ -544,22 +475,41 @@
                         // avisoCaptura.innerHTML = ""
 
 
-                        if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        if (novosRegistros[0].leituraTime == dados.labels[dados.labels.length - 1]) {
                             console.log("---------------------------------------------------------------")
                             console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                             // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                             console.log("Horário do novo dado capturado:")
-                            console.log(novoRegistro[0].momento_grafico)
+                            console.log(novosRegistros[0].leituraTime)
                             console.log("Horário do último dado capturado:")
                             console.log(dados.labels[dados.labels.length - 1])
                             console.log("---------------------------------------------------------------")
                         } else {
-                            // tirando e colocando valores no gráfico
-                            dados.labels.shift(); // apagar o primeiro
-                            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                            for (let index = 0; index < novosRegistros.length; index++) {
+                                    let estufa = novosRegistros[index];
 
-                            dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                            dados.datasets[0].data.push(novoRegistro[0].luminosidade); // incluir uma nova medida de umidade
+                                    let test = estufas.findIndex(estufaChart => {
+                                        return estufaChart.label == estufa.nome_estufa;
+                                    });
+
+                                    if (test > -1) {
+                                        dados.labels.shift();
+                                        dados.labels.push(novosRegistros[0].leituraTime);
+
+                                        dados.datasets[test].data.shift();
+                                        dados.datasets[test].data.push(novosRegistros[index].media_Valor);
+                                        // tem um vetor com test e outro com text
+                                                                           //   ||
+                                   }
+                                }
+
+
+                            // tirando e colocando valores no gráfico
+                             // apagar o primeiro
+                             // incluir um novo momento
+
+                              // apagar o primeiro de umidade
+                             // incluir uma nova medida de umidade
 
                             // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                             // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
@@ -587,22 +537,9 @@
 
 
 
-    function obterDadosGrafico() {
-        obterDadosGrafico(1)
-        obterDadosGrafico(2)
-        obterDadosGrafico(3)
-        obterDadosGrafico(4)
-    }
 
 
 
-    window.addEventListener("load", () => {
-        maiorMenorIndice();
-        obterDadosGraficos();
-        obterCaptacoes()
-        rankMaisAlertas()
-        obterEstufas()
-    });
 
 
     function rankMaisAlertas() {
@@ -708,12 +645,7 @@
             })
         }).then(function (listaCaptacoes) {
             listaCaptacoes.json().then(function (listaCaptacoes) {
-                console.log(listaCaptacoes)
                 for (i = 0; i < listaCaptacoes.length; i++) {
-                    console.log(listaCaptacoes[i].indiceAtual)
-                    console.log(listaCaptacoes[i].nomeEstufa)
-                    console.log(listaCaptacoes[i].idSetor)
-                    console.log(listaCaptacoes[i].idSubSetor)
 
                     if (listaCaptacoes[i].indiceAtual < 450 || listaCaptacoes[i].indiceAtual > 650) {
                         listaAlert.innerHTML += `                        

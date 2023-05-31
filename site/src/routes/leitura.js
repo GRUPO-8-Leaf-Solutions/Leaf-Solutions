@@ -3,7 +3,7 @@
 
 var leituraController = require("../controllers/leituraController");
 
-router.get("/ultimas/:idEmpresa", function (req, res) {
+router.post("/buscarUltimasMedidas", function (req, res) {
     leituraController.buscarUltimasMedidas(req, res);
 });
 
@@ -27,8 +27,8 @@ router.post("/obterCaptacoes", function (req, res){
     leituraController.obterCaptacoes(req, res);
 })
 
-router.post("/obterCaptacoes", function (req, res){
-    leituraController.obterCaptacoes(req, res);
+router.post("/obterSituacao", function (req, res){
+    leituraController.obterSituacao(req, res);
 })
 
 module.exports = router;

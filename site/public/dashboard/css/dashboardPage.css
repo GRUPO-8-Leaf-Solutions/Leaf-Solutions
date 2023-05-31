@@ -278,7 +278,7 @@ li a {
 }
 
 .tela-dashboard {
-    padding: 10px 30px;
+    padding: 30px 30px 0 20px;
 }
 
 .areaDash {
@@ -681,7 +681,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 
 .tela-alertas {
     width: 350px;
-    height: 460px;
+    height: 75vh;
     background-color: #FFFFFF;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 8px;
@@ -692,7 +692,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 }
 
 .tela-alertas .listaScroller {
-    height: 415px;
+    height: 90%;
     overflow-y: auto;
     overflow-x: hidden;
     gap: 25px;
@@ -729,7 +729,6 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 .main {
     display: flex;
     flex-direction: column;
-    width: 70%;
     gap: 15px;
 }
 
@@ -779,11 +778,11 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 }
 
 .containerChart {
-    height: 346px;
+    height: 50%;
     background: white;
     box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
     border-radius: 15px;
-    width: 93%;
+    width: 55vw;
 }
 
 .grafico_pizza {
@@ -792,8 +791,13 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 }
 
 .ajuste_pie {
-    width: 235px !important;
-    height: 100px;
+    width: 300px;
+    padding: 1rem;
+    background-color: #FBFBFB;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    line-height: 18px;
 }
 
 .ajuste_pie p {
@@ -809,6 +813,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 .rodape {
     display: flex;
     justify-content: space-evenly;
+    height: 50%;
 }
 
 .alto_indice_luz {
@@ -850,7 +855,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
     border-radius: 18px;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     height: 110px;
-    width: 55%;
+    padding-inline: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -988,12 +993,10 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 .daddy {
     display: flex;
     width: 100%;
-    margin-top: 20px
+    justify-content: space-around;
 }
 
-.lado_direito {
-    width: 30%;
-}
+
 
 #myChart1 {
     width: 743px !important;

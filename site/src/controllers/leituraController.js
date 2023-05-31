@@ -37,10 +37,11 @@ function obterMaiorIndice (req, res){
 
 function buscarUltimasMedidas(req, res) {
     const limite_linhas = 7;
-    var idEmpresa = req.params.idEmpresa;
+    
+    var idEmpresa = req.body.idUsuarioServer;
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-    leituraModel.buscarUltimasMedidas(idEmpresa, limite_linhas).then(function (resultado) {
+    leituraModel.buscarUltimasMedidas(idEmpresa).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -93,10 +94,34 @@ function obterCaptacoes(req, res){
     }); 
 }
 
+// function obterSituacao(req, res){
+//     var idEmpresa = req.body.idEmpresaServer;
+
+//     console.log(`Obtendo situacões das estufas`);
+//     leituraModel.obterSituacao(idEmpresa)
+
+//     // vai pro model e depois volta pro .then
+    
+//     .then(function (resultado) {
+//         if (resultado.length > 0) {
+//             res.status(200).json(resultado);
+//         } else {
+//             res.status(204).json("Nenhum resultado encontrado!")
+//         }
+//     }).catch(function (erro) {
+//         console.log(erro);
+//         console.log("Houve um erro ao obter as situações das estufas", erro.sqlMessage);
+//         res.status(500).json(erro.sqlMessage);
+//     }); 
+// }
+
+
+
 module.exports = {
     buscarUltimasMedidas,
     tempoReal,
     obterCaptacoes,
     obterMenorIndice,
-    obterMaiorIndice
+    obterMaiorIndice, 
+    // obterSituacao
 }
