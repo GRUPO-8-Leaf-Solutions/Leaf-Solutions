@@ -414,7 +414,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
 
         console.log('iniciando plotagem do gráfico...');
 
-        let labels = [resposta[0].leituraTime]; //data hora
+        let labels = []; //data hora
         
         // Criando estrutura para plotar gráfico - labels
         
@@ -437,6 +437,9 @@ fetch ("/leitura/buscarUltimasMedidas", {
                     tension: 0.
                 });
             }
+
+
+            labels.push(resposta[0].ultima_leitura)
         }
 
         for (let index = 0; index < resposta.length; index++) {
@@ -490,7 +493,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
 
 
                    
-    setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 1000);
+    // setTimeout(() => atualizarGrafico(idEmpresa, dados, myChart), 1000);
 
 }
 
