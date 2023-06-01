@@ -344,7 +344,7 @@
     window.addEventListener("load", () => {
             obterEstufas();
             maiorMenorIndice();
-            obterCaptacoes();
+            // obterCaptacoes();
             rankMaisAlertas();
         });
 
@@ -358,7 +358,9 @@
     let proximaAtualizacao;
 
     var listaDeEstufas = []
+    var qtdEstufas 
 
+    console.log(qtdEstufas) 
 
     function obterEstufas() {
         fetch("/estufa/exibirEstufas", {
@@ -374,7 +376,7 @@
                 for (i = 0; i < listaEstufas.length; i++) {
                     listaDeEstufas.push(listaEstufas[i])
                 }
-
+                    qtdEstufas = listaEstufas.length
                 obterDadosGraficos()
             })
         })
@@ -395,7 +397,8 @@ fetch ("/leitura/buscarUltimasMedidas", {
         "Content-Type": "application/json",
     },
     body: JSON.stringify({
-        idUsuarioServer: idEmpresa
+        idUsuarioServer: idEmpresa,
+        qtdEstufaServer: qtdEstufas
     }),
 }).then((listaCaptacoes) =>{
     if(listaCaptacoes.ok){
@@ -422,7 +425,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
 
         for (let index = 0; index < resposta.length; index++) {
             let estufa = resposta[index];
-
+                console.log(resposta)
             let test = estufas.findIndex(estufaChart => {
                 return estufaChart.label == estufa.nome_estufa;
             });
@@ -438,8 +441,10 @@ fetch ("/leitura/buscarUltimasMedidas", {
                 });
             }
 
-
-            labels.push(resposta[0].ultima_leitura)
+            if(labels.length < 5){
+                labels.push(resposta[index].ultima_leitura)
+                
+            }
         }
 
         for (let index = 0; index < resposta.length; index++) {
@@ -656,92 +661,92 @@ fetch ("/leitura/buscarUltimasMedidas", {
     //  ALERTAS
 
 
-    setInterval(obterCaptacoes, 150000)
+    // setInterval(obterCaptacoes, 150000)
 
 
-    function obterCaptacoes() {
-        console.log("entrando na function obeter captacoes")
-        listaAlert.innerHTML = ""
+    // function obterCaptacoes() {
+    //     console.log("entrando na function obeter captacoes")
+    //     listaAlert.innerHTML = ""
 
-        fetch(`/leitura/obterCaptacoes`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idEmpresaServer: idEmpresa
-            })
-        }).then(function (listaCaptacoes) {
-            listaCaptacoes.json().then(function (listaCaptacoes) {
-                for (i = 0; i < listaCaptacoes.length; i++) {
+    //     fetch(`/leitura/obterCaptacoes`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             idEmpresaServer: idEmpresa
+    //         })
+    //     }).then(function (listaCaptacoes) {
+    //         listaCaptacoes.json().then(function (listaCaptacoes) {
+    //             for (i = 0; i < listaCaptacoes.length; i++) {
 
-                    if (listaCaptacoes[i].indiceAtual < 450 || listaCaptacoes[i].indiceAtual > 650) {
-                        listaAlert.innerHTML += `                        
-                            <a class="click-alert" href="setor1.html">
-                                <div class="containerAlert">
-                                    <div class="alert">
-                                        <div class="img">
-                                            <img class="img-alert" src="../assets/imgs/alert-icon.svg" alt="">
-                                        </div>
-                                        <div class="macacoo" style="display: flex; flex-direction: column; justify-content: center; gap: 10px; width: 205px;">
-                                            <div class="urgenteEst">
-                                                <span class="urgente">Estufa ${listaCaptacoes[i].nomeEstufa}</span>
-                                                <span class="urgente">Setor ${listaCaptacoes[i].idSetor}</span>
-                                                <span>Subsetor ${listaCaptacoes[i].idSubSetor}</span>
-                                            </div>
+    //                 if (listaCaptacoes[i].indiceAtual < 450 || listaCaptacoes[i].indiceAtual > 650) {
+    //                     listaAlert.innerHTML += `                        
+    //                         <a class="click-alert" href="setor1.html">
+    //                             <div class="containerAlert">
+    //                                 <div class="alert">
+    //                                     <div class="img">
+    //                                         <img class="img-alert" src="../assets/imgs/alert-icon.svg" alt="">
+    //                                     </div>
+    //                                     <div class="macacoo" style="display: flex; flex-direction: column; justify-content: center; gap: 10px; width: 205px;">
+    //                                         <div class="urgenteEst">
+    //                                             <span class="urgente">Estufa ${listaCaptacoes[i].nomeEstufa}</span>
+    //                                             <span class="urgente">Setor ${listaCaptacoes[i].idSetor}</span>
+    //                                             <span>Subsetor ${listaCaptacoes[i].idSubSetor}</span>
+    //                                         </div>
 
-                                            <div class="alerts">
-                                                <div class="text-valores">
-                                                     <span class="text-atual">ÍNDICE ATUAL: ${listaCaptacoes[i].indiceAtual}lm</span>
-                                                </div>
-                                                <div style="display: flex; justify-content: space-between; width: 100%;">
-                                                     <span class="hora"><img src="../assets/imgs/relogio.svg">${listaCaptacoes[i].horarioLeitura}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                 </div>
-                            </a>`
-                    }
-                }
+    //                                         <div class="alerts">
+    //                                             <div class="text-valores">
+    //                                                  <span class="text-atual">ÍNDICE ATUAL: ${listaCaptacoes[i].indiceAtual}lm</span>
+    //                                             </div>
+    //                                             <div style="display: flex; justify-content: space-between; width: 100%;">
+    //                                                  <span class="hora"><img src="../assets/imgs/relogio.svg">${listaCaptacoes[i].horarioLeitura}</span>
+    //                                             </div>
+    //                                         </div>
+    //                                     </div>
+    //                                 </div>
+    //                              </div>
+    //                         </a>`
+    //                 }
+    //             }
 
-                for (i = 0; i < listaCaptacoes.length; i++) {
-                    if (listaCaptacoes[i].indiceAtual >= 450 && listaCaptacoes[i].indiceAtual < 500 || listaCaptacoes[i].indiceAtual > 600 && listaCaptacoes[i].indiceAtual <= 650) {
-                        listaAlert.innerHTML += `
-                        <a class="click-alert-preocupante" href="setor1.html">
-                            <div class="containerAlert">
-                                <div class="alert-preocupante">
-                                    <div class="img">
-                                        <img class="img-alert" src="../assets/imgs/vectorPreocupante.svg">
-                                    </div>
+    //             for (i = 0; i < listaCaptacoes.length; i++) {
+    //                 if (listaCaptacoes[i].indiceAtual >= 450 && listaCaptacoes[i].indiceAtual < 500 || listaCaptacoes[i].indiceAtual > 600 && listaCaptacoes[i].indiceAtual <= 650) {
+    //                     listaAlert.innerHTML += `
+    //                     <a class="click-alert-preocupante" href="setor1.html">
+    //                         <div class="containerAlert">
+    //                             <div class="alert-preocupante">
+    //                                 <div class="img">
+    //                                     <img class="img-alert" src="../assets/imgs/vectorPreocupante.svg">
+    //                                 </div>
 
                                     
-                                    <div class="mimir">
-                                        <div class="urgenteEst-preocupante">
-                                            <span class="urgente">Estufa ${listaCaptacoes[i].nomeEstufa}</span>
-                                            <span class="urgente">Setor ${listaCaptacoes[i].idSetor}</span>
-                                            <span>Subsetor ${listaCaptacoes[i].idSubSetor}</span>
-                                            <span class="preocupante-valor">ÍNDICE ATUAL: ${listaCaptacoes[i].indiceAtual}lm</span>
-                                        </div>
+    //                                 <div class="mimir">
+    //                                     <div class="urgenteEst-preocupante">
+    //                                         <span class="urgente">Estufa ${listaCaptacoes[i].nomeEstufa}</span>
+    //                                         <span class="urgente">Setor ${listaCaptacoes[i].idSetor}</span>
+    //                                         <span>Subsetor ${listaCaptacoes[i].idSubSetor}</span>
+    //                                         <span class="preocupante-valor">ÍNDICE ATUAL: ${listaCaptacoes[i].indiceAtual}lm</span>
+    //                                     </div>
                                         
-                                        <div class="alerts-preocupante">                  
+    //                                     <div class="alerts-preocupante">                  
 
-                                            <div class="horario">
-                                                <span class="hora-preocupante"><img src="../assets/imgs/relogio.svg">${listaCaptacoes[i].horarioLeitura}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                            `
-                    }
-                }
-            })
+    //                                         <div class="horario">
+    //                                             <span class="hora-preocupante"><img src="../assets/imgs/relogio.svg">${listaCaptacoes[i].horarioLeitura}
+    //                                             </span>
+    //                                         </div>
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </a>
+    //                         `
+    //                 }
+    //             }
+    //         })
 
-        })
-    }
+    //     })
+    // }
 
 
 </script>
