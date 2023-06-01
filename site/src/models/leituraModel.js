@@ -6,6 +6,7 @@ function obterMenorIndice(idEmpresa) {
     SELECT MIN(leituraSensor.valor) AS valor_minimo,
     estufa.nome AS nome_estufa,
     setor.idSetor,
+    subSetor.idSubsetor,
     sensor.idSensor,
     leituraSensor.leituraTime AS horaLeitura
     FROM leituraSensor
@@ -15,7 +16,7 @@ function obterMenorIndice(idEmpresa) {
     JOIN estufa ON setor.fkEstufa = estufa.idEstufa
     JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
     WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE()
-    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
+    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime, subSetor.idSubsetor
     ORDER BY valor_minimo 
     LIMIT 1;
     `
@@ -27,6 +28,7 @@ function obterMaiorIndice(idEmpresa) {
     SELECT MAX(leituraSensor.valor) AS valor_maximo,
     estufa.nome AS nome_estufa,
     setor.idSetor,
+    subSetor.idSubsetor,
     sensor.idSensor,
     leituraSensor.leituraTime AS horaLeitura
     FROM leituraSensor
@@ -36,7 +38,7 @@ function obterMaiorIndice(idEmpresa) {
     JOIN estufa ON setor.fkEstufa = estufa.idEstufa
     JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
     WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE()
-    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
+    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime, subSetor.idSubsetor
     ORDER BY valor_maximo DESC
     LIMIT 1;
     `

@@ -190,16 +190,53 @@
                             </div>
 
                             <div class="indice_luz_pai">
-                                <div class="daddy_indice" id="mmIndice">
+                                <div class="mmIndice">
+                                    
+                                    <div class="mmIndiceKpi">
+                                        <div>
+                                            <i class="uil uil-brightness-low"></i>
+                                            <span>Maior indice captado</span>
+                                        </div>
+                                        
+                                        <div>
+                                            <span id="maiorIndiceC">000lm</span>
+                                            <span id="maiorIndiceH">00:00:00</span>
+                                        </div>
+
+                                        <div>
+                                            <span id="maiorIndiceN">NomeEstufa</span>
+                                            <span id="maiorIndiceS">Setor X</span>
+                                            <span id="maiorIndiceSS">Subsetor X</span>
+                                            <span id="maiorIndiceSSor">Sensor X</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mmIndiceKpi">
+                                        <div>
+                                            <i class="uil uil-moon"></i>
+                                            <span>Menor indice captado</span>
+                                        </div>
+
+                                        <div>
+                                            <span id="menorIndiceC">000lm</span>
+                                            <span id="menorIndiceH">00:00:00</span>
+                                        </div>
+
+                                        <div>
+                                            <span id="menorIndiceN">NomeEstufa</span>
+                                            <span id="menorIndiceS">Setor X</span>
+                                            <span id="menorIndiceSS">Subsetor X</span>
+                                            <span id="menorIndiceSSor">Sensor X</span>
+                                        </div>
+                                    </div>
 
                                 </div>
-                                <div class="alerta_estufas">
-                                    <div class="ajuste">
-                                        <div class="indicativo_alerta_estufas">
-                                            Estufas com mais alertas
-                                        </div>
-                                        <div id="rankEstufas" class="mencao_estufas">
-                                        </div>
+
+                                <div class="rankEstufas">
+                                    <span>Estufas com mais alertas</span>
+
+                                    <div id="listaRank" class="listaRank">
+
                                     </div>
                                 </div>
                             </div>
@@ -311,7 +348,7 @@
             rankMaisAlertas();
         });
 
-        
+
 
     var idEmpresa = sessionStorage.idUsuario;
 
@@ -377,7 +414,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
 
         console.log('iniciando plotagem do gráfico...');
 
-        let labels = [resposta[0].leituraTime, resposta[0].leituraTime, resposta[0].leituraTime, resposta[0].leituraTime, resposta[0].leituraTime]; //data hora
+        let labels = [resposta[0].leituraTime]; //data hora
         
         // Criando estrutura para plotar gráfico - labels
         
@@ -394,7 +431,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
                 vetorComparativo.push(estufa);
                 estufas.push({
                     label: estufa.nome_estufa, //nomw estufa
-                    data: [0, 0, 0, 0], //media
+                    data: [], //media
                     fill: false,
                     borderColor: 'rgb(255, 255, 000)',
                     tension: 0.
@@ -439,7 +476,9 @@ fetch ("/leitura/buscarUltimasMedidas", {
     const config = {
         type: 'line',
         data: dados,
-        options: {}
+        options: {
+            aspectRatio: 1 | 2
+        }
     };
 
 
@@ -486,6 +525,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
                             console.log("---------------------------------------------------------------")
                         } else {
                             for (let index = 0; index < novosRegistros.length; index++) {
+                                    
                                     let estufa = novosRegistros[index];
 
                                     let test = estufas.findIndex(estufaChart => {
@@ -553,13 +593,8 @@ fetch ("/leitura/buscarUltimasMedidas", {
             }),
         }).then((listaRankMaisAlertas) => {
             listaRankMaisAlertas.json().then((listaRankMaisAlertas) => {
-                console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", listaRankMaisAlertas)
                 for (i = 0; i < listaRankMaisAlertas.length; i++) {
-                    rankEstufas.innerHTML += `
-                            <div class="mencionar_estufa1">
-                                ${listaRankMaisAlertas[i].nome_estufa}
-                            </div>
-                        `
+                    listaRank.innerHTML += `<span>${listaRankMaisAlertas[i].nome_estufa} </span>`
                 }
             })
         })
@@ -588,33 +623,23 @@ fetch ("/leitura/buscarUltimasMedidas", {
                     menorIndice.json().then((menorIndice) => {
                         maiorIndice.json().then((maiorIndice) => {
                             console.log(maiorIndice)
-                            mmIndice.innerHTML = ` 
-                                <div class="alto_indice_luz">
-                                        <div class="maior_indice_luz">
-                                            MAIOR ÍNDICE DE LUZ CAPTADO <br>
-                                            <p>${maiorIndice[0].valor_maximo}</p>
-                                        </div>
-                                        <div class="indicacao_estufa">
-                                            ${maiorIndice[0].nome_estufa} - setor ${maiorIndice[0].idSetor} - sensor ${menorIndice[0].idSensor}
-                                        </div>
-                                        <span class="hora"><img src="../assets/imgs/relogio.svg">${maiorIndice[0].horaLeitura}</span>
 
-                                </div>
-                                    `
+                            maiorIndiceC.innerHTML = `${maiorIndice[0].valor_maximo}lm`
+                            maiorIndiceH.innerHTML = `${maiorIndice[0].horaLeitura}`
 
-                            mmIndice.innerHTML += `
-                                <div class="baixo_indice_luz">
-                                        <div class="menor_indice_luz">
-                                            MENOR ÍNDICE DE LUZ CAPTADO<br>
-                                            <p>${menorIndice[0].valor_minimo}</p>
-                                            <div class="indicacao_estufa">
-                                                ${menorIndice[0].nome_estufa} - setor ${menorIndice[0].idSetor} - sensor ${menorIndice[0].idSensor}
-                                            </div>
-                                            <span style="color: #6D2D2D;" class="hora"><img
-                                                    src="../assets/imgs/relogio.svg">${menorIndice[0].horaLeitura}</span>
-                                        </div>
-                                    </div>
-                                `
+                            maiorIndiceN.innerHTML = `${maiorIndice[0].nome_estufa}`
+                            maiorIndiceS.innerHTML = `Setor ${maiorIndice[0].idSetor}`
+                            maiorIndiceSS.innerHTML = `SubSetor ${maiorIndice[0].idSubsetor}`
+                            maiorIndiceSSor.innerHTML = `Sensor ${menorIndice[0].idSensor}`
+                            
+                            menorIndiceC.innerHTML = `${menorIndice[0].valor_minimo}lm`
+                            menorIndiceH.innerHTML = `${menorIndice[0].horaLeitura}`
+
+                            menorIndiceN.innerHTML = `${menorIndice[0].nome_estufa}`
+                            menorIndiceS.innerHTML = `Setor ${menorIndice[0].idSetor}`
+                            menorIndiceSS.innerHTML = `SubSetor ${menorIndice[0].idSubsetor}`
+                            menorIndiceSSor.innerHTML = `Sensor ${menorIndice[0].idSensor}`
+                            
                         })
                     })
                 })
