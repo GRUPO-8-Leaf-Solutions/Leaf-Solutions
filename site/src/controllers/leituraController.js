@@ -39,9 +39,10 @@ function buscarUltimasMedidas(req, res) {
     const limite_linhas = 7;
     
     var idEmpresa = req.body.idUsuarioServer;
+    var limiteLinhas = req.body.qtdEstufaServer
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-    leituraModel.buscarUltimasMedidas(idEmpresa).then(function (resultado) {
+    leituraModel.buscarUltimasMedidas(idEmpresa, limiteLinhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
