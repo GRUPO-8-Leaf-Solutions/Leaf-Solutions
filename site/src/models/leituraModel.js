@@ -45,21 +45,21 @@ function obterMaiorIndice(idEmpresa) {
     return database.executar(instrucao)
 }
 
-function buscarUltimasMedidas(idEmpresa) {
+function buscarUltimasMedidas(idEmpresa, limiteLinhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
           var instrucaoSql = `
-            SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', MAX(leituraSensor.leituraTime) AS 'ultima_leitura'
-            FROM estufa
-            LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-            LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-            LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-            LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
-            WHERE estufa.fkEmpresa = ${idEmpresa}
-            GROUP BY estufa.idEstufa, estufa.nome
-            ORDER BY ultima_leitura DESC;
+                SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
+                FROM estufa
+                LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+                LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+                LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+                LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor 
+                WHERE estufa.fkEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = curDate()
+                GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+                ORDER BY ultima_leitura DESC limit ${limiteLinhas * 5};
           `
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -79,15 +79,20 @@ function tempoReal(idEmpresa) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         var instrucaoSql = `
-        SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', MAX(leituraSensor.leituraTime) AS 'leituraTime'
-        FROM estufa
-        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
-        WHERE estufa.fkEmpresa = ${idEmpresa}
-        GROUP BY estufa.idEstufa, estufa.nome
-        ORDER BY leituraTime DESC;
+        select estufa.nome as 'nome_estufa', coalesce(round(avg(leituraSensor.valor), 0), 0) as "media_valor", leituraSensor.leituraTime
+        from empresa
+        left join estufa on estufa.fkEmpresa = empresa.idEmpresa
+        left join setor on setor.fkEstufa = estufa.idEstufa
+        left join subSetor on subSetor.fkSetor = setor.idSetor
+        left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
+        left join(select fkSensor, max(leituraTime) as ultima_leitura
+            from leituraSensor
+            group by fkSensor
+        ) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
+        left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
+        group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+        order by leituraSensor.leituraTime DESC;
+            ;
         `
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
