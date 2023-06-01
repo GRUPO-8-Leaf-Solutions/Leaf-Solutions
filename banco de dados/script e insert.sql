@@ -1,4 +1,3 @@
-drop database leafSolutions;
 create database leafSolutions;
 use leafSolutions;
 
@@ -205,14 +204,19 @@ insert into estufa values
     (null, 'Antonio', 300, 1, 3),
 	(null, 'Leaf Life', 480, 2, 2);
    
+   truncate table estufa;
+   drop table setor;
+   
 insert into setor values 
 	(null, null, null, 1),
 	(null, null, null, 1),
 	(null, null, null, 2),
 	(null, null, null, 2),
 	(null, null, null, 3),
-	(null, null, null, 3),
-	(null, null, null, 4);
+	(null, null, null, 3);
+
+	truncate table setor;
+    drop table subSetor;
 
 insert into tipoAlface values
 	(null, 'Americana'),
@@ -220,31 +224,34 @@ insert into tipoAlface values
 	(null, 'Crespa'),
 	(null, 'Roxa');
     
-        
+        desc subsetor;
 insert into subSetor values
-	(null, 7, 1),
-	(null, 6, 2),
-	(null, 5, 3),
-	(null, 4, 3),
-	(null, 3, 2),
-	(null, 2, 1),
+	(null, 1, 1),
 	(null, 1, 2),
-	(null, 4, 3),
-	(null, 4, 1);
-
-
+	(null, 2, 3),
+	(null, 2, 1),
+	(null, 3, 2),
+	(null, 3, 3),
+	(null, 4, 1),
+	(null, 4, 2);
+    
+    select * from subSetor;
+	truncate table subSetor;
+    drop table sensor;
+	desc sensor;
 insert into sensor values 
-	(null, null, 'ativo', 1),
-	(null, null, 'manutencao', 2),
-	(null, null, 'inativo', 3),
-	(null, null, 'ativo', 4), 
-	(null, null, 'ativo', 5),
-	(null, null, 'ativo', 6),
-	(null, null, 'inativo', 7),
-	(null, null, 'ativo', 8),
-	(null, null, 'ativo', 9),
-	(null, null, 'manutencao', 8),
-	(null, null, 'ativo', 7);
+	(null, null, 'ativo', 10),
+	(null, null, 'manutencao', 11),
+	(null, null, 'inativo', 12),
+	(null, null, 'ativo', 13), 
+	(null, null, 'ativo', 14),
+	(null, null, 'ativo', 15),
+	(null, null, 'inativo', 16),
+	(null, null, 'ativo', 17),
+	(null, null, 'ativo', 9);
+    
+    truncate table sensor;
+    drop table leituraSensor;
     
     insert into alerta values 
     (null, 'critico'),
@@ -338,32 +345,32 @@ JOIN estufa ON setor.fkEstufa = estufa.idEstufa;
 
 
 insert into leituraSensor values 
-	(null, 500, '2023-04-01 00:00:00', 1, 1),
-	(null, 600, '2023-04-02 00:00:00', 2, 1),
-	(null, 700, '2023-04-03 00:00:00', 3, 2),
-	(null, 800, '2023-04-04 00:00:00', 4, 3),
-	(null, 900, '2023-04-05 00:00:00', 5, 2),
-	(null, 500, '2023-04-05 12:00:00', 6, 1),
-	(null, 450, default, 7, 3),
-	(null, 700, '2023-04-08 00:00:00', 8, 2),
-	(null, 350, '2023-04-09 00:00:00', 9, 1),
-	(null, 650, '2023-04-10 15:00:00', 10, 2),
-	(null, 250, default, 11, 3),
-	(null, 750, '2023-04-11 12:00:00', 1, 1),
-	(null, 900, '2023-04-12 00:00:00', 2, 1),
-	(null, 1000, default, 3, 1),
-	(null, 300, '2023-04-03 00:00:00', 4, 2),
-	(null, 800, '2023-04-04 00:00:00', 5, 2),
-	(null, 800, '2023-04-04 00:00:00', 6, 3),
-	(null, 800, '2023-04-04 00:00:00', 7, 3),
-	(null, 800, '2023-04-04 00:00:00', 8, 2),
-	(null, 800, '2023-04-04 00:00:00', 9, 2),
-	(null, 800, default, 10, 1),
-	(null, 400, '2023-04-06 19:00:00', 11, 1),
-	(null, 900, '2023-04-07 00:00:00', 1, 1),
-	(null, 750, '2023-04-08 00:00:00', 2, 3);
+	(null, 500, CURDATE(), CURTIME(), 1, 1),
+	(null, 600, CURDATE(), CURTIME(), 2, 1),
+	(null, 700, CURDATE(), CURTIME(), 3, 2),
+	(null, 800, CURDATE(), CURTIME(), 4, 3),
+	(null, 900, CURDATE(), CURTIME(), 5, 2),
+	(null, 500, CURDATE(), CURTIME(), 6, 1),
+	(null, 450, CURDATE(), CURTIME(), 7, 3),
+	(null, 700, CURDATE(), CURTIME(), 8, 2),
+	(null, 350, CURDATE(), CURTIME(), 9, 1),
+	(null, 650, CURDATE(), CURTIME(), 10, 2),
+	(null, 250, CURDATE(), CURTIME(), 11, 3),
+	(null, 750, CURDATE(), CURTIME(), 1, 1),
+	(null, 900, CURDATE(), CURTIME(), 2, 1),
+	(null, 1000, CURDATE(), CURTIME(), 3, 1),
+	(null, 300, CURDATE(), CURTIME(), 4, 2),
+	(null, 800, CURDATE(), CURTIME(), 5, 2),
+	(null, 800, CURDATE(), CURTIME(), 6, 3),
+	(null, 800, CURDATE(), CURTIME(), 7, 3),
+	(null, 800, CURDATE(), CURTIME(), 8, 2),
+	(null, 800, CURDATE(), CURTIME(), 9, 2),
+	(null, 800, CURDATE(), CURTIME(), 10, 1),
+	(null, 400, CURDATE(), CURTIME(), 11, 1);
+    
     SELECT * FROM leituraSensor;
-    desc leituraSensor;
+    
+		desc leituraSensor;
     insert into leituraSensor values 
     (NULL, 289, 3, 2, CURDATE(), CURTIME())
     ;
@@ -421,4 +428,45 @@ sELECT
         ON subSetor.idSubSetor = sensor.fkSubSetor
         JOIN leituraSensor 
         ON sensor.idSensor = leituraSensor.fkSensor
-           WHERE fkEmpresa = 1 && leituraDate = curDate();
+           WHERE fkEmpresa = 1 && leituraDate = curDate();	
+           
+           select coalesce(avg(leituraSensor.valor), 0), leituraSensor.leituraTime from leituraSensor group by leituraTime limit 5;
+           
+			SELECT estufa.nome AS 'nome_estufa', leituraSensor.leituraTime AS 'ultima_leitura'
+            FROM estufa
+            LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+            LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+            LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+            LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
+            left join (select coalesce(avg(leituraSensor.valor), 0) as media_leitura, leituraSensor.leituraTime from leituraSensor group by leituraSensor.leituraTime limit 5) as mediasValores
+			on leituraSensor.idLeituraSensor = mediasValores.idLeituraSensor
+            WHERE estufa.fkEmpresa = 1
+            GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+            ORDER BY ultima_leitura DESC;
+            
+            select estufa.nome as 'nome_estufa', leituraSensor.leituraTime
+            from empresa
+            left join estufa on estufa.fkEmpresa = empresa.idEmpresa
+            left join setor on setor.fkEstufa = estufa.idEstufa
+            left join subSetor on subSetor.fkSetor = setor.idSetor
+            left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
+            left join(select fkSensor, coalesce(round(avg(leituraSensor.valor), 0), 0) as "media_valor" 
+				from leituraSensor
+                group by fkSensor
+			) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
+            left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
+            group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+            order by leituraSensor.leituraTime DESC;
+                
+            
+            
+                            SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
+                FROM estufa
+                LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+                LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+                LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+                LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor 
+                WHERE estufa.fkEmpresa = 1 AND leituraSensor.leituraDate = curDate()
+                GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+                ORDER BY ultima_leitura DESC;
+          
