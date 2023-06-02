@@ -1,5 +1,6 @@
 var database = require("../database/config")
 
+
 function obterMenorIndice(idEmpresa) {
     var instrucao = `
     SELECT MIN(leituraSensor.valor) AS valor_minimo,
@@ -10,8 +11,8 @@ function obterMenorIndice(idEmpresa) {
     leituraSensor.leituraTime AS horaLeitura
     FROM leituraSensor
     JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
-    JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
-    JOIN setor ON subsetor.fkSetor = setor.idSetor
+    JOIN subSetor ON sensor.fkSubSetor = subSetor.idSubSetor
+    JOIN setor ON subSetor.fkSetor = setor.idSetor
     JOIN estufa ON setor.fkEstufa = estufa.idEstufa
     JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
     WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE()
@@ -32,8 +33,8 @@ function obterMaiorIndice(idEmpresa) {
     leituraSensor.leituraTime AS horaLeitura
     FROM leituraSensor
     JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
-    JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
-    JOIN setor ON subsetor.fkSetor = setor.idSetor
+    JOIN subSetor ON sensor.fkSubSetor = subSetor.idSubSetor
+    JOIN setor ON subSetor.fkSetor = setor.idSetor
     JOIN estufa ON setor.fkEstufa = estufa.idEstufa
     JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
     WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE()
@@ -44,7 +45,7 @@ function obterMaiorIndice(idEmpresa) {
     return database.executar(instrucao)
 }
 
-function buscarUltimasMedidas(idEmpresa, limiteLinhas) {
+function buscarUltimasMedidas(idEmpresa) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = ``;
@@ -52,10 +53,10 @@ function buscarUltimasMedidas(idEmpresa, limiteLinhas) {
           var instrucaoSql = `
           SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
           FROM estufa
-          JOIN setor ON estufa.idEstufa = setor.fkEstufa
+          LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
           LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
           LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-          LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
+          LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor 
           WHERE estufa.fkEmpresa = 1
           GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
           ORDER BY ultima_leitura DESC;
@@ -78,21 +79,15 @@ function tempoReal(idEmpresa) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         var instrucaoSql = `
-        select estufa.nome as 'nome_estufa', coalesce(round(avg(leituraSensor.valor), 0), 0) as "media_valor", leituraSensor.leituraTime
-        from empresa
-        left join estufa on estufa.fkEmpresa = empresa.idEmpresa
-        left join setor on setor.fkEstufa = estufa.idEstufa
-        left join subSetor on subSetor.fkSetor = setor.idSetor
-        left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
-        left join(select fkSensor, max(leituraTime) as ultima_leitura
-            from leituraSensor
-            group by fkSensor
-        ) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
-        left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
-        where idEmpresa = ${idEmpresa}
-        group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
-        order by leituraSensor.leituraTime DESC;
-            ;
+        SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', MAX(leituraSensor.leituraTime) AS 'leituraTime'
+        FROM estufa
+        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
+        WHERE estufa.fkEmpresa = ${idEmpresa}
+        GROUP BY estufa.idEstufa, estufa.nome
+        ORDER BY leituraTime DESC;
         `
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");

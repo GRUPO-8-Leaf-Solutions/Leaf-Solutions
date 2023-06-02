@@ -470,6 +470,12 @@ li a {
     width: 50%;
 }
 
+.listaSensores{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .titulo_sensor {
     display: flex;
     justify-content: center;
@@ -501,7 +507,6 @@ li a {
 
 .gap_entre_buscas_listaSensores {
     display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 
@@ -509,6 +514,12 @@ li a {
     display: flex;
     width: 35%;
     gap: 5px;
+}
+
+.buscaInputListaSSos{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 .segunda_parte {

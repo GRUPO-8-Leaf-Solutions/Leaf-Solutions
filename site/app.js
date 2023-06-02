@@ -14,6 +14,7 @@ var usuarioEndRouter = require("./src/routes/usuariosEndereco");
 var usuarioEstufaRouter = require("./src/routes/usuariosEstufa");
 var leituraRouter = require("./src/routes/leitura");
 var setoresRouter = require("./src/routes/setores");
+var subSetores = require("./src/routes/subSetores");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -28,6 +29,7 @@ app.use("/usuariosEstufa", usuarioEstufaRouter);
 app.use("/leitura", leituraRouter);
 app.use("/estufa", usuarioEstufaRouter);
 app.use("/setores", setoresRouter);
+app.use("/subSetores", subSetores);
 
 // app.use("/empresa", empresaRouter);
 
