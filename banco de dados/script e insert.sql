@@ -39,7 +39,6 @@ constraint fkTelefoneTipoTelefone foreign key (fkTipoTelefone)
 constraint pkTelefone primary key (idTelefone, fkEmpresa, fkTipoTelefone)
 );
 
-
 create table endereco (
 idEndereco int primary key auto_increment,
 cep char(9) not null,
@@ -50,13 +49,6 @@ complemento varchar(30),
 uf char(2),
 cidade varchar(50)
 );
-
-
-desc endereco;
--- alter table endereco modify cep char(9);desc endereco;
--- alter table endereco modify bairro varchar(25);
-
-
 
 create table estufa (
 idEstufa int auto_increment,
@@ -70,11 +62,6 @@ constraint fkEstufaEndereco foreign key (fkEndereco)
 	references endereco (idEndereco),
 constraint pkEstufa primary key (idEstufa, fkEmpresa, fkEndereco)
 );
-
-select * from estufa;
-select * from empresa;
-
-update empresa set tokenPerm = "123" where idEmpresa = 1;
 
 create table setor (
 idSetor int auto_increment,
@@ -90,8 +77,6 @@ create table tipoAlface (
 idTipoAlface int primary key auto_increment,
 especie varchar(40) not null
 );
-
-
 
 create table subSetor (
 idSubSetor int auto_increment,
@@ -116,24 +101,11 @@ constraint fkSensorSubSetor foreign key (fkSubSetor)
 constraint pkSensor primary key (idSensor, fkSubSetor)
 );
 
-create table Alerta(
+create table alerta(
 idAlerta int primary key auto_increment,
 tipo varchar(45)
 constraint cnkAlerta check (tipo in ('critico', 'preocupante', 'adequado')) 
 );
-
-SELECT estufa.nome AS nome_estufa, COUNT(alerta.idAlerta) AS total_alertas
-FROM estufa
-JOIN setor ON estufa.idEstufa = setor.fkEstufa
-JOIN subsetor ON setor.idSetor = subsetor.fkSetor
-JOIN sensor ON subsetor.idSubsetor = sensor.fkSubSetor
-JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
-JOIN alerta ON leituraSensor.idLeituraSensor = alerta.fkLeituraSensor
-WHERE DATE(leituraSensor.dtLeitura) = CURDATE()
-GROUP BY estufa.idEstufa, estufa.nome
-ORDER BY total_alertas DESC
-LIMIT 3;
-
 
 create table leituraSensor (
 idLeituraSensor int auto_increment,
@@ -148,11 +120,9 @@ constraint fkAlerta foreign key (fkAlerta)
 	references alerta (idAlerta),
 constraint pkSensor primary key (idLeituraSensor, fkSensor, fkAlerta)
 );
-select * from leituraSensor;
-desc leituraSensor;
 
 
-
+-- INSERTS MOCADOS
 insert into empresa values 
 	(null, '21346523198746', 'Leaf Green', 'leafgreen@email.com', '1234567'),
 	(null, '12451242369874', 'FolhasTech', 'folhastech@email.com', '87654321');
@@ -165,8 +135,7 @@ insert into usuario values
     
 insert into tipoTelefone values
 	(null, 'Comercial'),
-	(null
-    , 'Residencial'),
+	(null, 'Residencial'),
 	(null, 'Fixo'),
 	(null, 'Celular');
 
@@ -183,29 +152,11 @@ insert into endereco values
 	(null, '15421-689', 'Rua da Jaca', 'Frutas', '819', 'A', 'MA', 'Caxias'),
 	(null, '78459-636', 'Rua da Melancia', 'Verduras', '298', null, 'PE', 'Carueri');
 
-insert into estufa values
-(null, 'Leaf estufa', 500, 1, 1);
-
-insert into estufa values
-(null, 'socoro jesus', 500, 1, 1);
-
-
-SELECT count(idSetor) as totalSetores, 
-		estufa.idEstufa 
-    from empresa
-    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
-    left join setor on estufa.idEstufa = setor.fkEstufa
-    where idEmpresa = 1
-    group by idEstufa;
-
 insert into estufa values 
 	(null, 'Guimarães', 300, 1, 1),
 	(null, 'Paulista', 400, 1, 4),
     (null, 'Antonio', 300, 1, 3),
 	(null, 'Leaf Life', 480, 2, 2);
-   
-   truncate table estufa;
-   drop table setor;
    
 insert into setor values 
 	(null, null, null, 1),
@@ -215,16 +166,12 @@ insert into setor values
 	(null, null, null, 3),
 	(null, null, null, 3);
 
-	truncate table setor;
-    drop table subSetor;
-
 insert into tipoAlface values
 	(null, 'Americana'),
 	(null, 'Mimosa'),
 	(null, 'Crespa'),
 	(null, 'Roxa');
     
-        desc subsetor;
 insert into subSetor values
 	(null, 1, 1),
 	(null, 1, 2),
@@ -235,115 +182,22 @@ insert into subSetor values
 	(null, 4, 1),
 	(null, 4, 2);
     
-    select * from subSetor;
-	truncate table subSetor;
-    drop table sensor;
-	desc sensor;
 insert into sensor values 
-	(null, null, 'ativo', 10),
-	(null, null, 'manutencao', 11),
-	(null, null, 'inativo', 12),
-	(null, null, 'ativo', 13), 
-	(null, null, 'ativo', 14),
-	(null, null, 'ativo', 15),
-	(null, null, 'inativo', 16),
-	(null, null, 'ativo', 17),
-	(null, null, 'ativo', 9);
+	(null, null, 'ativo', 1),
+	(null, null, 'manutencao', 2),
+	(null, null, 'inativo', 3),
+	(null, null, 'ativo', 4), 
+	(null, null, 'ativo', 5),
+	(null, null, 'ativo', 6),
+	(null, null, 'inativo', 7),
+	(null, null, 'ativo', 8),
+	(null, null, 'ativo', 8);
     
-    truncate table sensor;
-    drop table leituraSensor;
-    
-    insert into alerta values 
+insert into alerta values 
     (null, 'critico'),
     (null, 'preocupante'),
     (null, 'adequado');
     
- select min(leituraSensor.valor), estufa.nomeEstufa, setor.id, sensor.id FROM leitura sensor
-join sensor on leituraSensor.fkSensor = sensor.idSensor
-join subsetor on sensor.fkSubSetor = subSetor.idSubsetor
-join setor on subSetor.fkSetor = setor.idSetor
-join estufa on setor.fkEstufa = estufa.idEstufa
-join empresa on estufa.fkEmpresa = empresa.idEmpresa
-WHERE empresa.idEmpresa = 1 AND leituraSensor.dtLeitura = "2023-05-28 21:24";
-
-SELECT MIN(leituraSensor.valor) AS valor_minimo,
-       estufa.nomeEstufa,
-       setor.idSetor,
-       sensor.idSensor,
-       TIME(leituraSensor.dtLeitura) AS hora_leitura
-FROM leituraSensor
-JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
-JOIN subsetor ON sensor.fkSubSetor = subSetor.idSubsetor
-JOIN setor ON subSetor.fkSetor = setor.idSetor
-JOIN estufa ON setor.fkEstufa = estufa.idEstufa
-JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
-WHERE empresa.idEmpresa = 1
-  AND leituraSensor.dtLeitura = '2023-05-28 21:24';
-
-
-
--- select de coletar menor indice
-SELECT MAX(leituraSensor.valor) AS valor_maximo,
-       estufa.nome AS nome_estufa,
-       setor.idSetor,
-       sensor.idSensor,
-       leituraSensor.leituraTime AS horaLeitura
-FROM leituraSensor
-JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
-JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
-JOIN setor ON subsetor.fkSetor = setor.idSetor
-JOIN estufa ON setor.fkEstufa = estufa.idEstufa
-JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
-WHERE empresa.idEmpresa = 1 AND leituraSensor.leituraDate = CURDATE()
-GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
-ORDER BY valor_maximo DESC
-LIMIT 1;
-
-SELECT estufa.idEstufa, estufa.nome AS 'nome_estufa', ROUND(AVG(leituraSensor.valor),0) AS 'media_Valor', leituraSensor.leituraTime
-        FROM empresa
-        LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
-        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1 && leituraDate = curDate() 
-        GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraTime, leituraSensor.idLeituraSensor, estufa.idEstufa
-        order by leituraSensor.idLeituraSensor ;
-        
-        select * from estufa;
-        
-
-
-desc leituraSensor;
-insert into leituraSensor values (null, 500, 1, 1, curdate(), curtime());
-
-use leafSolutions;
-
-select * from estufa;
-
-SELECT COUNT(leituraSensor.idLeituraSensor) AS total_leituras, estufa.nome AS nome_estufa
-FROM leituraSensor
-LEFT JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
-LEFT JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
-LEFT JOIN setor ON subsetor.fkSetor = setor.idSetor
-LEFT JOIN estufa ON setor.fkEstufa = estufa.idEstufa
-LEFT JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
-WHERE leituraSensor.leituraDate = CURDATE() AND empresa.idEmpresa = 1 AND (leituraSensor.valor < 500 OR leituraSensor.valor > 600)
-GROUP BY estufa.nome
-ORDER BY COUNT(leituraSensor.idLeituraSensor) DESC;
-
-  ;
-  
-  SELECT leituraSensor.*, estufa.nome FROM leituraSensor
-JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
-JOIN subSetor ON sensor.fkSubSetor = subSetor.idSubSetor
-JOIN setor ON subSetor.fkSetor = setor.idSetor
-JOIN estufa ON setor.fkEstufa = estufa.idEstufa;
-
-  select * from leituraSensor join sensor on idSensor = fkSensor;
--- --------------------------------
-
-
-
 insert into leituraSensor values 
 	(null, 500, CURDATE(), CURTIME(), 1, 1),
 	(null, 600, CURDATE(), CURTIME(), 2, 1),
@@ -354,67 +208,134 @@ insert into leituraSensor values
 	(null, 450, CURDATE(), CURTIME(), 7, 3),
 	(null, 700, CURDATE(), CURTIME(), 8, 2),
 	(null, 350, CURDATE(), CURTIME(), 9, 1),
-	(null, 650, CURDATE(), CURTIME(), 10, 2),
-	(null, 250, CURDATE(), CURTIME(), 11, 3),
-	(null, 750, CURDATE(), CURTIME(), 1, 1),
-	(null, 900, CURDATE(), CURTIME(), 2, 1),
-	(null, 1000, CURDATE(), CURTIME(), 3, 1),
-	(null, 300, CURDATE(), CURTIME(), 4, 2),
-	(null, 800, CURDATE(), CURTIME(), 5, 2),
-	(null, 800, CURDATE(), CURTIME(), 6, 3),
-	(null, 800, CURDATE(), CURTIME(), 7, 3),
-	(null, 800, CURDATE(), CURTIME(), 8, 2),
-	(null, 800, CURDATE(), CURTIME(), 9, 2),
-	(null, 800, CURDATE(), CURTIME(), 10, 1),
-	(null, 400, CURDATE(), CURTIME(), 11, 1);
+	(null, 650, CURDATE(), CURTIME(), 1, 2),
+	(null, 250, CURDATE(), CURTIME(), 2, 3),
+	(null, 750, CURDATE(), CURTIME(), 3, 1),
+	(null, 900, CURDATE(), CURTIME(), 4, 1),
+	(null, 1000, CURDATE(), CURTIME(), 5, 1),
+	(null, 300, CURDATE(), CURTIME(), 6, 2),
+	(null, 800, CURDATE(), CURTIME(), 7, 2),
+	(null, 800, CURDATE(), CURTIME(), 8, 3),
+	(null, 800, CURDATE(), CURTIME(), 9, 3),
+	(null, 800, CURDATE(), CURTIME(), 1, 2),
+	(null, 800, CURDATE(), CURTIME(), 2, 2),
+	(null, 800, CURDATE(), CURTIME(), 3, 1),
+	(null, 400, CURDATE(), CURTIME(), 4, 1);
+
+insert into leituraSensor values 
+    (null, 289, 3, 2, CURDATE(), CURTIME());
+insert into leituraSensor values 
+    (null, 909, 1, 1, CURDATE(), CURTIME());
     
-    SELECT * FROM leituraSensor;
-    
-		desc leituraSensor;
-    insert into leituraSensor values 
-    (NULL, 289, 3, 2, CURDATE(), CURTIME())
-    ;
-    insert into leituraSensor values 
-    (NULL, 909, 1, 1, CURDATE(), CURTIME())
-    ;
-    
-    truncate table leiturasensor;
-    
-    select * from empresa;
-	select * from leituraSensor;
-    delete from leituraSensor where idLeituraSensor = 6;
-    truncate leituraSensor;
-    
+
+SELECT 
+MIN(leituraSensor.valor) AS valor_minimo,
+estufa.nome,
+setor.idSetor,
+sensor.idSensor,
+TIME(leituraSensor.dtLeitura) AS hora_leitura
+	FROM leituraSensor JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+	JOIN subsetor ON sensor.fkSubSetor = subSetor.idSubsetor
+	JOIN setor ON subSetor.fkSetor = setor.idSetor
+	JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+	JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+		WHERE empresa.idEmpresa = 1
+		AND leituraSensor.dtLeitura = '2023-05-28 21:24';
+
+
+
+-- select de coletar menor indice
+/*
+SELECT 
+MAX(leituraSensor.valor) AS valor_maximo,
+estufa.nome AS nome_estufa,
+setor.idSetor,
+sensor.idSensor,
+leituraSensor.leituraTime AS horaLeitura
+	FROM leituraSensor
+	JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+	JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
+	JOIN setor ON subsetor.fkSetor = setor.idSetor
+	JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+	JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+		WHERE empresa.idEmpresa = 1 AND leituraSensor.leituraDate = CURDATE()
+			GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime
+			ORDER BY valor_maximo DESC
+			LIMIT 1;
+*/
+
+-- OUTRO SELECT
+/*
+SELECT 
+estufa.idEstufa, 
+estufa.nome AS 'nome_estufa', 
+ROUND(AVG(leituraSensor.valor),0) AS 'media_Valor', 
+leituraSensor.leituraTime
+        FROM empresa
+        LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
+        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor WHERE idEmpresa = 1 && leituraDate = curDate() 
+        GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraTime, leituraSensor.idLeituraSensor, estufa.idEstufa
+        order by leituraSensor.idLeituraSensor ;
+*/
+        
+-- OUTRO SELECT
+/*
+SELECT COUNT(leituraSensor.idLeituraSensor) AS total_leituras, estufa.nome AS nome_estufa
+FROM leituraSensor
+LEFT JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+LEFT JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
+LEFT JOIN setor ON subsetor.fkSetor = setor.idSetor
+LEFT JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+LEFT JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+WHERE leituraSensor.leituraDate = CURDATE() AND empresa.idEmpresa = 1 AND (leituraSensor.valor < 500 OR leituraSensor.valor > 600)
+GROUP BY estufa.nome
+ORDER BY COUNT(leituraSensor.idLeituraSensor) DESC;
+*/
+
+-- OUTRO SELECT
+/*
+SELECT leituraSensor.*, estufa.nome FROM leituraSensor
+JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+JOIN subSetor ON sensor.fkSubSetor = subSetor.idSubSetor
+JOIN setor ON subSetor.fkSetor = setor.idSetor
+JOIN estufa ON setor.fkEstufa = estufa.idEstufa;
+*/
+
 -- media de luinosidade das estufas
+/*
 select avg(valor)
-	from empresa join estufa
-    on idEmpresa = fkEmpresa
-    join setor 
-    on idEstufa = fkEstufa 
-	join subSetor 
-    on idSetor = fkSetor 
-    join sensor 
-    on idSubSetor = fkSubSetor
-    join leituraSensor
-    on idSensor = fkSensor
+	from empresa join estufaon idEmpresa = fkEmpresa
+    join setor on idEstufa = fkEstufa 
+	join subSetor on idSetor = fkSetor 
+    join sensor on idSubSetor = fkSubSetor
+    join leituraSensoron idSensor = fkSensor
 		where idEmpresa = 4;
+*/
+    
 -- select kaua e trindas
+/*
+SELECT 
+estufa.nome AS 'nome estufa',
+ROUND(AVG(leituraSensor.valor), 0) AS 'media Valor',
+leituraSensor.leituraDate AS momento_grafico
+	FROM empresa
+	LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
+	LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+	LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+	LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+	LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
+		WHERE empresa.idEmpresa = 1
+		GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraDate
+		ORDER BY leituraSensor.idLeituraSensor
+		LIMIT 7;
+*/
 
-SELECT estufa.nome AS 'nome estufa',
-       ROUND(AVG(leituraSensor.valor), 0) AS 'media Valor',
-       leituraSensor.leituraDate AS momento_grafico
-FROM empresa
-LEFT JOIN estufa ON empresa.idEmpresa = estufa.fkEmpresa
-LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
-WHERE empresa.idEmpresa = 1
-GROUP BY empresa.idEmpresa, estufa.nome, leituraSensor.leituraDate
-ORDER BY leituraSensor.idLeituraSensor
-LIMIT 7;
-
-sELECT
+-- OUTRO SELECT
+/*
+SELECT
     estufa.nome AS nomeEstufa,
     setor.idSetor,
     subSetor.idSubSetor,
@@ -429,38 +350,51 @@ sELECT
         JOIN leituraSensor 
         ON sensor.idSensor = leituraSensor.fkSensor
            WHERE fkEmpresa = 1 && leituraDate = curDate();	
+*/
+     
+-- OUTRO SELECT
+/*
+select 
+coalesce(avg(leituraSensor.valor), 0), 
+leituraSensor.leituraTime 
+	from leituraSensor 
+	group by leituraTime limit 5;
+*/
            
-           select coalesce(avg(leituraSensor.valor), 0), leituraSensor.leituraTime from leituraSensor group by leituraTime limit 5;
-           
-			SELECT estufa.nome AS 'nome_estufa', leituraSensor.leituraTime AS 'ultima_leitura'
-            FROM estufa
-            LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-            LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-            LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-            LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
-            left join (select coalesce(avg(leituraSensor.valor), 0) as media_leitura, leituraSensor.leituraTime from leituraSensor group by leituraSensor.leituraTime limit 5) as mediasValores
-			on leituraSensor.idLeituraSensor = mediasValores.idLeituraSensor
+-- SALADA
+/*
+SELECT 
+estufa.nome AS 'nome_estufa', 
+leituraSensor.leituraTime AS 'ultima_leitura'
+	FROM estufa
+	LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+	LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+	LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+	LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
+	left join (select coalesce(avg(leituraSensor.valor), 0) as media_leitura, 
+    leituraSensor.leituraTime from leituraSensor group by leituraSensor.leituraTime limit 5) as mediasValores
+	on leituraSensor.idLeituraSensor = mediasValores.idLeituraSensor
             WHERE estufa.fkEmpresa = 1
             GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
             ORDER BY ultima_leitura DESC;
             
-            select estufa.nome as 'nome_estufa', leituraSensor.leituraTime
-            from empresa
-            left join estufa on estufa.fkEmpresa = empresa.idEmpresa
-            left join setor on setor.fkEstufa = estufa.idEstufa
-            left join subSetor on subSetor.fkSetor = setor.idSetor
-            left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
-            left join(select fkSensor, coalesce(round(avg(leituraSensor.valor), 0), 0) as "media_valor" 
-				from leituraSensor
-                group by fkSensor
-			) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
-            left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
-            group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
-            order by leituraSensor.leituraTime DESC;
+select 
+estufa.nome as 'nome_estufa', leituraSensor.leituraTime
+	from empresa
+	left join estufa on estufa.fkEmpresa = empresa.idEmpresa
+	left join setor on setor.fkEstufa = estufa.idEstufa
+	left join subSetor on subSetor.fkSetor = setor.idSetor
+	left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
+	left join(select fkSensor, coalesce(round(avg(leituraSensor.valor), 0), 0) as "media_valor" 
+	
+    from leituraSensor
+	group by fkSensor
+	) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
+	left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
+	group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+	order by leituraSensor.leituraTime DESC;
                 
-            
-            
-                            SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
+            SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
                 FROM estufa
                 LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
                 LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
@@ -469,4 +403,56 @@ sELECT
                 WHERE estufa.fkEmpresa = 1 AND leituraSensor.leituraDate = curDate()
                 GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
                 ORDER BY ultima_leitura DESC;
-          
+*/
+			
+-- select nao sei oq
+/*
+SELECT 
+estufa.nome AS nome_estufa, 
+COUNT(alerta.idAlerta) AS total_alertas
+FROM estufa JOIN setor 
+ON estufa.idEstufa = setor.fkEstufa
+JOIN subsetor 
+ON setor.idSetor = subsetor.fkSetor
+JOIN sensor 
+ON subsetor.idSubsetor = sensor.fkSubSetor
+JOIN leituraSensor
+ON sensor.idSensor = leituraSensor.fkSensor
+JOIN alerta 
+ON leituraSensor.idLeituraSensor = alerta.fkLeituraSensor
+WHERE DATE(leituraSensor.dtLeitura) = CURDATE()
+GROUP BY estufa.idEstufa, estufa.nome
+ORDER BY total_alertas DESC
+LIMIT 3;
+*/
+
+-- INSERT DE MALUCO
+/*
+insert into estufa values
+(null, 'Leaf estufa', 500, 1, 1);
+
+insert into estufa values
+(null, 'socoro jesus', 500, 1, 1);
+*/
+
+-- SELECT CONTAR SETORES 
+/*
+SELECT count(idSetor) as totalSetores, 
+		estufa.idEstufa 
+    from empresa
+    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
+    left join setor on estufa.idEstufa = setor.fkEstufa
+    where idEmpresa = 1
+    group by idEstufa;
+*/
+    
+-- SELECT NAO SEI OQ
+/*
+ select min(leituraSensor.valor), estufa.nomeEstufa, setor.id, sensor.id FROM leitura sensor
+join sensor on leituraSensor.fkSensor = sensor.idSensor
+join subsetor on sensor.fkSubSetor = subSetor.idSubsetor
+join setor on subSetor.fkSetor = setor.idSetor
+join estufa on setor.fkEstufa = estufa.idEstufa
+join empresa on estufa.fkEmpresa = empresa.idEmpresa
+WHERE empresa.idEmpresa = 1 AND leituraSensor.dtLeitura = "2023-05-28 21:24";
+*/
