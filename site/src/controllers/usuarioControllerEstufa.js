@@ -102,10 +102,28 @@ function exibirEstufas(req, res) {
 });
 }
 
+function qtdEstufas(req, res) {
+    var idEmpresa = req.body.idUsuarioServer
+    console.log("controlle qtdEstufas", idEmpresa)
+    usuarioEstufaModel.qtdEstufas(idEmpresa)
+    .then(function (resultado) {
+        if(resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else { 
+            res.status(204).send("nenhum resultado encontrado!")
+        }
+}).catch(function (erro) {
+    console.log(erro);
+    console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
+    res.status(500).json(erro.sqlMessage);
+});
+}
+
 module.exports = {
     cadastrarEstufa,
     testar,
     listar,
     exibirEstufas,
-    rankMaisAlertas
+    rankMaisAlertas,
+    qtdEstufas
 }

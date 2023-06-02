@@ -76,41 +76,38 @@
           <span class="topo">Cadastro de Estufa</span>
         </div>
         <div class="nomeNome">
-          <img src="../../assets/imgs/Ellipse2325.png" />
           <ul class="ul2">
             <span class="ismalendas">
-              <span id="loginUsuario"></span>
-              <span>NomeUsuário</span>
+              <span id="loginUsuario">EMPRESA</span>
             </span>
           </ul>
         </div>
       </div>
       <div class="areaDash">
-        <div>
-          <div class="alertsParametro">
-            <div class="urgente">
-              <img src="../../assets/imgs/vetorUrgente.svg" />
-              <div class="span-urgente">
-                <span class="urgenteText">CRÍTICO</span>
-                <span>350lm - 450lm</span>
-                <span>650lm - 800lm</span>
-              </div>
-            </div>
-            <div class="preocupante">
-              <img src="../../assets/imgs/VectorNewProcupante.svg" width="30px" />
-              <div class="span-preocupante">
-                <span class="criticoText">PREOCUPANTE</span>
-                <span>450lm - 500lm</span>
-                <span>600lm - 650lm</span>
-              </div>
-            </div>
 
-            <div class="adequado">
-              <img src="../../assets/imgs/vetorAdequado.svg" />
-              <div class="span-adequado">
-                <span class="adequadoText">ADEQUADO</span>
-                <span>500lm - 600lm</span>
-              </div>
+        <div class="alertsParametro">
+          <div class="urgente">
+            <img src="../../assets/imgs/vetorUrgente.svg" />
+            <div class="span-urgente">
+              <span class="urgenteText">CRÍTICO</span>
+              <span>350lm - 450lm</span>
+              <span>650lm - 800lm</span>
+            </div>
+          </div>
+          <div class="preocupante">
+            <img src="../../assets/imgs/VectorNewProcupante.svg" width="30px" />
+            <div class="span-preocupante">
+              <span class="criticoText">PREOCUPANTE</span>
+              <span>450lm - 500lm</span>
+              <span>600lm - 650lm</span>
+            </div>
+          </div>
+
+          <div class="adequado">
+            <img src="../../assets/imgs/vetorAdequado.svg" />
+            <div class="span-adequado">
+              <span class="adequadoText">ADEQUADO</span>
+              <span>500lm - 600lm</span>
             </div>
           </div>
         </div>
@@ -173,7 +170,7 @@
                     lista.innerHTML += `
                                             <details class="listaItem">
                                                 <summary>
-                                                    <div class="upperPart">
+                                                    <div id="${listaEstufas[i].idEstufa}" onclick="pegarIdEstufa(this.id)" class="upperPart">
                                                         <span id="estufaTitulo">Estufa ${listaEstufas[i].nome}</span>
                                                         <div class="qtdAlertas" id="quantidade_setor_estufa">
                                                         <span>${listaQTDsetores[i].totalSetores}</span>
@@ -230,4 +227,9 @@
     sessionStorage.setorClicado = id;
     window.location = "subSetoresPage.html"
   }
+
+  function pegarIdEstufa(id) {
+    sessionStorage.estufaClicada = id;
+  }
+
 </script>

@@ -17,14 +17,13 @@ router.post("/obterMenorIndice", function (req, res){
 } )
 
 
-
 router.post("/obterMaiorIndice", function (req, res){
     leituraController.obterMaiorIndice(req, res);
 } )
 
 
-router.post("/obterCaptacoes", function (req, res){
-    leituraController.obterCaptacoes(req, res);
+router.post("/obterUltimasCapturasAlertas", function (req, res){
+    leituraController.obterUltimasCapturasAlertas(req, res);
 })
 
 router.post("/obterSituacao", function (req, res){

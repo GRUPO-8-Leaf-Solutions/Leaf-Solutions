@@ -24,30 +24,24 @@
                         <span>MENU</span>
                     </div>
                     <ul>
-                        <li class="lista destaque">
+                        <li class="lista">
                             <a href="dashboardPage.html">
                                 <i class="uil uil-create-dashboard"></i>
                                 <span class="lista">Dashboard</span>
                             </a>
                         </li>
-                        <li class="lista">
+                        <li class="lista destaque">
                             <a href="estatisticaPage.html">
-                                <i class="uil uil-presentation-line"></i>
+                                <i class="uil uil-presentation-line est"></i>
                                 <span class="lista">Estatística</span>
                             </a>
                         </li>
                         <!-- <li class="lista">
-                            <a href="previsaoPage.html">
-                                <i class="uil uil-chart-pie"></i>
-                                <span class="lista">Previsões</span>
-                            </a>
+                          <a href="historicoPage.html">
+                            <i class="uil uil-history"></i>
+                            <span class="lista">Histórico</span>
+                          </a>
                         </li> -->
-                        <li class="lista">
-                            <a href="historicoPage.html">
-                                <i class="uil uil-history"></i>
-                                <span class="lista">Histórico</span>
-                            </a>
-                        </li>
                     </ul>
                     <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
                         <ul style="height: fit-content;">
@@ -76,7 +70,6 @@
                     <span class="topo">Dashboard</span>
                 </div>
                 <div class="nomeNome">
-                    <img src="../assets/imgs/Ellipse2325.png">
                     <ul class="ul2">
                         <span class="ismalendas">
                             <span id="loginUsuario"></span>
@@ -86,41 +79,39 @@
                 </div>
             </div>
             <div class="areaDash">
-                <div>
-                    <div class="alertsParametro">
-                        <div class="urgente">
-                            <img src="../assets/imgs/vetorUrgente.svg">
-                            <div class="span-urgente">
-                                <span class="urgenteText">CRÍTICO</span>
-                                <span>350lm - 450lm</span>
-                                <span>650lm - 800lm</span>
-                            </div>
+                <div class="alertsParametro">
+                    <div class="urgente">
+                        <img src="../assets/imgs/vetorUrgente.svg">
+                        <div class="span-urgente">
+                            <span class="urgenteText">CRÍTICO</span>
+                            <span>350lm - 450lm</span>
+                            <span>650lm - 800lm</span>
                         </div>
-                        <div class="preocupante">
-                            <img src="../assets/imgs/VectorNewProcupante.svg" width="30px">
-                            <div class="span-preocupante">
-                                <span class="criticoText">PREOCUPANTE</span>
-                                <span>450lm - 500lm</span>
-                                <span>600lm - 650lm</span>
-                            </div>
+                    </div>
+                    <div class="preocupante">
+                        <img src="../assets/imgs/VectorNewProcupante.svg" width="30px">
+                        <div class="span-preocupante">
+                            <span class="criticoText">PREOCUPANTE</span>
+                            <span>450lm - 500lm</span>
+                            <span>600lm - 650lm</span>
                         </div>
-                        <!-- <div class="critico">
-                            <img src="../imgs/vectorPreocupante.svg" width="30px">
-                            <span class="preocupanteText">PREOCUPANTE</span>
-                        </div> -->
-                        <div class="adequado">
-                            <img src="../assets/imgs/vetorAdequado.svg">
-                            <div class="span-adequado">
-                                <span class="adequadoText">ADEQUADO</span>
-                                <span>500lm - 600lm</span>
-                            </div>
+                    </div>
+                    <!-- <div class="critico">
+                        <img src="../imgs/vectorPreocupante.svg" width="30px">
+                        <span class="preocupanteText">PREOCUPANTE</span>
+                    </div> -->
+                    <div class="adequado">
+                        <img src="../assets/imgs/vetorAdequado.svg">
+                        <div class="span-adequado">
+                            <span class="adequadoText">ADEQUADO</span>
+                            <span>500lm - 600lm</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="gap_entre_buscas_listaSensores">
-            <div class="buscaInputListaSSos">
-                <!-- <div class="buscas">
+                <div class="buscaInputListaSSos">
+                    <!-- <div class="buscas">
                     <div class="subsetor">
                         <div class="buscar_subsetor">
                             <div>
@@ -147,32 +138,38 @@
                     </div>
                 </div> -->
 
-                <div class="subsetor_sensor_grafico">
-                    <div class="gap_entre_subsetores_sensores">
-                        <div id="pai_de_todo_subsetor" class="pai_de_todo_subsetor">
-                            <div class="titulo_subsetor">
-                                Subsetores
-                            </div>
+                    <div class="subsetor_sensor_grafico">
+                        <div class="gap_entre_subsetores_sensores">
 
-                            
+                            <div id="pai_de_todo_subsetor" class="pai_de_todo_subsetor">
 
-                        </div>
+                                <div class="titulo_subsetor">
+                                    Subsetores
+                                </div>
 
-                        <div  class="pai_de_todo_sensor">
-                            <div class="titulo_sensor">
-                                <span>
-                                    Sensores
-                                </span>
-                            </div>
-                            <div class="listaSensores" id="listaSensores">
+                                <div class="listaSubSetor" id="listaSubSetor">
+
+                                </div>
 
                             </div>
 
-                            
+                            <div class="pai_de_todo_sensor">
+
+                                <div class="titulo_sensor">
+                                    <span>
+                                        Sensores
+                                    </span>
+                                </div>
+
+                                <div class="listaSensor" id="listaSensor">
+
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
                 <div class="segunda_parte">
                     <div class="alertas">
@@ -181,7 +178,7 @@
                                 <span>Status do sensor</span>
                             </div>
                             <div class="ligado" id="status_sensor">
-                                <!-- LIGADO -->
+                                LIGADO
                             </div>
                         </div>
                         <div class="segundo_alerta">
@@ -313,8 +310,12 @@
 
 <script>
     const ctx = document.getElementById('myChart');
-    var idSetorVar = sessionStorage.setorClicado
+
     // PRECISAMOS DO idSetor E  idSubSetor
+    var idSetorVar = sessionStorage.setorClicado;
+    var idEstufa = sessionStorage.estufaClicada;
+    var idSubSetor = sessionStorage.subSetorClicado;
+    var idEmpresa = sessionStorage.idUsuario;
 
 
     new Chart(ctx, {
@@ -353,34 +354,35 @@
     //     })
     // }
 
-    window.addEventListener("load", ()=>{
-        BuscaSubSetor()
+    window.addEventListener("load", () => {
+        BuscarSubSetor()
     })
 
-    function BuscaSubSetor() {
+    function BuscarSubSetor() {
         fetch("/subSetores/buscarSubSetor", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                idSubSetorServer: idSetorVar
+
+                idSubSetorServer: idSetorVar    
+
             })
         }).then(function (listaSubSetores) {
             console.log("resposta: ", listaSubSetores);
             if (listaSubSetores.ok) {
                 listaSubSetores.json().then((listaSubSetores) => {
                     console.log(listaSubSetores)
-                for (let i = 0; i < listaSubSetores.length; i++) {
-                    var subsetor = listaSubSetores[i];
-                    ListaSensores
-                    .innerHTML += `
-                    <div  id="${subsetor.Subsetor}" class="subsetor_critico" onclick="buscarSensor(this.id)">
+                    for (let i = 0; i < listaSubSetores.length; i++) {
+                        var subsetor = listaSubSetores[i];
+                        listaSubSetor
+                            .innerHTML += `
+                    <div onclick="pegarIdSubSetor(this.id)" id="${subsetor.SubSetor}" class="subsetor_critico">
                     <span>Subsetor ${i + 1} </span>
                     </div>
                     `
-                    
-                }
+                    }
                 })
             } else {
                 throw ("Houve um erro na API ou em trazer os dados !!")
@@ -390,14 +392,14 @@
         });
         return false;
     }
-    
+
 
     // <div class="subsetor_critico" id="lista_subsetores">
     //     <span>Subsetor <span id="idSubSetor"></span></span>
     // </div>
 
     function buscarSensor(idSubSetor) {
-        
+
         fetch("/subSetores/buscarSensor", {
             method: "POST",
             headers: {
@@ -406,26 +408,26 @@
             body: JSON.stringify({
 
 
-                idSubSetorServer:idSubSetor
+                idSubSetorServer: sessionStorage.subSetorClicado
 
 
             })
         }).then(function (listaSensores) {
             console.log("resposta: ", listaSensores);
             if (listaSensores.ok) {
-                listaSensores.json().then((listaSensores)=>{
+                listaSensores.json().then((listaSensores) => {
                     console.log(listaSensores)
                     for (let i = 0; i < listaSensores.length; i++) {
                         var sensorAtual = listaSensores[i];
-                        
-                        pai_de_todo_sensor.innerHTML = `
-                        <div class="lista_sensor" onclick="pegarDadosSensor(this.id)" id="${sensorAtual.Sensor}">
+                        console.log("Lista de sensores" + listaSensores)
+                        listaSensor.innerHTML = `
+                        <div class="lista_sensor" onclick="pegarIdSensor(this.id)" id="${sensorAtual.Sensor}">
                                 <div>
-                                    <img src="../assets/imgs/alert-icon.svg">
+                                    <img class="imgSensor" src="../assets/imgs/alert-icon.svg">
                                 </div>
 
                                 <div>
-                                    <span>Sensor <span id="idSensor">Sensor ${sensorAtual.Sensor}</span></span>
+                                    <span>Sensor <span id="idSensor">${i + 1}</span></span>
                                 </div>
                                 <label>
                                     <input type="checkbox" class="toggle_input">
@@ -450,5 +452,66 @@
 
 
     }
+
+
+
+    function pegarIdSubSetor(id) {
+        sessionStorage.subSetorClicado = id;
+        buscarSensor()
+    }
+
+    function pegarIdSensor(id) {
+        sessionStorage.sensorClicado = id;
+    }
+
+
+
+    function menorCaptacao() {
+
+
+        fetch("/subSetores/menorCaptacao", {
+            method: "post",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idEmpresa,
+
+            })
+        }).then((listaMenores) => {
+            listaMenores.json().then((listaMenores) => {
+                console.log(listaMenores)
+            })
+        })
+    }
+
+    function maiorCaptacao() {
+
+
+        fetch("/subSetores/maiorCaptacao", {
+            method: "post",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idEmpresa,
+                idSetorServer: idSetorVar,
+                idEstufaServer: idEstufa,
+                idSubSetorServer: idSubSetor,
+                idSensorServer: idSensor
+
+            }),
+        }).then((maiorIndice) => {
+            maiorIndice.json().then((maiorIndice) => {
+                console.log(maiorIndice)
+
+                maior_intensidade_captada.innerHTML = `${maiorIndice[0].valor_maximo}lm`
+                horario_captacao_maior_captura.innerHTML = `${maiorIndice[0].horaLeitura}`
+
+            })
+
+        })
+    }
+
 
 </script>

@@ -49,16 +49,16 @@ function buscarUltimasMedidas(idEmpresa, limiteLinhas) {
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-          var instrucaoSql = `
+        var instrucaoSql = `
           SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
           FROM estufa
           JOIN setor ON estufa.idEstufa = setor.fkEstufa
-          LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-          LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-          LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
-          WHERE estufa.fkEmpresa = 1
+          JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+          JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+          JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
+          WHERE estufa.fkEmpresa = ${idEmpresa}
           GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
-          ORDER BY ultima_leitura DESC;
+          ORDER BY ultima_leitura DESC limit ${limiteLinhas * 5};
           `
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -103,11 +103,56 @@ function tempoReal(idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-function obterCaptacoes(idEmpresa) {
+function obterUltimasCapturasAlertas(idEmpresa) {
+
     var instrucao = `SELECT
     estufa.nome AS nomeEstufa,
     setor.idSetor,
     subSetor.idSubSetor,
+    sensor.idSensor,
+    leituraSensor.valor AS indiceAtual,
+    leituraSensor.leituraTime AS horarioLeitura
+    FROM estufa
+    JOIN setor ON estufa.idEstufa = setor.fkEstufa
+    JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+    JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+    JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor
+    JOIN (
+        SELECT
+            fkSensor,
+            MAX(leituraTime) AS ultimaLeitura
+        FROM leituraSensor
+        GROUP BY fkSensor) ultimaLeitura ON leituraSensor.fkSensor = ultimaLeitura.fkSensor && leituraSensor.leituraTime = ultimaLeitura.ultimaLeitura
+    WHERE estufa.fkEmpresa = ${idEmpresa};`
+
+    // var instrucao = `SELECT
+    // estufa.nome AS nomeEstufa,
+    // setor.idSetor,
+    // subSetor.idSubSetor,
+    // leituraSensor.valor AS indiceAtual,
+    // leituraTime as horarioLeitura
+    //     FROM estufa JOIN setor 
+    //     ON estufa.idEstufa = setor.fkEstufa
+    //     JOIN subSetor 
+    //     ON setor.idSetor = subSetor.fkSetor
+    //     JOIN sensor 
+    //     ON subSetor.idSubSetor = sensor.fkSubSetor
+    //     JOIN leituraSensor 
+    //     ON sensor.idSensor = leituraSensor.fkSensor
+    //        WHERE fkEmpresa = ${idEmpresa} && leituraDate = curDate();`
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function obterSituacao(idEmpresa) {
+    var instrucao = `
+    select idSensor
+    from (SELECT
+    estufa.nome AS nomeEstufa,
+    setor.idSetor,
+    subSetor.idSubSetor,
+    sensor.idSensor,
     leituraSensor.valor AS indiceAtual,
     leituraTime as horarioLeitura
         FROM estufa JOIN setor 
@@ -118,29 +163,7 @@ function obterCaptacoes(idEmpresa) {
         ON subSetor.idSubSetor = sensor.fkSubSetor
         JOIN leituraSensor 
         ON sensor.idSensor = leituraSensor.fkSensor
-           WHERE fkEmpresa = ${idEmpresa} && leituraDate = curDate()`
-
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-
-function obterSituacao(idEmpresa){
-    var instrucao = `
-    select 
-	count(a.Alerta)
-    from(
-			select
-			estufa.nome Estufa,
-			fkAlerta Alerta,
-			count(fkAlerta) qtde
-			from estufa 
-			join setor on idEstufa = fkEstufa 
-			join subSetor on idSetor = fkSetor 
-			join sensor on idSubSetor = fkSubSetor
-			join leituraSensor on idSensor = fkSensor
-            where fkEmpresa = ${idEmpresa} && leituraDate = curDate()
-            group by estufa.nome, fkAlerta) as a 
-            group by Alerta;
+           WHERE fkEmpresa = 1 && leituraDate = curDate()) as estufas;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -149,8 +172,9 @@ function obterSituacao(idEmpresa){
 module.exports = {
     buscarUltimasMedidas,
     tempoReal,
-    obterCaptacoes,
+    obterUltimasCapturasAlertas,
     obterMenorIndice,
     obterMaiorIndice,
     obterSituacao
 };
+

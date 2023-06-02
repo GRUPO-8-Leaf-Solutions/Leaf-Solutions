@@ -22,6 +22,10 @@ router.post("/exibirEstufas", function (req, res) {
     usuarioControllerEstufa.exibirEstufas(req, res);
 });
 
+router.post("/qtdEstufas", function (req, res){
+    usuarioControllerEstufa.qtdEstufas(req, res);
+});
+
 router.post("/rankMaisAlertas", function(req, res){
     usuarioControllerEstufa.rankMaisAlertas(req, res);
 });

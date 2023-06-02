@@ -1,8 +1,8 @@
 var database = require("../database/config")
 
 function cadastrarEstufa(nome, area) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEstufa():",nome, area);
-    
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEstufa():", nome, area);
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
 
@@ -12,6 +12,23 @@ function cadastrarEstufa(nome, area) {
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
+}
+
+function qtdEstufas(idEmpresa) {
+    var instrucao  = `
+    SELECT 
+        idEstufa ID,
+        estufa.nome Estufa,
+        count(leituraSensor.valor) Valor
+	        FROM estufa
+        	JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        	JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        	JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        	JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor 
+        	WHERE estufa.fkEmpresa = ${idEmpresa}
+            GROUP BY idEstufa, estufa.nome;`
+        
+        return database.executar(instrucao)
 }
 
 function listar() {
@@ -29,7 +46,7 @@ function exibirEstufas(idUsuarioServer) {
     return database.executar(instrucao);
 }
 
-function rankMaisAlertas(idUsuarioServer){
+function rankMaisAlertas(idUsuarioServer) {
     var instrucao = `
     SELECT COUNT(leituraSensor.idLeituraSensor) AS total_leituras, estufa.nome AS nome_estufa
 FROM leituraSensor
@@ -50,5 +67,6 @@ module.exports = {
     cadastrarEstufa,
     listar,
     exibirEstufas,
-    rankMaisAlertas
+    rankMaisAlertas,
+    qtdEstufas
 };

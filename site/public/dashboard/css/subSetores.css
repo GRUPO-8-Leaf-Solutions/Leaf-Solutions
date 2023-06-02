@@ -77,7 +77,11 @@ body {
     color: rgba(6, 67, 6, 1);
 }
 
-.uil-create-dashboard:before {
+/* .uil-create-dashboard:before {
+    color: rgba(6, 67, 6, 1);
+} */
+
+.est.uil-presentation-line:before {
     color: rgba(6, 67, 6, 1);
 }
 
@@ -239,7 +243,7 @@ li a {
 }
 
 .top {
-    height: 60px;
+    height: 70px;
     background: linear-gradient(90deg, #0F310E 0%, #20571E 100%);
     width: 100%;
     align-items: center;
@@ -271,28 +275,21 @@ li a {
 }
 
 .areaDash {
-    /* height: 10%; */
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 12%;
+    height: 15%;
     background: #FEFFFB;
     box-shadow: 0px -9px 30px rgba(0, 0, 0, 0.3);
 }
 
 .alertsParametro {
     display: flex;
-    gap: 40px;
+    width: 45%;
     justify-content: space-between;
 }
 
 .alertsParametro .urgente {
-    /*     width: 188px; */
-    height: 57px;
-    /* 
-        box-shadow: 0px 0px 8px 1px rgba(78, 0, 0, 0.54); */
-    /*     border-radius: 36.5px;
-        border-radius: 36.5px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -304,6 +301,13 @@ li a {
     display: flex;
     align-items: center;
     color: #871616;
+}
+
+.alertsParametro .preocupante {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .alertsParametro .preocupante .span-preocupante {
@@ -321,24 +325,8 @@ li a {
 }
 
 .alertsParametro .critico {
-    /*     width: 188px; */
     height: 57px;
     background: rgba(255, 209, 157, 0.014);
-    /* 
-        box-shadow: 0px 0px 8px rgba(122, 74, 0, 0.69); */
-    border-radius: 36.5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.alertsParametro .preocupante {
-    /*     width: 188px; */
-    /* height: 57px; */
-    background: rgba(254, 254, 245, 0.21);
-    /* 
-        box-shadow: 0px 0px 8px 1px rgba(78, 70, 0, 0.69); */
     border-radius: 36.5px;
     display: flex;
     align-items: center;
@@ -347,11 +335,7 @@ li a {
 }
 
 .alertsParametro .adequado {
-    /* width: 188px; */
-    /* height: 57px; */
     background: rgba(245, 254, 245, 0.21);
-    /* 
-        box-shadow: 0px 0px 8px 1px rgba(0, 78, 8, 0.69); */
     border-radius: 36.5px;
     display: flex;
     align-items: center;
@@ -383,7 +367,7 @@ li a {
     flex-direction: column;
     border: #d9d9d9 3px solid;
     border-radius: 10px;
-    width: 50%;
+    width: 11vw;
     /* background-color: red; */
 }
 
@@ -399,40 +383,113 @@ li a {
     border-bottom: #d9d9d9 3px solid;
 }
 
+
+@keyframes estufaCritica {
+
+    0% {
+        background: rgba(215, 0, 0, 0.17);
+        border-left: #A80305 solid 2px;
+        box-shadow: inset 1px 1px 45px 0px#FF000A;
+    }
+
+    50% {
+        background: rgba(215, 0, 0, 0.17);
+        border-left: #A80305 solid 2px;
+        border-bottom: 2px #B9B9B9 solid;
+        box-shadow: inset 1px 1px 25px 0px#FF000A;
+    }
+
+    100% {
+        background: rgba(215, 0, 0, 0.17);
+        border-left: #A80305 solid 2px;
+        box-shadow: inset 1px 1px 45px 0px#FF000A;
+    }
+
+
+}
+
 .subsetor_critico {
-    height: 50px;
-    background: rgba(215, 0, 0, 0.17);
-    border-left: #A80303 solid 3px;
+    animation-name: estufaCritica;
+    animation-duration: 1.5s;
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
-    box-shadow: inset 4px 0px 12px 0px#FF0000;
+    height: 50px;
+    animation: estufaCritica 1.5s infinite
 }
 
 .subsetor_preocupante {
-    height: 50px;
+    animation-name: estufaPreocupante;
+    animation-duration: 1.5s;
     display: flex;
     align-items: center;
-    border-left: #A8A103 solid 3px;
-    background: #F6EED1;
     justify-content: center;
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
-    box-shadow: inset 4px 0px 12px 0px#A8A103;
+    height: 50px;
+    animation: estufaPreocupante 1.5s infinite
+}
+
+@keyframes estufaPreocupante {
+
+    0% {
+        background: rgba(255, 215, 0, .17);
+        border-left: #FFC006 solid 2px;
+        box-shadow: inset 1px 1px 45px 0px#FFFF0A;
+    }
+
+    50% {
+        background: rgba(255, 215, 0, .17);
+        border-left: #FFC006 solid 2px;
+        border-bottom: 2px #B9B9B9 solid;
+        box-shadow: inset 1px 1px 25px 0px#FFFF0A;
+    }
+
+    100% {
+        background: rgba(255, 215, 0, .17);
+        border-left: #FFC006 solid 2px;
+        box-shadow: inset 1px 1px 45px 0px#FFFF0A;
+    }
+
+
+}
+
+@keyframes estufaAdequado {
+
+    0% {
+        background: rgba(17, 215, 0, 0.17);
+        border-left: #4CA803 solid 2px;
+        box-shadow: inset 1px 1px 45px 0px#4CA803;
+    }
+
+    50% {
+        background: rgba(17, 215, 0, 0.17);
+        border-left: #4CA803 solid 2px;
+        border-bottom: 2px #B9B9B9 solid;
+        box-shadow: inset 1px 1px 25px 0px#4CA803;
+    }
+
+    100% {
+        background: rgba(17, 215, 0, 0.17);
+        border-left: #4CA803 solid 2px;
+        box-shadow: inset 1px 1px 45px 0px#4CA803;
+    }
+
+
 }
 
 .subsetor_adequado {
-    height: 50px;
+    animation-name: estufaAdequado;
+    animation-duration: 1.5s;
     display: flex;
     align-items: center;
-    border-left: #4CA803 solid 3px;
-    background: rgba(17, 215, 0, 0.17);
     justify-content: center;
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
-    box-shadow: inset 4px 0px 12px 0px#4CA803;
+    height: 50px;
+    animation: estufaAdequado 1.5s infinite
 }
 
 .buscas {
@@ -467,10 +524,10 @@ li a {
     flex-direction: column;
     border: 3px solid #d9d9d9;
     border-radius: 10px;
-    width: 50%;
+    width: 11vw;
 }
 
-.listaSensores{
+.listaSensores {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -489,13 +546,17 @@ li a {
 
 .lista_sensor {
     display: flex;
-    gap: 15px;
+    gap: 8px;
     font-size: 18px;
     height: 30px;
     border-bottom: #d9d9d9 solid 3px;
     height: 50px;
     justify-content: center;
     align-items: center;
+}
+
+.imgSensor {
+    display: flex;
 }
 
 .subsetor_sensor_grafico {
@@ -508,15 +569,16 @@ li a {
 .gap_entre_buscas_listaSensores {
     display: flex;
     gap: 100px;
+    padding: 25px;
 }
 
 .gap_entre_subsetores_sensores {
     display: flex;
-    width: 35%;
+    width: 45%;
     gap: 5px;
 }
 
-.buscaInputListaSSos{
+.buscaInputListaSSos {
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -541,18 +603,26 @@ li a {
 
 .primeiro_alerta {
     width: 230px;
-    height: 80%;
+    height: 65px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 10px;
     border-radius: 45.5px;
     border: #52FF00 3px solid;
+    gap: 2px;
+    padding: 7px;
 }
 
 .titulo_primeiro_alerta {
     color: #69885F;
+}
+
+.status_sensor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%
 }
 
 .ligado {
@@ -561,14 +631,19 @@ li a {
 
 .segundo_alerta {
     width: 300px;
-    height: 80%;
+    height: 65px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 7px;
     border-radius: 45.5px;
     border: #52FF00 3px solid;
+    gap: 2px;
+    padding: 7px;
+}
+
+.segundo_alerta img {
+    height: 22px;
 }
 
 .titulo_segundo_alerta {
@@ -576,6 +651,7 @@ li a {
 }
 
 .intensidade {
+    height: 22px;
     display: flex;
     gap: 10px;
     font-size: 20px;
@@ -596,7 +672,7 @@ li a {
 .cadeia_KPI {
     display: flex;
     justify-content: space-between;
-    padding: 16.5px 40px 0px 40px ;
+    padding: 16.5px 40px 0px 40px;
 }
 
 .KPI_esquerda {
@@ -615,6 +691,7 @@ li a {
     border: #FF0000 2px solid;
     border-radius: 10px;
     color: #C63535;
+    padding: 7px;
 }
 
 .ajuste_KPI {
@@ -631,6 +708,7 @@ li a {
     border: #FF0000 2px solid;
     border-radius: 10px;
     color: #C63535;
+    padding: 7px;
 }
 
 .KPI_direita {
@@ -659,6 +737,7 @@ li a {
     border: #53AC50 solid 2px;
     border-radius: 10px;
     color: #409F40;
+    padding: 7px;
 }
 
 .KPI3_direita {
@@ -668,8 +747,9 @@ li a {
     align-items: center;
     gap: 5px;
     border: #CCA92B solid 2px;
-    border-radius: 10px;   
+    border-radius: 10px;
     color: #CCA92B;
+    padding: 7px;
 }
 
 .conjunto_KPI {
@@ -685,6 +765,7 @@ li a {
     color: #C63535;
     border: 1px solid #C63535;
     border-radius: 18px;
+    padding: 7px;
 }
 
 .KPI_1_2 {
@@ -695,6 +776,7 @@ li a {
     color: #4285F4;
     border: 1px solid #4285F4;
     border-radius: 18px;
+    padding: 7px;
 }
 
 .slider {
@@ -724,7 +806,7 @@ li a {
     background: #5AA469;
 }
 
-.toggle_input:checked ~ .slider > .button {
+.toggle_input:checked~.slider>.button {
     background: #d9d9d9;
     left: 23px;
 }
