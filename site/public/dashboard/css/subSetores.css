@@ -501,13 +501,13 @@ li a {
 .subsetor_sensor_grafico {
     display: flex;
     padding-left: 30px;
-    width: 100%;
+    width: 55vw;
     /* background-color: violet; */
 }
 
 .gap_entre_buscas_listaSensores {
     display: flex;
-    gap: 10px;
+    gap: 100px;
 }
 
 .gap_entre_subsetores_sensores {
@@ -520,6 +520,8 @@ li a {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    width: 27%;
+    padding: 5px;
 }
 
 .segunda_parte {
