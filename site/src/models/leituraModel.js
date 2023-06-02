@@ -1,6 +1,5 @@
 var database = require("../database/config")
 
-
 function obterMenorIndice(idEmpresa) {
     var instrucao = `
     SELECT MIN(leituraSensor.valor) AS valor_minimo,
@@ -90,6 +89,7 @@ function tempoReal(idEmpresa) {
             group by fkSensor
         ) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
         left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
+        where idEmpresa = ${idEmpresa}
         group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
         order by leituraSensor.leituraTime DESC;
             ;

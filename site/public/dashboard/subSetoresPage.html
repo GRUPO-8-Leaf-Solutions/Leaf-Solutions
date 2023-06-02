@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/subSetores.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="../js/funcoes.js">
 </head>
 
 <body>
@@ -118,14 +119,17 @@
                 </div>
             </div>
             <div class="gap_entre_buscas_listaSensores">
-                <div class="buscas">
+            <div class="buscaInputListaSSos">
+                <!-- <div class="buscas">
                     <div class="subsetor">
                         <div class="buscar_subsetor">
                             <div>
                                 <img src="../assets/imgs/Vector.svg">
                             </div>
                             <div>
-                                Buscar subsetor
+                                <span>
+                                    Buscar subsetor
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -135,231 +139,164 @@
                                 <img src="../assets/imgs/Vector.svg">
                             </div>
                             <div>
-                                Buscar sensor
+                                <span>
+                                    Buscar sensor
+                                </span>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="subsetor_sensor_grafico">
                     <div class="gap_entre_subsetores_sensores">
-                        <div class="pai_de_todo_subsetor">
+                        <div id="pai_de_todo_subsetor" class="pai_de_todo_subsetor">
                             <div class="titulo_subsetor">
                                 Subsetores
                             </div>
-                            <div class="subsetor_critico" id="lista_subsetores">
-                                Subsetor 1
-                            </div>
-                            <!-- <div class="subsetor_critico">
-                                Subsetor 2
-                            </div>
-                            <div class="subsetor_critico">
-                                Subsetor 3
-                            </div>
-                            <div class="subsetor_critico">
-                                Subsetor 4
-                            </div>
-                            <div class="subsetor_critico">
-                                Subsetor 5
-                            </div>
-                            <div class="subsetor_critico">
-                                Subsetor 6
-                            </div>
-                            <div class="subsetor_preocupante">
-                                Subsetor 7
-                            </div>
-                            <div class="subsetor_preocupante">
-                                Subsetor 8
-                            </div>
-                            <div class="subsetor_adequado">
-                                Subsetor 9
-                            </div> -->
+
+                            
+
                         </div>
 
-                        <div class="pai_de_todo_sensor">
+                        <div  class="pai_de_todo_sensor">
                             <div class="titulo_sensor">
-                                Sensores
+                                <span>
+                                    Sensores
+                                </span>
                             </div>
-                            <div class="lista_sensor" id="lista_sensor">
-                                <div>
-                                    <img src="../assets/imgs/alert-icon.svg">
-                                </div>
-                                <div id="lista_sensores">
-                                    Sensor 1
-                                </div>
-                                <label>
-                                    <input type="checkbox" class="toggle_input">
-                                <div class="toggle-wrapper">
-                                    <div class="slider">
-                                        <button class="button"></button>
-                                    </div>
-                                
-                                </label>
-                                </div>
-                            </div>
-                            <!-- <div class="lista_sensor">
-                                <div>
-                                    <img src="../assets/imgs/vetorAdequado.svg" style="height: 21px;">
-                                </div>
+                            <div class="listaSensores" id="listaSensores">
 
-                                <div>
-                                    Sensor 2
-                                </div>
-                                <div>
-                                    <img src="../assets/imgs/iconSensorLigado.svg">
-                                </div>
                             </div>
-                            <div class="lista_sensor">
-                                <div>
-                                    <img src="../assets/imgs/vetorAdequado.svg" style="height: 21px;">
-                                </div>
 
-                                <div>
-                                    Sensor 3
-                                </div>
-                                <div>
-                                    <img src="../assets/imgs/iconSensorLigado.svg">
-                                </div>
-                            </div>
-                            <div class="lista_sensor">
-                                <div>
-                                    <img src="../assets/imgs/vetorAdequado.svg" style="height: 21px;">
-                                </div>
-
-                                <div>
-                                    Sensor 4
-                                </div>
-                                <div>
-                                    <img src="../assets/imgs/iconSensorLigado.svg">
-                                </div>
-                            </div>
-                            <div class="lista_sensor">
-                                <div>
-                                    <img src="../assets/imgs/vetorAdequado.svg" style="height: 21px;">
-                                </div>
-
-                                <div>
-                                    Sensor 5
-                                </div>
-                                <div>
-                                    <img src="../assets/imgs/iconSensorDesligado.svg">
-                                </div>
-                            </div> -->
+                            
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="segunda_parte">
-                        <div class="alertas">
-                            <div class="primeiro_alerta">
-                                <div class="titulo_primeiro_alerta">
-                                    Status do sensor
-                                </div>
-                                <div class="ligado" id="status_sensor">
-                                    <!-- LIGADO -->
-                                </div>
+                <div class="segunda_parte">
+                    <div class="alertas">
+                        <div class="primeiro_alerta">
+                            <div class="titulo_primeiro_alerta">
+                                <span>Status do sensor</span>
                             </div>
-                            <div class="segundo_alerta">
-                                <div class="titulo_segundo_alerta">
-                                    Valor atual de luminosidade
+                            <div class="ligado" id="status_sensor">
+                                <!-- LIGADO -->
+                            </div>
+                        </div>
+                        <div class="segundo_alerta">
+                            <div class="titulo_segundo_alerta">
+                                <span>Valor atual de luminosidade</span>
+                            </div>
+                            <div class="intensidade">
+                                <div>
+                                    <img src="../assets/imgs/vetorAdequado.svg" style="height: 25px">
                                 </div>
-                                <div class="intensidade">
-                                    <div>
-                                        <img src="../assets/imgs/vetorAdequado.svg" style="height: 25px">
-                                    </div>
-                                    <div id="intesidade_atual_sensor">
-                                        <!-- 520 -->
-                                    </div>
+                                <div id="intesidade_atual_sensor">
+                                    <!-- INTERNSIDADE ATUAL DO SENSOR -->
                                 </div>
                             </div>
                         </div>
-                        <div class="ajustes_graficos">
-                            <div class="grafico">
-                                <canvas id="myChart"></canvas>
-                            </div>
+                    </div>
+                    <div class="ajustes_graficos">
+                        <div class="grafico">
+                            <canvas id="myChart"></canvas>
                         </div>
-                        <div class="cadeia_KPI">
-                            <div class="KPI_esquerda">
-                                <div class="KPI1_esquerda">
+                    </div>
+                    <div class="cadeia_KPI">
+                        <div class="KPI_esquerda">
+                            <div class="KPI1_esquerda">
+                                <div>
+                                    <span>Maior intensidade captada</span>
+                                </div>
+                                <div class="ajuste_KPI">
                                     <div>
-                                        Maior intensidade captada
+                                        <img src="../assets/imgs/alert-icon.svg">
                                     </div>
-                                    <div class="ajuste_KPI">
-                                        <div>
-                                            <img src="../assets/imgs/alert-icon.svg">
-                                        </div>
-                                        <div id="maior_intensidade_captada">
-                                            <!-- 820lm -->
-                                        </div>
-                                    </div>
-                                    <div class="ajuste_KPI">
-                                        <div>
-                                            <img src="../assets/imgs/relogio.svg">
-                                        </div>
-                                        <div id="horario_captacao_maior_captura">
-                                            <!-- 09:35 -->
-                                        </div>
+                                    <div id="maior_intensidade_captada">
+                                        <!-- MAIOR INTENSIDADE CAPTADA -->
                                     </div>
                                 </div>
-                                <div class="KPI2_esquerda">
+                                <div class="ajuste_KPI">
                                     <div>
+                                        <img src="../assets/imgs/relogio.svg">
+                                    </div>
+                                    <div id="horario_captacao_maior_captura">
+                                        <!-- HORARIO DA MAIOR CAPTURA  -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="KPI2_esquerda">
+                                <div>
+                                    <span>
                                         Menor intensidade captada
+                                    </span>
+                                </div>
+                                <div class="ajuste_KPI">
+                                    <div>
+                                        <img src="../assets/imgs/alert-icon.svg">
                                     </div>
-                                    <div class="ajuste_KPI">
-                                        <div>
-                                            <img src="../assets/imgs/alert-icon.svg">
-                                        </div>
-                                        <div id="menor_intensidade_captada">
-                                            <!-- 220lm -->
-                                        </div>
+                                    <div id="menor_intensidade_captada">
+                                        <!-- MENOR INTENSIDADE CAPTADA -->
                                     </div>
-                                    <div class="ajuste_KPI">
-                                        <div>
-                                            <img src="../assets/imgs/relogio.svg">
-                                        </div>
-                                        <div id="horario_captacao_menor_captura">
-                                            <!-- 06:20 -->
-                                        </div>
+                                </div>
+                                <div class="ajuste_KPI">
+                                    <div>
+                                        <img src="../assets/imgs/relogio.svg">
+                                    </div>
+                                    <div id="horario_captacao_menor_captura">
+                                        <!-- HORARIO DA MENOR CAPTURA -->
                                     </div>
                                 </div>
                             </div>
-                            <div class="KPI_direita">
-                                <div class="conjunto_KPI">
-                                    <div class="KPI_1_1">
-                                        <div>
+                        </div>
+                        <div class="KPI_direita">
+                            <div class="conjunto_KPI">
+                                <div class="KPI_1_1">
+                                    <div>
+                                        <span>
                                             Tempo fora do ideal
-                                        </div>
-                                        <div id="fora_ideal_sensor">
-                                            <!-- 10h 30m -->
-                                        </div>
+                                        </span>
                                     </div>
-                                    <div class="KPI_1_2">
-                                        <div>
+                                    <div id="fora_ideal_sensor">
+                                        <!-- 10h 30m // QUANTIDADE TEMPO FORA DO IDEAL -->
+                                    </div>
+                                </div>
+                                <div class="KPI_1_2">
+                                    <div>
+                                        <span>
                                             Tempo dentro do ideal
-                                        </div>
-                                        <div id="dentro_ideal_sensor">
-                                            <!-- 2h 40m -->
-                                        </div>
+                                        </span>
+                                    </div>
+                                    <div id="dentro_ideal_sensor">
+                                        <!-- 2h 40m QUANTIDADE TEMPO DENTRO DO IDEAL-->
                                     </div>
                                 </div>
-                                <div class="KPI2_direita">
-                                    <div>
+                            </div>
+                            <div class="KPI2_direita">
+                                <div>
+                                    <span>
                                         Tempo ideal de exposição ao sol
-                                    </div>
-                                    <div>
-                                        16h
-                                    </div>
+                                    </span>
                                 </div>
-                                <div class="KPI3_direita">
-                                    <div>
+                                <div>
+                                    <span>
+                                        16h
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="KPI3_direita">
+                                <div>
+                                    <span>
                                         Tempo faltante para o ideal
+                                    </span>
+                                </div>
+                                <div class="ajuste_KPI">
+                                    <div>
+                                        <img src="../assets/imgs/vectorPreocupante.svg" style="height: 20px">
                                     </div>
-                                    <div class="ajuste_KPI">
-                                        <div>
-                                            <img src="../assets/imgs/vectorPreocupante.svg" style="height: 20px">
-                                        </div>
-                                        <div id="tempo_faltante_para_ideal">
-                                            <!-- 6h 30m -->
-                                        </div>
+                                    <div id="tempo_faltante_para_ideal">
+                                        <!-- 6h 30m TEMPO RESTANTE PARA CHEGAR NO IDEAL-->
                                     </div>
                                 </div>
                             </div>
@@ -369,12 +306,16 @@
             </div>
         </div>
     </div>
+    </div>
 </body>
 
 </html>
 
 <script>
     const ctx = document.getElementById('myChart');
+    var idSetorVar = sessionStorage.setorClicado
+    // PRECISAMOS DO idSetor E  idSubSetor
+
 
     new Chart(ctx, {
         type: 'line',
@@ -394,4 +335,120 @@
             }
         }
     });
+
+
+    // function buscaSubSetor (){
+    //     fetch("/subSetores/buscaSensor", {
+    //         method: "post",
+    //         headers: {
+    //             "Content-type": "application/json"
+    //         },
+    //         body:JSON.stringify({
+    //             idSubSetorServer: idSetorVar
+    //         }),
+    //     }).then((listaSubSetores)=>{
+    //         listaSubSetores.json().then((listaSubSetores)=>{
+    //             console.log(listaSubSetores)
+    //         })
+    //     })
+    // }
+
+    window.addEventListener("load", ()=>{
+        BuscaSubSetor()
+    })
+
+    function BuscaSubSetor() {
+        fetch("/subSetores/buscarSubSetor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idSubSetorServer: idSetorVar
+            })
+        }).then(function (listaSubSetores) {
+            console.log("resposta: ", listaSubSetores);
+            if (listaSubSetores.ok) {
+                listaSubSetores.json().then((listaSubSetores) => {
+                    console.log(listaSubSetores)
+                for (let i = 0; i < listaSubSetores.length; i++) {
+                    var subsetor = listaSubSetores[i];
+                    ListaSensores
+                    .innerHTML += `
+                    <div  id="${subsetor.Subsetor}" class="subsetor_critico" onclick="buscarSensor(this.id)">
+                    <span>Subsetor ${i + 1} </span>
+                    </div>
+                    `
+                    
+                }
+                })
+            } else {
+                throw ("Houve um erro na API ou em trazer os dados !!")
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERROR: ${resposta}`);
+        });
+        return false;
+    }
+    
+
+    // <div class="subsetor_critico" id="lista_subsetores">
+    //     <span>Subsetor <span id="idSubSetor"></span></span>
+    // </div>
+
+    function buscarSensor(idSubSetor) {
+        
+        fetch("/subSetores/buscarSensor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+
+
+                idSubSetorServer:idSubSetor
+
+
+            })
+        }).then(function (listaSensores) {
+            console.log("resposta: ", listaSensores);
+            if (listaSensores.ok) {
+                listaSensores.json().then((listaSensores)=>{
+                    console.log(listaSensores)
+                    for (let i = 0; i < listaSensores.length; i++) {
+                        var sensorAtual = listaSensores[i];
+                        
+                        pai_de_todo_sensor.innerHTML = `
+                        <div class="lista_sensor" onclick="pegarDadosSensor(this.id)" id="${sensorAtual.Sensor}">
+                                <div>
+                                    <img src="../assets/imgs/alert-icon.svg">
+                                </div>
+
+                                <div>
+                                    <span>Sensor <span id="idSensor">Sensor ${sensorAtual.Sensor}</span></span>
+                                </div>
+                                <label>
+                                    <input type="checkbox" class="toggle_input">
+                                    <div class="toggle-wrapper">
+                                        <div class="slider">
+                                            <button class="button"></button>
+                                        </div>
+
+                                </label>
+                            </div>
+                            `
+
+                    }
+                })
+            } else {
+                throw ("Houve um erro na API ou em trazer os dados !!")
+            }
+        }).catch(function (listaSensores) {
+            console.log(`#ERROR: ${listaSensores}`);
+        });
+        return false;
+
+
+    }
+
 </script>

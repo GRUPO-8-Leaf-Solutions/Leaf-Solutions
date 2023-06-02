@@ -1,5 +1,6 @@
 var database = require("../database/config")
 
+
 function listar() {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
@@ -7,27 +8,7 @@ function listar() {
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
-}
-
-function obterSetores(idUsuarioServer){
-    var instrucao = `
-    SELECT * FROM setor join estufa on fkEstufa = idEstufa
-					join empresa on fkEmpresa = idEmpresa
-						where idEmpresa = ${idUsuarioServer};
-    `
-    return database.executar(instrucao);
-}
-
-function exibirQtdSetores(idUsuarioServer) {
-    var instrucao = `SELECT count(idSetor) as totalSetores 
-    from empresa
-    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
-    left join setor on estufa.idEstufa = setor.fkEstufa
-    where idEmpresa = ${idUsuarioServer}
-    group by idEstufa;
-    `;
-    return database.executar(instrucao);
-}
+};
 
 function buscarSubSetor(idSubSetorServer) {
     var instrucao = `
@@ -45,9 +26,6 @@ function buscarSensor(idSubSetorServer) {
 
 
 module.exports = {
-listar,
-exibirQtdSetores,
-obterSetores,
-buscarSubSetor,
-buscarSensor
-}
+    buscarSubSetor,
+    buscarSensor,
+};
