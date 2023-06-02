@@ -51,15 +51,15 @@ function buscarUltimasMedidas(idEmpresa) {
         instrucaoSql = ``;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
           var instrucaoSql = `
-            SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', MAX(leituraSensor.leituraTime) AS 'ultima_leitura'
-            FROM estufa
-            LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
-            LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
-            LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
-            LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
-            WHERE estufa.fkEmpresa = ${idEmpresa}
-            GROUP BY estufa.idEstufa, estufa.nome
-            ORDER BY ultima_leitura DESC;
+          SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_Valor', leituraSensor.leituraTime AS 'ultima_leitura'
+          FROM estufa
+          JOIN setor ON estufa.idEstufa = setor.fkEstufa
+          LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+          LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+          LEFT JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
+          WHERE estufa.fkEmpresa = 1
+          GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
+          ORDER BY ultima_leitura DESC;
           `
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");

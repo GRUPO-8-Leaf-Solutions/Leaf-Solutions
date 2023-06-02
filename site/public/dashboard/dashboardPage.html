@@ -358,7 +358,7 @@
     let proximaAtualizacao;
 
     var listaDeEstufas = []
-
+    var qtdEstufas     
 
     function obterEstufas() {
         fetch("/estufa/exibirEstufas", {
@@ -400,7 +400,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
 }).then((listaCaptacoes) =>{
     if(listaCaptacoes.ok){
         listaCaptacoes.json().then((listaCaptacoes)=>{
-
+            listaCaptacoes.reverse()
             plotarGrafico(listaCaptacoes, idEmpresa)
         });
     } else {
@@ -414,7 +414,7 @@ fetch ("/leitura/buscarUltimasMedidas", {
 
         console.log('iniciando plotagem do gráfico...');
 
-        let labels = [resposta[0].leituraTime]; //data hora
+        let labels = []; //data hora
         
         // Criando estrutura para plotar gráfico - labels
         
@@ -450,7 +450,16 @@ fetch ("/leitura/buscarUltimasMedidas", {
                 estufas[test].data.push(resposta[index].media_Valor)
 
                 console.log("valor media da ", resposta[index].nome_estufa, ": ", resposta[index].media_Valor)
+            
+            if(labels.length < 5){
+                for(i = 0; i <= 20; i++){
+                    if(i % 5 == 0){
+                       labels.push(resposta[i].ultima_leitura)
+                 }
+               }
             }
+            }
+
         }
 
 
