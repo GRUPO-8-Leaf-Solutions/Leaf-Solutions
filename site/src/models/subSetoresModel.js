@@ -10,9 +10,9 @@ function listar() {
     return database.executar(instrucao);
 };
 
-function buscarSubSetor(idSubSetor) {
+function buscarSubSetor(idSetor) {
     var instrucao = `
-    select idSensor Sensor from subSetor join sensor on idSubSetor = fkSubSetor where idSubSetor = ${idSubSetor};
+    select idSubSetor subSetor from subSetor join sensor on idSubSetor = fkSubSetor where idSubSetor = ${idSetor};
     `
     return database.executar(instrucao)
 };
@@ -24,8 +24,23 @@ function buscarSensor(idSubSetor) {
     return database.executar(instrucao)
 };
 
-function menorCaptacao(idEmpresa, idSensor, idSubSetor, id) {
+function obterMenorIndice(idEmpresa, idSensor, idSubSetor, id) {
     var instrucao = `SELECT Min(leituraSensor.valor) AS valor_minimo,
+    leituraSensor.leituraTime AS horaLeitura
+    FROM leituraSensor
+    JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
+    JOIN subsetor ON sensor.fkSubSetor = subsetor.idSubSetor
+    JOIN setor ON subsetor.fkSetor = setor.idSetor
+    JOIN estufa ON setor.fkEstufa = estufa.idEstufa
+    JOIN empresa ON estufa.fkEmpresa = empresa.idEmpresa
+    WHERE empresa.idEmpresa = ${idEmpresa} AND leituraSensor.leituraDate = CURDATE() AND sensor.idSensor = ${idSensor} AND subsetor.idSubsetor = ${idSubSetor} AND estufa.idEstufa = ${id}
+    GROUP BY estufa.nome, setor.idSetor, sensor.idSensor, leituraSensor.leituraTime, subSetor.idSubsetor
+    ORDER BY valor_minimo;`
+    return database.executar(instrucao)
+}
+
+function obterMaiorIndice(idEmpresa, idSensor, idSubSetor, id) {
+    var instrucao = `SELECT Max(leituraSensor.valor) AS valor_minimo,
     leituraSensor.leituraTime AS horaLeitura
     FROM leituraSensor
     JOIN sensor ON leituraSensor.fkSensor = sensor.idSensor
@@ -44,6 +59,6 @@ function menorCaptacao(idEmpresa, idSensor, idSubSetor, id) {
 module.exports = {
     buscarSubSetor,
     buscarSensor,
-    menorCaptacao,
-    // maiorCaptacao
+    obterMenorIndice,
+    obterMaiorIndice
 };

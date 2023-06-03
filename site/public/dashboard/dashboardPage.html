@@ -272,9 +272,8 @@
     window.addEventListener("load", () => {
         obterEstufas();
         maiorMenorIndice();
-        // obterCaptacoes();
         rankMaisAlertas();
-         obterSituacao();
+        obterSituacao();
     });
 
     const grafico_pie = document.getElementById('grafico_pizza');
@@ -385,7 +384,7 @@
                     data: [], //media
                     fill: false,
                     borderColor: 'rgb(255, 255, 000)',
-                    tension: 0.
+                    tension: 0.1
                 });
             }
 
@@ -490,20 +489,25 @@
                             console.log(dados.labels[dados.labels.length - 1])
                             console.log("---------------------------------------------------------------")
                         } else {
+                            console.log("putaria2000", novosRegistros)
                             for (let index = 0; index < novosRegistros.length; index++) {
 
                                 let estufa = novosRegistros[index];
+                                        console.log(estufa)
 
                                 let test = estufas.findIndex(estufaChart => {
                                     return estufaChart.label == estufa.nome_estufa;
                                 });
+
+                                console.log("putaria", test)
 
                                 if (test > -1) {
                                     dados.labels.shift();
                                     dados.labels.push(novosRegistros[0].leituraTime);
 
                                     dados.datasets[test].data.shift();
-                                    dados.datasets[test].data.push(novosRegistros[index].media_Valor);
+
+                                    dados.datasets[test].data.push(novosRegistros[index].media_valor);
                                     // tem um vetor com test e outro com text
                                     //   ||
                                 }
@@ -595,7 +599,7 @@ setInterval (()=>{
         }).then((listaRankMaisAlertas) => {
             listaRankMaisAlertas.json().then((listaRankMaisAlertas) => {
                 for (i = 0; i < listaRankMaisAlertas.length; i++) {
-                    listaRank.innerHTML += `<span>${listaRankMaisAlertas[i].nome_estufa} </span>`
+                    listaRank.innerHTML = `<span>${listaRankMaisAlertas[i].nome_estufa} </span>`
                 }
             })
         })
@@ -651,7 +655,9 @@ setInterval (()=>{
 
     //  ALERTAS
     setInterval(obterUltimasCapturasAlertas, 1000)
-
+    setInterval(maiorMenorIndice, 1000)
+    setInterval(rankMaisAlertas, 1000)
+    setInterval(obterSituacao, 1000)
     
 
     function obterUltimasCapturasAlertas() {

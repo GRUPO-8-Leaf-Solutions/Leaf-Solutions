@@ -84,7 +84,7 @@ function tempoReal(idEmpresa) {
         left join setor on setor.fkEstufa = estufa.idEstufa
         left join subSetor on subSetor.fkSetor = setor.idSetor
         left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
-        left join(select fkSensor, max(leituraTime) as ultima_leitura
+        join(select fkSensor, max(leituraTime) as ultima_leitura
             from leituraSensor
             group by fkSensor
         ) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
@@ -147,23 +147,23 @@ function obterUltimasCapturasAlertas(idEmpresa) {
 
 function obterSituacao(idEmpresa) {
     var instrucao = `
-    select idSensor
-    from (SELECT
-    estufa.nome AS nomeEstufa,
-    setor.idSetor,
-    subSetor.idSubSetor,
-    sensor.idSensor,
-    leituraSensor.valor AS indiceAtual,
-    leituraTime as horarioLeitura
-        FROM estufa JOIN setor 
-        ON estufa.idEstufa = setor.fkEstufa
-        JOIN subSetor 
-        ON setor.idSetor = subSetor.fkSetor
-        JOIN sensor 
-        ON subSetor.idSubSetor = sensor.fkSubSetor
-        JOIN leituraSensor 
-        ON sensor.idSensor = leituraSensor.fkSensor
-           WHERE fkEmpresa = 1 && leituraDate = curDate()) as estufas;
+    select
+		count(a.Alerta)
+		from(
+	select estufa.nome, max(fkAlerta) as Alerta, max(leituraSensor.leituraTime) as ultimaLeitura, count(fkAlerta) qtde
+        from estufa
+		left join setor on idEstufa = fkEstufa 
+		left join subSetor on idSetor = fkSetor 
+		left join sensor on idSubSetor = fkSubSetor
+        left join (select fkSensor, max(leituraTime) as ultima_leitura
+            from leituraSensor
+            group by fkSensor
+        ) as ultimaLeitura on sensor.idSensor = ultimaLeitura.fkSensor 
+         left join leituraSensor on ultimaLeitura.fkSensor = leituraSensor.fkSensor and ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
+        where fkEmpresa = ${idEmpresa}
+        group by estufa.nome
+        order by ultimaLeitura desc) as a
+         group by Alerta;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

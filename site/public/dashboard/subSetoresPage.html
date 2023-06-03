@@ -316,7 +316,7 @@
     var idEstufa = sessionStorage.estufaClicada;
     var idSubSetor = sessionStorage.subSetorClicado;
     var idEmpresa = sessionStorage.idUsuario;
-
+    var idSensor = sessionStorage.sensorClicado;
 
     new Chart(ctx, {
         type: 'line',
@@ -366,7 +366,7 @@
             },
             body: JSON.stringify({
 
-                idSubSetorServer: idSetorVar    
+                idSetorServer: idSetorVar
 
             })
         }).then(function (listaSubSetores) {
@@ -378,7 +378,7 @@
                         var subsetor = listaSubSetores[i];
                         listaSubSetor
                             .innerHTML += `
-                    <div onclick="pegarIdSubSetor(this.id)" id="${subsetor.SubSetor}" class="subsetor_critico">
+                    <div onclick="pegarIdSubSetor(this.id)" id="${subsetor.subSetor}" class="subsetor_critico">
                     <span>Subsetor ${i + 1} </span>
                     </div>
                     `
@@ -398,7 +398,7 @@
     //     <span>Subsetor <span id="idSubSetor"></span></span>
     // </div>
 
-    function buscarSensor(idSubSetor) {
+    function buscarSensor() {
 
         fetch("/subSetores/buscarSensor", {
             method: "POST",
@@ -408,10 +408,11 @@
             body: JSON.stringify({
 
 
-                idSubSetorServer: sessionStorage.subSetorClicado
+                idSubSetorServer: idSubSetor
 
 
             })
+
         }).then(function (listaSensores) {
             console.log("resposta: ", listaSensores);
             if (listaSensores.ok) {
@@ -462,38 +463,19 @@
 
     function pegarIdSensor(id) {
         sessionStorage.sensorClicado = id;
+        maiorMenorIndice()
     }
 
 
 
-    function menorCaptacao() {
-
-
-        fetch("/subSetores/menorCaptacao", {
+    function maiorMenorIndice() {
+        fetch("/subSetores/obterMenorIndice", {
             method: "post",
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-                idUsuarioServer: idEmpresa,
 
-            })
-        }).then((listaMenores) => {
-            listaMenores.json().then((listaMenores) => {
-                console.log(listaMenores)
-            })
-        })
-    }
-
-    function maiorCaptacao() {
-
-
-        fetch("/subSetores/maiorCaptacao", {
-            method: "post",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
                 idUsuarioServer: idEmpresa,
                 idSetorServer: idSetorVar,
                 idEstufaServer: idEstufa,
@@ -501,15 +483,39 @@
                 idSensorServer: idSensor
 
             }),
-        }).then((maiorIndice) => {
-            maiorIndice.json().then((maiorIndice) => {
-                console.log(maiorIndice)
+        }).then((menorIndice) => {
+            if (menorIndice.ok) {
+                fetch("/subSetores/obterMaiorIndice", {
+                    method: "post",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify({
 
-                maior_intensidade_captada.innerHTML = `${maiorIndice[0].valor_maximo}lm`
-                horario_captacao_maior_captura.innerHTML = `${maiorIndice[0].horaLeitura}`
+                        idUsuarioServer: idEmpresa,
+                        idSetorServer: idSetorVar,
+                        idEstufaServer: idEstufa,
+                        idSubSetorServer: idSubSetor,
+                        idSensorServer: idSensor
 
-            })
+                    }),
+                }).then((maiorIndice) => {
+                    menorIndice.json().then((menorIndice) => {
+                        maiorIndice.json().then((maiorIndice) => {
+                            console.log(maiorIndice)
 
+                            maior_intensidade_captada.innerHTML = `${maiorIndice[0].valor_maximo}lm`
+                            horario_captacao_maior_captura.innerHTML = `${maiorIndice[0].horaLeitura}`
+
+                            menor_intensidade_captada.innerHTML = `${menorIndice[0].valor_minimo}lm`
+                            horario_captacao_menor_captura.innerHTML = `${menorIndice[0].horaLeitura}`
+
+
+
+                        })
+                    })
+                })
+            }
         })
     }
 

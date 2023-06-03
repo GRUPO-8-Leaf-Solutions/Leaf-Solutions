@@ -9,8 +9,8 @@ function testar(req, res) {
 
 function buscarSubSetor(req, res) {
     console.log("socorro jesus do controller buscarsubsetor")
-    var idSubSetor = req.body.idSubSetorServer;
-    subSetoresModel.buscarSubSetor(idSubSetor)
+    var idSetor = req.body.idSetorServer;
+    subSetoresModel.buscarSubSetor(idSetor)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -41,40 +41,55 @@ function buscarSensor(req, res) {
         })
 }
 
-function menorCaptacao(req, res) {
-    subSetoresModel.buscarSensor(subSetor)
+
+function obterMenorIndice(req, res) {
+    console.log("to no controller")
+    var idEmpresa = req.body.idUsuarioServer;
+    var idSetor = req.body.idSetorServer;
+    var idEstufa = req.body.idEstufaServer;
+    var idSetor = req.body.idSubSetorServer;
+    var idSensor = req.body.idSensorServer;
+
+    leituraModel.obterMenorIndice(idEmpresa, idSetor, idEstufa, idSensor)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
-                res.status(204).send("Nenhum resultado encontrado")
+                res.status(204).send("nenhum resultado encontrado!")
             }
         }).catch(function (erro) {
             console.log(erro);
-            console.log("houve um erro ao buscar a menor captação da estufa")
-            req.status(500).json(erro.sqlMessage)
-        })
+            console.log("Houve um erro ao buscar os Menores indice da da estufa..", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
-function maiorCaptacao(req, res) {
-    subSetoresModel.buscarSensor(subSetor)
+function obterMaiorIndice(req, res) {
+    console.log("to no controller 2")
+    var idEmpresa = req.body.idUsuarioServer;
+    var idSetor = req.body.idSetorServer;
+    var idEstufa = req.body.idEstufaServer;
+    var idSetor = req.body.idSubSetorServer;
+    var idSensor = req.body.idSensorServer;
+
+    leituraModel.obterMaiorIndice(idEmpresa, idSetor, idEstufa, idSensor)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {
-                res.status(204).send("Nenhum resultado encontrado")
+                res.status(204).send("nenhum resultado encontrado!")
             }
         }).catch(function (erro) {
             console.log(erro);
-            console.log("houve um erro ao buscar a maior captação da estufa")
-            req.status(500).json(erro.sqlMessage)
-        })
+            console.log("Houve um erro ao buscar os Maiores indice da da estufa..", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 module.exports = {
     testar,
     buscarSubSetor,
     buscarSensor,
-    menorCaptacao,
-    maiorCaptacao
+    obterMenorIndice,
+    obterMaiorIndice
 }

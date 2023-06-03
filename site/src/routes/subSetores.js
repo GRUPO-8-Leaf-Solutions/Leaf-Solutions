@@ -16,12 +16,12 @@ router.post("/buscarSensor", function (req, res) {
 //     subSetoresController.obterSetoresInner(req, res);
 // });
 
-router.post("/menorCaptacao", function (req, res) {
-    subSetoresController.menorCaptacao(req, res)
+router.post("/obterMenorIndice", function (req, res) {
+    subSetoresController.obterMenorIndice(req, res)
 });
 
-router.post("/maiorCaptacao", function (req, res) {
-    subSetoresController.maiorCaptacao(req, res)
+router.post("/obterMaiorIndice", function (req, res) {
+    subSetoresController.obterMaiorIndice(req, res)
 });
 
 module.exports = router;
