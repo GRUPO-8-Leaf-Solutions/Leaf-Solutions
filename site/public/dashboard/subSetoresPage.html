@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Leaf - SubSetores</title>
     <link rel="stylesheet" href="css/subSetores.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="stylesheet" href="../js/funcoes.js">
+    <link rel="icon" href="../assets/icon/logo.svg">
 </head>
 
 <body>
@@ -181,17 +182,18 @@
                                 LIGADO
                             </div>
                         </div>
-                        <div class="segundo_alerta">
+                        <div class="segundo_alerta" id="segundo_alerta">
                             <div class="titulo_segundo_alerta">
                                 <span>Valor atual de luminosidade</span>
                             </div>
                             <div class="intensidade">
-                                <div>
-                                    <img src="../assets/imgs/vetorAdequado.svg" style="height: 25px">
+                                <div id="imgAlertSegunda">
+                                    <!-- <img id="imgSegundoAlerta" src="../assets/imgs/vetorAdequado.svg"
+                                        style="height: 25px"> -->
                                 </div>
-                                <div id="intesidade_atual_sensor">
-                                    <!-- INTERNSIDADE ATUAL DO SENSOR -->
-                                </div>
+                            </div>
+                            <div id="intesidade_atual_sensor">
+                                <!-- INTERNSIDADE ATUAL DO SENSOR -->
                             </div>
                         </div>
                     </div>
@@ -200,6 +202,7 @@
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
+
                     <div class="cadeia_KPI">
                         <div class="KPI_esquerda">
                             <div class="KPI1_esquerda">
@@ -292,7 +295,7 @@
                                     <div>
                                         <img src="../assets/imgs/vectorPreocupante.svg" style="height: 20px">
                                     </div>
-                                    <div id="tempo_faltante_para_ideal">
+                                    <div class="negrito" id="tempo_faltante_para_ideal">
                                         <!-- 6h 30m TEMPO RESTANTE PARA CHEGAR NO IDEAL-->
                                     </div>
                                 </div>
@@ -303,7 +306,6 @@
             </div>
         </div>
     </div>
-    </div>
 </body>
 
 </html>
@@ -311,12 +313,11 @@
 <script>
     const ctx = document.getElementById('myChart');
 
-    // PRECISAMOS DO idSetor E  idSubSetor
+    var idEmpresa = sessionStorage.idUsuario;
     var idSetorVar = sessionStorage.setorClicado;
     var idEstufa = sessionStorage.estufaClicada;
     var idSubSetor = sessionStorage.subSetorClicado;
     var idEmpresa = sessionStorage.idUsuario;
-    var idSensor = sessionStorage.sensorClicado;
 
     new Chart(ctx, {
         type: 'line',
@@ -379,7 +380,7 @@
                         listaSubSetor
                             .innerHTML += `
                     <div onclick="pegarIdSubSetor(this.id)" id="${subsetor.subSetor}" class="subsetor_critico">
-                    <span>Subsetor ${i + 1} </span>
+                     <span>Subsetor ${subsetor.subSetor} </span>
                     </div>
                     `
                     }
@@ -398,7 +399,7 @@
     //     <span>Subsetor <span id="idSubSetor"></span></span>
     // </div>
 
-    function buscarSensor() {
+    function buscarSensor(idSubSetor) {
 
         fetch("/subSetores/buscarSensor", {
             method: "POST",
@@ -414,21 +415,20 @@
             })
 
         }).then(function (listaSensores) {
-            console.log("resposta: ", listaSensores);
             if (listaSensores.ok) {
+                listaSensor.innerHTML = ""
                 listaSensores.json().then((listaSensores) => {
                     console.log(listaSensores)
                     for (let i = 0; i < listaSensores.length; i++) {
                         var sensorAtual = listaSensores[i];
-                        console.log("Lista de sensores" + listaSensores)
-                        listaSensor.innerHTML = `
+                        listaSensor.innerHTML += `
                         <div class="lista_sensor" onclick="pegarIdSensor(this.id)" id="${sensorAtual.Sensor}">
                                 <div>
                                     <img class="imgSensor" src="../assets/imgs/alert-icon.svg">
                                 </div>
 
                                 <div>
-                                    <span>Sensor <span id="idSensor">${i + 1}</span></span>
+                                    <span>Sensor <span id="idSensor">${sensorAtual.Sensor}</span></span>
                                 </div>
                                 <label>
                                     <input type="checkbox" class="toggle_input">
@@ -458,66 +458,181 @@
 
     function pegarIdSubSetor(id) {
         sessionStorage.subSetorClicado = id;
-        buscarSensor()
+        
+        idSubSetor = sessionStorage.subSetorClicado;
+        
+        buscarSensor(id)
     }
 
     function pegarIdSensor(id) {
-        sessionStorage.sensorClicado = id;
-        maiorMenorIndice()
+        maiorMenorIndice(id)
     }
 
 
 
-    function maiorMenorIndice() {
-        fetch("/subSetores/obterMenorIndice", {
+    // function maiorMenorIndice(idSensor) {
+    //     fetch("/subSetores/obterMaiorIndice", {
+    //         method: "post",
+    //         headers: {
+    //             "Content-type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+
+    //             idUsuarioServer: idEmpresa,
+    //             idSetorServer: idSetorVar,
+    //             idEstufaServer: idEstufa,
+    //             idSubSetorServer: idSubSetor,
+    //             idSensorServer: idSensor
+
+    //         }),
+    //     }).then((maiorIndice) => {
+    //         if (maiorIndice.ok) {
+    //             fetch("/subSetores/obterMenorIndice", {
+    //                 method: "post",
+    //                 headers: {
+    //                     "Content-type": "application/json"
+    //                 },
+    //                 body: JSON.stringify({
+
+    //                     idUsuarioServer: idEmpresa,
+    //                     idSetorServer: idSetorVar,
+    //                     idEstufaServer: idEstufa,
+    //                     idSubSetorServer: idSubSetor,
+    //                     idSensorServer: idSensor
+
+    //                 }),
+    //             }).then((menorIndice) => {
+    //                 menorIndice.json().then((menorIndice) => {
+    //                     maiorIndice.json().then((maiorIndice) => {
+    //                         console.log(maiorIndice)
+
+    //                         maior_intensidade_captada.innerHTML = `${maiorIndice[0].valor_maximo}lm`
+    //                         horario_captacao_maior_captura.innerHTML = `${maiorIndice[0].horaLeitura}`
+
+    //                         menor_intensidade_captada.innerHTML = `${menorIndice[0].valor_minimo}lm`
+    //                         horario_captacao_menor_captura.innerHTML = `${menorIndice[0].horaLeitura}`
+
+
+
+    //                     })
+    //                 })
+    //             })
+    //         }
+    //     })
+    // }
+
+
+    function maiorMenorIndice(idSensor) {
+        fetch("/subSetores/obterMaiorIndice", {
             method: "post",
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
-
                 idUsuarioServer: idEmpresa,
                 idSetorServer: idSetorVar,
                 idEstufaServer: idEstufa,
                 idSubSetorServer: idSubSetor,
                 idSensorServer: idSensor
-
             }),
-        }).then((menorIndice) => {
-            if (menorIndice.ok) {
-                fetch("/subSetores/obterMaiorIndice", {
+        }).then((maiorIndice) => {
+            if (maiorIndice.ok) {
+                fetch("/subSetores/obterMenorIndice", {
                     method: "post",
                     headers: {
                         "Content-type": "application/json"
                     },
                     body: JSON.stringify({
-
                         idUsuarioServer: idEmpresa,
                         idSetorServer: idSetorVar,
                         idEstufaServer: idEstufa,
                         idSubSetorServer: idSubSetor,
                         idSensorServer: idSensor
-
                     }),
-                }).then((maiorIndice) => {
-                    menorIndice.json().then((menorIndice) => {
-                        maiorIndice.json().then((maiorIndice) => {
-                            console.log(maiorIndice)
+                }).then((menorIndice) => {
+                    if (menorIndice.ok) {
+                        fetch("/subSetores/obterIndiceAtual", {
+                            method: "post",
+                            headers: {
+                                "Content-type": "application/json"
+                            },
+                            body: JSON.stringify({
+                                idUsuarioServer: idEmpresa,
+                                idSetorServer: idSetorVar,
+                                idEstufaServer: idEstufa,
+                                idSubSetorServer: idSubSetor,
+                                idSensorServer: idSensor
+                            }),
+                        }).then((indiceAtual) => {
+                            indiceAtual.json().then((indiceAtual) => {
+                                menorIndice.json().then((menorIndice) => {
+                                    maiorIndice.json().then((maiorIndice) => {
+                                        // console.log("ta funcionando")
+                                        maior_intensidade_captada.innerHTML = `${menorIndice[(menorIndice.length - 1)].valor_minimo}lm`
+                                        horario_captacao_maior_captura.innerHTML = `${maiorIndice[0].horaLeitura}`
 
-                            maior_intensidade_captada.innerHTML = `${maiorIndice[0].valor_maximo}lm`
-                            horario_captacao_maior_captura.innerHTML = `${maiorIndice[0].horaLeitura}`
+                                        menor_intensidade_captada.innerHTML = `${menorIndice[0].valor_minimo}lm`
+                                        horario_captacao_menor_captura.innerHTML = `${menorIndice[0].horaLeitura}`
 
-                            menor_intensidade_captada.innerHTML = `${menorIndice[0].valor_minimo}lm`
-                            horario_captacao_menor_captura.innerHTML = `${menorIndice[0].horaLeitura}`
+                                        intesidade_atual_sensor.innerHTML = `${indiceAtual[0].valorAtual}`
 
+                                        for (let j = 0; j < indiceAtual.length; j++) {
+                                            if (indiceAtual[0].valorAtual <= 450 || indiceAtual[0].valorAtual >= 650) {
 
+                                                intesidade_atual_sensor.classList.add("intesidade_atual_sensor_critica")
+                                                segundo_alerta.classList.add("segundo_alerta_critico")
+                                                intesidade_atual_sensor.innerHTML = `<img src="../assets/imgs/vetorUrgente.svg" style="height: 23px" width="25px"> ${indiceAtual[0].valorAtual}`
+                                            }
+                                            else if (indiceAtual[0].valorAtual > 450 && indiceAtual[0].valorAtual < 500 ||
+                                                indiceAtual[0].valorAtual > 600 && indiceAtual[0].valorAtual < 650) {
 
+                                                intesidade_atual_sensor.classList.add("intesidade_atual_sensor_preocupante")
+                                                segundo_alerta.classList.add("segundo_alerta_preocupante")
+                                                intesidade_atual_sensor.innerHTML = `<img src="../assets/imgs/VectorNewProcupante.svg" style="height: 23px" width="25px"> ${indiceAtual[0].valorAtual}`
+                                            }
+                                            else if (indiceAtual[0].valorAtual >= 500 && indiceAtual[0].valorAtual <= 600) {
+
+                                                intesidade_atual_sensor.classList.add("intesidade_atual_sensor_adequado")
+                                                segundo_alerta.classList.add("segundo_alerta")
+                                                intesidade_atual_sensor.innerHTML = `<img src="../assets/imgs/vetorAdequado.svg" style="height: 23px" width="25px"> ${indiceAtual[0].valorAtual}`
+                                            }
+                                        }
+
+                                        var contadorBom = 0;
+                                        var contadorRuim = 0;
+
+                                        for (let i = 0; i < indiceAtual.length; i++) {
+                                            if (indiceAtual[i].valorAtual <= 600 && indiceAtual[i].valorAtual >= 500) {
+                                                contadorBom++;
+                                            } else {
+                                                contadorRuim++;
+                                            }
+                                        }
+                                        var tempoBom = Number(contadorBom * 15);
+                                        var tempoRuim = Number(contadorRuim * 15);
+                                        var tempoFaltante = ((16 * 60) - tempoBom) - tempoRuim;
+
+                                        var horasBoas = parseInt(tempoBom / 60);
+                                        var minutosBons = (horasBoas % 60);
+
+                                        var horasRuins = parseInt(tempoRuim / 60);
+                                        var minutosRuins = (horasRuins % 60);
+
+                                        var horasFaltantes = parseInt(tempoFaltante / 60);
+                                        var minutosFaltantes = (horasFaltantes % 60);
+
+                                        dentro_ideal_sensor.innerHTML = `${horasBoas} horas e ${minutosBons} minutos`;
+                                        fora_ideal_sensor.innerHTML = `${horasRuins} horas e ${minutosRuins} minutos`;
+                                        tempo_faltante_para_ideal.innerHTML = `${horasRuins} horas e ${minutosRuins} minutos`;
+
+                                    })
+                                })
+                            })
                         })
-                    })
+                    }
                 })
             }
         })
     }
-
 
 </script>

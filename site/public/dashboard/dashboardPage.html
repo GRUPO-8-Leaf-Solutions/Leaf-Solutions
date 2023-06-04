@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -192,7 +191,7 @@
 
                                     <div class="mmIndiceKpi">
                                         <div>
-                                            <i class="uil uil-brightness-low"></i>
+                                            <i class="uil uil-sun"></i>
                                             <span>Maior indice captado</span>
                                         </div>
 
@@ -211,7 +210,7 @@
 
                                     <div class="mmIndiceKpi">
                                         <div>
-                                            <i class="uil uil-moon"></i>
+                                            <i class="uil uil-cloud-sun"></i>
                                             <span>Menor indice captado</span>
                                         </div>
 
@@ -247,6 +246,8 @@
                             <span class="title-alerta">ALERTAS</span>
 
                             <div class="listaScroller" id="listaAlert">
+                                
+
 
 
                             </div>
@@ -271,6 +272,7 @@
 <script>
     window.addEventListener("load", () => {
         obterEstufas();
+        obterUltimasCapturasAlertas();
         maiorMenorIndice();
         rankMaisAlertas();
         obterSituacao();
@@ -332,7 +334,7 @@
 
     function obterDadosGraficos() {
 
-        var limiteLinhasEstufa = listaDeEstufas.length
+        var limiteLinhasEstufa = qtdLinhas
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
@@ -350,7 +352,7 @@
         }).then((listaCaptacoes) => {
             if (listaCaptacoes.ok) {
                 listaCaptacoes.json().then((listaCaptacoes) => {
-                    listaCaptacoes.reverse()
+                     listaCaptacoes.reverse()
                     plotarGrafico(listaCaptacoes, idEmpresa)
                 });
             } else {
@@ -387,12 +389,9 @@
                     tension: 0.1
                 });
             }
-
-            if (labels.length < 5) {
-                labels.push(resposta[index].ultima_leitura)
-
-            }
         }
+
+
 
         for (let index = 0; index < resposta.length; index++) {
             let estufa = resposta[index];
@@ -403,17 +402,18 @@
 
             if (test > -1) {
                 estufas[test].data.push(resposta[index].media_Valor)
-
-                console.log("valor media da ", resposta[index].nome_estufa, ": ", resposta[index].media_Valor)
-
-                if (labels.length < 5) {
-                    for (i = 0; i <= 20; i++) {
-                        if (i % 5 == 0) {
-                            console.log(resposta[i])
-                            labels.push(resposta[i].ultima_leitura)
-                        }
-                    }
+                if(estufa.nome_estufa == estufas[0].label){
+                    labels.push(resposta[index].ultima_leitura)
                 }
+
+                // if (labels.length < 5) {
+                //     for (i = 0; i < 10; i++) {
+                //         if (i % qtdLinhas == 0) {
+                //             console.log("putaria", resposta[i])
+                //             labels.push(resposta[i].ultima_leitura)
+                //         }
+                //     }
+                // }
             }
 
         }
@@ -468,23 +468,23 @@
             then(function (response) {
                 if (response.ok) {
                     response.json().then(function (novosRegistros) {
-                        console.log("uqueeeeeeeeeeee", novosRegistros)
+
                         // obterDadosGraficos(idEmpresa);
                         // alertar(novoRegistro, idAquario);
                         console.log(`Dados recebidos: ${JSON.stringify(novosRegistros)}`);
                         console.log(`Dados atuais do gráfico:`);
-                        console.log(dados);
+                        console.log(dados.labels);
 
                         // let avisoCaptura = document.getElementById(`avisoCaptura${idEmpresa}`)
                         // avisoCaptura.innerHTML = ""
 
 
-                        if (novosRegistros[0].leituraTime == dados.labels[dados.labels.length - 1]) {
+                        if (novosRegistros[0].ultima_leitura == dados.labels[dados.labels.length - 1]) {
                             console.log("---------------------------------------------------------------")
                             console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                             // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
                             console.log("Horário do novo dado capturado:")
-                            console.log(novosRegistros[0].leituraTime)
+                            console.log(novosRegistros[0].ultima_leitura)
                             console.log("Horário do último dado capturado:")
                             console.log(dados.labels[dados.labels.length - 1])
                             console.log("---------------------------------------------------------------")
@@ -503,7 +503,7 @@
 
                                 if (test > -1) {
                                     dados.labels.shift();
-                                    dados.labels.push(novosRegistros[0].leituraTime);
+                                    dados.labels.push(novosRegistros[0].ultima_leitura);
 
                                     dados.datasets[test].data.shift();
 
@@ -549,10 +549,18 @@
                 var paramEstufa = []
 
                 for (i = 0; i < listaParam.length; i++) {
-                    paramEstufa.push(listaParam[i].situacao)
-                    console.log("foi?", listaParam[i])
-                }
+                    console.log("foi?", listaParam)
 
+                    if (listaParam[i].idAlerta == 1) {
+                            paramEstufa[0] = listaParam[i].qtdEstufas;
+                        } else if (listaParam[i].idAlerta == 2) {
+                            paramEstufa[1] = listaParam[i].qtdEstufas;
+                        } else if (listaParam[i].idAlerta == 3) {
+                            paramEstufa[2] = listaParam[i].qtdEstufas;
+                        } 
+                    
+                }
+                console.log(paramEstufa)
 
                  teste = new Chart(grafico_pie, {
                     type: 'doughnut',
@@ -560,7 +568,7 @@
                         labels: ['Estufas críticas', 'Estufas preocupantes', 'Estufas adequadas'],
                         datasets: [{
                             label: 'Situação das estufas',
-                            data: [paramEstufa[0], paramEstufa[1], paramEstufa[2]],
+                            data: paramEstufa,
                             backgroundColor: ['Red', 'Yellow', 'Green'],
                             borderWidth: 1
                         }]
@@ -599,7 +607,7 @@ setInterval (()=>{
         }).then((listaRankMaisAlertas) => {
             listaRankMaisAlertas.json().then((listaRankMaisAlertas) => {
                 for (i = 0; i < listaRankMaisAlertas.length; i++) {
-                    listaRank.innerHTML = `<span>${listaRankMaisAlertas[i].nome_estufa} </span>`
+                    listaRank.innerHTML += `<span>${listaRankMaisAlertas[i].nome_estufa} </span>`
                 }
             })
         })
@@ -654,10 +662,9 @@ setInterval (()=>{
 
 
     //  ALERTAS
-    setInterval(obterUltimasCapturasAlertas, 1000)
-    setInterval(maiorMenorIndice, 1000)
-    setInterval(rankMaisAlertas, 1000)
-    setInterval(obterSituacao, 1000)
+    setInterval(obterUltimasCapturasAlertas, 10000)
+    setInterval(maiorMenorIndice, 60000)
+    setInterval(obterSituacao, 60000)
     
 
     function obterUltimasCapturasAlertas() {
@@ -676,68 +683,72 @@ setInterval (()=>{
             listaCaptacoes.json().then(function (listaCaptacoes) {
                 for (i = 0; i < listaCaptacoes.length; i++) {
 
-                    if (listaCaptacoes[i].indiceAtual < 450 || listaCaptacoes[i].indiceAtual > 650) {
+                    if (listaCaptacoes[i].fkAlerta == 1) {
 
                         listaAlert.innerHTML += `                        
-                            <a class="click-alert" href="setor1.html">
-                                <div class="containerAlert">
-                                    <div class="alert">
-                                        <div class="img">
-                                            <img class="img-alert" src="../assets/imgs/alert-icon.svg" alt="">
-                                        </div>
-                                        <div class="macacoo" style="display: flex; flex-direction: column; justify-content: center; gap: 10px; width: 205px;">
-                                            <div class="urgenteEst">
-                                                <span class="urgente">Estufa ${listaCaptacoes[i].nomeEstufa}</span>
-                                                <span class="urgente">Setor ${listaCaptacoes[i].idSetor}</span>
-                                                <span>Subsetor ${listaCaptacoes[i].idSubSetor}</span>
-                                            </div>
+                            <div class="listaElement bgCritico">
+                                    <div class="infoTopPart">
+                                        <img src="../assets/imgs/vetorUrgente.svg" alt="">
 
-                                            <div class="alerts">
-                                                <div class="text-valores">
-                                                     <span class="text-atual">ÍNDICE ATUAL: ${listaCaptacoes[i].indiceAtual}lm</span>
-                                                </div>
-                                                <div style="display: flex; justify-content: space-between; width: 100%;">
-                                                     <span class="hora"><img src="../assets/imgs/relogio.svg">${listaCaptacoes[i].horarioLeitura}</span>
-                                                </div>
+                                        <div class="alertInformacoes">
+                                            <div class="infosText color-critico">
+                                                <span>Estufa ${listaCaptacoes[i].nomeEstufa}</span>
+                                                <span>Setor  ${listaCaptacoes[i].idSetor}</span>
+                                                <span>SubSetor  ${listaCaptacoes[i].idSubSetor}</span>
                                             </div>
+                                            
+                                            <div class="infosTextTime colorTimeCritico">
+                                                <i class="uil uil-clock"></i>
+                                                <span>${listaCaptacoes[i].horarioLeitura}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="infoBottomPart bottom-bgColorCritico">
+                                        <span>Sensor ${listaCaptacoes[i].idSensor}</span>
+                                        <div>
+                                            <span>${listaCaptacoes[i].indiceAtual}lm</span>
+                                            <i class="uil uil-lightbulb-alt"></i>
                                         </div>
                                     </div>
-                                 </div>
-                            </a>`
+                                </div>
+
+                            `
 
                     }
                 }
 
                 for (i = 0; i < listaCaptacoes.length; i++) {
-                    if (listaCaptacoes[i].indiceAtual >= 450 && listaCaptacoes[i].indiceAtual < 500 || listaCaptacoes[i].indiceAtual > 600 && listaCaptacoes[i].indiceAtual <= 650) {
+                    if (listaCaptacoes[i].fkAlerta == 2) {
                         listaAlert.innerHTML += `
-                        <a class="click-alert-preocupante" href="setor1.html">
-                            <div class="containerAlert">
-                                <div class="alert-preocupante">
-                                    <div class="img">
-                                        <img class="img-alert" src="../assets/imgs/vectorPreocupante.svg">
+                        <div class="listaElement bgPreocupante">
+                                    <div class="infoTopPart">
+                                        <img src="../assets/imgs/VectorNewProcupante.svg" alt="">
+
+                                        <div class="alertInformacoes">
+                                            <div class="infosText color-preocupante">
+                                                <span>Estufa ${listaCaptacoes[i].nomeEstufa}</span>
+                                                <span>Setor ${listaCaptacoes[i].idSetor}</span>
+                                                <span>SubSetor ${listaCaptacoes[i].idSubSetor}</span>
+                                            </div>
+                                            
+                                            <div class="infosTextTime colorTimePreocupante">
+                                                <i class="uil uil-clock"></i>
+                                                <span> ${listaCaptacoes[i].horarioLeitura}</span>
+                                            </div>
+                                        </div>
+
                                     </div>
 
-                                    
-                                    <div class="mimir">
-                                        <div class="urgenteEst-preocupante">
-                                            <span class="urgente">Estufa ${listaCaptacoes[i].nomeEstufa}</span>
-                                            <span class="urgente">Setor ${listaCaptacoes[i].idSetor}</span>
-                                            <span>Subsetor ${listaCaptacoes[i].idSubSetor}</span>
-                                            <span class="preocupante-valor">ÍNDICE ATUAL: ${listaCaptacoes[i].indiceAtual}lm</span>
-                                        </div>
-                                        
-                                        <div class="alerts-preocupante">                  
-
-                                            <div class="horario">
-                                                <span class="hora-preocupante"><img src="../assets/imgs/relogio.svg">${listaCaptacoes[i].horarioLeitura}
-                                                </span>
-                                            </div>
+                                    <div class="infoBottomPart bottom-bgColorPreocupante">
+                                        <span>Sensor  ${listaCaptacoes[i].idSensor}</span>
+                                        <div>
+                                            <span>${listaCaptacoes[i].indiceAtual}lm</span>
+                                            <i class="uil uil-lightbulb-alt"></i>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
                             `
 
                     }

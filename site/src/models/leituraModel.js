@@ -58,7 +58,7 @@ function buscarUltimasMedidas(idEmpresa, limiteLinhas) {
           JOIN leituraSensor ON sensor.idSensor = leituraSensor.fkSensor AND DATE(leituraSensor.leituraDate) = CURDATE()
           WHERE estufa.fkEmpresa = ${idEmpresa}
           GROUP BY estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
-          ORDER BY ultima_leitura DESC limit ${limiteLinhas * 5};
+          ORDER BY ultima_leitura desc limit ${limiteLinhas * 5} ;
           `
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
@@ -78,20 +78,20 @@ function tempoReal(idEmpresa) {
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         var instrucaoSql = `
-        select estufa.nome as 'nome_estufa', coalesce(round(avg(leituraSensor.valor), 0), 0) as "media_valor", leituraSensor.leituraTime
-        from empresa
-        left join estufa on estufa.fkEmpresa = empresa.idEmpresa
-        left join setor on setor.fkEstufa = estufa.idEstufa
-        left join subSetor on subSetor.fkSetor = setor.idSetor
-        left join sensor on sensor.fkSubSetor = subSetor.idSubSetor
-        join(select fkSensor, max(leituraTime) as ultima_leitura
-            from leituraSensor
-            group by fkSensor
-        ) as ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
-        left join leituraSensor on ultimaLeitura.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
-        where idEmpresa = ${idEmpresa}
-        group by estufa.idEstufa, estufa.nome, leituraSensor.leituraTime
-        order by leituraSensor.leituraTime DESC;
+        SELECT estufa.nome AS 'nome_estufa', COALESCE(ROUND(AVG(leituraSensor.valor), 0), 0) AS 'media_valor', MAX(leituraSensor.leituraTime) AS 'ultima_leitura'
+        FROM estufa
+        LEFT JOIN setor ON estufa.idEstufa = setor.fkEstufa
+        LEFT JOIN subSetor ON setor.idSetor = subSetor.fkSetor
+        LEFT JOIN sensor ON subSetor.idSubSetor = sensor.fkSubSetor
+        JOIN (
+            SELECT fkSensor, MAX(leituraTime) AS ultima_leitura
+            FROM leituraSensor
+            GROUP BY fkSensor
+        ) AS ultimaLeitura ON sensor.idSensor = ultimaLeitura.fkSensor 
+        LEFT JOIN leituraSensor ON ultimaLeitura.fkSensor = leituraSensor.fkSensor AND ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
+        where fkEmpresa = ${idEmpresa}
+        GROUP BY estufa.idEstufa, estufa.nome
+        ORDER BY ultima_leitura DESC;
             ;
         `
     } else {
@@ -110,6 +110,7 @@ function obterUltimasCapturasAlertas(idEmpresa) {
     setor.idSetor,
     subSetor.idSubSetor,
     sensor.idSensor,
+    leituraSensor.fkAlerta,
     leituraSensor.valor AS indiceAtual,
     leituraSensor.leituraTime AS horarioLeitura
     FROM estufa
@@ -123,7 +124,7 @@ function obterUltimasCapturasAlertas(idEmpresa) {
             MAX(leituraTime) AS ultimaLeitura
         FROM leituraSensor
         GROUP BY fkSensor) ultimaLeitura ON leituraSensor.fkSensor = ultimaLeitura.fkSensor && leituraSensor.leituraTime = ultimaLeitura.ultimaLeitura
-    WHERE estufa.fkEmpresa = ${idEmpresa};`
+    WHERE estufa.fkEmpresa = ${idEmpresa} and leituraSensor.leituraDate = curDate();`
 
     // var instrucao = `SELECT
     // estufa.nome AS nomeEstufa,
@@ -147,27 +148,38 @@ function obterUltimasCapturasAlertas(idEmpresa) {
 
 function obterSituacao(idEmpresa) {
     var instrucao = `
-    select
-		count(a.Alerta)
-		from(
-	select estufa.nome, max(fkAlerta) as Alerta, max(leituraSensor.leituraTime) as ultimaLeitura, count(fkAlerta) qtde
-        from estufa
-		left join setor on idEstufa = fkEstufa 
-		left join subSetor on idSetor = fkSetor 
-		left join sensor on idSubSetor = fkSubSetor
-        left join (select fkSensor, max(leituraTime) as ultima_leitura
-            from leituraSensor
-            group by fkSensor
-        ) as ultimaLeitura on sensor.idSensor = ultimaLeitura.fkSensor 
-         left join leituraSensor on ultimaLeitura.fkSensor = leituraSensor.fkSensor and ultimaLeitura.ultima_leitura = leituraSensor.leituraTime
-        where fkEmpresa = ${idEmpresa}
-        group by estufa.nome
-        order by ultimaLeitura desc) as a
-         group by Alerta;
+    select 
+    alerta.idAlerta,
+    count(estufa.idEstufa) as qtdEstufas
+from alerta
+    left join (
+        select
+            estufa.idEstufa,
+            leituraSensor.fkAlerta,
+            leituraSensor.leituraTime,
+            row_number() over (partition by estufa.idEstufa order by leituraTime desc) as rowNum
+        from leituraSensor
+            left join sensor on sensor.idSensor = leituraSensor.fkSensor
+            left join subSetor on subSetor.idSubSetor = sensor.fkSubSetor
+            left join setor on setor.idSetor = subSetor.fkSetor
+            left join estufa on estufa.idEstufa = setor.fkEstufa
+        where
+        estufa.fkEmpresa = ${idEmpresa}
+    ) as leituraSensor on alerta.idAlerta = leituraSensor.fkAlerta
+    left join estufa on estufa.idEstufa = leituraSensor.idEstufa
+    where leituraSensor.rowNum = 1
+    group by alerta.idAlerta
+    order by qtdEstufas desc;
     `
+
+
+   
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+
+// figma
+// acho que sim, tava com medo de descomentar e afetar a tela enquanto vcs tavam mexendo
 
 module.exports = {
     buscarUltimasMedidas,
@@ -177,4 +189,4 @@ module.exports = {
     obterMaiorIndice,
     obterSituacao
 };
-
+ 

@@ -17,11 +17,15 @@ router.post("/buscarSensor", function (req, res) {
 // });
 
 router.post("/obterMenorIndice", function (req, res) {
-    subSetoresController.obterMenorIndice(req, res)
+    subSetoresController.obterMenorIndice(req, res);
 });
 
 router.post("/obterMaiorIndice", function (req, res) {
-    subSetoresController.obterMaiorIndice(req, res)
+    subSetoresController.obterMaiorIndice(req, res);
+});
+
+router.post("/obterIndiceAtual", function (req, res) {
+    subSetoresController.obterIndiceAtual(req, res);
 });
 
 module.exports = router;

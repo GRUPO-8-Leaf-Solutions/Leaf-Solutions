@@ -47,10 +47,10 @@ function obterMenorIndice(req, res) {
     var idEmpresa = req.body.idUsuarioServer;
     var idSetor = req.body.idSetorServer;
     var idEstufa = req.body.idEstufaServer;
-    var idSetor = req.body.idSubSetorServer;
+    var idSubSetor = req.body.idSubSetorServer;
     var idSensor = req.body.idSensorServer;
 
-    leituraModel.obterMenorIndice(idEmpresa, idSetor, idEstufa, idSensor)
+    subSetoresModel.obterMenorIndice(idEmpresa, idSensor, idSubSetor, idEstufa, idSetor)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -69,10 +69,10 @@ function obterMaiorIndice(req, res) {
     var idEmpresa = req.body.idUsuarioServer;
     var idSetor = req.body.idSetorServer;
     var idEstufa = req.body.idEstufaServer;
-    var idSetor = req.body.idSubSetorServer;
+    var idSubSetor = req.body.idSubSetorServer;
     var idSensor = req.body.idSensorServer;
 
-    leituraModel.obterMaiorIndice(idEmpresa, idSetor, idEstufa, idSensor)
+    subSetoresModel.obterMaiorIndice(idEmpresa, idSensor, idSubSetor, idEstufa, idSetor)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -86,10 +86,71 @@ function obterMaiorIndice(req, res) {
         });
 }
 
+function obterIndiceAtual(req, res) {
+    console.log("to no controller 3")
+    var idEmpresa = req.body.idUsuarioServer;
+    var idSetor = req.body.idSetorServer;
+    var idEstufa = req.body.idEstufaServer;
+    var idSubSetor = req.body.idSubSetorServer;
+    var idSensor = req.body.idSensorServer;
+
+    subSetoresModel.obterIndiceAtual(idEmpresa, idEstufa, idSetor, idSubSetor, idSensor)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("nenhum resultado encontrado!")
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar os Maiores indice da da estufa..", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+// function obterMenorIndice(req, res) {
+
+//     var idEmpresa = req.body.idUsuarioServer;
+//     var idSetor = req.body.idSetorServer;
+//     var idEstufa = req.body.idEstufaServer;
+//     var idSubSetor = req.body.idSubSetorServer;
+//     var idSensor = req.body.idSensorServer;
+//     subSetoresModel.obterMenorIndice(idEmpresa, idSensor, idSubSetor, idEstufa, idSetor)
+//         .then(function (resultado) {
+//             if (resultado.length > 0) {
+//                 res.status(200).json(resultado);
+//             } else {
+//                 res.status(204).send("nenhum resultado encontrado!")
+//             }
+//         }).catch(function (erro) {
+//             console.log(erro);
+//             console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
+//             res.status(500).json(erro.sqlMessage);
+//         });
+// }
+
+// function obterMaiorIndice(req, res) {
+//     var idEmpresa = req.body.idUsuarioServer
+
+//     subSetoresModel.obterMaiorIndice(idEmpresa)
+//         .then(function (resultado) {
+//             if (resultado.length > 0) {
+//                 res.status(200).json(resultado);
+//             } else {
+//                 res.status(204).send("nenhum resultado encontrado!")
+//             }
+//         }).catch(function (erro) {
+//             console.log(erro);
+//             console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
+//             res.status(500).json(erro.sqlMessage);
+//         });
+// }
+
 module.exports = {
     testar,
     buscarSubSetor,
     buscarSensor,
     obterMenorIndice,
-    obterMaiorIndice
+    obterMaiorIndice,
+    obterIndiceAtual
 }

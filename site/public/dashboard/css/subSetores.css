@@ -417,7 +417,9 @@ li a {
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
     height: 50px;
-    animation: estufaCritica 1.5s infinite
+    animation: estufaCritica 1.5s infinite;
+    cursor: pointer;
+
 }
 
 .subsetor_preocupante {
@@ -429,7 +431,8 @@ li a {
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
     height: 50px;
-    animation: estufaPreocupante 1.5s infinite
+    animation: estufaPreocupante 1.5s infinite;
+    cursor: pointer;
 }
 
 @keyframes estufaPreocupante {
@@ -489,7 +492,8 @@ li a {
     border-bottom: 2px #B9B9B9 solid;
     font-size: 18px;
     height: 50px;
-    animation: estufaAdequado 1.5s infinite
+    animation: estufaAdequado 1.5s infinite;
+    cursor: pointer;
 }
 
 .buscas {
@@ -553,6 +557,7 @@ li a {
     height: 50px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .imgSensor {
@@ -643,7 +648,7 @@ li a {
 }
 
 .segundo_alerta img {
-    height: 22px;
+    height: 25px;
 }
 
 .titulo_segundo_alerta {
@@ -655,7 +660,7 @@ li a {
     display: flex;
     gap: 10px;
     font-size: 20px;
-    color: #61F804;
+    /* color: #61F804; */
 }
 
 .ajustes_graficos {
@@ -813,4 +818,40 @@ li a {
 
 .toggle_input {
     display: none;
+}
+
+.intesidade_atual_sensor_critica {
+    color: #FA1111;
+    font-size: 25px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.segundo_alerta_critico {
+    border: 3px solid #C63535;
+}
+
+.intesidade_atual_sensor_preocupante {
+    color: #CCA92B;
+    font-size: 25px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.segundo_alerta_preocupante {
+    border: 2px solid #EEA206;
+}
+
+.intesidade_atual_sensor_adequado {
+    color: #00ff00;
+    font-size: 25px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.negrito{
+    font-weight: 900;
 }
