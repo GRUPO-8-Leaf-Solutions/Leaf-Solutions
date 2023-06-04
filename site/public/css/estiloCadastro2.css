@@ -130,6 +130,13 @@ body{
     flex-wrap: wrap;
 }
 
+.obrigatorio {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .inputCadastro {
     display: flex;
     flex-direction: column;
