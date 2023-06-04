@@ -458,9 +458,9 @@
 
     function pegarIdSubSetor(id) {
         sessionStorage.subSetorClicado = id;
-        
+
         idSubSetor = sessionStorage.subSetorClicado;
-        
+
         buscarSensor(id)
     }
 
@@ -623,7 +623,7 @@
 
                                         dentro_ideal_sensor.innerHTML = `${horasBoas} horas e ${minutosBons} minutos`;
                                         fora_ideal_sensor.innerHTML = `${horasRuins} horas e ${minutosRuins} minutos`;
-                                        tempo_faltante_para_ideal.innerHTML = `${horasRuins} horas e ${minutosRuins} minutos`;
+                                        tempo_faltante_para_ideal.innerHTML = `${horasFaltantes} horas e ${minutosFaltantes} minutos`;
 
                                     })
                                 })
