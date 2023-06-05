@@ -72,9 +72,6 @@ body {
     font-size: 18px;
 }
 
-#estufaTitulo{
-    color: black;
-}
 
 .lista.destaque .lista {
     color: rgba(6, 67, 6, 1);
@@ -159,6 +156,12 @@ body {
 .nomeNome {
     display: flex;
     gap: 15px;
+    align-items: center;
+}
+
+.nomeNome a{
+    color: rgb(255, 188, 188);
+    font-size: 2.1rem;
 }
 
 .nomeNome span {
@@ -236,7 +239,7 @@ li a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
+    padding: 30px;
     height: 70px;
 }
 
@@ -352,7 +355,7 @@ li a {
     display: flex;
     background: #D9D9D9;
     border-radius: 15px;
-    padding: 0 70px 0 40px;
+    padding: 0 40px 0 40px;
     color: #4E4D4DC4;
     justify-content: space-between;
     align-items: center;
@@ -372,7 +375,8 @@ li a {
     background: #FFFFFF;
     box-shadow: -5px 6px 11px rgba(0, 0, 0, 0.25);
     border-radius: 12px;
-    padding: 8px 15px;
+    padding: 25px 25px;
+    gap: 1rem;
 }
 
 .listaEstufas .lista::-webkit-scrollbar{
@@ -393,10 +397,33 @@ li a {
     flex-direction: column;
     height: fit-content;
     max-height: 440px;
-    border-bottom: 2px solid rgba(157, 157, 157, 0.72);
     padding: 0 20px 5px 25px;
+    gap: 1rem;
 }
 
+.adequadoBg{
+    background-color: #8aed87;
+    border-radius: 35px;
+    color: #274426;
+}
+
+.criticoBg{
+    background-color: #ed8787;
+    border-radius: 23px;
+    color: #492424;
+}
+
+.preocupanteBg{
+    background-color: #ede487;
+    border-radius: 23px;
+    color: #76753b;
+}
+
+.NTEbg{
+    background-color: #ebebeb;
+    border-radius: 23px;
+    color: black;
+}
 
 
 .listaEstufas .lista details > summary {
@@ -408,12 +435,15 @@ li a {
     justify-content: space-between;
     align-items: center;
     min-height: 100px;
-    padding: 0 20px;
+    padding: 0 40px;
     cursor: pointer;
 }
 
 .listaEstufas .lista .listaItem span{
     font-size: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 .listaEstufas .lista .listaItem .qtdAlertas{
@@ -435,7 +465,6 @@ li a {
     display: flex;
     flex-direction: column;
     height: fit-content;
-    border-top: 2px solid rgba(157, 157, 157, 0.72);
     padding-top: 25px;
     gap: 10px;
 }
@@ -485,10 +514,10 @@ li a {
     align-items: center;
     padding: 0 45px 0 40px;
     min-height:75px ;
-    background: #FFFFFF;
     box-shadow: inset 0px 0px 6px 2px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
+
 
 .listaSetores .listaSetorItem > :nth-child(2){
     display: flex;
@@ -506,6 +535,3 @@ li a {
 
 
 
-.listaSetores .listaSetorItem .listaSetorItemElemento{
-    width: 33%;
-}

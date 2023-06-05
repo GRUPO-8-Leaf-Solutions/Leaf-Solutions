@@ -31,13 +31,13 @@
             </div>
             <ul>
               <li class="lista">
-                <a href="dashboardPage.html">
+                <a href="dashboardUsuario.html">
                   <i class="uil uil-create-dashboard"></i>
                   <span class="lista">Dashboard</span>
                 </a>
               </li>
               <li class="lista destaque">
-                <a href="estatisticaPage.html">
+                <a href="estatisticaUsuario.html">
                   <i class="uil uil-presentation-line est"></i>
                   <span class="lista">Estatística</span>
                 </a>
@@ -49,30 +49,7 @@
               </a>
             </li> -->
             </ul>
-            <div
-              class="inferior-menu"
-              style="background-image: url(../assets/imgs/VectorPéMenu.svg)"
-            >
-              <ul style="height: fit-content">
-                <li class="lista">
-                  <a href="cadastrarUsuario.html">
-                    <i class="uil uil-plus-circle"></i>
-                    <span class="lista" style="font-size: 15px"
-                      >Cadastrar usuario</span
-                    >
-                  </a>
-                </li>
-                <li class="lista">
-                  <a href="cadastrarEstufa.html">
-                    <i class="uil uil-plus-circle"></i>
-                    <span class="lista" style="font-size: 15px"
-                      >Cadastrar estufa</span
-                    >
-                  </a>
-                </li>
-                <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
-              </ul>
-            </div>
+
           </div>
         </div>
       </div>
@@ -85,9 +62,6 @@
             <span id="estufaNome" class="topo">Estufas</span>
           </div>
           <div class="nomeNome">
-            <a href="../login.html">
-              <i class="uil uil-signout"></i>
-            </a>
             <ul class="ul2">
               <span class="ismalendas">
                 <span id="loginUsuario">EMPRESA</span>
@@ -206,7 +180,7 @@
                             idUsuarioServer: idUsuario,
                           }),
                         }).then((estadosSetores) => {
-                          
+                          // estufaNome.innerHTML = `${listaQTDsetores[1].nome}`;
                           if (estadosSetores.ok) {
                             estadosEstufas.json().then((estadosEstufas) => {
                               listaEstufas.json().then((listaEstufas) => {
@@ -219,7 +193,8 @@
                                       estufas.push({
                                         idEstufa: listaEstufas[i].idEstufa,
                                         nomeEstufa: listaEstufas[i].nome,
-                                        qtdSetores: listaQTDsetores[i].totalSetores,
+                                        qtdSetores:
+                                          listaQTDsetores[i].totalSetores,
                                       });
 
                                       let posicaoEstufa = estufas.findIndex(
@@ -381,8 +356,7 @@
                                                                           </div>
                                                                       </div>
                                                                       </details>
-                                                                      `
-                                                                      ;
+                                                                      `;
                                       }
                                     }
 
@@ -545,9 +519,7 @@
                                                                                 <span class="listaSetorItemElemento">Setor ${setores[i].idSetor}</span>
                                                                                 <span class="listaSetorItemElemento"> ${setores[i].qtdSubSetores}</span>
                                                                             </div>
-                                                                        `
-                                                                        ;
-                                                                        
+                                                                        `;
                                                     }
                                                   }
                                                 }
@@ -572,22 +544,39 @@
     });
   }
 
-
-  
-
-
   window.addEventListener("load", () => {
     plotarElementoLista();
+    
   });
 
   loginUsuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+
+ function pegarNome(idEmpresa){
+    fetch("/usuariosEstufa/pegarNome", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idUsuarioServer: idUsuario,
+      }),
+    }).then((pegaMoca) =>{
+      console.log("entrei nessa porar")
+      topo.innerHTML = `${pegaMoca[1].nome}`
+    }
+  )}
   function registrarSessionSetor(id) {
     sessionStorage.setorClicado = id;
-    window.location = "subSetoresPage.html";
+    window.location = "subSetoresUsuario.html";
   }
 
+ 
+
   function pegarIdEstufa(id) {
+    pegarNome();
     sessionStorage.estufaClicada = id;
   }
+
+  
 </script>

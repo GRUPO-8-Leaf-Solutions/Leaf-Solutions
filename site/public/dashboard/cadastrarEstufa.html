@@ -105,6 +105,9 @@
                     <span class="topo">Cadastro de Estufa</span>
                 </div>
                 <div class="nomeNome">
+                    <a href="../login.html">
+                        <i class="uil uil-signout"></i>
+                    </a>
                     <ul class="ul2">
                         <span class="ismalendas">
                             <span id="loginUsuario">EMPRESA</span>
@@ -118,7 +121,7 @@
                         <img src="../assets/imgs/vetorUrgente.svg">
                         <div class="span-urgente">
                             <span class="urgenteText">CRÍTICO</span>
-                            <span>350lm - 450lm</span>
+                            <span>350lm - 449lm</span>
                             <span>650lm - 800lm</span>
                         </div>
                     </div>
@@ -126,8 +129,8 @@
                         <img src="../assets/imgs/VectorNewProcupante.svg" width="30px">
                         <div class="span-preocupante">
                             <span class="criticoText">PREOCUPANTE</span>
-                            <span>450lm - 500lm</span>
-                            <span>600lm - 650lm</span>
+                            <span>450lm - 499lm</span>
+                            <span>600lm - 649lm</span>
                         </div>
                     </div>
                     <!-- <div class="critico">
@@ -138,7 +141,7 @@
                         <img src="../assets/imgs/vetorAdequado.svg">
                         <div class="span-adequado">
                             <span class="adequadoText">ADEQUADO</span>
-                            <span>500lm - 600lm</span>
+                            <span>500lm - 559lm</span>
                         </div>
                     </div>
                 </div>
@@ -218,6 +221,9 @@
 </html>
 
 <script>
+    var empresa = sessionStorage.idUsuario;
+
+    loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
 
     var cep = document.getElementById("cep")
 
@@ -249,12 +255,11 @@
 
 
     function cadastrarEstufa() {
-        // aguardar();
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
+        var empresa = sessionStorage.idUsuario;
         var nomeVar = nomeEstufa.value;
         var areaVar = area.value;
+
         var cepVar = cep.value;
         var logradouroVar = logradouro.value;
         var numEnderecoVar = num.value;
@@ -264,69 +269,71 @@
         var complementoVar = complemento.value;
 
 
-        // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
-        //     cardErro.style.display = "block"
-        //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco !)";
+        fetch("/usuariosEndereco/cadastrarEnd", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
 
-        //     finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
+            estadoServer: estadoVar,
+            logradouroServer: logradouroVar,
+            complementoServer: complementoVar,
+            numEnderecoServer: numEnderecoVar,
+            cidadeServer: cidadeVar,
+            cepServer: cepVar,
+            bairroServer: bairroVar
 
-        // Enviando o valor da nova input
-        fetch("/usuariosEstufa/cadastrarEstufa", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                areaServer: areaVar,
-                cepServer: cepVar,
-                logradouroServer: logradouroVar,
-                numEnderecoServer: numEnderecoVar,
-                bairroServer: bairroVar,
-                cidadeServer: cidadeVar,
-                estadoServer: estadoVar,
-                complementoServer: estadoVar,
-                fkUsuarioServer: ID_USUARIO
-                // complementoServer: complementoVar,
-                // numEnderecoServer: numEnderecoVar,
-                // cidadeServer: cidadeVar,
-                // cepServer: cepVar
+      }),
+    }).then(function (respostaCadEnd) {
+        if (respostaCadEnd.ok) {
+            fetch("/usuariosEndereco/selectEnd")
+            .then(function (respostaSelEnd) {
+                if(respostaSelEnd.ok) {
+                    respostaSelEnd.json().then(function (respostaSelEnd) {
+                        console.log(`Dados recebidos: ${JSON.stringify(respostaSelEnd)}`);
 
+                        var fkEndereco = respostaSelEnd[0].ultimoIdCadastrado
+                        fetch("/usuariosEstufa/cadastrarEstufa", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                // crie um atributo que recebe o valor recuperado aqui
+                                // Agora vá para o arquivo routes/usuario.js
+
+                                nomeServer: nomeVar,
+                                areaServer: areaVar,
+                                fkEmpresa: empresa,
+                                fkEndereco: fkEndereco
+
+
+                            }),
+                         })
+                    });
+            if (respostaSelEnd.ok) {
+
+                console.log("Cadastro realizado !")
+                nomeEstufa.value = ""
+                area.value = ""
+                cep.value = ""
+                logradouro.value = ""
+                num.value = ""
+                bairro.value = ""
+                uf.value = ""
+                localidade.value = ""
+                complemento.value = ""
+                alert(`Estufa cadastrada !`)
+            } 
+                } 
             })
-        }).then(function (resposta) {
+        }
+    })
 
-            console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-                // cardErro.style.display = "block";
+  return false;
+  }
+    
 
-                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
-
-                // setTimeout(() => {
-                window.location = "dashboardPage.html";
-                // }, "2000")
-
-                // limparFormulario();
-                // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro da estufa!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
-
-        return false;
-    }
-
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
 </script>

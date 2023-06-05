@@ -27,13 +27,13 @@
             </div>
             <ul>
               <li class="lista">
-                <a href="dashboardPage.html">
+                <a href="dashboardUsuario.html">
                   <i class="uil uil-create-dashboard"></i>
                   <span class="lista">Dashboard</span>
                 </a>
               </li>
               <li class="lista destaque">
-                <a href="estatisticaPage.html">
+                <a href="estatisticaUsuario.html">
                   <i class="uil uil-presentation-line est"></i>
                   <span class="lista">Estatística</span>
                 </a>
@@ -49,7 +49,7 @@
               class="inferior-menu"
               style="background-image: url(../assets/imgs/VectorPéMenu.svg)"
             >
-              <ul style="height: fit-content">
+              <!-- <ul style="height: fit-content">
                 <li class="lista">
                   <a href="cadastrarUsuario.html">
                     <i class="uil uil-plus-circle"></i>
@@ -66,8 +66,8 @@
                     >
                   </a>
                 </li>
-                <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
-              </ul>
+                <img src="imgs/VectorPéMenu.svg" alt=""> 
+              </ul> -->
             </div>
           </div>
         </div>
@@ -90,9 +90,6 @@
             </span>
           </div>
           <div class="nomeNome">
-            <a href="../login.html">
-              <i class="uil uil-signout"></i>
-          </a>
             <ul class="ul2">
               <span class="ismalendas">
                 <span id="loginUsuario"></span>
@@ -229,124 +226,25 @@
       .then(function (listaSubSetores) {
         console.log("resposta: ", listaSubSetores);
         if (listaSubSetores.ok) {
-          fetch("/subSetores/estadosSubSetores", {
-            method: "post",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              idSetorServer: idSetorVar
-            }),
-          }).then((estadosSubSetores) =>{
-            if(estadosSubSetores.ok){
-              estadosSubSetores.json().then((estadosSubSetores)=>{
-                listaSubSetores.json().then((listaSubSetores) => {
-                  console.log(listaSubSetores);
-                  var subSetor = []
-
-                  for (i = 0; i<listaSubSetores.length; i++){
-                    subSetor.push({
-                       idSubSetor: listaSubSetores[i].subSetor,
-                    });
-
-                    let posicaoSubSetor = subSetor.findIndex(
-                                        (subSetoresCriados) => {
-                                          return (
-                                            subSetoresCriados.idSubSetor ==
-                                            listaSubSetores[i].subSetor
-                                          );
-                                        }
-                                      );
-
-                                      for (
-                                        p = 0;
-                                        p < estadosSubSetores.length;
-                                        p++
-                                      ) {
-                                        if (
-                                          estadosSubSetores[p].idSubSetor ==
-                                            listaSubSetores[posicaoSubSetor]
-                                              .subSetor &&
-                                              estadosSubSetores[p].estado == "adequado"
-                                        ) {
-                                          subSetor[posicaoSubSetor].adequado =
-                                          estadosSubSetores[p].quantidade;
-                                        }
-                                      }    
-
-                                      
-                                      for (
-                                        p = 0;
-                                        p < estadosSubSetores.length;
-                                        p++
-                                      ) {
-                                        if (
-                                          estadosSubSetores[p].idSubSetor ==
-                                            listaSubSetores[posicaoSubSetor]
-                                              .subSetor &&
-                                              estadosSubSetores[p].estado == "critico"
-                                        ) {
-                                          subSetor[posicaoSubSetor].critico =
-                                          estadosSubSetores[p].quantidade;
-                                        }
-                                      }  
-
-                                      
-                                      for (
-                                        p = 0;
-                                        p < estadosSubSetores.length;
-                                        p++
-                                      ) {
-                                        if (
-                                          estadosSubSetores[p].idSubSetor ==
-                                            listaSubSetores[posicaoSubSetor]
-                                              .subSetor &&
-                                              estadosSubSetores[p].estado == "preocupante"
-                                        ) {
-                                          subSetor[posicaoSubSetor].preocupante =
-                                          estadosSubSetores[p].quantidade;
-                                        }
-                                      }  
-                  }
-                  
-                  for (let i = 0; i < listaSubSetores.length; i++) {
-                    if(subSetor[i].critico >= 1){
-                      listaSubSetor.innerHTML += `
-                            <div onclick="pegarIdSubSetor(this.id)" id="${subSetor[i].idSubSetor}" class="subsetor_critico">
-                             <span>Subsetor ${subSetor[i].idSubSetor} </span>
-                            </div>
-                            `;
-                      setorMig.innerHTML = `Setor ${idSetorVar}`;
-                    }else if(subSetor[i].preocupante >= 1){
-                      listaSubSetor.innerHTML += `
-                            <div onclick="pegarIdSubSetor(this.id)" id="${subSetor[i].idSubSetor}" class="subsetor_preocupante">
-                             <span>Subsetor ${subSetor[i].idSubSetor} </span>
-                            </div>
-                            `;
-                      setorMig.innerHTML = `Setor ${idSetorVar}`;
-                    }else if(subSetor[i].adequado >= 1){
-                      listaSubSetor.innerHTML += `
-                            <div onclick="pegarIdSubSetor(this.id)" id="${subSetor[i].idSubSetor}" class="subsetor_adequado">
-                             <span>Subsetor ${subSetor[i].idSubSetor} </span>
-                            </div>
-                            `;
-                      setorMig.innerHTML = `Setor ${idSetorVar}`;
-                    }else{
-                      listaSubSetor.innerHTML += `
-                            <div onclick="pegarIdSubSetor(this.id)" id="${subSetor[i].idSubSetor}" class="">
-                             <span>Subsetor ${subSetor[i].idSubSetor} </span>
-                            </div>
-                            `;
-                      setorMig.innerHTML = `Setor ${idSetorVar}`;
-                    }
-                  }
-                });
-                
-              })
+          listaSubSetores.json().then((listaSubSetores) => {
+            console.log(listaSubSetores);
+            for (let i = 0; i < listaSubSetores.length; i++) {
+              var subsetor = listaSubSetores[i];
+              listaSubSetor.innerHTML += `
+                    <div onclick="pegarIdSubSetor(this.id)" id="${subsetor.subSetor}" class="subsetor_critico">
+                     <span>Subsetor ${subsetor.subSetor} </span>
+                    </div>
+                    `;
+              setorMig.innerHTML = `Setor ${idSetorVar}`;
             }
-          })
-        } 
+          });
+        } else {
+          throw "Houve um erro na API ou em trazer os dados !!";
+        }
       })
+      .catch(function (resposta) {
+        console.log(`#ERROR: ${resposta}`);
+      });
     return false;
   }
 
@@ -366,173 +264,39 @@
     })
       .then(function (listaSensores) {
         if (listaSensores.ok) {
-          fetch("/subSetores/estadosSensor",{
-            method: "post",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              idSubSetorServer: idSubSetor,
-            }),
-          }).then((estadosSensores)=>{
-            listaSensor.innerHTML = "";
-            estadosSensores.json().then((estadosSensores)=>{
-              listaSensores.json().then((listaSensores) => {
-                var sensores = [];
- 
-                for (i = 0; i < listaSensores.length; i++){
-                  sensores.push({idSensor: listaSensores[i].Sensor})
+          listaSensor.innerHTML = "";
+          listaSensores.json().then((listaSensores) => {
+            console.log(listaSensores);
+            for (let i = 0; i < listaSensores.length; i++) {
+              var sensorAtual = listaSensores[i];
+              listaSensor.innerHTML += `
+                        <div class="lista_sensor" onclick="pegarIdSensor(this.id)" id="${sensorAtual.Sensor}">
+                                <div>
+                                    <img class="imgSensor" src="../assets/imgs/alert-icon.svg">
+                                </div>
 
-                  let posicaoSensor = sensores.findIndex(
-                                        (sensoresCriados) => {
-                                          return (
-                                            sensoresCriados.idSensor ==
-                                            listaSensores[i].Sensor
-                                          );
-                                        }
-                                      );
+                                <div>
+                                    <span>Sensor <span id="idSensor">${sensorAtual.Sensor}</span></span>
+                                </div>
+                                <label>
+                                    <input type="checkbox" class="toggle_input">
+                                    <div class="toggle-wrapper">
+                                        <div class="slider">
+                                            <button class="button"></button>
+                                        </div>
 
-                                      for (
-                                        p = 0;
-                                        p < estadosSensores.length;
-                                        p++
-                                      ) {
-                                        if (
-                                          estadosSensores[p].idSensor ==
-                                          listaSensores[posicaoSensor]
-                                              .Sensor &&
-                                              estadosSensores[p].estado == "adequado"
-                                        ) {
-                                          sensores[posicaoSensor].adequado =
-                                          estadosSensores[p].quantidade;
-                                        }
-                                      }
-
-                                      
-                                      for (
-                                        p = 0;
-                                        p < estadosSensores.length;
-                                        p++
-                                      ) {
-                                        if (
-                                          estadosSensores[p].idSensor ==
-                                          listaSensores[posicaoSensor]
-                                              .Sensor &&
-                                              estadosSensores[p].estado == "critico"
-                                        ) {
-                                          sensores[posicaoSensor].critico =
-                                          estadosSensores[p].quantidade;
-                                        }
-                                      }
-
-                                      
-                                      for (
-                                        p = 0;
-                                        p < estadosSensores.length;
-                                        p++
-                                      ) {
-                                        if (
-                                          estadosSensores[p].idSensor ==
-                                          listaSensores[posicaoSensor]
-                                              .Sensor &&
-                                              estadosSensores[p].estado == "preocupante"
-                                        ) {
-                                          sensores[posicaoSensor].preocupante =
-                                          estadosSensores[p].quantidade;
-                                        }
-                                      }
-                }
-
-
-                
-                for (let i = 0; i < listaSensores.length; i++) {
-                  if (sensores[i].critico >= 1){
-                    listaSensor.innerHTML += `
-                              <div class="lista_sensor subsetor_critico" onclick="pegarIdSensor(this.id)" id="${sensores[i].idSensor}">
-                                      <div>
-                                          <img class="imgSensor" src="../../assets/imgs/vetorUrgente.svg">
-                                      </div>
-      
-                                      <div>
-                                          <span>Sensor <span id="idSensor">${sensores[i].idSensor}</span></span>
-                                      </div>
-                                      <label>
-                                          <input type="checkbox" class="toggle_input">
-                                          <div class="toggle-wrapper">
-                                              <div class="slider">
-                                                  <button class="button"></button>
-                                              </div>
-      
-                                      </label>
-                                  </div>
-                                  `;
-                  }else if(sensores[i].preocupante >= 1){
-                    listaSensor.innerHTML += `
-                              <div class="lista_sensor subsetor_preocupante" onclick="pegarIdSensor(this.id)" id="${sensores[i].idSensor}">
-                                      <div>
-                                          <img class="imgSensor" src="../../assets/imgs/VectorNewProcupante.svg">
-                                      </div>
-      
-                                      <div>
-                                          <span>Sensor <span id="idSensor">${sensores[i].idSensor}</span></span>
-                                      </div>
-                                      <label>
-                                          <input type="checkbox" class="toggle_input">
-                                          <div class="toggle-wrapper">
-                                              <div class="slider">
-                                                  <button class="button"></button>
-                                              </div>
-      
-                                      </label>
-                                  </div>
-                                  `;
-                  }else if(sensores[i].adequado >= 1){
-                    listaSensor.innerHTML += `
-                              <div class="lista_senso subsetor_adequado" onclick="pegarIdSensor(this.id)" id="${sensores[i].idSensor}">
-                                      <div>
-                                          <img class="imgSensor" src="../../assets/imgs/vetorAdequado.svg">
-                                      </div>
-      
-                                      <div>
-                                          <span>Sensor <span id="idSensor">${sensores[i].idSensor}</span></span>
-                                      </div>
-                                      <label>
-                                          <input type="checkbox" class="toggle_input">
-                                          <div class="toggle-wrapper">
-                                              <div class="slider">
-                                                  <button class="button"></button>
-                                              </div>
-      
-                                      </label>
-                                  </div>
-                                  `;
-                  }else{
-                    listaSensor.innerHTML += `
-                              <div class="lista_sensor" onclick="pegarIdSensor(this.id)" id="${sensores[i].idSensor}">
-
-      
-                                      <div>
-                                          <span>Sensor <span id="idSensor">${sensores[i].idSensor}</span></span>
-                                      </div>
-                                      <label>
-                                          <input type="checkbox" class="toggle_input">
-                                          <div class="toggle-wrapper">
-                                              <div class="slider">
-                                                  <button class="button"></button>
-                                              </div>
-      
-                                      </label>
-                                  </div>
-                                  `;
-                  }
-                }
-              });
-
-            })
-          })
-        } 
+                                </label>
+                            </div>
+                            `;
+            }
+          });
+        } else {
+          throw "Houve um erro na API ou em trazer os dados !!";
+        }
       })
-
+      .catch(function (listaSensores) {
+        console.log(`#ERROR: ${listaSensores}`);
+      });
     return false;
   }
 
@@ -872,8 +636,8 @@
 
                       for (let j = 0; j < indiceAtual.length; j++) {
                         if (
-                          indiceAtual[0].valorAtual <= 450 ||
-                          indiceAtual[0].valorAtual >= 650
+                          indiceAtual[0].valorAtual < 450 ||
+                          indiceAtual[0].valorAtual > 650
                         ) {
                           intesidade_atual_sensor.classList.add(
                             "intesidade_atual_sensor_critica"
@@ -883,10 +647,10 @@
                           );
                           intesidade_atual_sensor.innerHTML = `<img src="../assets/imgs/vetorUrgente.svg" style="height: 23px" width="25px"> ${indiceAtual[0].valorAtual}`;
                         } else if (
-                          (indiceAtual[0].valorAtual > 450 &&
-                            indiceAtual[0].valorAtual < 500) ||
-                          (indiceAtual[0].valorAtual > 600 &&
-                            indiceAtual[0].valorAtual < 650)
+                          (indiceAtual[0].valorAtual >= 450 &&
+                            indiceAtual[0].valorAtual <= 500) ||
+                          (indiceAtual[0].valorAtual >= 600 &&
+                            indiceAtual[0].valorAtual <= 650)
                         ) {
                           intesidade_atual_sensor.classList.add(
                             "intesidade_atual_sensor_preocupante"
@@ -902,7 +666,7 @@
                           intesidade_atual_sensor.classList.add(
                             "intesidade_atual_sensor_adequado"
                           );
-                          segundo_alerta.classList.add("segundo_alerta");
+                          segundo_alerta.classList.add("segundo_alerta_adequado");
                           intesidade_atual_sensor.innerHTML = `<img src="../assets/imgs/vetorAdequado.svg" style="height: 23px" width="25px"> ${indiceAtual[0].valorAtual}`;
                         }
                       }
@@ -947,17 +711,16 @@
     });
   }
 
-//   function ultimasCapturas(idEmpresa, idEstufa, idSetor, idSubSetor, idSensor, dados) {
-//     fetch(`/leitura/tempoReal ${idEmpresa}, ${idEstufa}, ${idSetor}, ${idSubSetor}`, 
-//     { cache: `no-store` }).then(
-//       function (response) {
-//         if (response.ok) {
-//           response.json().then(function (novoRegistros) {
-//             console.log(`Dados recebidos;. ${JSON.stringify(novoRegistros)}`);
-            
-//           });
-//         }
-//       }
-//     );
-//   }
+  function ultimasCapturas(idEmpresa, dados) {
+    fetch(`/leitura/tempoReal ${idEmpresa}`, { cache: `no-store` }).then(
+      function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistros) {
+            console.log(`Dados recebidos;. ${JSON.stringify(novoRegistros)}`);
+            console.log(dados.labels);
+          });
+        }
+      }
+    );
+  }
 </script>

@@ -30,4 +30,17 @@ router.post("/rankMaisAlertas", function(req, res){
     usuarioControllerEstufa.rankMaisAlertas(req, res);
 });
 
+
+router.post("/estadosEstufa", function(req, res){
+    usuarioControllerEstufa.estadosEstufa(req, res);
+})
+
+router.post("/cadastrarEstufa", function(req, res){
+    usuarioControllerEstufa.cadastrarEstufa(req, res);
+})
+
+router.post("/pegarNome", function(req, res){
+    usuarioControllerEstufa.pegarNome(req, res)
+})
+
 module.exports = router;

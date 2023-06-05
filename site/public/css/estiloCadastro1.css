@@ -45,8 +45,8 @@ body{
     justify-content: center;
     align-items: center;
     font-family: 'Jost';
-    width: 75%;
-
+    width: 40%;
+    position: relative;
 }
 
 .cadastroContainerUpperPart {
@@ -58,27 +58,18 @@ body{
 }
 
 .cadastroContainerUpperPart> :nth-child(1) {
-    width: 50%;
+    width: 100%;
     background: #88AE35;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border-radius: 20px 80px 80px 0;
+    border-radius: 20px 20px 0 0;
     font-weight: bold;
 }
 
-.cadastroContainerUpperPart> :nth-child(1) :nth-child(1) {
-    color: #88AE35;
-    background-color: white;
-    border-radius: 100%;
-    height: 25px;
-    width: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .cadastroContainerUpperPart> :nth-child(2) {
     width: 50%;
@@ -123,9 +114,7 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    height: 186px;
-    width: 80%;
-    flex-wrap: wrap;
+    width: 70%;
 }
 
 .inputCadastro {
@@ -158,12 +147,14 @@ body{
 
 .cadastroContainer img {
     align-self: flex-end;
-    padding: 15px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 75px;
 }
 
 
 .bottomCadastroContainer {
-    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -180,7 +171,7 @@ body{
     color: #e7e5e5;
 }
 
-.bottomCadastroContainer button {
+.cadastroContainer button {
     width: 265px;
     height: 44px;
     background: #88AE35;
@@ -190,9 +181,10 @@ body{
     font-family: 'Jost';
     font-size: 15px;
     font-weight: bold;
+    margin-block: 2rem;
 }
 
-.bottomCadastroContainer button:hover {
+.cadastroContainer button:hover {
     cursor: pointer;
     background-color: #7da032;
 }

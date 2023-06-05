@@ -76,6 +76,9 @@
                     <span class="topo">Cadastro de Funcionários</span>
                 </div>
                 <div class="nomeNome">
+                    <a href="../login.html">
+                        <i class="uil uil-signout"></i>
+                    </a>
                     <ul class="ul2">
                         <span class="ismalendas">
                             <span id="loginUsuario">EMPRESA</span>
@@ -90,7 +93,7 @@
                         <img src="../assets/imgs/vetorUrgente.svg">
                         <div class="span-urgente">
                             <span class="urgenteText">CRÍTICO</span>
-                            <span>350lm - 450lm</span>
+                            <span>350lm - 449lm</span>
                             <span>650lm - 800lm</span>
                         </div>
                     </div>
@@ -98,8 +101,8 @@
                         <img src="../assets/imgs/VectorNewProcupante.svg" width="30px">
                         <div class="span-preocupante">
                             <span class="criticoText">PREOCUPANTE</span>
-                            <span>450lm - 500lm</span>
-                            <span>600lm - 650lm</span>
+                            <span>450lm - 499lm</span>
+                            <span>600lm - 649lm</span>
                         </div>
                     </div>
                     <!-- <div class="critico">
@@ -110,7 +113,7 @@
                         <img src="../assets/imgs/vetorAdequado.svg">
                         <div class="span-adequado">
                             <span class="adequadoText">ADEQUADO</span>
-                            <span>500lm - 600lm</span>
+                            <span>500lm - 559lm</span>
                         </div>
                     </div>
                 </div>
@@ -164,7 +167,11 @@
 </html>
 
 <script>
-    function cadusuario() {
+
+loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
+
+
+    function cadUsuario() {
         // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
@@ -173,8 +180,11 @@
         var sobrenomeVar = input_sobrenome.value;
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
+        var empresaUsu = sessionStorage.idUsuario;
 
-        fetch("/usuarios/cadastrar", {
+
+
+        fetch("/usuarios/cadUsuario", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -182,47 +192,29 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
+                nomeServer: nomeUsuarioVar,
                 sobrenomeServer: sobrenomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                empresaServer: empresaUsu
 
             })
-        }).then(function (resposta) {
+        })
+        .then(function (resposta) {
             console.log("resposta: ", resposta);
             if (resposta.ok) {
-                fetch("/usuarios/ultimaEmp/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        // crie um atributo que recebe o valor recuperado aqui
-                        // Agora vá para o arquivo routes/usuario.js
-                        email: emailVar
 
-                    })
-                })
-                    .then((res) => {
-                        console.log(res);
-                        res.json().then(json => {
-                            sessionStorage.ULTIMA_ID = json.idEmpresa;
-                        })
-                    })
-
-                // cardErro.style.display = "block";
-
-                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
-
-                // setTimeout(() => {
-                window.location = "cadastro2.html";
-                // }, "2000")
-
-                // limparFormulario();
-                // finalizarAguardar();
+                console.log("Cadastro realizado !")
+                alert(`Usuario cadastrado !`)
+                input_nome.value = ""
+                input_sobrenome.value = ""
+                input_email.value = ""
+                input_senha.value = ""
+             
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
+            
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
             // finalizarAguardar();

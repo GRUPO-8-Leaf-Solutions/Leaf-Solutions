@@ -24,4 +24,8 @@ router.post("/exibirQtdSensor", function (req, res) {
     setoresController.buscarSensor(req, res);
 });
 
+router.post("/estadosSetores", function(req, res){
+    setoresController.estadosSetores(req, res)
+})
+
 module.exports = router;

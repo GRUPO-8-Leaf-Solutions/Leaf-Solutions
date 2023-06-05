@@ -9,12 +9,13 @@ var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 8080;
 var app = express();
 
 var indexRouter = require("./src/routes/index");
-var usuarioRouter = require("./src/routes/usuarios");
-var usuarioEndRouter = require("./src/routes/usuariosEndereco");
-var usuarioEstufaRouter = require("./src/routes/usuariosEstufa");
+var usuariosRouter = require("./src/routes/usuarios");
+var usuarioEnderecoRouter = require("./src/routes/usuariosEndereco");
+var usuariosEstufaRouter = require("./src/routes/usuariosEstufa");
 var leituraRouter = require("./src/routes/leitura");
 var setoresRouter = require("./src/routes/setores");
 var subSetores = require("./src/routes/subSetores");
+var funcionario = require("./src/routes/funcionario")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -23,13 +24,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/", indexRouter);
-app.use("/usuarios", usuarioRouter);
-app.use("/usuariosEnd", usuarioEndRouter);
-app.use("/usuariosEstufa", usuarioEstufaRouter);
+app.use("/usuarios", usuariosRouter);
+app.use("/usuariosEndereco", usuarioEnderecoRouter);
+app.use("/usuariosEstufa", usuariosEstufaRouter);
 app.use("/leitura", leituraRouter);
-app.use("/estufa", usuarioEstufaRouter);
+app.use("/estufa", usuariosEstufaRouter);
 app.use("/setores", setoresRouter);
 app.use("/subSetores", subSetores);
+app.use("/funcionario", funcionario)
 
 // app.use("/empresa", empresaRouter);
 

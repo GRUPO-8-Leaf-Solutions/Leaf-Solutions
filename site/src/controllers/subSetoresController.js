@@ -25,6 +25,46 @@ function buscarSubSetor(req, res) {
 }
 
 
+function estadosSubSetores(req, res) {
+    var idSetor = req.body.idSetorServer;
+    subSetoresModel.estadosSubSetores(idSetor)
+      .then(function (resultado) {
+        if (resultado.length > 0) {
+          res.status(200).json(resultado);
+        } else {
+          res.status(204).send("nenhum resultado encontrado!");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "Houve um erro ao buscar as estufas da empresa..",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+
+  function estadosSensor(req, res) {
+    var idSubSetor = req.body.idSubSetorServer;
+    subSetoresModel.estadosSensor(idSubSetor)
+      .then(function (resultado) {
+        if (resultado.length > 0) {
+          res.status(200).json(resultado);
+        } else {
+          res.status(204).send("nenhum resultado encontrado!");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "Houve um erro ao buscar as estufas da empresa..",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+
 function buscarSensor(req, res) {
     var idSubSetor = req.body.idSubSetorServer
     subSetoresModel.buscarSensor(idSubSetor)
@@ -108,43 +148,38 @@ function obterIndiceAtual(req, res) {
         });
 }
 
-// function obterMenorIndice(req, res) {
 
-//     var idEmpresa = req.body.idUsuarioServer;
-//     var idSetor = req.body.idSetorServer;
-//     var idEstufa = req.body.idEstufaServer;
-//     var idSubSetor = req.body.idSubSetorServer;
-//     var idSensor = req.body.idSensorServer;
-//     subSetoresModel.obterMenorIndice(idEmpresa, idSensor, idSubSetor, idEstufa, idSetor)
-//         .then(function (resultado) {
-//             if (resultado.length > 0) {
-//                 res.status(200).json(resultado);
-//             } else {
-//                 res.status(204).send("nenhum resultado encontrado!")
-//             }
-//         }).catch(function (erro) {
-//             console.log(erro);
-//             console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
-//             res.status(500).json(erro.sqlMessage);
-//         });
-// }
+function exibitQtdSubSetores(req, res){
+    var idEmpresa = req.body.idUsuarioServer
+    subSetoresModel.exibitQtdSubSetores(idEmpresa)
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os Maiores indice da da estufa..", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-// function obterMaiorIndice(req, res) {
-//     var idEmpresa = req.body.idUsuarioServer
-
-//     subSetoresModel.obterMaiorIndice(idEmpresa)
-//         .then(function (resultado) {
-//             if (resultado.length > 0) {
-//                 res.status(200).json(resultado);
-//             } else {
-//                 res.status(204).send("nenhum resultado encontrado!")
-//             }
-//         }).catch(function (erro) {
-//             console.log(erro);
-//             console.log("Houve um erro ao buscar as estufas da empresa..", erro.sqlMessage);
-//             res.status(500).json(erro.sqlMessage);
-//         });
-// }
+    // function statusSensor(req, res) {
+    //     var idSensor = req.body.idSensorServer
+    //     subSetoresModel.statusSensor(idSensor)
+    //     .then(function (resultado) {
+    //         if (resultado.length > 0) {
+    //             res.status(200).json(resultado);
+    //         } else {
+    //             res.status(204).send("Nenhum resultado encontrado")
+    //         }
+    //     }).catch(function (erro) {
+    //         console.log(erro);
+    //         console.log("Houve um erro ao buscar o sensor clicado")
+    //         res.status(500).json(erro.sqlMessage);
+    //     });
+    // }
 
 module.exports = {
     testar,
@@ -152,5 +187,9 @@ module.exports = {
     buscarSensor,
     obterMenorIndice,
     obterMaiorIndice,
-    obterIndiceAtual
+    obterIndiceAtual,
+    exibitQtdSubSetores,
+    estadosSubSetores,
+    estadosSensor
+
 }

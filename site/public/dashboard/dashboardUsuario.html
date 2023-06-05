@@ -30,13 +30,13 @@
                     </div>
                     <ul>
                         <li class="lista destaque">
-                            <a href="dashboardPage.html">
+                            <a href="dashboardUsuario.html">
                                 <i class="uil uil-create-dashboard"></i>
                                 <span class="lista">Dashboard</span>
                             </a>
                         </li>
                         <li class="lista">
-                            <a href="estatisticaPage.html">
+                            <a href="estatisticaUsuario.html">
                                 <i class="uil uil-presentation-line"></i>
                                 <span class="lista">Estatística</span>
                             </a>
@@ -54,7 +54,8 @@
                             </a>
                         </li> -->
                     </ul>
-                    <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
+
+                   <!--  <div class="inferior-menu" style="background-image: url(../assets/imgs/VectorPéMenu.svg);">
                         <ul style="height: fit-content;">
                             <li class="lista">
                                 <a href="cadastrarUsuario.html">
@@ -68,9 +69,9 @@
                                     <span class="lista" style="font-size: 15px;">Cadastrar estufa</span>
                                 </a>
                             </li>
-                            <!-- <img src="imgs/VectorPéMenu.svg" alt=""> -->
+                             <img src="imgs/VectorPéMenu.svg" alt="">
                         </ul>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -114,7 +115,7 @@
 
                     <ul class="ul2">
                         <span class="ismalendas">
-                            <span id="loginUsuario">nome</span>
+                            <span id="loginUsuario">EMPRESA</span>
                         </span>
                     </ul>
                 </div>
@@ -242,31 +243,20 @@
                         <div class="tela-alertas">
                             <span class="title-alerta">ALERTAS</span>
 
-                            <div class="listaScroller" id="listaAlert">
-                                
-
-
-
-                            </div>
-
-
-
+                            <div class="listaScroller" id="listaAlert"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
-
-
-
-
 </body>
 
 
-
 <script>
+    loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
+
+
+    
     window.addEventListener("load", () => {
         obterEstufas();
         obterUltimasCapturasAlertas();
@@ -277,13 +267,7 @@
 
     const grafico_pie = document.getElementById('grafico_pizza');
 
-
-
-
     var idEmpresa = sessionStorage.idUsuario;
-
-    loginUsuario.innerHTML = sessionStorage.NOME_USUARIO
-
 
 
     let proximaAtualizacao;
@@ -529,7 +513,8 @@
     }
 
 
-    // não existe mais
+    var teste
+    
     function obterSituacao() {
         fetch("/leitura/obterSituacao", {
             method: "post",
@@ -556,14 +541,36 @@
                         } 
                     
                 }
+                console.log(paramEstufa)
 
+                 teste = new Chart(grafico_pie, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Estufas críticas', 'Estufas preocupantes', 'Estufas adequadas'],
+                        datasets: [{
+                            label: 'Situação das estufas',
+                            data: paramEstufa,
+                            backgroundColor: ['Red', 'Yellow', 'Green'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
 
             })
         })
     }
 
+setInterval (()=>{
+    teste.update()
+}, 1000)
 
-// tentei
 </script>
 
 <script>
@@ -724,16 +731,11 @@
                                     </div>
                                 </div>
                             `
-
                     }
                 }
             })
-
         })
     }
-
-
-
 </script>
 
 </html>

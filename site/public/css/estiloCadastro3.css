@@ -102,7 +102,7 @@ body{
 
 .P3 .cadastroContainerMiddlePart {
     font-size: 30px;
-    width: 550px;
+    width: fit-content;
 }
 
 .P3 .cadastroContainerMiddlePart h2 {
@@ -111,8 +111,8 @@ body{
 
 .P3 .cadastroContainerMiddlePart> :nth-child(3) {
     display: flex;
-    gap: 10px;
     font-size: 26px;
+    flex-direction: column;
 }
 
 .P3 .bottomCadastroContainer {

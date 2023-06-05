@@ -1,127 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
     <title>Leaf Solutions | Login</title>
 
     <script src="./js/validacao.js"></script>
 
-    <link rel="icon" href="assets/icon/logo.svg">
-    <link rel="stylesheet" href="css/estiloLogin.css">
-</head>
+    <link rel="icon" href="assets/icon/logo.svg" />
+    <link rel="stylesheet" href="css/estiloLogin.css" />
+  </head>
 
-<body class="loginBody">
+  <body class="loginBody">
     <div class="loginContainer">
-        <div>
-            <a href="index.html"> ↤ voltar</a>
-        </div>
-        <div class="loginContainerUpperPart">
-            <img src="assets/icon/logoDark.svg">
-            <span class="titulo">Bem vindo de volta!</span>
-            <span>Faça login na sua conta para ter acesso a plataforma</span>
-        </div>
+      <div>
+        <a href="index.html"> ↤ voltar</a>
+      </div>
+      <div class="loginContainerUpperPart">
+        <img src="assets/icon/logoDark.svg" />
+        <span class="titulo">Bem vindo de volta!</span>
+        <span>Faça login na sua conta para ter acesso a plataforma</span>
+      </div>
 
-        <div class="loginContainerMiddlePart">
-            <div class="inputLogin">
-                <span>Email</span>
-                <input placeholder="Insira seu email" id="email_input">
-            </div>
-
-            <div class="inputLogin">
-                <span>Token</span>
-                <input type="password" placeholder="Insira seu token de acesso" id="senha_input">
-            </div>
-
-            <div class="conectadoEsqSenha">
-                <div>
-                    <input type="checkbox">
-                    <span>Manter-me conectado</span>
-                </div>
-
-                <span>Esqueci minha senha</span>
-            </div>
-
-            <button onclick="login()">Login</button>
+      <div class="loginContainerMiddlePart">
+        <div class="inputLogin">
+          <span>Email</span>
+          <input type="text" placeholder="Insira seu email" id="email_input" />
         </div>
 
-        <div class="loginContainerBottomPart">
-            <span>Não tem uma conta? <a href="cadastro1.html">Cadastre-se</a></span>
+        <div class="inputLogin">
+          <span>Token</span>
+          <input
+            type="password"
+            placeholder="Insira seu token de acesso"
+            id="senha_input"
+          />
         </div>
+        <div class="partbottomInput">
+          <div class="selects">
+            <select name="verificacao" id="verificacao">
+              <option value="">Selecione</option>
+              <option value="empresa">Empresa</option>
+              <option value="funcionario">Funcionario</option>
+            </select>
+          </div>
+
+          <span
+            >Não tem uma conta? <a href="cadastro1.html">Cadastre-se</a></span
+          >
+        </div>
+
+        <!-- <div class="conectadoEsqSenha">
+          <div>
+            <input type="checkbox" />
+            <span>Manter-me conectado</span>
+          </div>
+
+          <span>Esqueci minha senha</span>
+        </div> -->
+
+        <button onclick="login()">Login</button>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
 
 <script>
-function login() {
-        // aguardar();
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+  function login() {
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var selectVar = verificacao.value;
 
-        // if (emailVar == "" || senhaVar == "") {
-        //     // cardErro.style.display = "block"
-        //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco)";
-        //     finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO login()!")
+    if (selectVar == "empresa") {
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO login()!");
 
-            if (resposta.ok) {
-                console.log(resposta);
+          if (resposta.ok) {
+            console.log(resposta);
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+            resposta.json().then((json) => {
+              console.log(json);
+              console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.razaoSocial;
-                    sessionStorage.idUsuario = json.idEmpresa;
+              sessionStorage.EMAIL_USUARIO = json.email;
+              sessionStorage.NOME_USUARIO = json.razaoSocial;
+              sessionStorage.idUsuario = json.idEmpresa;
 
-                    setTimeout(function () {
-                        window.location = "../dashboard/dashboardPage.html";
-                    }, 1000); // apenas para exibir o loading
+              setTimeout(function () {
+                window.location = "../dashboard/dashboardPage.html";
+              }, 1000); // apenas para exibir o loading
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o login!");
 
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
+            resposta.text().then((texto) => {
+              console.error(texto);
+              // finalizarAguardar(texto);
+            });
+          }
         })
+        .catch(function (erro) {
+          console.log(erro);
+        });
 
-        return false;
+      return false;
+    } else {
+
+      fetch("/funcionario/autenticar_two", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("ESTOU NO THEN DO login()!");
+
+          if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then((json) => {
+              console.log(json);
+              console.log(JSON.stringify(json));
+
+              sessionStorage.EMAIL_USUARIO = json.email;
+              sessionStorage.NOME_USUARIO = json.nome;
+              sessionStorage.idUsuario = json.fkEmpresa;
+
+              setTimeout(function () {
+                window.location = "../dashboard/dashboardUsuario.html";
+              }, 1000); // apenas para exibir o loading
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then((texto) => {
+              console.error(texto);
+              // finalizarAguardar(texto);
+            });
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro);
+        });
+
+      return false;
     }
-
-
-
+  }
 </script>

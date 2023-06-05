@@ -162,7 +162,12 @@ body {
 .nomeNome {
     display: flex;
     gap: 15px;
-    /* justify-content: end; */
+    align-items: center;
+}
+
+.nomeNome a{
+    color: rgb(255, 188, 188);
+    font-size: 2.1rem;
 }
 
 .nomeNome span {
@@ -419,7 +424,7 @@ li a {
     height: 50px;
     animation: estufaCritica 1.5s infinite;
     cursor: pointer;
-
+    color: #492424;
 }
 
 .subsetor_preocupante {
@@ -433,6 +438,7 @@ li a {
     height: 50px;
     animation: estufaPreocupante 1.5s infinite;
     cursor: pointer;
+    color: #76753b;
 }
 
 @keyframes estufaPreocupante {
@@ -494,6 +500,7 @@ li a {
     height: 50px;
     animation: estufaAdequado 1.5s infinite;
     cursor: pointer;
+    color: #274426;
 }
 
 .buscas {
@@ -597,17 +604,30 @@ li a {
     width: 65%;
 }
 
+#ajustes {
+    width: 100%;
+    height: 336px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#conteudo_segunda_parte canvas {
+    width: 505px;
+    height: 505px;
+}
+
 .alertas {
     display: flex;
     height: 15%;
-    width: 895px;
-    justify-content: center;
+    width: 100%;
+    justify-content: space-evenly;
     align-items: center;
     gap: 100px;
 }
 
 .primeiro_alerta {
-    width: 230px;
+    width: 300px;
     height: 65px;
     display: flex;
     flex-direction: column;
@@ -663,17 +683,6 @@ li a {
     /* color: #61F804; */
 }
 
-.ajustes_graficos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.grafico {
-    width: 500px;
-    /* height: 400px; */
-}
-
 .cadeia_KPI {
     display: flex;
     justify-content: space-between;
@@ -683,6 +692,7 @@ li a {
 .KPI_esquerda {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
     width: 35%;
 }
@@ -759,10 +769,11 @@ li a {
 
 .conjunto_KPI {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
 }
 
 .KPI_1_1 {
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -773,7 +784,13 @@ li a {
     padding: 7px;
 }
 
+.ajustes_graficos {
+    height: 40%;
+    width: 40%;
+}
+
 .KPI_1_2 {
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -852,6 +869,9 @@ li a {
     align-items: center;
 }
 
+.segundo_alerta_adequado {
+    border: 2px solid #00ff00;
+}
 .negrito{
     font-weight: 900;
 }

@@ -28,4 +28,17 @@ router.post("/obterIndiceAtual", function (req, res) {
     subSetoresController.obterIndiceAtual(req, res);
 });
 
+router.post("/exibitQtdSubSetores", function (req, res) {
+    subSetoresController.exibitQtdSubSetores(req, res);
+});
+
+router.post("/estadosSubSetores", function(req, res){
+    subSetoresController.estadosSubSetores(req, res);
+})
+
+router.post("/estadosSensor", function(req, res){
+    subSetoresController.estadosSensor(req, res);
+})
+
+
 module.exports = router;

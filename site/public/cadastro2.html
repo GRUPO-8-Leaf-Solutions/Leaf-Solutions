@@ -6,177 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Leaf Solutions - Cadastro</title>
-
+    <title>Cadastro</title>
+    
     <link rel="icon" href="../../assets/icon/logo.svg">
-    <link rel="stylesheet" href="./css/estiloCadastro2.css">
+    <link rel="stylesheet" href="./css/estiloCadastro3.css">
     <script src="./js/funcoes.js"></script>
 </head>
 
-<body class="cadastroBody P2">
-
-    <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
-        </div>
-    </div>
-
+<body class="cadastroBody P3">
     <div class="cadastroContainer">
-        <div class="cadastroContainerUpperPart">
-            <div>
-                <span>1</span> <span>Informações da estufa</span>
-            </div>
-
-            <div>
-                <span>2</span> <span>Informações da estufa</span>
-            </div>
-        </div>
-
         <div class="cadastroContainerMiddlePart">
-            <span>Segundo passo</span>
-            <h2>Informações da estufa</h2>
-            <span>Coloque as informações de endereço da sua estufa. Você poderá usar nossas ferramentas após se
-                registrar.</span>
-        </div>
 
-        <div class="cadastroContainerBottomPart">
-            <div class="inputCadastro">
-                <span>CEP*</span>
-                <input id="cep" placeholder="Insira o CEP do seu endereço" minlength="8" maxlength="8">
-            </div>
+            <h2>Cadastro concluido.</h2>
+            <span>
+                Esta tudo quase pronto!
+                <br>
+                Agora basta entrar em contato conosco para terminarmos de ajeitar as coisas!
+            </span>
 
-            <div class="inputCadastro">
-                <span>Logradouro*</span>
-                <input id="logradouro" placeholder="Insira o logradouro da sua estufa" maxlength="80">
-            </div>
-
-            <div class="inputCadastro">
-                <span>Complemento*</span>
-                <input id="complemento" placeholder="Insira o complemento do seu endereço" maxlength="30">
-            </div>
-
-            <div class="inputCadastro">
-                <span>Numero do endereço</span>
-                <input id="numero" placeholder="Insira o numero do seu endereço" maxlength="45">
-            </div>
-
-            <div class="inputCadastro">
-                <span>Cidade</span>
-                <input id="localidade" placeholder="Insira o nome da sua cidade" maxlength="45">
-            </div>
-
-            <div class="inputCadastro">
-                <span>Estado</span>
-                <input id="uf" placeholder="Insira a UF do seu estado" maxlength="2" minlength="2">
+            <div>
+                <h4>Num. de contato: 4002-8922</h4>
+                <h4>Email de contato: leafsolution@leafsolutionshelpdesk.freshservice.com</h4>
             </div>
         </div>
-
         <img src="assets/icon/logoDark.svg">
     </div>
-
     <div class="bottomCadastroContainer">
-        <a href="cadastro1.html"> Voltar para Informações da empresa</a>
-        <button onclick="cadastrarEnd()">Próxima etapa</button>
+        <a href="index.html"><button>Concluir cadastro</button></a>
     </div>
-
 </body>
 
 </html>
 
 <script>
-    // fazer funcao pra avançar para proxima pagina 
-
-    var cep = document.getElementById("cep")
-
-    var mostrarDados = (resultado) => {
-        for (const campo in resultado) {
-            if (document.getElementById(campo)) {
-                document.querySelector("#" + campo).value = resultado[campo]
-                // const element = object[campo];
-
-            }
-        }
-    }
-
-    cep.addEventListener("blur", (e) => {
-        var pesquisa = cep.value.replace("-", "")
-        var options = {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default'
-        }
-
-        fetch(`https://viacep.com.br/ws/${pesquisa}/json/`, options)
-            .then(resposta => {
-                resposta.json()
-                    .then(dados => mostrarDados(dados))
-            })
-            .catch(e => console.log("Erro." + e, message))
-    })
-
-
-    function cadastrarEnd() {
-        // aguardar();
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var estadoVar = uf.value;
-        var logradouroVar = logradouro.value;
-        var complementoVar = complemento.value;
-        var numEnderecoVar = numero.value;
-        var cidadeVar = localidade.value;
-        var cepVar = cep.value;
-        var fkEmpresaVar = sessionStorage.ULTIMA_ID; 
-
-
-        // if (estadoVar == "" || logradouroVar == "" || complementoVar == "" || numEnderecoVar == "" || cidadeVar == "" || cepVar == "") {
-        //     cardErro.style.display = "block"
-        //     mensagem_erro.innerHTML = "(Os campos não podem estar em branco !)";
-        //     finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
-        // Enviando o valor da nova input
-        fetch("/usuariosEnd/cadastrarEnd", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                estadoServer: estadoVar,
-                logradouroServer: logradouroVar,
-                complementoServer: complementoVar,
-                numEnderecoServer: numEnderecoVar,
-                cidadeServer: cidadeVar,
-                cepServer: cepVar,
-                fkEmpresaServer: fkEmpresaVar 
-
-            })
-        }).then(function (resposta) {
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                // cardErro.style.display = "block";
-                // mensagem_erro.innerHTML = "Redirecionando para proxima etapa...";
-                // setTimeout(() => {
-                window.location = "cadastro3.html";
-                // }, "2000")
-                // limparFormulario();
-                // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
-        return false;
-    }
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
+    //   window.location = "login.html";
 </script>

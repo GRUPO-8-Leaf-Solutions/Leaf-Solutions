@@ -15,7 +15,8 @@ function cadastrarEnd(req, res) {
     var numEndereco = req.body.numEnderecoServer;
     var cidade = req.body.cidadeServer;
     var cep = req.body.cepServer;
-    var fkEmpresa = req.body.fkEmpresaServer;
+    var bairro = req.body.bairroServer;
+    // var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (estado == undefined) {
@@ -30,10 +31,12 @@ function cadastrarEnd(req, res) {
         res.status(400).send("Sua cidade está undefined!");
     } else if (cep == undefined) {
         res.status(400).send("Seu cep está undefined!");
+    } else if (bairro == undefined) {
+        res.status(400).send("Seu bairro está undefined!");
     } else {
-
+        
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioEndModel.cadastrarEnd(cep, logradouro, numEndereco, complemento, estado, cidade, fkEmpresa)
+        usuarioEndModel.cadastrarEnd(cep, logradouro, bairro, numEndereco, complemento, estado, cidade)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -49,6 +52,23 @@ function cadastrarEnd(req, res) {
                 }
             );
     }
+}
+
+function selectEnd(req, res) {
+    usuarioEndModel.selectEnd()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function listar(req, res) {
@@ -71,5 +91,6 @@ function listar(req, res) {
 module.exports = {
     cadastrarEnd,
     testar,
+    selectEnd,
     listar
 }

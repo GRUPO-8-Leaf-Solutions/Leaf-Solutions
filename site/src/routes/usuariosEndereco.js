@@ -3,19 +3,21 @@ var router = express.Router();
 
 var usuarioControllerEnd = require("../controllers/usuarioControllerEnd");
 
-
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrarEnd", function (req, res) {
-    usuarioControllerEnd.cadastrarEnd(req, res);
+  usuarioControllerEnd.cadastrarEnd(req, res);
 });
 
 router.get("/", function (req, res) {
-    usuarioControllerEnd.testar(req, res);
+  usuarioControllerEnd.testar(req, res);
 });
 
 router.get("/listar", function (req, res) {
-    usuarioControllerEnd.listar(req, res);
+  usuarioControllerEnd.listar(req, res);
 });
 
+router.get("/selectEnd", function (req, res) {
+  usuarioControllerEnd.selectEnd(req, res);
+});
 
 module.exports = router;

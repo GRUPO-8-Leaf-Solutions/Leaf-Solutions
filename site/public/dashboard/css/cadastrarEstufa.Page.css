@@ -155,12 +155,18 @@ body {
 .nomeNome {
     display: flex;
     gap: 15px;
+    align-items: center;
 }
 
 .nomeNome span {
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.nomeNome a{
+    color: rgb(255, 188, 188);
+    font-size: 2.1rem;
 }
 
 .configNomeimg {

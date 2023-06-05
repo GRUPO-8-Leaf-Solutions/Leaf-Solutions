@@ -259,11 +259,14 @@ body {
 }
 
 .nomeNome {
-    height: 70px;
     display: flex;
-    justify-content: space-between;
+    gap: 15px;
     align-items: center;
-    /* justify-content: end; */
+}
+
+.nomeNome a{
+    color: rgb(255, 188, 188);
+    font-size: 2.1rem;
 }
 
 .nomeNome span {
@@ -738,10 +741,10 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 
 .tela-alertas {
     width: 350px;
-    height: 75vh;
-    background-color: #FFFFFF;
-    box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
-    border-radius: 8px;
+    height: 72vh;
+    background-color: #FBFBFB;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -836,12 +839,11 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 }
 
 .containerChart {
-    height: 60%;
-    background: white;
-    box-shadow: -4px 1px 11px 2px rgba(0, 0, 0, 0.13);
-    border-radius: 15px;
-    width: 60vw;
+    background-color: #FBFBFB;
+    border-radius: 18px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     height: 44vh;
+    width: 60vw;
     position: relative;
 }
 
@@ -852,6 +854,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 
 .ajuste_pie {
     width: 250px;
+    height: 275px;
     padding: 1rem;
     background-color: #FBFBFB;
     border-radius: 18px;
@@ -872,7 +875,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 
 .rodape {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     height: 40%;
     gap: 30px;
 }
@@ -1054,7 +1057,7 @@ já tava pronto nessa tela tbm, só falta organizar msm*/
 .daddy {
     display: flex;
     width: 100%;
-    gap: 30px;
+    justify-content: space-evenly;
 }
 
 

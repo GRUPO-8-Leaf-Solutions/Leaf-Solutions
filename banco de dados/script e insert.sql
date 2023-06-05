@@ -107,19 +107,37 @@ tipo varchar(45)
 constraint cnkAlerta check (tipo in ('critico', 'preocupante', 'adequado')) 
 );
 
-create table leituraSensor (
-idLeituraSensor int auto_increment,
-valor int not null,
-leituraDate DATE,
-leituraTime TIME,
-fkSensor int,
-fkAlerta int,
-constraint fkLeituraSensorSensor foreign key (fkSensor)
-	references Sensor (idSensor),
-constraint fkAlerta foreign key (fkAlerta)
-	references alerta (idAlerta),
-constraint pkSensor primary key (idLeituraSensor, fkSensor, fkAlerta)
-);
+SELECT e.idEstufa, a.tipo AS estado, COUNT(*) AS quantidade
+FROM estufa e
+join empresa ON e.fkEmpresa = empresa.idEmpresa
+JOIN setor s ON s.fkEstufa = e.idEstufa
+JOIN subSetor ss ON ss.fkSetor = s.idSetor
+JOIN sensor se ON se.fkSubSetor = ss.idSubSetor
+JOIN leituraSensor ls ON ls.fkSensor = se.idSensor
+JOIN (
+    SELECT MAX(idLeituraSensor) AS ultima_leitura, fkSensor
+    FROM leituraSensor
+    GROUP BY fkSensor
+) ul ON ul.fkSensor = ls.fkSensor AND ul.ultima_leitura = ls.idLeituraSensor
+JOIN alerta a ON a.idAlerta = ls.fkAlerta
+where empresa.idEmpresa = 1 and ls.leituraDate = curdate()
+GROUP BY e.idEstufa, a.tipo
+ORDER BY e.idEstufa;SELECT e.idEstufa, a.tipo AS estado, COUNT(*) AS quantidade
+FROM estufa e
+join empresa ON e.fkEmpresa = empresa.idEmpresa
+JOIN setor s ON s.fkEstufa = e.idEstufa
+JOIN subSetor ss ON ss.fkSetor = s.idSetor
+JOIN sensor se ON se.fkSubSetor = ss.idSubSetor
+JOIN leituraSensor ls ON ls.fkSensor = se.idSensor
+JOIN (
+    SELECT MAX(idLeituraSensor) AS ultima_leitura, fkSensor
+    FROM leituraSensor
+    GROUP BY fkSensor
+) ul ON ul.fkSensor = ls.fkSensor AND ul.ultima_leitura = ls.idLeituraSensor
+JOIN alerta a ON a.idAlerta = ls.fkAlerta
+where empresa.idEmpresa = 1 and ls.leituraDate = curdate()
+GROUP BY e.idEstufa, a.tipo
+ORDER BY e.idEstufa;
 
 
 -- INSERTS MOCADOS
@@ -199,28 +217,28 @@ insert into alerta values
     (null, 'adequado');
     
 insert into leituraSensor values 
-	(null, 500, CURDATE(), CURTIME(), 1, 1),
-	(null, 600, CURDATE(), CURTIME(), 2, 1),
-	(null, 700, CURDATE(), CURTIME(), 3, 2),
-	(null, 800, CURDATE(), CURTIME(), 4, 3),
-	(null, 900, CURDATE(), CURTIME(), 5, 2),
-	(null, 500, CURDATE(), CURTIME(), 6, 1),
-	(null, 450, CURDATE(), CURTIME(), 7, 3),
-	(null, 700, CURDATE(), CURTIME(), 8, 2),
-	(null, 350, CURDATE(), CURTIME(), 9, 1),
-	(null, 650, CURDATE(), CURTIME(), 1, 2),
-	(null, 250, CURDATE(), CURTIME(), 2, 3),
-	(null, 750, CURDATE(), CURTIME(), 3, 1),
-	(null, 900, CURDATE(), CURTIME(), 4, 1),
-	(null, 1000, CURDATE(), CURTIME(), 5, 1),
-	(null, 300, CURDATE(), CURTIME(), 6, 2),
-	(null, 800, CURDATE(), CURTIME(), 7, 2),
-	(null, 800, CURDATE(), CURTIME(), 8, 3),
-	(null, 800, CURDATE(), CURTIME(), 9, 3),
-	(null, 800, CURDATE(), CURTIME(), 1, 2),
-	(null, 800, CURDATE(), CURTIME(), 2, 2),
-	(null, 800, CURDATE(), CURTIME(), 3, 1),
-	(null, 400, CURDATE(), CURTIME(), 4, 1);
+	(null, 400, CURDATE(), CURTIME(), 1, 1),
+	(null, 500, CURDATE(), CURTIME(), 2, 1),
+	(null, 600, CURDATE(), CURTIME(), 3, 2),
+	(null, 700, CURDATE(), CURTIME(), 4, 2),
+	(null, 800, CURDATE(), CURTIME(), 5, 1),
+	(null, 400, CURDATE(), CURTIME(), 6, 1),
+	(null, 550, CURDATE(), CURTIME(), 7, 2),
+	(null, 600, CURDATE(), CURTIME(), 8, 2),
+	(null, 450, CURDATE(), CURTIME(), 9, 1),
+	(null, 550, CURDATE(), CURTIME(), 1, 1),
+	(null, 150, CURDATE(), CURTIME(), 2, 2),
+	(null, 650, CURDATE(), CURTIME(), 3, 2),
+	(null, 800, CURDATE(), CURTIME(), 4, 1),
+	(null, 500, CURDATE(), CURTIME(), 5, 1),
+	(null, 100, CURDATE(), CURTIME(), 6, 3),
+	(null, 50, CURDATE(), CURTIME(), 7, 3),
+	(null, 400, CURDATE(), CURTIME(), 8, 3),
+	(null, 900, CURDATE(), CURTIME(), 9, 3),
+	(null, 900, CURDATE(), CURTIME(), 1, 3),
+	(null, 800, CURDATE(), CURTIME(), 2, 3),
+	(null, 700, CURDATE(), CURTIME(), 3, 3),
+	(null, 600, CURDATE(), CURTIME(), 4, 3);
 
 insert into leituraSensor values 
     (null, 289, 3, 2, CURDATE(), CURTIME());
@@ -242,6 +260,46 @@ TIME(leituraSensor.dtLeitura) AS hora_leitura
 		WHERE empresa.idEmpresa = 1
 		AND leituraSensor.dtLeitura = '2023-05-28 21:24';
 
+
+SELECT count(idSubSetor) as totalSubSetores 
+    from empresa
+    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
+    left join setor on estufa.idEstufa = setor.fkEstufa
+    left join subSetor on setor.idSetor = subSetor.fkSetor
+    where idEmpresa = 1
+    group by idSetor;
+
+
+
+SELECT e.estufa_id, s.setor_id, ss.subsetor_id, ls.sensor_id, v.estado, ls.data_leitura, ls.hora_leitura
+FROM estufa e
+JOIN setor s ON s.estufa_id = e.estufa_id
+JOIN subsetor ss ON ss.setor_id = s.setor_id
+JOIN (
+    SELECT sensor_id, MAX(data_leitura) AS ultima_leitura
+    FROM leituraSensor
+    GROUP BY sensor_id
+) ul ON ul.sensor_id = ss.sensor_id
+JOIN leituraSensor ls ON ls.sensor_id = ul.sensor_id AND ls.data_leitura = ul.ultima_leitura
+JOIN valores v ON ls.valor = v.valor
+ORDER BY e.estufa_id, s.setor_id, ss.subsetor_id;
+
+SELECT s.idSetor, a.tipo AS estado, COUNT(*) AS quantidade
+FROM estufa e
+    join empresa ON e.fkEmpresa = empresa.idEmpresa
+    JOIN setor s ON s.fkEstufa = e.idEstufa
+    JOIN subSetor ss ON ss.fkSetor = s.idSetor
+    JOIN sensor se ON se.fkSubSetor = ss.idSubSetor
+    JOIN leituraSensor ls ON ls.fkSensor = se.idSensor
+JOIN (
+    SELECT MAX(idLeituraSensor) AS ultima_leitura, fkSensor
+    FROM leituraSensor
+    GROUP BY fkSensor
+) ul ON ul.fkSensor = ls.fkSensor AND ul.ultima_leitura = ls.idLeituraSensor
+JOIN alerta a ON a.idAlerta = ls.fkAlerta
+where empresa.idEmpresa = 1 and ls.leituraDate = curdate()
+GROUP BY s.idSetor, a.tipo
+ORDER BY s.idSetor;
 
 
 -- select de coletar menor indice

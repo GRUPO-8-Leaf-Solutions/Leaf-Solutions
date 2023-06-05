@@ -74,16 +74,71 @@ subSetor.idSubSetor = ${idSubSetor}
 AND
 sensor.idSensor = ${idSensor}
 order by leituraSensor.leituraTime DESC
-;
-    `
+;`
     return database.executar(instrucao)
 }
 
+
+function exibitQtdSubSetores(idEmpresa) {
+    var instrucao = `SELECT count(idSubSetor) as totalSubSetores 
+    from empresa
+    left join estufa on empresa.idEmpresa = estufa.fkEmpresa
+    left join setor on estufa.idEstufa = setor.fkEstufa
+    left join subSetor on setor.idSetor = subSetor.fkSetor
+    where idEmpresa = ${idEmpresa}
+    group by idSetor;`
+
+    return database.executar(instrucao)
+}
+
+function estadosSubSetores(idSetor) {
+    var instrucao = `
+    SELECT ss.idSubSetor, a.tipo AS estado, COUNT(*) AS quantidade
+    FROM subSetor ss
+    JOIN sensor se ON se.fkSubSetor = ss.idSubSetor
+    JOIN leituraSensor ls ON ls.fkSensor = se.idSensor
+    JOIN (
+        SELECT MAX(idLeituraSensor) AS ultima_leitura, fkSensor
+        FROM leituraSensor
+        GROUP BY fkSensor
+    ) ul ON ul.fkSensor = ls.fkSensor AND ul.ultima_leitura = ls.idLeituraSensor
+    JOIN alerta a ON a.idAlerta = ls.fkAlerta
+    WHERE ss.fkSetor = ${idSetor}
+    GROUP BY ss.idSubSetor, a.tipo
+    ORDER BY ss.idSubSetor;
+      `;
+  
+    return database.executar(instrucao);
+  }
+
+  
+function estadosSensor(idSubSetor) {
+    var instrucao = `
+    SELECT se.idSensor, a.tipo AS estado, COUNT(*) AS quantidade
+    FROM sensor se
+    JOIN leituraSensor ls ON ls.fkSensor = se.idSensor
+    JOIN (
+        SELECT MAX(idLeituraSensor) AS ultima_leitura, fkSensor
+        FROM leituraSensor
+        GROUP BY fkSensor
+    ) ul ON ul.fkSensor = ls.fkSensor AND ul.ultima_leitura = ls.idLeituraSensor
+    JOIN alerta a ON a.idAlerta = ls.fkAlerta
+    WHERE se.fkSubSetor = ${idSubSetor}
+    GROUP BY se.idSensor, a.tipo
+    ORDER BY se.idSensor;
+      `;
+  
+    return database.executar(instrucao);
+  }
 
 module.exports = {
     buscarSubSetor,
     buscarSensor,
     obterMenorIndice,
     obterMaiorIndice,
-    obterIndiceAtual
+    obterIndiceAtual,
+    exibitQtdSubSetores,
+    estadosSubSetores,
+    estadosSensor
+    // statusSensor
 };
