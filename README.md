@@ -1,11 +1,5 @@
 # LeafSolutions
 
-PowerPoint ultima atualização feita
-
-
-https://www.canva.com/design/DAFksEIpLBA/SB-51ygS2vZlkcfmwMFmAg/edit?utm_content=DAFksEIpLBA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-
-
 Regras de condução da equipe!
 
 1° Ser comprometido e pontual com os combinados da equipe. <br>
